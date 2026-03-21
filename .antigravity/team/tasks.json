@@ -1,0 +1,284 @@
+{
+  "proyecto": "Dashboard NL 2026 — Sprint 3: Precision Fixes + New Viz",
+  "sprint": 3,
+  "fecha_inicio": "2026-03-19",
+  "members": [
+    "AldoGbot",
+    "agente_normalizer",
+    "agente_heatmap",
+    "agente_kpi",
+    "agente_viz"
+  ],
+  "tasks": [
+    {
+      "id": 1,
+      "title": "Detectar categorías duplicadas en JSON",
+      "agent": "agente_normalizer",
+      "deps": [],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771537",
+      "completed_at": "2026-03-19 19:49:34.794434"
+    },
+    {
+      "id": 2,
+      "title": "Crear mapa de normalización str.title()",
+      "agent": "agente_normalizer",
+      "deps": [
+        1
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771559",
+      "completed_at": "2026-03-19 19:49:34.830421"
+    },
+    {
+      "id": 3,
+      "title": "Aplicar normalización y sobrescribir JSON",
+      "agent": "agente_normalizer",
+      "deps": [
+        2
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771569",
+      "completed_at": "2026-03-19 19:49:34.867038"
+    },
+    {
+      "id": 4,
+      "title": "Añadir RdYlGn a design_tokens.json",
+      "agent": "agente_normalizer",
+      "deps": [
+        1
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771581",
+      "completed_at": "2026-03-19 19:49:34.907084"
+    },
+    {
+      "id": 5,
+      "title": "Notificar a AldoGbot: diff categorías",
+      "agent": "agente_normalizer",
+      "deps": [
+        3,
+        4
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771588",
+      "completed_at": "2026-03-19 19:49:34.939142"
+    },
+    {
+      "id": 6,
+      "title": "Reconstruir heatmap con RdYlGn",
+      "agent": "agente_heatmap",
+      "deps": [
+        5
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771594",
+      "completed_at": "2026-03-19 19:49:34.966265"
+    },
+    {
+      "id": 7,
+      "title": "Añadir anotaciones numéricas en celdas",
+      "agent": "agente_heatmap",
+      "deps": [
+        6
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771600",
+      "completed_at": "2026-03-19 19:49:35.006009"
+    },
+    {
+      "id": 8,
+      "title": "Tooltips con dimensiones por hover",
+      "agent": "agente_heatmap",
+      "deps": [
+        6
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771605",
+      "completed_at": "2026-03-19 19:49:35.059884"
+    },
+    {
+      "id": 9,
+      "title": "Línea de referencia score medio portal",
+      "agent": "agente_heatmap",
+      "deps": [
+        6
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771610",
+      "completed_at": "2026-03-19 19:49:35.114475"
+    },
+    {
+      "id": 10,
+      "title": "Validar: 16 categorías, no duplicados",
+      "agent": "agente_heatmap",
+      "deps": [
+        7,
+        8,
+        9
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771616",
+      "completed_at": "2026-03-19 19:49:35.155478"
+    },
+    {
+      "id": 11,
+      "title": "KPI cards con ícono + barra de progreso",
+      "agent": "agente_kpi",
+      "deps": [
+        5
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771626",
+      "completed_at": "2026-03-19 19:49:35.201441"
+    },
+    {
+      "id": 12,
+      "title": "Segunda fila KPIs: Exactitud + Mejor DS",
+      "agent": "agente_kpi",
+      "deps": [
+        11
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771632",
+      "completed_at": "2026-03-19 19:49:35.232814"
+    },
+    {
+      "id": 13,
+      "title": "Alerta cards con 4 dimensiones por DS",
+      "agent": "agente_kpi",
+      "deps": [
+        5
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771637",
+      "completed_at": "2026-03-19 19:49:35.265676"
+    },
+    {
+      "id": 14,
+      "title": "Link 'Ver en portal →' por cada alerta",
+      "agent": "agente_kpi",
+      "deps": [
+        13
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771642",
+      "completed_at": "2026-03-19 19:49:35.306440"
+    },
+    {
+      "id": 15,
+      "title": "Radar chart 4 dimensiones del portal",
+      "agent": "agente_viz",
+      "deps": [
+        5
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771647",
+      "completed_at": "2026-03-19 19:49:35.337646"
+    },
+    {
+      "id": 16,
+      "title": "Histograma distribución de scores",
+      "agent": "agente_viz",
+      "deps": [
+        5
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771652",
+      "completed_at": "2026-03-19 19:49:35.367119"
+    },
+    {
+      "id": 17,
+      "title": "Barras Top10 mejor + Top10 peor datasets",
+      "agent": "agente_viz",
+      "deps": [
+        5
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771657",
+      "completed_at": "2026-03-19 19:49:35.448641"
+    },
+    {
+      "id": 18,
+      "title": "Integrar 4 gráficas en st.tabs()",
+      "agent": "agente_viz",
+      "deps": [
+        15,
+        16,
+        17
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771663",
+      "completed_at": "2026-03-19 19:49:35.486259"
+    },
+    {
+      "id": 19,
+      "title": "QA visual: heatmap correcto (16 cats, RdYlGn)",
+      "agent": "AldoGbot",
+      "deps": [
+        10
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771668",
+      "completed_at": "2026-03-19 19:49:35.518550"
+    },
+    {
+      "id": 20,
+      "title": "QA KPIs: barras de progreso visibles",
+      "agent": "AldoGbot",
+      "deps": [
+        12,
+        14
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771673",
+      "completed_at": "2026-03-19 19:49:35.548495"
+    },
+    {
+      "id": 21,
+      "title": "QA Tabs sección 5: 4 pestañas funcionales",
+      "agent": "AldoGbot",
+      "deps": [
+        18
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771678",
+      "completed_at": "2026-03-19 19:49:35.595257"
+    },
+    {
+      "id": 22,
+      "title": "Merge dashboard_v3.py + broadcast cierre",
+      "agent": "AldoGbot",
+      "deps": [
+        19,
+        20,
+        21
+      ],
+      "status": "COMPLETED",
+      "plan_approved": true,
+      "created_at": "2026-03-19 19:47:56.771683",
+      "completed_at": "2026-03-19 19:49:35.634256"
+    }
+  ]
+}

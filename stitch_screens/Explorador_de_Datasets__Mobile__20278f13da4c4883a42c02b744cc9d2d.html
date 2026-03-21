@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="es-MX"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-tertiary-fixed": "#400050", "surface-dim": "#000b2f", "on-surface": "#dfe4ff", "on-tertiary": "#68207b", "inverse-on-surface": "#48547a", "surface-container-high": "#091c4c", outline: "#69749d", primary: "#7faeff", "on-surface-variant": "#9eaad5", tertiary: "#f5b2ff", "surface-container-low": "#011038", background: "#000b2f", surface: "#000b2f", "inverse-surface": "#faf8ff", "on-secondary": "#001b56", "on-primary-fixed": "#000000", "on-tertiary-fixed-variant": "#681f7a", error: "#ff716c", "on-primary": "#002e60", "on-background": "#dfe4ff", "inverse-primary": "#005db9", "tertiary-container": "#f09dff", "outline-variant": "#3b466c", "surface-bright": "#132860", secondary: "#7999ff", "surface-container": "#051642", "error-container": "#9f0519", "surface-container-highest": "#0e2256", "on-error": "#490006", "tertiary-fixed": "#f09dff", "primary-fixed-dim": "#4693ff", "on-secondary-fixed": "#002c82", "secondary-fixed": "#c4d0ff", "primary-fixed": "#65a1ff", "on-error-container": "#ffa8a3", "on-tertiary-container": "#5e1470", "tertiary-fixed-dim": "#e190f0", "secondary-fixed-dim": "#b1c2ff", "on-secondary-container": "#c2cfff", "on-primary-container": "#00224b", "on-primary-fixed-variant": "#002b5c", "secondary-container": "#133fa1", "primary-container": "#65a1ff", "surface-container-lowest": "#000000", "on-secondary-fixed-variant": "#2349ac", "surface-tint": "#7faeff", "surface-variant": "#0e2256", "tertiary-dim": "#e190f0", "error-dim": "#d7383b", "primary-dim": "#0073e1", "secondary-dim": "#7999ff"}, fontFamily: {headline: ["Inter"], body: ["Inter"], label: ["Inter"], display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #faf9fd;
+        color: #1a1b1e;
+        line-height: 1.6;
+        font-size: 14px;
+      }
+      h1, h2, h3, .font-headline {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        letter-spacing: -0.02em;
+      }
+      .glass-nav {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(12px);
+      }
+      .custom-scrollbar::-webkit-scrollbar {
+        height: 4px;
+      }
+      .custom-scrollbar::-webkit-scrollbar-thumb {
+        background: #dadce0;
+        border-radius: 10px;
+      }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface">
+<!-- Mobile Header -->
+<nav class="fixed top-0 w-full h-16 z-50 glass-nav border-b border-slate-200">
+<div class="flex items-center justify-between px-4 w-full h-full">
+<div class="flex items-center gap-3">
+<button class="p-2 -ml-2 text-slate-700">
+<span class="material-symbols-outlined">menu</span>
+</button>
+<div class="text-lg font-bold tracking-tighter text-slate-900">
+                    NL 2026
+                </div>
+</div>
+<button class="px-4 py-2 rounded-full text-xs font-bold bg-primary text-white hover:bg-primary-dark transition-all active:scale-95">
+                Ver Portal
+            </button>
+</div>
+</nav>
+<main class="pt-20 pb-24 px-4 max-w-[1440px] mx-auto">
+<section class="flex-1 min-w-0">
+<header class="mb-6">
+<h2 class="text-3xl font-extrabold text-on-surface mb-2">Explorador de Datasets</h2>
+<p class="text-on-surface-variant text-sm">Visualiza y analiza la integridad de los activos de datos abiertos del Estado de Nuevo León.</p>
+</header>
+<!-- Collapsible Filters Container -->
+<div class="bg-surface-container-low rounded-xl border border-outline-variant/30 overflow-hidden mb-6">
+<details class="group" open="">
+<summary class="flex items-center justify-between p-4 cursor-pointer list-none">
+<span class="text-sm font-bold text-on-surface flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">filter_list</span>
+                            Filtros y Búsqueda
+                        </span>
+<span class="material-symbols-outlined transition-transform group-open:rotate-180">expand_more</span>
+</summary>
+<div class="px-4 pb-6 space-y-5 border-t border-outline-variant/10 pt-4">
+<div class="space-y-1.5">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Búsqueda</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-on-surface-variant text-lg">search</span>
+<input class="w-full bg-surface-container-lowest border-outline-variant rounded-lg text-sm py-2.5 pl-10 pr-3 focus:ring-primary focus:border-primary" placeholder="Buscar dataset..." type="text"/>
+</div>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<div class="space-y-1.5">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Categoría</label>
+<select class="w-full bg-surface-container-lowest border-outline-variant rounded-lg text-sm py-2.5 px-3 focus:ring-primary focus:border-primary">
+<option>Todas las categorías</option>
+<option>Finanzas</option>
+<option>Salud</option>
+<option>Seguridad</option>
+<option>Educación</option>
+</select>
+</div>
+<div class="space-y-1.5">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Organización</label>
+<select class="w-full bg-surface-container-lowest border-outline-variant rounded-lg text-sm py-2.5 px-3 focus:ring-primary focus:border-primary">
+<option>Cualquier dependencia</option>
+<option>Tesorería</option>
+<option>Secretaría de Salud</option>
+<option>Protección Civil</option>
+</select>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between items-center">
+<label class="text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">Score Mínimo</label>
+<span class="text-sm font-bold text-primary">85%</span>
+</div>
+<input class="w-full h-2 bg-outline-variant rounded-lg appearance-none cursor-pointer accent-primary" max="100" min="0" type="range" value="85"/>
+</div>
+<div class="flex flex-wrap items-center gap-2 pt-2">
+<div class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold border border-primary/20">
+                                Score &gt; 85%
+                                <button class="material-symbols-outlined text-[14px]">close</button>
+</div>
+<div class="flex items-center gap-1 bg-primary/10 text-primary px-3 py-1 rounded-full text-xs font-semibold border border-primary/20">
+                                Finanzas
+                                <button class="material-symbols-outlined text-[14px]">close</button>
+</div>
+<button class="text-xs text-on-surface-variant hover:text-primary transition-colors font-medium underline px-1">Limpiar</button>
+</div>
+</div>
+</details>
+</div>
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-1.5">
+<span class="text-base font-bold text-on-surface">79</span>
+<span class="text-on-surface-variant text-sm">datasets</span>
+</div>
+<div class="flex items-center gap-1.5 text-sm text-on-surface-variant">
+<button class="font-semibold text-on-surface flex items-center gap-1 py-1">
+                        Score Global
+                        <span class="material-symbols-outlined text-sm">expand_more</span>
+</button>
+</div>
+</div>
+<!-- Mobile List View (Replacing Table) -->
+<div class="space-y-3">
+<!-- Card Item 1 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden active:bg-surface-container-low transition-colors">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col gap-1 pr-4">
+<span class="font-bold text-base text-on-surface leading-tight">Egresos_Publicos_2024</span>
+<span class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    Hace 2 horas
+                                </span>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-surface-container-highest text-[10px] font-bold text-on-surface-variant border border-outline-variant/50">FINANZAS</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 flex-1">
+<div class="h-2 flex-1 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-[#1e8e3e]" style="width: 98%"></div>
+</div>
+<span class="text-sm font-bold text-on-surface w-8 text-right">98</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-[12px] border-t border-outline-variant/10 pt-3">
+<div class="text-on-surface-variant">Tesorería NL</div>
+<button class="flex items-center gap-1 text-primary font-bold">
+                                    Detalles
+                                    <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Item 2 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden active:bg-surface-container-low transition-colors">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col gap-1 pr-4">
+<span class="font-bold text-base text-on-surface leading-tight">Inventario_Medicamentos_H_Central</span>
+<span class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    Ayer
+                                </span>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-surface-container-highest text-[10px] font-bold text-on-surface-variant border border-outline-variant/50">SALUD</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 flex-1">
+<div class="h-2 flex-1 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-[#1e8e3e]" style="width: 91%"></div>
+</div>
+<span class="text-sm font-bold text-on-surface w-8 text-right">91</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-[12px] border-t border-outline-variant/10 pt-3">
+<div class="text-on-surface-variant">Secretaría Salud</div>
+<button class="flex items-center gap-1 text-primary font-bold">
+                                    Detalles
+                                    <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Item 3 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden active:bg-surface-container-low transition-colors">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col gap-1 pr-4">
+<span class="font-bold text-base text-on-surface leading-tight">Incidentes_Transito_ZMM</span>
+<span class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    Hace 3 días
+                                </span>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-surface-container-highest text-[10px] font-bold text-on-surface-variant border border-outline-variant/50">SEGURIDAD</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 flex-1">
+<div class="h-2 flex-1 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-[#e37400]" style="width: 81%"></div>
+</div>
+<span class="text-sm font-bold text-on-surface w-8 text-right">81</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-[12px] border-t border-outline-variant/10 pt-3">
+<div class="text-on-surface-variant">Seguridad Pública</div>
+<button class="flex items-center gap-1 text-primary font-bold">
+                                    Detalles
+                                    <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Card Item 4 -->
+<div class="bg-surface-container-lowest rounded-xl border border-outline-variant/30 overflow-hidden active:bg-surface-container-low transition-colors">
+<div class="p-4">
+<div class="flex justify-between items-start mb-3">
+<div class="flex flex-col gap-1 pr-4">
+<span class="font-bold text-base text-on-surface leading-tight">Becas_Educacion_Basica_2023</span>
+<span class="text-[11px] text-on-surface-variant flex items-center gap-1">
+<span class="material-symbols-outlined text-[12px]">schedule</span>
+                                    Hace 1 mes
+                                </span>
+</div>
+<span class="shrink-0 px-2 py-0.5 rounded bg-surface-container-highest text-[10px] font-bold text-on-surface-variant border border-outline-variant/50">EDUCACIÓN</span>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2 flex-1">
+<div class="h-2 flex-1 bg-outline-variant/30 rounded-full overflow-hidden">
+<div class="h-full bg-[#1e8e3e]" style="width: 99%"></div>
+</div>
+<span class="text-sm font-bold text-on-surface w-8 text-right">99</span>
+</div>
+</div>
+<div class="flex justify-between items-center text-[12px] border-t border-outline-variant/10 pt-3">
+<div class="text-on-surface-variant">Secretaría Educación</div>
+<button class="flex items-center gap-1 text-primary font-bold">
+                                    Detalles
+                                    <span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Mobile Pagination & Actions -->
+<div class="mt-8 flex flex-col gap-4">
+<div class="flex justify-center items-center gap-2">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-primary bg-primary text-white text-sm font-bold">1</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-on-surface-variant text-sm">2</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-on-surface-variant text-sm">3</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-outline-variant text-on-surface-variant">
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-2 gap-3 mt-2">
+<button class="flex items-center justify-center gap-2 px-4 py-3 rounded-full border border-primary text-primary text-sm font-bold active:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-[20px]">download</span>
+                        CSV
+                    </button>
+<button class="flex items-center justify-center gap-2 px-4 py-3 rounded-full border border-primary text-primary text-sm font-bold active:bg-primary/5 transition-all">
+<span class="material-symbols-outlined text-[20px]">content_copy</span>
+                        JSON
+                    </button>
+</div>
+</div>
+</section>
+</main>
+<footer class="w-full py-10 border-t border-slate-100 bg-white">
+<div class="max-w-[1440px] mx-auto px-6 flex flex-col items-center gap-6 text-center">
+<div class="text-lg font-black text-slate-400">
+                NL 2026
+            </div>
+<p class="text-[12px] text-slate-500 leading-relaxed">
+                © 2026 Gobierno de Nuevo León<br/>Plataforma de Datos Abiertos
+            </p>
+<div class="flex flex-wrap justify-center gap-x-6 gap-y-3">
+<a class="text-[12px] text-slate-500 font-medium" href="#">Privacidad</a>
+<a class="text-[12px] text-slate-500 font-medium" href="#">Términos</a>
+<a class="text-[12px] text-slate-500 font-medium" href="#">Soporte</a>
+</div>
+</div>
+</footer>
+</body></html>

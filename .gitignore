@@ -1,0 +1,15 @@
+# Entorno virtual y temporales
+venv/
+env/
+.env
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+
+# Configuración del IDE y OS
+.vscode/
+.idea/
+.DS_Store
+
+# Streamlit
+.streamlit/

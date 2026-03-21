@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="es-MX"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Evolución de la Calidad | NL 2026</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-tertiary-fixed": "#400050", "surface-dim": "#000b2f", "on-surface": "#dfe4ff", "on-tertiary": "#68207b", "inverse-on-surface": "#48547a", "surface-container-high": "#091c4c", outline: "#69749d", primary: "#7faeff", "on-surface-variant": "#9eaad5", tertiary: "#f5b2ff", "surface-container-low": "#011038", background: "#000b2f", surface: "#000b2f", "inverse-surface": "#faf8ff", "on-secondary": "#001b56", "on-primary-fixed": "#000000", "on-tertiary-fixed-variant": "#681f7a", error: "#ff716c", "on-primary": "#002e60", "on-background": "#dfe4ff", "inverse-primary": "#005db9", "tertiary-container": "#f09dff", "outline-variant": "#3b466c", "surface-bright": "#132860", secondary: "#7999ff", "surface-container": "#051642", "error-container": "#9f0519", "surface-container-highest": "#0e2256", "on-error": "#490006", "tertiary-fixed": "#f09dff", "primary-fixed-dim": "#4693ff", "on-secondary-fixed": "#002c82", "secondary-fixed": "#c4d0ff", "primary-fixed": "#65a1ff", "on-error-container": "#ffa8a3", "on-tertiary-container": "#5e1470", "tertiary-fixed-dim": "#e190f0", "secondary-fixed-dim": "#b1c2ff", "on-secondary-container": "#c2cfff", "on-primary-container": "#00224b", "on-primary-fixed-variant": "#002b5c", "secondary-container": "#133fa1", "primary-container": "#65a1ff", "surface-container-lowest": "#000000", "on-secondary-fixed-variant": "#2349ac", "surface-tint": "#7faeff", "surface-variant": "#0e2256", "tertiary-dim": "#e190f0", "error-dim": "#d7383b", "primary-dim": "#0073e1", "secondary-dim": "#7999ff"}, fontFamily: {headline: ["Inter"], body: ["Inter"], label: ["Inter"], display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      .line-chart-gradient {
+        background: linear-gradient(180deg, rgba(26, 115, 232, 0.1) 0%, rgba(26, 115, 232, 0) 100%);
+      }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-16 z-50 bg-white/70 backdrop-blur-md border-b border-slate-200">
+<div class="flex items-center justify-between px-8 w-full max-w-[1440px] mx-auto h-full">
+<div class="text-xl font-bold tracking-tighter text-slate-900 font-headline">NL 2026</div>
+<div class="hidden md:flex items-center gap-8">
+<a class="font-headline text-sm font-medium leading-relaxed tracking-tight text-slate-600 hover:text-blue-600 transition-colors" href="#">Resumen</a>
+<a class="font-headline text-sm font-medium leading-relaxed tracking-tight text-slate-600 hover:text-blue-600 transition-colors" href="#">Categorías</a>
+<a class="font-headline text-sm font-medium leading-relaxed tracking-tight text-slate-600 hover:text-blue-600 transition-colors" href="#">Datasets</a>
+<a class="font-headline text-sm font-medium leading-relaxed tracking-tight text-slate-600 hover:text-blue-600 transition-colors" href="#">Alertas</a>
+<a class="font-headline text-sm font-medium leading-relaxed tracking-tight text-blue-600 border-b-2 border-blue-600 pb-1" href="#">Evolución</a>
+<a class="font-headline text-sm font-medium leading-relaxed tracking-tight text-slate-600 hover:text-blue-600 transition-colors" href="#">Avanzado</a>
+</div>
+<div class="flex items-center gap-3">
+<button class="px-4 py-2 text-sm font-medium text-blue-600 hover:bg-slate-50 rounded-lg transition-all active:scale-95 duration-200">Descargar CSV</button>
+<button class="px-5 py-2 text-sm font-semibold bg-primary-container text-white rounded-full active:scale-95 transition-all">Ver Portal NL</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-16 px-8 max-w-[1440px] mx-auto flex gap-8">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col gap-4 p-4 sticky top-20 w-[200px] rounded-lg h-fit border border-slate-200 bg-slate-50 font-label">
+<div class="flex flex-col gap-1 mb-4">
+<div class="flex items-center gap-2">
+<div class="w-2 h-2 rounded-full bg-blue-600"></div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400">Gobernanza Pro</span>
+</div>
+<span class="text-[10px] text-slate-400 pl-4">v2.0.26</span>
+</div>
+<nav class="flex flex-col gap-1">
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:translate-x-1 transition-transform hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-[20px]">dashboard</span>
+<span>Dashboard</span>
+</a>
+<a class="flex items-center gap-3 bg-blue-50 text-blue-700 font-semibold rounded-full px-4 py-2" href="#">
+<span class="material-symbols-outlined text-[20px]">explore</span>
+<span>Explorar</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:translate-x-1 transition-transform hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-[20px]">analytics</span>
+<span>Reportes</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:translate-x-1 transition-transform hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-[20px]">settings</span>
+<span>Configuración</span>
+</a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:translate-x-1 transition-transform hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-[20px]">help</span>
+<span>Ayuda</span>
+</a>
+</nav>
+<div class="mt-8 pt-4 border-t border-slate-200 flex flex-col gap-1">
+<a class="text-blue-600 font-bold text-xs px-4 py-2" href="#">Abrir Portal →</a>
+</div>
+</aside>
+<!-- Content Area -->
+<div class="flex-1">
+<header class="mb-10">
+<h2 class="text-[40px] font-bold tracking-tight text-slate-900 font-headline leading-tight mb-8">Evolución de la Calidad (2023–2026)</h2>
+<!-- Google Cloud Blog style Tab bar -->
+<div class="flex items-center gap-8 border-b border-outline-variant">
+<button class="pb-4 text-sm font-semibold text-primary border-b-2 border-primary">Evolución histórica</button>
+<button class="pb-4 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Perfil de calidad</button>
+<button class="pb-4 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Distribución</button>
+<button class="pb-4 text-sm font-medium text-on-surface-variant hover:text-primary transition-colors">Rankings</button>
+</div>
+</header>
+<!-- Main Chart Container -->
+<section class="bg-surface-container-low rounded-xl p-8 mb-12 border border-outline-variant/30">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-semibold text-slate-900 font-headline">Score Promedio de Calidad</h3>
+<p class="text-sm text-slate-500 mt-1">Métricas consolidadas de integridad, completitud y validez.</p>
+</div>
+<div class="flex gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-outline-variant text-xs font-medium text-slate-600">
+<span class="w-2 h-2 rounded-full bg-primary"></span>
+                            NL Promedio
+                        </span>
+</div>
+</div>
+<!-- Custom Line Chart Mockup -->
+<div class="relative w-full h-[400px] mt-4">
+<!-- Y-Axis labels -->
+<div class="absolute left-0 h-full flex flex-col justify-between text-[11px] text-slate-400 pr-4">
+<span>100%</span>
+<span>80%</span>
+<span>60%</span>
+<span>40%</span>
+<span>20%</span>
+<span>0%</span>
+</div>
+<div class="ml-12 h-full relative border-l border-b border-slate-200">
+<!-- Horizontal Grid Lines -->
+<div class="absolute inset-0 flex flex-col justify-between">
+<div class="w-full border-t border-slate-100"></div>
+<div class="w-full border-t border-slate-100"></div>
+<div class="w-full border-t border-slate-100"></div>
+<div class="w-full border-t border-slate-100"></div>
+<div class="w-full border-t border-slate-100"></div>
+<div class="w-full"></div>
+</div>
+<!-- Vertical Annotation Line -->
+<div class="absolute left-[45%] top-0 bottom-0 border-l-2 border-dashed border-slate-300 z-10">
+<div class="absolute -top-8 left-1/2 -translate-x-1/2 whitespace-nowrap bg-white px-2 py-1 rounded border border-slate-200 text-[10px] font-bold text-slate-500 uppercase tracking-wider">
+                                Lanzamiento portal
+                                <span class="block text-[9px] font-normal text-slate-400 lowercase">Ago 2024</span>
+</div>
+</div>
+<!-- Main Line SVG -->
+<svg class="absolute inset-0 w-full h-full" preserveaspectratio="none" viewbox="0 0 100 100">
+<!-- Gradient Fill Area -->
+<path d="M0 80 L10 78 L25 72 L40 75 L55 55 L70 45 L85 35 L100 28 L100 100 L0 100 Z" fill="url(#chartGradient)" opacity="0.1"></path>
+<defs>
+<lineargradient id="chartGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#1a73e8"></stop>
+<stop offset="100%" stop-color="#1a73e8" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+<!-- Line -->
+<path d="M0 80 L10 78 L25 72 L40 75 L55 55 L70 45 L85 35 L100 28" fill="none" stroke="#1a73e8" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Data Points -->
+<circle cx="0" cy="80" fill="#1a73e8" r="1.5"></circle>
+<circle cx="25" cy="72" fill="#1a73e8" r="1.5"></circle>
+<circle cx="55" cy="55" fill="#1a73e8" r="1.5"></circle>
+<circle cx="85" cy="35" fill="#1a73e8" r="1.5"></circle>
+</svg>
+<!-- X-Axis Labels -->
+<div class="absolute -bottom-8 w-full flex justify-between text-[11px] text-slate-400 px-2">
+<span>2023 Q1</span>
+<span>2023 Q3</span>
+<span>2024 Q1</span>
+<span>2024 Q3</span>
+<span>2025 Q1</span>
+<span>2025 Q3</span>
+<span>2026 Q2</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Related Visualizations -->
+<section>
+<h4 class="text-xl font-bold font-headline text-slate-900 mb-6">Related visualizations</h4>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Card 1 -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden group hover:border-primary transition-colors">
+<div class="h-32 bg-slate-50 relative overflow-hidden">
+<img alt="" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-500" data-alt="Data visualization showing heatmaps and patterns" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-5-eS3ExAa_xy9tKLHguIBzEIj1RuvYgivF7eAbUqSTTbJar6Z7YFw5ZVU_sa8j8Qjb57E7z3QjllCUEAV76Ci8VQ_fXI5Eit1g4TrMcp7v5r3UO46KbIzZQAfDq7XpL81RWbkfa3eoClS3qGGIrGxXKAhG7JifABet-KWJZ_kaHgNzsLHucJZ0hyFpcZHFwyMOk66Ov_xdUonnkdg9ymgghMKzi1VB66O3qVgTl-FLeqish5Hxs6chcI-kv9aKjEESEnUg6b0Ww"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+</div>
+<div class="p-5">
+<span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Atributos</span>
+<h5 class="text-base font-semibold text-slate-900 mt-1">Nivel de completitud por secretaría</h5>
+<p class="text-xs text-slate-500 mt-2 line-clamp-2">Análisis detallado de campos vacíos vs. obligatorios en el registro civil.</p>
+</div>
+</div>
+<!-- Card 2 -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden group hover:border-primary transition-colors">
+<div class="h-32 bg-slate-50 relative overflow-hidden">
+<img alt="" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-500" data-alt="Abstract statistical bars and growth metrics" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDspFYAxe7_n9gjqeeULIgDVWleq2kmu5WvFR880D9KkVXhSa731aTw6u-1S4G93gIfKv3E-IyVPqhtmEiRRGXhJZX7w_hZt6PG4JaGLZqZ7sf6-7dmgm533k8o8CiNJohf_hrud8AMKlpRerHuBq7wHHz1Qq_wtPCg35Stph04ICMhWOQL-lR6YEmcXrvrXPr4FpdzvbDJsYMupRnDkuBJ_S4KTnjGtBuHYV-ZZsLg8C1CUjFIOyrG1tO_Lw2RU75BPDPQEgDowW4"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+</div>
+<div class="p-5">
+<span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Estandarización</span>
+<h5 class="text-base font-semibold text-slate-900 mt-1">Cumplimiento de catálogos ISO</h5>
+<p class="text-xs text-slate-500 mt-2 line-clamp-2">Seguimiento de la adopción de estándares internacionales de datos geográficos.</p>
+</div>
+</div>
+<!-- Card 3 -->
+<div class="bg-white border border-outline-variant rounded-xl overflow-hidden group hover:border-primary transition-colors">
+<div class="h-32 bg-slate-50 relative overflow-hidden">
+<img alt="" class="w-full h-full object-cover opacity-50 group-hover:scale-105 transition-transform duration-500" data-alt="Flow charts and nodes representing data lineage" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5J0QvQ6Q3aEXC7jumlg-1HJPiMnNHYmsLX9S12M7x_gqHEggcNFdtxBGPN9M2VHfH0OT39bC7xMl4sEbjb2-tYrXmQnJuWBZYQH9dPHJumNvr9qXFDTgWmKigB_MlYLN4JQl6sBGJ39zBa0SJdrDc0kCvvLYw3K5BdsLAwGGnhG4Slfm5NBEseoJHk87EP7NWbVzttxtpD2OCiP3lZ8lSlzh0lZS5qqGcIHrqUFRMLJvthgmMidO-nVduZd0hh_4Od9PyAqDgZJA"/>
+<div class="absolute inset-0 bg-gradient-to-t from-white to-transparent"></div>
+</div>
+<div class="p-5">
+<span class="text-[10px] font-bold text-blue-600 uppercase tracking-widest">Latencia</span>
+<h5 class="text-base font-semibold text-slate-900 mt-1">Frecuencia de actualización real</h5>
+<p class="text-xs text-slate-500 mt-2 line-clamp-2">Comparativa entre tiempos de carga declarados vs. observados en producción.</p>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-8 border-t border-[#e8eaed] bg-white mt-12">
+<div class="max-w-[1440px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6"><div class="text-lg font-bold text-slate-900 font-headline">NL 2026</div>
+<div class="flex flex-wrap gap-x-8 gap-y-4 justify-center md:justify-start">
+<a class="text-[13px] font-headline text-[#5f6368] hover:text-[#1a73e8] transition-colors" href="#">Portal de Datos Abiertos NL</a>
+<a class="text-[13px] font-headline text-[#5f6368] hover:text-[#1a73e8] transition-colors" href="#">Privacidad</a>
+<a class="text-[13px] font-headline text-[#5f6368] hover:text-[#1a73e8] transition-colors" href="#">Términos</a>
+<a class="text-[13px] font-headline text-[#5f6368] hover:text-[#1a73e8] transition-colors" href="#">Contacto</a>
+<a class="text-[13px] font-headline text-[#5f6368] hover:text-[#1a73e8] transition-colors" href="#">Accesibilidad</a>
+</div>
+<p class="text-[13px] text-[#5f6368] font-headline">© 2026 Gobierno de Nuevo León - Datos Abiertos</p></div>
+</footer>
+</body></html>

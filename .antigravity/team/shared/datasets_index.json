@@ -1,0 +1,4244 @@
+[
+  {
+    "id": "1425cc70-91e1-4ab7-a02e-c2b7538d5f4c",
+    "name": "unidades-de-transporte-publico",
+    "title": "Unidades de Transporte Público",
+    "category": "Movilidad",
+    "organization": "Instituto de Movilidad y Accesibilidad",
+    "metadata_created": "2025-11-13T00:07:56.265448",
+    "metadata_modified": "2026-03-19T17:54:07.786151",
+    "resources": [
+      {
+        "id": "549ad89e-7b0b-4f89-b94d-a320821305d9",
+        "name": "2024_2025_unidades_tp.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/1425cc70-91e1-4ab7-a02e-c2b7538d5f4c/resource/549ad89e-7b0b-4f89-b94d-a320821305d9/download/2024_2025_unidades_tp.csv",
+        "created": "2025-11-13T00:08:57.788774",
+        "last_modified": "2025-11-13T00:08:57.768455",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ae445ec3-111b-4686-bc2b-23313ce304d6",
+        "name": "diccionario_2024_2025_unidades_TP.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/1425cc70-91e1-4ab7-a02e-c2b7538d5f4c/resource/ae445ec3-111b-4686-bc2b-23313ce304d6/download/diccionario_2024_2025_unidades_tp.csv",
+        "created": "2025-11-13T00:09:13.537433",
+        "last_modified": "2025-11-13T00:09:13.515984",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "3d21eab2-f620-4d18-8055-78e13836cc6a",
+    "name": "contrataciones-abiertas-direccion-general-de-adquisiciones-y-servicios",
+    "title": "Contrataciones Abiertas de la Dirección General de Adquisiciones y Servicios",
+    "category": "Administración y Finanzas",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-11-11T14:26:28.475217",
+    "metadata_modified": "2026-03-19T16:13:06.845496",
+    "resources": [
+      {
+        "id": "b43738cc-78ae-4241-a6a5-17a8868165a3",
+        "name": "JSON-OCDS-DGAS-11-11-2024.json",
+        "format": "JSON",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/3d21eab2-f620-4d18-8055-78e13836cc6a/resource/b43738cc-78ae-4241-a6a5-17a8868165a3/download/json-ocds-dgas-11-11-2024.json",
+        "created": "2024-11-11T15:52:05.013764",
+        "last_modified": "2024-11-11T15:52:04.980274",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "13a3bf28-fcfd-4dbf-8548-3be375465f62",
+        "name": "JSON-OCDS-DGAS-19-11-2024",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/673d316c7e60f2c8230bcf15",
+        "created": "2024-11-20T03:31:36.147049",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4a81f71c-0e42-4133-bd51-19bbb1e0aa29",
+        "name": "JSON-OCDS-DGAS-25-11-2024",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/674470224b7cb21611023e55",
+        "created": "2024-11-25T16:27:00.934017",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "9055d747-414d-44b6-a7ae-e47ef32f8336",
+        "name": "JSON-OCDS-DGAS-02-12-2024",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6749b621b79b0a5c260ddd57",
+        "created": "2024-12-02T17:56:28.921056",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ebe93825-7bd8-4fb2-b6be-025aa1a964aa",
+        "name": "JSON-OCDS-DGAS-09-12-2024",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/675328e1241a3881eb0b49ad",
+        "created": "2024-12-09T17:23:27.437833",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "01d79508-8187-4344-96fa-268c0b594624",
+        "name": "JSON-OCDS-DGAS-16-12-2024",
+        "format": "UNKNOWN",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/675c39321bd919996b0faec2",
+        "created": "2024-12-16T21:48:27.270564",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d589016c-2195-4a18-aa33-5a7e63411a2b",
+        "name": "JSON-OCDS-DGAS-23-12-2024",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/676573b2046c4f1d4501ad04",
+        "created": "2024-12-23T18:12:33.423117",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "86e311fe-94d8-4d0c-8f5b-53d7e1dae6a1",
+        "name": "JSON-OCDS-DGAS-30-12-2024",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/676eae326f7ccd65070753d6",
+        "created": "2024-12-27T15:39:01.679644",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "031f27fe-e538-40e3-a5e5-ab943cd0a876",
+        "name": "JSON-OCDS-DGAS-06-01-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6777e8b23703d8360d0da5b7",
+        "created": "2025-01-06T21:06:11.975596",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "81a6df39-f81c-4449-a7fb-c0a0675971b9",
+        "name": "JSON-OCDS-DGAS-13-01-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/678123314b392b156e07849a",
+        "created": "2025-01-13T18:11:28.746883",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f6ee0a6c-0ac0-46d9-a496-8effd58d0468",
+        "name": "JSON-OCDS-DGAS-20-01-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/678a5db200480ac92e0ec556",
+        "created": "2025-01-20T22:12:16.235320",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "faabe345-ecbf-4d51-a844-244d7d7c6a9e",
+        "name": "JSON-OCDS-DGAS-27-01-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67939832002460998007f239",
+        "created": "2025-01-27T17:22:22.897436",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e5ddee8a-763f-41d4-993a-cd560fcc1d86",
+        "name": "JSON-OCDS-DGAS-04-02-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/679cd2b2266d23e1ce084e7a",
+        "created": "2025-02-04T15:03:25.001736",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "7da9386b-ca70-4bd3-9658-57edb35c8773",
+        "name": "JSON-OCDS-DGAS-10-02-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67a60d32bbda3a135b076c4e",
+        "created": "2025-02-10T17:23:39.033870",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "af9c5009-1ab9-498a-867c-ff1603c3f3c4",
+        "name": "JSON-OCDS-DGAS-17-02-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67af47b2793fd9c1050b2b73",
+        "created": "2025-02-17T21:08:08.036123",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "0041f69d-9445-4b2d-af09-890d69e2506f",
+        "name": "JSON-OCDS-DGAS-24-02-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67b8848a7d8ecb46de0c6735",
+        "created": "2025-02-24T17:41:29.646132",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "379d1b85-b365-4a7f-87b6-88540d3e910d",
+        "name": "JSON-OCDS-DGAS-03-03-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67c1bf0a7a1304970508ff1b",
+        "created": "2025-03-03T17:00:39.235708",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "0e84ea8c-5e13-4730-b4a8-7e5246a68a7a",
+        "name": "JSON-OCDS-DGAS-10-03-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67caf98a3617946d6b07de75",
+        "created": "2025-03-10T17:34:28.406467",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "56479966-8d8f-421b-b404-09299b3ea161",
+        "name": "JSON-OCDS-DGAS-18-03-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67d5858a64e28f3c120fb1f7",
+        "created": "2025-03-18T18:20:18.535339",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "54932050-e642-4676-a907-8fff24a20dba",
+        "name": "JSON-OCDS-DGAS-24-03-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67dd6e8a74135d4cee077096",
+        "created": "2025-03-24T17:30:27.523538",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c239d9e1-a56d-490d-8772-e8efc01a038e",
+        "name": "JSON-OCDS-DGAS-31-03-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67e6a90a2cf98cd81302c22c",
+        "created": "2025-03-31T21:59:13.179051",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "1651d911-9644-42c4-a9ec-6e7518ab327e",
+        "name": "JSON-OCDS-DGAS-07-04-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67efe389692a687f1e0b7a3a",
+        "created": "2025-04-07T19:09:33.231515",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "9fa5cb53-de53-46e4-8a39-ac9c4a83c1c7",
+        "name": "JSON-OCDS-DGAS-14-04-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/67f91e091e5fb663ed0c9c48",
+        "created": "2025-04-14T17:26:51.619747",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2da3dcf0-a967-475d-84ba-4c0dd062157d",
+        "name": "JSON-OCDS-DGAS-21-04-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68025889c63e700ac509b53a",
+        "created": "2025-04-28T17:30:23.009066",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a2bd4b58-199b-4fd3-9d83-de5007b5a5b8",
+        "name": "JSON-OCDS-DGAS-28-04-2025",
+        "format": "UNKNOWN",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/680b9309129f63914903a50e",
+        "created": "2025-04-28T21:49:28.660341",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "25100106-4571-4888-93a8-b0397aafe7db",
+        "name": "JSON-OCDS-DGAS-06-05-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6814cd8a6b99b8e5080d0992",
+        "created": "2025-05-06T17:08:02.368607",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2b321645-dbbb-4f4c-bd41-34bbe2da6623",
+        "name": "JSON-OCDS-DGAS-12-05-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/681e080a8bd55328ba0b2e8a",
+        "created": "2025-05-12T17:18:52.339398",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "48d8da69-7968-4f3a-b409-7f5eafd4ad35",
+        "name": "JSON-OCDS-DGAS-20-05-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6827428a24ce196da30c6d8b",
+        "created": "2025-05-20T17:59:59.366961",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2b63ff16-196a-42ed-bf44-50d91f812dc8",
+        "name": "JSON-OCDS-DGAS-27-05-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68307d0a64e28f3c121061e3",
+        "created": "2025-05-27T18:55:57.074864",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "350ba75b-35c3-4fe2-8daa-e146957a213b",
+        "name": "JSON-OCDS-DGAS-02-06-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6839b78a64e28f3c1210a130",
+        "created": "2025-06-02T17:49:41.681785",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b373bf35-d259-4720-af11-3968ecdbb416",
+        "name": "JSON-OCDS-DGAS-09-06-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6842f20a1727ef997110ba91",
+        "created": "2025-06-09T16:15:41.858775",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4e4f17a7-16c0-4173-a726-7959009a8a29",
+        "name": "JSON-OCDS-DGAS-17-06-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/684c2c8ac63e700ac50a97e0",
+        "created": "2025-06-17T16:53:32.204645",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f74dc803-8c38-44bf-837f-644b95896668",
+        "name": "JSON-OCDS-DGAS-23-06-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6855670a3e53cde2ce058bda",
+        "created": "2025-06-23T18:25:35.008514",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "3ee892b5-558e-46c9-aa4f-0d99946b5a70",
+        "name": "JSON-OCDS-DGAS-01-07-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/685ea18a7a130497050e2e14",
+        "created": "2025-07-01T14:53:12.421001",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2e202680-f45f-4bbd-b10b-1834d07ad836",
+        "name": "JSON-OCDS-DGAS-08-07-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6867dc0a331cd125d810687d",
+        "created": "2025-07-09T17:30:33.040327",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "fd8dc201-0f1b-4255-88eb-d46081149fe6",
+        "name": "JSON-OCDS-DGAS-14-07-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6871168a331cd125d810aae6",
+        "created": "2025-07-14T18:13:31.649577",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ee3b32ae-ebe1-4551-80eb-6b557ffc8ab0",
+        "name": "JSON-OCDS-DGAS-21-07-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/687a510a3617946d6b0e3ce4",
+        "created": "2025-07-21T21:15:39.200008",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4e99c4ca-7a84-4265-9638-1fa83d698736",
+        "name": "JSON-OCDS-DGAS-28-07-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68838b890f0573514006b5d3",
+        "created": "2025-07-28T16:45:02.040465",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a70ca25c-a471-4df3-b7a9-83bd5239918b",
+        "name": "JSON-OCDS-DGAS-04-08-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/688cc60a0f0573514006fb31",
+        "created": "2025-08-04T18:36:39.885915",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f0d4163f-60eb-4596-8767-610917e622ed",
+        "name": "JSON-OCDS-DGAS-11-08-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6896008a66dd20677d0a863f",
+        "created": "2025-08-11T15:54:40.573131",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a9f0eebf-f966-416a-b956-a2568b1f60d9",
+        "name": "JSON-OCDS-DGAS-18-08-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/689f3b0ae310e3e21b122896",
+        "created": "2025-08-18T17:58:59.773065",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4234f9d6-3be0-47e4-a869-a466ec6fa09f",
+        "name": "JSON-OCDS-DGAS-26-08-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68a8758a1727ef9971122766",
+        "created": "2025-08-26T15:28:05.493819",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "55b6a496-9d73-40ec-bd90-14ee1d11ea39",
+        "name": "JSON-OCDS-DGAS-02-09-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68b1b00af0c4e392fb05814e",
+        "created": "2025-09-02T14:17:52.776911",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f7f32376-62a1-4349-8976-d7abd8728882",
+        "name": "JSON-OCDS-DGAS-09-09-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68baea8a2d663f5a2909b775",
+        "created": "2025-09-09T17:17:22.615559",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "16228e24-0a31-4af3-8fd0-c6c713917562",
+        "name": "JSON-OCDS-DGAS-17-09-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68c4250923831043450e7ab3",
+        "created": "2025-09-17T14:29:19.978588",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ce56e398-41d7-4229-a770-311e889fd321",
+        "name": "JSON-OCDS-DGAS-22-09-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68cd5f8aa4c41984f40e8b89",
+        "created": "2025-09-22T16:43:51.522100",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2a5ca22c-4d51-4125-8291-78d60bc05fa1",
+        "name": "JSON-OCDS-DGAS-29-09-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68d69a0a0cc449c3d4032acc",
+        "created": "2025-09-29T17:48:11.424864",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f2dfdacf-1e7c-4cdf-a21d-2b6a84af916f",
+        "name": "JSON-OCDS-DGAS-08-10-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68dfd489be5837744304c5e1",
+        "created": "2025-10-09T22:48:08.743592",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "7b56e8c9-f0d7-404a-84a2-000d74e1d550",
+        "name": "JSON-OCDS-DGAS-13-10-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68e90f09be5837744304c64a",
+        "created": "2025-10-13T16:23:48.283852",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e2858021-f7c8-4407-a882-1409ed89d974",
+        "name": "JSON-OCDS-DGAS-20-10-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68f39b09a4c41984f4107217",
+        "created": "2025-10-20T16:40:00.733324",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "49944631-76d4-4eb4-a867-023476744aa2",
+        "name": "JSON-OCDS-DGAS-27-10-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/68fcd589190cf1a6660b799b",
+        "created": "2025-10-27T15:45:15.705916",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f98b8793-9a00-4cf6-b89e-446bfd98ea51",
+        "name": "JSON-OCDS-DGAS-03-11-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/690610090cc449c3d4051674",
+        "created": "2025-11-03T15:04:16.676394",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ddf9d76b-c685-4291-8d8d-d1637bf0bff0",
+        "name": "JSON-OCDS-DGAS-10-11-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/691011c21dc1c46e7c0e84eb",
+        "created": "2025-11-10T16:24:05.805749",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "1c6fe0ec-8a64-4a84-909e-c41ea58f6dc5",
+        "name": "JSON-OCDS-DGAS-19-11-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/691dff6ef8abb07cac026052",
+        "created": "2025-11-19T18:25:52.099703",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f7ebc93e-2f0f-4768-b010-a308bf4527a8",
+        "name": "JSON-OCDS-DGAS-26-11-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/69267b437bf4deacd5006cd8",
+        "created": "2025-11-26T15:14:11.659540",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ee160323-0d4f-4f10-94a6-1fb98a313a7b",
+        "name": "JSON-OCDS-DGAS-02-12-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/692e436798cf672b4e083f36",
+        "created": "2025-12-02T21:58:57.165783",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "fdc65584-0777-4097-ab3b-1ff5210aaec0",
+        "name": "JSON-OCDS-DGAS-09-12-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/69378a7b7aaf90ae5b0e0299",
+        "created": "2025-12-09T15:22:30.704346",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b377eff6-cb51-45a3-826d-27fa32d3a561",
+        "name": "JSON-OCDS-DGAS-16-12-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6940cb125ca4122a4c08739a",
+        "created": "2025-12-16T15:44:35.694927",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4bea5c47-b8ea-4938-8eea-bb058c5160b2",
+        "name": "JSON-OCDS-DGAS-22-12-2025",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6945bfd2f1d5f41bb4010a87",
+        "created": "2025-12-22T17:08:10.674468",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2ae744a1-dbd3-492f-bcb6-5efa0d64978a",
+        "name": "JSON-OCDS-DGAS-07-01-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/695bdb140110643c7903c7b7",
+        "created": "2026-01-07T15:24:16.819716",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e1b5175d-dd15-4df9-a235-e71772e528e4",
+        "name": "JSON-OCDS-DGAS-12-01-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6961acb0de6f4a823a0f9c60",
+        "created": "2026-01-12T15:03:19.283516",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "0c13062a-f8cb-48cb-be78-197c456fdcb9",
+        "name": "JSON-OCDS-DGAS-22-01-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/696ed3170fc3a34f150de7ef",
+        "created": "2026-01-22T15:03:48.578126",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d957a456-a383-41a6-9653-dda95c262436",
+        "name": "JSON-OCDS-DGAS-28-01-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/697960867bf4deacd500d66e",
+        "created": "2026-01-28T15:24:12.413681",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "669105e7-a566-4648-9a67-25b7fa86017a",
+        "name": "JSON-OCDS-DGAS-05-02-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/6983efde872eac246b0e5e1b",
+        "created": "2026-02-05T17:35:49.746357",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "19c83729-7eaa-470d-abe4-b12c20d84764",
+        "name": "JSON-OCDS-DGAS-12-02-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/698d267a0f8cc65ad1028ea1",
+        "created": "2026-02-12T16:51:45.026751",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2bbdfd46-b62b-4697-aa74-fa2383e4c2fb",
+        "name": "JSON-OCDS-DGAS-18-02-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/69950addedf2ef5ee70bbc71",
+        "created": "2026-02-18T15:37:51.545750",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "693ba6d1-8410-4b82-8ff6-7ba7dd0aa2b3",
+        "name": "JSON-OCDS-DGAS-26-02-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/699f9bc498cf672b4e08b375",
+        "created": "2026-02-26T17:10:03.197298",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "65fd1fa5-357a-4284-a70d-a8be26fbdfc9",
+        "name": "JSON-OCDS-DGAS-04-03-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/69a77a7798cf672b4e0914f4",
+        "created": "2026-03-04T21:13:07.632611",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "79d6415f-b77f-4f3b-b46c-4aefba73a53e",
+        "name": "JSON-OCDS-DGAS-12-03-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/69b20aadc53b61de2a0bf9a7",
+        "created": "2026-03-12T16:44:39.454507",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ad55ba3e-8777-4fc1-9770-6e1e1c5b5efa",
+        "name": "JSON-OCDS-DGAS-19-03-2026",
+        "format": "URL",
+        "url": "https://api-ocds.nl.gob.mx/api/releases/69bb40580fc3a34f150ea960",
+        "created": "2026-03-19T16:13:06.901785",
+        "last_modified": "2026-03-19T16:13:06.845496",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "e1f05f9a-8891-445f-8247-0f1520e41426",
+    "name": "nuevo-leon-al-dia",
+    "title": "Nuevo León al Día",
+    "category": "boletín",
+    "organization": "Oficina de Comunicación del Ejecutivo del Estado",
+    "metadata_created": "2026-03-18T23:27:11.773932",
+    "metadata_modified": "2026-03-19T01:13:37.525186",
+    "resources": [
+      {
+        "id": "87335eb2-04d2-4488-9644-b6d53b126e16",
+        "name": "2026_Newsletters.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e1f05f9a-8891-445f-8247-0f1520e41426/resource/87335eb2-04d2-4488-9644-b6d53b126e16/download/2026_newsletters.csv",
+        "created": "2026-03-18T23:29:51.320493",
+        "last_modified": "2026-03-18T23:29:51.290618",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b2702f84-d9ec-402d-829a-8b9f3e6ea7ef",
+        "name": "2026_Newsletters_diccionario.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e1f05f9a-8891-445f-8247-0f1520e41426/resource/b2702f84-d9ec-402d-829a-8b9f3e6ea7ef/download/2026_newsletters_diccionario.csv",
+        "created": "2026-03-18T23:30:39.477790",
+        "last_modified": "2026-03-18T23:30:39.449860",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "8c424dba-8aaa-4601-9423-c0aa86c4f78b",
+    "name": "licitaciones",
+    "title": "Licitaciones",
+    "category": "infraestructura",
+    "organization": "Instituto Constructor de Infraestructura Física Educativa y Deportiva",
+    "metadata_created": "2026-03-18T00:38:38.495696",
+    "metadata_modified": "2026-03-19T00:19:07.385740",
+    "resources": [
+      {
+        "id": "a2b8c51f-3315-4b77-bcc4-aa8fb564b678",
+        "name": "2025_licitaciones",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8c424dba-8aaa-4601-9423-c0aa86c4f78b/resource/a2b8c51f-3315-4b77-bcc4-aa8fb564b678/download/2025_licitaciones.csv",
+        "created": "2026-03-18T00:45:44.635090",
+        "last_modified": "2026-03-18T00:45:44.618452",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "de338112-7f5e-4bcb-a363-2ce7e05b78cc",
+        "name": "2025_diccionario_licitaciones",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8c424dba-8aaa-4601-9423-c0aa86c4f78b/resource/de338112-7f5e-4bcb-a363-2ce7e05b78cc/download/2025_dicionario_licitaciones.csv",
+        "created": "2026-03-18T00:47:32.261110",
+        "last_modified": "2026-03-18T00:47:32.242850",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "e323b01e-c8e8-4373-b2b2-6e4b104c3804",
+    "name": "centro-estatal-de-becas",
+    "title": "Centro Estatal de Becas",
+    "category": "Becas",
+    "organization": "Centro Estatal de Becas",
+    "metadata_created": "2026-02-27T22:23:31.949460",
+    "metadata_modified": "2026-03-19T00:01:51.679641",
+    "resources": [
+      {
+        "id": "0a1194a6-5399-4bf3-91dd-81a6c89bca41",
+        "name": "2025_centro_estatal_becas.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e323b01e-c8e8-4373-b2b2-6e4b104c3804/resource/0a1194a6-5399-4bf3-91dd-81a6c89bca41/download/2025_centro_estatal_becas.csv",
+        "created": "2026-02-27T22:24:06.470623",
+        "last_modified": "2026-03-02T19:22:18.527371",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "71ca2196-3020-45f5-b275-872c088112b2",
+        "name": "2025_diccionario_centro_estatal_becas.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e323b01e-c8e8-4373-b2b2-6e4b104c3804/resource/71ca2196-3020-45f5-b275-872c088112b2/download/2025_diccionario_centro_estatal_becas.csv",
+        "created": "2026-02-27T22:24:53.641490",
+        "last_modified": "2026-03-02T19:22:06.689104",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "7945215e-9b80-4078-9f22-ff1a5414cee8",
+    "name": "solicitudes-de-informacion",
+    "title": "Solicitudes de Acceso a la Información",
+    "category": "electronica",
+    "organization": "Instituto del Agua del Estado de Nuevo León",
+    "metadata_created": "2026-03-17T23:45:38.456558",
+    "metadata_modified": "2026-03-18T21:56:13.814730",
+    "resources": [
+      {
+        "id": "d5f4eb9b-89ce-4313-befd-06699eb8cc4b",
+        "name": "2021-2025_solicitudes_IANL.CSV",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/7945215e-9b80-4078-9f22-ff1a5414cee8/resource/d5f4eb9b-89ce-4313-befd-06699eb8cc4b/download/2021-2025_solicitudes_ianl.csv",
+        "created": "2026-03-17T23:48:24.737194",
+        "last_modified": "2026-03-17T23:48:24.708735",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "eba46496-f57d-4bbf-89a1-83a4789c19de",
+        "name": "2021-2025_diccionario_solicitudes_IANL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/7945215e-9b80-4078-9f22-ff1a5414cee8/resource/eba46496-f57d-4bbf-89a1-83a4789c19de/download/2021-2025_diccionario_solicitudes_ianl.csv",
+        "created": "2026-03-17T23:49:29.976436",
+        "last_modified": "2026-03-17T23:49:29.953030",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "ffd85124-bf81-4012-b5af-7d22c749e576",
+    "name": "insumos_politicas_publicas",
+    "title": "Insumos Políticas Públicas",
+    "category": "Anticorrupcion",
+    "organization": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL)",
+    "metadata_created": "2026-03-17T16:50:13.394742",
+    "metadata_modified": "2026-03-18T19:36:08.081967",
+    "resources": [
+      {
+        "id": "003b3e21-7858-4e40-84f0-773f080392e6",
+        "name": "Insumos_Politicas_Publicas.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ffd85124-bf81-4012-b5af-7d22c749e576/resource/003b3e21-7858-4e40-84f0-773f080392e6/download/insumos_politicas_publicas.csv",
+        "created": "2026-03-17T16:51:19.788325",
+        "last_modified": "2026-03-17T16:51:19.764342",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a3aca73d-601b-407e-8598-867ea15f9d0d",
+        "name": "Diccionario_Insumos_Politicas_Publicas.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ffd85124-bf81-4012-b5af-7d22c749e576/resource/a3aca73d-601b-407e-8598-867ea15f9d0d/download/diccionario_insumos_politicas_publicas.csv",
+        "created": "2026-03-17T16:52:06.988571",
+        "last_modified": "2026-03-17T16:52:06.960742",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "20e7647b-0560-4693-84e9-03d4a59ace6e",
+    "name": "tecnoparques-fidesur-2025",
+    "title": "tecnoparques fidesur 2025",
+    "category": "agricultura",
+    "organization": "Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León",
+    "metadata_created": "2026-03-18T16:31:20.718379",
+    "metadata_modified": "2026-03-18T16:41:34.142366",
+    "resources": [
+      {
+        "id": "e190962d-2dca-4993-9478-6833730539d7",
+        "name": "parques_fidesur_2025.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/20e7647b-0560-4693-84e9-03d4a59ace6e/resource/e190962d-2dca-4993-9478-6833730539d7/download/parques_fidesur_2025.csv",
+        "created": "2026-03-18T16:32:12.663478",
+        "last_modified": "2026-03-18T16:32:12.632556",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ad239f6e-7943-49e1-af4d-1faf8e5fd66e",
+        "name": "diccionario_parques_fidesur.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/20e7647b-0560-4693-84e9-03d4a59ace6e/resource/ad239f6e-7943-49e1-af4d-1faf8e5fd66e/download/diccionario_parques_fidesur.csv",
+        "created": "2026-03-18T16:32:31.902621",
+        "last_modified": "2026-03-18T16:32:31.879749",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "81351e24-2239-49f3-8248-2f672ea9ebd5",
+        "name": "METADATOS_.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/20e7647b-0560-4693-84e9-03d4a59ace6e/resource/81351e24-2239-49f3-8248-2f672ea9ebd5/download/metadatos_.csv",
+        "created": "2026-03-18T16:32:56.449896",
+        "last_modified": "2026-03-18T16:32:56.421057",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "6710eb93-e472-495d-86da-e4f4eb473487",
+        "name": "diccionario_parques_fidesur.2.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/20e7647b-0560-4693-84e9-03d4a59ace6e/resource/6710eb93-e472-495d-86da-e4f4eb473487/download/diccionario_parques_fidesur.2.csv",
+        "created": "2026-03-18T16:33:15.513292",
+        "last_modified": "2026-03-18T16:33:15.484207",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "3296caf9-40b8-48e5-ad74-bf438d3fa378",
+        "name": "METADATOS_2.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/20e7647b-0560-4693-84e9-03d4a59ace6e/resource/3296caf9-40b8-48e5-ad74-bf438d3fa378/download/metadatos_2.csv",
+        "created": "2026-03-18T16:33:35.164431",
+        "last_modified": "2026-03-18T16:33:35.135723",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "776ce102-299f-47a5-93c9-0c04aeec104b",
+        "name": "parques_fidesur_2026.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/20e7647b-0560-4693-84e9-03d4a59ace6e/resource/776ce102-299f-47a5-93c9-0c04aeec104b/download/parques_fidesur_2026.csv",
+        "created": "2026-03-18T16:33:48.707278",
+        "last_modified": "2026-03-18T16:33:48.677898",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "5b8eeca7-e470-4332-bd50-82ec6db28ffb",
+        "name": "tecnoparques-fidesur-2025",
+        "format": "UNKNOWN",
+        "url": "",
+        "created": "2026-03-18T16:41:33.947476",
+        "last_modified": "2026-03-18T16:41:34.142366",
+        "status_code": 404,
+        "is_broken": true
+      }
+    ]
+  },
+  {
+    "id": "3eebd9b5-01e5-4d5b-8cff-f4c6c805acfe",
+    "name": "sesiones_comite_coordinador_seanl",
+    "title": "Sesiones del Comité Coordinador del SEANL",
+    "category": "Anticorrupcion",
+    "organization": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL)",
+    "metadata_created": "2026-03-17T16:28:16.173032",
+    "metadata_modified": "2026-03-18T00:03:28.724596",
+    "resources": [
+      {
+        "id": "559d9992-0edc-44d9-b006-451d39555fe0",
+        "name": "Sesiones_Comite_Coordinador_SEANL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/3eebd9b5-01e5-4d5b-8cff-f4c6c805acfe/resource/559d9992-0edc-44d9-b006-451d39555fe0/download/sesiones_comite_coordinador_seanl.csv",
+        "created": "2026-03-17T16:30:00.119261",
+        "last_modified": "2026-03-17T16:30:00.085820",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "27509584-77a8-4497-badc-c492e42c238c",
+        "name": "Diccionario_Sesiones_Comite_Coordinador_SEANL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/3eebd9b5-01e5-4d5b-8cff-f4c6c805acfe/resource/27509584-77a8-4497-badc-c492e42c238c/download/diccionario_sesiones_comite_coordinador_seanl.csv",
+        "created": "2026-03-17T16:32:10.056168",
+        "last_modified": "2026-03-17T16:32:10.030051",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "ab9cb9ed-a0d8-4056-a9de-395f92555f3a",
+    "name": "2022_2026_solicitudes_fofae",
+    "title": "Solicitudes de Acceso a la Información del Fondo de Fomento Agropecuario del Estado de Nuevo León",
+    "category": "Transparencia",
+    "organization": "Fideicomiso Fondo de Fomento Agropecuario del Estado de Nuevo León",
+    "metadata_created": "2026-03-17T21:40:59.674450",
+    "metadata_modified": "2026-03-18T00:02:55.990709",
+    "resources": [
+      {
+        "id": "e4a26ac5-b877-454e-83fd-533b6c02988d",
+        "name": "2021_2026_solicitudes_fofae.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ab9cb9ed-a0d8-4056-a9de-395f92555f3a/resource/e4a26ac5-b877-454e-83fd-533b6c02988d/download/2021_2026_solicitudes_fofae.csv",
+        "created": "2026-03-17T21:41:45.533940",
+        "last_modified": "2026-03-17T21:41:45.513010",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "aff2e95d-f4cf-40a9-acfe-91383b4ee857",
+        "name": "2021_2026_diccionario_solicitudes_fofae.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ab9cb9ed-a0d8-4056-a9de-395f92555f3a/resource/aff2e95d-f4cf-40a9-acfe-91383b4ee857/download/2021_2026_diccionario_solicitudes_fofae.csv",
+        "created": "2026-03-17T21:42:28.261314",
+        "last_modified": "2026-03-17T21:42:28.232941",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "6eeebb1f-db6e-46e4-9317-d425f9e70775",
+    "name": "sesiones_organo_gobierno_seseanl",
+    "title": "Sesiones Órganos de Gobierno del SESEANL",
+    "category": "Anticorrupcion",
+    "organization": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL)",
+    "metadata_created": "2026-03-17T16:39:33.261219",
+    "metadata_modified": "2026-03-18T00:01:01.610307",
+    "resources": [
+      {
+        "id": "0f312956-d580-4733-ba31-bb09bb4a1366",
+        "name": "Sesiones_Organo_Gobierno_SESEANL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6eeebb1f-db6e-46e4-9317-d425f9e70775/resource/0f312956-d580-4733-ba31-bb09bb4a1366/download/sesiones_organo_gobierno_seseanl.csv",
+        "created": "2026-03-17T16:40:01.774560",
+        "last_modified": "2026-03-17T16:40:01.746387",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "bc7bfe0b-e8e4-4a8b-8c26-f1d388d98858",
+        "name": "Diccionario_Sesiones_Organo_Gobierno_SESEANL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6eeebb1f-db6e-46e4-9317-d425f9e70775/resource/bc7bfe0b-e8e4-4a8b-8c26-f1d388d98858/download/diccionario_sesiones_organo_gobierno_seseanl.csv",
+        "created": "2026-03-17T16:40:33.504672",
+        "last_modified": "2026-03-17T16:40:33.479910",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "76afc7ad-0999-45a1-8ec3-f736d124ab87",
+    "name": "nacimientos-registrados-en-unidades-hospitalarias-de-los-servicios-de-salud-de-nuevo-leon",
+    "title": "Nacimientos registrados en Unidades Hospitalarias de los Servicios de Salud de Nuevo León",
+    "category": "nacimientos",
+    "organization": "Servicios de salud de Nuevo León, O.P.D.",
+    "metadata_created": "2026-03-13T17:13:31.215796",
+    "metadata_modified": "2026-03-13T17:36:16.435655",
+    "resources": [
+      {
+        "id": "f2789b93-697c-446f-80c5-826a72ac718a",
+        "name": "2025_nacimientos.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/76afc7ad-0999-45a1-8ec3-f736d124ab87/resource/f2789b93-697c-446f-80c5-826a72ac718a/download/2025_nacimientos.csv",
+        "created": "2026-03-13T17:15:37.829978",
+        "last_modified": "2026-03-13T17:24:23.227337",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "6f892a42-dc97-4801-b6dd-2926e5a75e86",
+        "name": "2025_diccionario_nacimientos.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/76afc7ad-0999-45a1-8ec3-f736d124ab87/resource/6f892a42-dc97-4801-b6dd-2926e5a75e86/download/2025_diccionario_nacimientos.csv",
+        "created": "2026-03-13T17:17:08.139890",
+        "last_modified": "2026-03-13T17:25:35.538456",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "8aa0d5e3-89ff-46c1-9c41-2e076a9863ad",
+    "name": "directorio-de-parques-osetur-nuevo-leon",
+    "title": "Directorio de Parques de Nuevo León",
+    "category": "Turismo",
+    "organization": "Secretaría de Turismo",
+    "metadata_created": "2026-03-12T16:46:23.690465",
+    "metadata_modified": "2026-03-12T17:17:45.807048",
+    "resources": [
+      {
+        "id": "f3a5d5e2-8975-4b22-9410-8ca19ccc0cd5",
+        "name": "Directorio_parques_osetur_NuevoLeon.xlsx",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8aa0d5e3-89ff-46c1-9c41-2e076a9863ad/resource/f3a5d5e2-8975-4b22-9410-8ca19ccc0cd5/download/directorio_parques_osetur_nuevoleon.xlsx",
+        "created": "2026-03-12T16:49:53.498816",
+        "last_modified": "2026-03-12T16:49:53.469100",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "bf8344c2-bcf7-4800-8c28-9e94649fcc01",
+        "name": "Diccionario Parques OSETUR Nuevo León",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8aa0d5e3-89ff-46c1-9c41-2e076a9863ad/resource/bf8344c2-bcf7-4800-8c28-9e94649fcc01/download/diccionario_directorio_parques.xlsx",
+        "created": "2026-03-12T16:54:17.793905",
+        "last_modified": "2026-03-12T16:54:17.767944",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "4a4ea6c2-0811-4079-9b56-bf288d3ac5e1",
+    "name": "visitantes-a-parques-nuevo-leon",
+    "title": "Visitantes a Parques de Nuevo León",
+    "category": "Turismo",
+    "organization": "Secretaría de Turismo",
+    "metadata_created": "2026-03-12T17:08:44.168667",
+    "metadata_modified": "2026-03-12T17:15:13.241867",
+    "resources": [
+      {
+        "id": "b917826e-4089-48b1-91ac-3f9f88a95659",
+        "name": "Visitantes a Parques de Nuevo León",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/4a4ea6c2-0811-4079-9b56-bf288d3ac5e1/resource/b917826e-4089-48b1-91ac-3f9f88a95659/download/visitantes_parques_nuevoleon.xlsx",
+        "created": "2026-03-12T17:11:55.376387",
+        "last_modified": "2026-03-12T17:11:55.343446",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2babb684-aa0f-4d3a-82d6-fa06937c3bed",
+        "name": "Diccionario de Visitantes a Parques de Nuevo León",
+        "format": ".CSV",
+        "url": "",
+        "created": "2026-03-12T17:15:13.044532",
+        "last_modified": "2026-03-12T17:15:13.241867",
+        "status_code": 404,
+        "is_broken": true
+      }
+    ]
+  },
+  {
+    "id": "e37640fe-acac-4789-bc42-56a1c97397a9",
+    "name": "pueblos_magicos_nuevo_leon",
+    "title": "Pueblos Mágicos Nuevo León",
+    "category": "Turismo",
+    "organization": "Secretaría de Turismo",
+    "metadata_created": "2026-03-11T22:37:46.262580",
+    "metadata_modified": "2026-03-12T15:32:31.702822",
+    "resources": [
+      {
+        "id": "2244d701-0286-4102-9f0e-661b6299fac3",
+        "name": "pueblos_magicos_NuevoLeon_data.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e37640fe-acac-4789-bc42-56a1c97397a9/resource/2244d701-0286-4102-9f0e-661b6299fac3/download/pueblos_magicos_nuevoleon_data.csv",
+        "created": "2026-03-11T22:42:49.263542",
+        "last_modified": "2026-03-12T15:32:19.830648",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "8df46a3e-a544-4e46-befd-317733de4553",
+        "name": "Diccionario_pueblos_magicos.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e37640fe-acac-4789-bc42-56a1c97397a9/resource/8df46a3e-a544-4e46-befd-317733de4553/download/diccionario_pueblos_magicos.csv",
+        "created": "2026-03-11T22:48:46.216787",
+        "last_modified": "2026-03-12T15:31:43.316174",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "6120e6bb-dd0c-40fd-8e3f-aaf134f4ea85",
+    "name": "conciliacioneslaborales",
+    "title": "Conciliaciones Laborales",
+    "category": "Administración y Finanzas",
+    "organization": "Centro de Conciliación Laboral",
+    "metadata_created": "2026-02-23T16:56:15.836975",
+    "metadata_modified": "2026-03-11T15:39:26.235394",
+    "resources": [
+      {
+        "id": "4d4557bb-964e-4ddb-a7f9-14e5fbcc3040",
+        "name": "2025_2026_registros_conciliaciones_laborales.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6120e6bb-dd0c-40fd-8e3f-aaf134f4ea85/resource/4d4557bb-964e-4ddb-a7f9-14e5fbcc3040/download/2025_2026_registros_conciliaciones_laborales.csv",
+        "created": "2026-02-23T17:01:22.571769",
+        "last_modified": "2026-03-11T15:39:26.227129",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "906b51c6-b169-4fd7-a1b9-8b69a1cca190",
+        "name": "2025_2026_diccionario_registro_concilaciones_laborales.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6120e6bb-dd0c-40fd-8e3f-aaf134f4ea85/resource/906b51c6-b169-4fd7-a1b9-8b69a1cca190/download/2025_2026_diccionario_registro_concilaciones_laborales.csv",
+        "created": "2026-02-23T17:01:55.435884",
+        "last_modified": "2026-02-26T14:25:22.401497",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "db710ac2-052b-4ea7-aece-6d42e1692cb3",
+    "name": "2025_iniciacion_deportiva",
+    "title": "Iniciación Deportiva",
+    "category": "Deportes",
+    "organization": "Instituto Estatal de Cultura Física y Deporte (INDE)",
+    "metadata_created": "2026-03-09T23:34:58.965129",
+    "metadata_modified": "2026-03-10T17:51:37.860018",
+    "resources": [
+      {
+        "id": "4cc7dc31-14ed-46eb-a6b0-f0066774b727",
+        "name": "2025_iniciacion_deportiva.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/db710ac2-052b-4ea7-aece-6d42e1692cb3/resource/4cc7dc31-14ed-46eb-a6b0-f0066774b727/download/2025_iniciacion_deportiva.csv",
+        "created": "2026-03-09T23:35:19.390442",
+        "last_modified": "2026-03-09T23:35:19.372135",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "9b6585d4-d0f3-4071-af25-ff7fa027bfc6",
+        "name": "2025_diccionario_iniciacion_deportiva.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/db710ac2-052b-4ea7-aece-6d42e1692cb3/resource/9b6585d4-d0f3-4071-af25-ff7fa027bfc6/download/2025_diccionario_iniciacion_deportiva.csv",
+        "created": "2026-03-09T23:36:10.556864",
+        "last_modified": "2026-03-10T17:49:59.627867",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "b7d3556f-b839-49bb-92bc-44b0b8205b11",
+    "name": "2025_campamento_verano",
+    "title": "Campamento deportivo de verano",
+    "category": "Deportes",
+    "organization": "Instituto Estatal de Cultura Física y Deporte (INDE)",
+    "metadata_created": "2026-03-09T22:35:48.367089",
+    "metadata_modified": "2026-03-10T17:47:44.428216",
+    "resources": [
+      {
+        "id": "329622ef-4886-40ae-ab80-1f82b26c26d7",
+        "name": "2025_campamento_verano.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/b7d3556f-b839-49bb-92bc-44b0b8205b11/resource/329622ef-4886-40ae-ab80-1f82b26c26d7/download/2025_campamento_verano.csv",
+        "created": "2026-03-09T22:38:12.950045",
+        "last_modified": "2026-03-09T22:38:12.929771",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "53d9df96-2acc-49b2-845c-1d09fdaa6714",
+        "name": "2025_diccionario_campamento_verano.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/b7d3556f-b839-49bb-92bc-44b0b8205b11/resource/53d9df96-2acc-49b2-845c-1d09fdaa6714/download/2025_diccionario_campamento_verano.csv",
+        "created": "2026-03-09T22:40:36.415656",
+        "last_modified": "2026-03-10T17:47:00.481919",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "b99b65ed-5ea5-4740-8eb3-47707c665577",
+    "name": "2025_clinica_adultos",
+    "title": "Clínica deportiva para adultos",
+    "category": "Deportes",
+    "organization": "Instituto Estatal de Cultura Física y Deporte (INDE)",
+    "metadata_created": "2026-03-09T22:23:40.573460",
+    "metadata_modified": "2026-03-10T17:41:30.146605",
+    "resources": [
+      {
+        "id": "9c27444c-751b-4699-a0aa-ab455bafb897",
+        "name": "2025_clinica_adultos.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/b99b65ed-5ea5-4740-8eb3-47707c665577/resource/9c27444c-751b-4699-a0aa-ab455bafb897/download/2025_clinica_adultos.csv",
+        "created": "2026-03-09T22:25:00.467897",
+        "last_modified": "2026-03-09T22:25:00.446467",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "3f8bbac2-4d56-4a67-a1bf-a10755ce72b0",
+        "name": "2025_diccionario_clinica_adultos.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/b99b65ed-5ea5-4740-8eb3-47707c665577/resource/3f8bbac2-4d56-4a67-a1bf-a10755ce72b0/download/2025_diccionario_clinica_adultos.csv",
+        "created": "2026-03-09T22:27:42.092902",
+        "last_modified": "2026-03-10T17:41:04.843274",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "9d11a36d-1319-4be5-ac6e-5aec36e3ab7d",
+    "name": "matricula-total-de-la-universidad",
+    "title": "Matricula Total de la Universidad",
+    "category": "Educacion",
+    "organization": "Universidad Tecnológica Gral. Mariano Escobedo",
+    "metadata_created": "2026-03-05T22:29:02.334313",
+    "metadata_modified": "2026-03-09T22:42:17.766155",
+    "resources": [
+      {
+        "id": "19eceb85-35a3-4978-b7f8-1e845536c22f",
+        "name": "2025_historico_matricula.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/9d11a36d-1319-4be5-ac6e-5aec36e3ab7d/resource/19eceb85-35a3-4978-b7f8-1e845536c22f/download/2025_historico_matricula.csv",
+        "created": "2026-03-05T22:32:40.403839",
+        "last_modified": "2026-03-05T22:48:28.664986",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4ffa9b30-b3b1-46e3-b065-1a40fb89f863",
+        "name": "2025_diccionario_historico_matricula",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/9d11a36d-1319-4be5-ac6e-5aec36e3ab7d/resource/4ffa9b30-b3b1-46e3-b065-1a40fb89f863/download/diccionario_historico_matricula.csv",
+        "created": "2026-03-05T22:34:02.899675",
+        "last_modified": "2026-03-05T22:34:02.877854",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "9dcbd3c9-7af9-4bab-bc44-214cccda77a4",
+    "name": "2025-proyectos-estrategicos",
+    "title": "Proyectos Estratégicos a través de FIDEURB",
+    "category": "Desarrollo Urbano",
+    "organization": "Fideicomiso FIDEURB (BP6823)",
+    "metadata_created": "2026-02-25T17:22:57.626472",
+    "metadata_modified": "2026-03-09T22:21:52.307058",
+    "resources": [
+      {
+        "id": "810badf5-57fe-45b3-9bb2-98fbbd2ce7d9",
+        "name": "2025_proyectos_estrategicos",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/9dcbd3c9-7af9-4bab-bc44-214cccda77a4/resource/810badf5-57fe-45b3-9bb2-98fbbd2ce7d9/download/2025_proyectos_estrategicos.csv",
+        "created": "2026-02-25T17:24:37.803559",
+        "last_modified": "2026-02-25T20:05:16.314613",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a3fa9686-fc2f-4d3a-9c8b-1fe1a0e2acde",
+        "name": "2025_diccionario_proyectos_estrategicos.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/9dcbd3c9-7af9-4bab-bc44-214cccda77a4/resource/a3fa9686-fc2f-4d3a-9c8b-1fe1a0e2acde/download/2025_diccionario_proyectos_estrategicos.csv",
+        "created": "2026-02-25T17:25:12.412061",
+        "last_modified": "2026-02-25T17:25:12.390830",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "336d4038-2dbb-49d2-8b69-ecf073ed920d",
+    "name": "planteles-colegio-militarizado-general-mariano-escobedo-del-estado-de-nuevo-leon",
+    "title": "Planteles Colegio Militarizado \"General Mariano Escobedo\" del Estado de Nuevo León",
+    "category": "Educación",
+    "organization": "Colegio Militarizado \"General Mariano Escobedo\"",
+    "metadata_created": "2026-03-04T15:59:59.754271",
+    "metadata_modified": "2026-03-09T16:16:00.551439",
+    "resources": [
+      {
+        "id": "31f09100-8842-4658-93b4-62dbdb713777",
+        "name": "2026_planteles_colegio_militarizado.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/336d4038-2dbb-49d2-8b69-ecf073ed920d/resource/31f09100-8842-4658-93b4-62dbdb713777/download/2026_planteles_colegio_militarizado.csv",
+        "created": "2026-03-04T16:02:53.088124",
+        "last_modified": "2026-03-04T16:25:50.887519",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "8b8abb81-6980-4234-b31e-4860da206961",
+        "name": "2026_diccionario_planteles_colegio_militarizado.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/336d4038-2dbb-49d2-8b69-ecf073ed920d/resource/8b8abb81-6980-4234-b31e-4860da206961/download/2026_diccionario_planteles_colegio_militarizado.csv",
+        "created": "2026-03-04T16:05:57.422856",
+        "last_modified": "2026-03-04T16:27:32.099535",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "385be6bf-301a-4986-b23f-b0ed47175ccf",
+    "name": "conjunto-de-datos-idpnl",
+    "title": "Conjunto de Datos IDPNL",
+    "category": "atención ciudadana",
+    "organization": "Instituto de Defensoría Pública de Nuevo León",
+    "metadata_created": "2026-03-02T20:58:44.148488",
+    "metadata_modified": "2026-03-09T16:10:19.313342",
+    "resources": [
+      {
+        "id": "c300c3f3-b8b4-4ff1-957a-0ae9388c0603",
+        "name": "2025_usuarios_idpnl.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/385be6bf-301a-4986-b23f-b0ed47175ccf/resource/c300c3f3-b8b4-4ff1-957a-0ae9388c0603/download/2025_usuarios_idpnl.csv",
+        "created": "2026-03-02T21:01:36.940933",
+        "last_modified": "2026-03-02T21:01:36.920708",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "9345f0cb-8d7b-412f-be33-17b41968b669",
+        "name": "2025_diccionario_ususarios_idpnl.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/385be6bf-301a-4986-b23f-b0ed47175ccf/resource/9345f0cb-8d7b-412f-be33-17b41968b669/download/2025_diccionario_ususarioos_idpnl.csv",
+        "created": "2026-03-02T21:01:09.579341",
+        "last_modified": "2026-03-02T21:01:09.557461",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "4ecd76fd-54db-4715-9f84-218391a52aa3",
+    "name": "solicitudes-de-acceso-a-la-informacion-recibidas-por-codetur",
+    "title": "Solicitudes de Acceso a la información recibidas por CODETUR",
+    "category": "Transparencia",
+    "organization": "Corporación para el Desarrollo Turístico de Nuevo León",
+    "metadata_created": "2026-03-05T18:47:29.496308",
+    "metadata_modified": "2026-03-06T23:14:31.222090",
+    "resources": [
+      {
+        "id": "2aebfddc-e8e3-40cc-9afa-869c9a86e65e",
+        "name": "2025_solicitudes_codetur.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/4ecd76fd-54db-4715-9f84-218391a52aa3/resource/2aebfddc-e8e3-40cc-9afa-869c9a86e65e/download/2025_solicitudes_codetur.csv",
+        "created": "2026-03-05T18:50:19.528554",
+        "last_modified": "2026-03-06T23:12:00.414567",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "524cdb07-13a5-4887-a688-59cb674fec38",
+        "name": "2025_diccionario_ solicitudes_codetur.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/4ecd76fd-54db-4715-9f84-218391a52aa3/resource/524cdb07-13a5-4887-a688-59cb674fec38/download/2025_diccionario_solicitudes_codetur.csv",
+        "created": "2026-03-05T18:52:39.477317",
+        "last_modified": "2026-03-06T23:13:33.848813",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "e8fcfbdc-307e-4ff5-a539-3b78d06db950",
+    "name": "residuos-solidos-urbanos",
+    "title": "Residuos Sólidos Urbanos",
+    "category": "medio ambiente",
+    "organization": "Sistema Integral para el Manejo Ecológico y Procesamiento de Desechos (SIMEPRODE)",
+    "metadata_created": "2026-03-05T18:38:44.926768",
+    "metadata_modified": "2026-03-05T23:00:37.816439",
+    "resources": [
+      {
+        "id": "7b17bc60-1887-44be-b49b-9b00b19988d8",
+        "name": "2025_2026_rsu_ingresados.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e8fcfbdc-307e-4ff5-a539-3b78d06db950/resource/7b17bc60-1887-44be-b49b-9b00b19988d8/download/2025_2026_rsu_ingresados.csv",
+        "created": "2026-03-05T22:41:26.366487",
+        "last_modified": "2026-03-05T22:41:26.342526",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ebc767f7-ba9b-41d6-afa9-8506c0279a3a",
+        "name": "2025_2026_diccionario_rsu_ingresados.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e8fcfbdc-307e-4ff5-a539-3b78d06db950/resource/ebc767f7-ba9b-41d6-afa9-8506c0279a3a/download/2025_2026_diccionario_rsu_ingresados.csv",
+        "created": "2026-03-05T22:42:55.440140",
+        "last_modified": "2026-03-05T22:42:55.406823",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "b0a7ab93-a361-4be0-aa6f-5bfb110e41cb",
+    "name": "frecuencia-servicios-prestados-parque-fundidora",
+    "title": "Frecuencia Servicios Prestados Parque Fundidora",
+    "category": "cantidad",
+    "organization": "Parque Fundidora, O.P.D",
+    "metadata_created": "2026-03-05T21:43:57.258885",
+    "metadata_modified": "2026-03-05T21:46:19.685477",
+    "resources": [
+      {
+        "id": "46efc08e-8c73-4d94-8d36-55be12f7a6f0",
+        "name": "Frecuencia Servicios Prestados Parque Fundidora",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/b0a7ab93-a361-4be0-aa6f-5bfb110e41cb/resource/46efc08e-8c73-4d94-8d36-55be12f7a6f0/download/frecuencia_servicios_prestados_opd.csv",
+        "created": "2026-03-05T21:45:34.182995",
+        "last_modified": "2026-03-05T21:45:34.156193",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "90f1086a-31e7-43fb-93cc-851566e1dfee",
+        "name": "Frecuencia Servicios Prestados Parque Fundidora (Diccionario)",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/b0a7ab93-a361-4be0-aa6f-5bfb110e41cb/resource/90f1086a-31e7-43fb-93cc-851566e1dfee/download/diccionario_frecuencia_servicios_prestados_opd.csv",
+        "created": "2026-03-05T21:46:19.507042",
+        "last_modified": "2026-03-05T21:46:19.481446",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "5ae9dbcb-80db-48ca-ba47-a82ce9735b72",
+    "name": "base-de-datos-de-entrega-de-acciones-de-vivienda",
+    "title": "Padrón de Acciones de Vivienda del IVNL",
+    "category": "ivnl",
+    "organization": "Instituto de la Vivienda",
+    "metadata_created": "2026-03-03T18:01:09.510702",
+    "metadata_modified": "2026-03-03T18:34:21.134543",
+    "resources": [
+      {
+        "id": "1bbc8841-d914-4566-a610-9d46bc41b416",
+        "name": "2025_padron_beneficiarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5ae9dbcb-80db-48ca-ba47-a82ce9735b72/resource/1bbc8841-d914-4566-a610-9d46bc41b416/download/2025_padron_beneficiarios.csv",
+        "created": "2026-03-03T18:12:10.595408",
+        "last_modified": "2026-03-03T18:33:34.983398",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "942840f1-6c45-4807-81e4-3ffcdc3a7810",
+        "name": "2025_diccionario_padron_beneficiarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5ae9dbcb-80db-48ca-ba47-a82ce9735b72/resource/942840f1-6c45-4807-81e4-3ffcdc3a7810/download/2025_diccionario_padron_beneficiarios.csv",
+        "created": "2026-03-03T18:24:54.594196",
+        "last_modified": "2026-03-03T18:33:20.861438",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "325ef57b-b0e5-4c35-b1e4-1dcbfbf88192",
+    "name": "conferencias-cursos-y-foros-2025",
+    "title": "Conferencias, cursos y foros",
+    "category": "Igualdad de género",
+    "organization": "Universidad de Ciencias de la Seguridad",
+    "metadata_created": "2026-03-02T16:53:13.912059",
+    "metadata_modified": "2026-03-02T18:34:00.992032",
+    "resources": [
+      {
+        "id": "31a903d4-3d0b-41c4-bc09-2fc32479bcaa",
+        "name": "2025_conferencias_cursos_foros.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/325ef57b-b0e5-4c35-b1e4-1dcbfbf88192/resource/31a903d4-3d0b-41c4-bc09-2fc32479bcaa/download/2025_conferencias_cursos_foros.csv",
+        "created": "2026-03-02T16:59:10.096975",
+        "last_modified": "2026-03-02T18:33:43.941617",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "7f4ecd59-f22d-43ff-8ae8-9f15ece4a4dd",
+        "name": "2025_diccionario_conferencias_cursos_foros.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/325ef57b-b0e5-4c35-b1e4-1dcbfbf88192/resource/7f4ecd59-f22d-43ff-8ae8-9f15ece4a4dd/download/2025_diccionario_conferencias_cursos_foros.csv",
+        "created": "2026-03-02T17:02:31.283240",
+        "last_modified": "2026-03-02T18:34:00.985406",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "f9168614-c551-44f7-ba43-b0bf3c970564",
+    "name": "solicitudes-de-acceso-a-la-informacion-enero-2025-enero2026",
+    "title": "Solicitudes de Acceso a la Información",
+    "category": "Gobierno y Transparencia",
+    "organization": "Oficina de Representación del Estado en la Ciudad de Mexico",
+    "metadata_created": "2026-02-26T17:46:08.951663",
+    "metadata_modified": "2026-03-02T18:12:29.525493",
+    "resources": [
+      {
+        "id": "5edaaec7-4cce-458b-9e0c-84652f120f6d",
+        "name": "2026_solicitudes_informacion.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/f9168614-c551-44f7-ba43-b0bf3c970564/resource/5edaaec7-4cce-458b-9e0c-84652f120f6d/download/2026_solicitudes_informacion.csv",
+        "created": "2026-02-26T19:06:35.814305",
+        "last_modified": "2026-03-02T18:11:50.083723",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2e353b51-4827-43f4-8c27-11f15da03247",
+        "name": "2026_diccionario_solicitudes.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/f9168614-c551-44f7-ba43-b0bf3c970564/resource/2e353b51-4827-43f4-8c27-11f15da03247/download/2026_diccionario_solicitudes_informacion.csv",
+        "created": "2026-02-26T19:14:09.788025",
+        "last_modified": "2026-03-02T18:12:29.519091",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "fbdb8652-36f1-405a-ba3a-cfc153130ecc",
+    "name": "maltrato-animal-t4-2025",
+    "title": "Denuncias de maltrato animal",
+    "category": "administracion",
+    "organization": "Secretaría de Medio Ambiente",
+    "metadata_created": "2026-02-19T22:36:46.392675",
+    "metadata_modified": "2026-03-02T16:46:24.178561",
+    "resources": [
+      {
+        "id": "b3137d15-3c8c-419d-aa46-fc5f5e97d804",
+        "name": "2025_T4_maltrato_animal.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/fbdb8652-36f1-405a-ba3a-cfc153130ecc/resource/b3137d15-3c8c-419d-aa46-fc5f5e97d804/download/2025_t4_maltrato_animal.csv",
+        "created": "2026-02-19T22:37:53.669625",
+        "last_modified": "2026-02-19T22:45:39.044329",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "66ee0205-7e60-4650-99c5-26718d0dfc84",
+        "name": "diccionario_denuncias_maltrato_animal.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/fbdb8652-36f1-405a-ba3a-cfc153130ecc/resource/66ee0205-7e60-4650-99c5-26718d0dfc84/download/diccionario_denuncias_maltrato_animal.csv",
+        "created": "2026-02-19T22:44:37.636381",
+        "last_modified": "2026-02-19T22:44:37.613176",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "8ff946eb-957a-4ab4-ab8c-a5a3d2f92492",
+    "name": "labnl-lab-cultural-ciudadano-2022-2023",
+    "title": "Actividades en el LABNL Lab Cultural Ciudadano 2022-2024",
+    "category": "Arte y Cultura",
+    "organization": "Secretaría de Cultura",
+    "metadata_created": "2024-08-02T17:10:56.017791",
+    "metadata_modified": "2026-02-27T19:13:04.386237",
+    "resources": [
+      {
+        "id": "47333dc9-dc91-40bd-b2ee-289870c2e164",
+        "name": "2025_actividades_LABNL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8ff946eb-957a-4ab4-ab8c-a5a3d2f92492/resource/47333dc9-dc91-40bd-b2ee-289870c2e164/download/2025_actividades_labnl.csv",
+        "created": "2026-02-21T01:19:29.201056",
+        "last_modified": "2026-02-27T19:11:55.767017",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "580b38da-95e3-4d0f-ab29-f3d97a09ea9f",
+        "name": "2024_Actividades_LABNL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8ff946eb-957a-4ab4-ab8c-a5a3d2f92492/resource/580b38da-95e3-4d0f-ab29-f3d97a09ea9f/download/2024_actividades_labnl.csv",
+        "created": "2024-08-02T17:28:46.188673",
+        "last_modified": "2026-02-27T19:11:23.846869",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "193de821-6ff6-4090-b205-77182854c18d",
+        "name": "2025_diccionario_actividades_LABNL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8ff946eb-957a-4ab4-ab8c-a5a3d2f92492/resource/193de821-6ff6-4090-b205-77182854c18d/download/2025_diccionario_actividades_labnl.csv",
+        "created": "2024-08-07T21:09:23.674713",
+        "last_modified": "2026-02-27T19:13:04.378454",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "44d185b3-77ba-49d7-8a7e-75af7feea94b",
+    "name": "personas-beneficiarias-del-programa-jefas-de-familia",
+    "title": "Personas beneficiarias del programa Jefas de Familia",
+    "category": "Asistencia Social",
+    "organization": "Secretaría de Igualdad e Inclusión",
+    "metadata_created": "2026-02-26T20:52:52.252905",
+    "metadata_modified": "2026-02-27T00:25:50.382617",
+    "resources": [
+      {
+        "id": "9ded0cbd-6046-4c49-9fa5-6fea26b82db1",
+        "name": "2024_2025_personas_beneficiarias_jefas_familia.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/44d185b3-77ba-49d7-8a7e-75af7feea94b/resource/9ded0cbd-6046-4c49-9fa5-6fea26b82db1/download/2024_2025_personas_beneficiarias_jefas_familia.csv",
+        "created": "2026-02-26T20:53:05.777140",
+        "last_modified": "2026-02-26T20:53:05.757218",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ce9622a9-e468-4082-a50e-6bf1ebcee0ad",
+        "name": "2024_2025_diccionario_personas_beneficiarias_jefas_familia.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/44d185b3-77ba-49d7-8a7e-75af7feea94b/resource/ce9622a9-e468-4082-a50e-6bf1ebcee0ad/download/2024_2025_diccionario_personas_beneficiarias_jefas_familia.csv",
+        "created": "2026-02-26T20:53:30.218892",
+        "last_modified": "2026-02-26T20:53:30.189971",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "31573049-b319-4d4b-a4cf-be1e7d4a62cd",
+    "name": "directorio-de-centros-comunitarios",
+    "title": "Directorio de Centros Comunitarios",
+    "category": "Arte y Cultura",
+    "organization": "Secretaría de Igualdad e Inclusión",
+    "metadata_created": "2026-02-26T21:02:22.562344",
+    "metadata_modified": "2026-02-27T00:25:09.674200",
+    "resources": [
+      {
+        "id": "64531f68-fc6e-4e68-9c8c-883812ea30a2",
+        "name": "2026_directorio_centros_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/31573049-b319-4d4b-a4cf-be1e7d4a62cd/resource/64531f68-fc6e-4e68-9c8c-883812ea30a2/download/2026_directorio_centros_comunitarios.csv",
+        "created": "2026-02-26T21:02:39.501482",
+        "last_modified": "2026-02-26T21:02:39.479713",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "134a9d62-8963-46d5-873c-db0d39c1e2f9",
+        "name": "2026_diccionario_directorio_centros_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/31573049-b319-4d4b-a4cf-be1e7d4a62cd/resource/134a9d62-8963-46d5-873c-db0d39c1e2f9/download/2026_diccionario_directorio_centros_comunitarios.csv",
+        "created": "2026-02-26T21:03:07.277197",
+        "last_modified": "2026-02-26T21:03:07.254741",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "cb4fe785-92d7-4bc3-8c0f-cbdfbbeda8b4",
+    "name": "directorio-de-centros-de-atencion-integral-para-adolescentes",
+    "title": "Directorio de Centros de Atención Integral para Adolescentes",
+    "category": "Asistencia Social",
+    "organization": "Secretaría de Igualdad e Inclusión",
+    "metadata_created": "2026-02-26T20:58:02.147815",
+    "metadata_modified": "2026-02-27T00:24:37.316932",
+    "resources": [
+      {
+        "id": "149a2d78-ee82-4579-94f8-b32a4bd14225",
+        "name": "2026_directorio_caipa.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/cb4fe785-92d7-4bc3-8c0f-cbdfbbeda8b4/resource/149a2d78-ee82-4579-94f8-b32a4bd14225/download/2026_directorio_caipa.csv",
+        "created": "2026-02-26T20:58:31.200582",
+        "last_modified": "2026-02-26T20:58:31.179936",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "fbbb82bb-eaf6-4e4e-b123-a94d13d0528f",
+        "name": "2026_diccionario_directorio_caipa.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/cb4fe785-92d7-4bc3-8c0f-cbdfbbeda8b4/resource/fbbb82bb-eaf6-4e4e-b123-a94d13d0528f/download/2026_diccionario_directorio_caipa.csv",
+        "created": "2026-02-26T20:58:53.929266",
+        "last_modified": "2026-02-26T20:58:53.907127",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "16741794-5f4c-4af4-976b-7ae0ea4b69ff",
+    "name": "personas-beneficiarias-de-del-programa-personas-con-discapacidad",
+    "title": "Personas beneficiarias del programa Personas con Discapacidad",
+    "category": "programas",
+    "organization": "Secretaría de Igualdad e Inclusión",
+    "metadata_created": "2026-02-26T20:33:02.254136",
+    "metadata_modified": "2026-02-27T00:24:20.034304",
+    "resources": [
+      {
+        "id": "ffbdf2d7-fc32-4f36-bcff-508a499775c6",
+        "name": "2024_2025_personas_beneficiarias_discapacidad.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/16741794-5f4c-4af4-976b-7ae0ea4b69ff/resource/ffbdf2d7-fc32-4f36-bcff-508a499775c6/download/2024_2025_personas_beneficiarias_discapacidad.csv",
+        "created": "2026-02-26T20:40:36.683680",
+        "last_modified": "2026-02-26T20:40:36.661611",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b17922ed-c866-4d06-b1b6-12c9929a1e46",
+        "name": "2024_2025_diccionario_personas_beneficiarias_discapacidad.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/16741794-5f4c-4af4-976b-7ae0ea4b69ff/resource/b17922ed-c866-4d06-b1b6-12c9929a1e46/download/2024_2025_diccionario_personas_beneficiarias_discapacidad.csv",
+        "created": "2026-02-26T20:41:43.328121",
+        "last_modified": "2026-02-26T20:41:43.295166",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "21f0a015-ea0c-4de4-be49-40db5c505684",
+    "name": "talleres-realizados-en-los-centros-comunitarios-de-desarrollo-social",
+    "title": "Talleres realizados en los Centros Comunitarios de Desarrollo Social",
+    "category": "Arte y Cultura",
+    "organization": "Secretaría de Igualdad e Inclusión",
+    "metadata_created": "2026-02-26T20:55:00.630688",
+    "metadata_modified": "2026-02-26T23:14:43.217177",
+    "resources": [
+      {
+        "id": "e748397a-b819-4d5e-8de4-6057a295d9ba",
+        "name": "2024_2025_talleres_centros_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/21f0a015-ea0c-4de4-be49-40db5c505684/resource/e748397a-b819-4d5e-8de4-6057a295d9ba/download/2024_2025_talleres_centros_comunitarios.csv",
+        "created": "2026-02-26T21:09:26.148239",
+        "last_modified": "2026-02-26T21:09:26.127411",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4512eb64-12e0-4b48-a9eb-bd691bb22274",
+        "name": "2024_2025_diccionario_talleres_centros_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/21f0a015-ea0c-4de4-be49-40db5c505684/resource/4512eb64-12e0-4b48-a9eb-bd691bb22274/download/2024_2025_diccionario_talleres_centros_comunitarios.csv",
+        "created": "2026-02-26T21:09:51.542268",
+        "last_modified": "2026-02-26T21:09:51.518466",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "6f580827-b83c-493b-b9f2-8fde14e1c8e6",
+    "name": "organos-colegiados",
+    "title": "Órganos colegiados",
+    "category": "Participación",
+    "organization": "Secretaría de Participación Ciudadana",
+    "metadata_created": "2024-08-12T19:25:26.327100",
+    "metadata_modified": "2026-02-26T22:28:17.812030",
+    "resources": [
+      {
+        "id": "88cb8069-2c48-4b23-81b5-b62f9edb82f3",
+        "name": "2025_organos_colegiados.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6f580827-b83c-493b-b9f2-8fde14e1c8e6/resource/88cb8069-2c48-4b23-81b5-b62f9edb82f3/download/2025_organos_colegiados.csv",
+        "created": "2025-07-21T18:12:08.876629",
+        "last_modified": "2025-07-21T18:12:08.755863",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2babe5fb-0bfc-42cf-8aba-df4d8b40ed95",
+        "name": "2024_organos_colegiados.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6f580827-b83c-493b-b9f2-8fde14e1c8e6/resource/2babe5fb-0bfc-42cf-8aba-df4d8b40ed95/download/organos_colegiados.csv",
+        "created": "2024-08-12T19:25:54.729704",
+        "last_modified": "2024-08-12T19:25:54.703022",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e5c9b1e2-508d-4e0d-89ad-679e26588a34",
+        "name": "Diccionario_organos_colegiados_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6f580827-b83c-493b-b9f2-8fde14e1c8e6/resource/e5c9b1e2-508d-4e0d-89ad-679e26588a34/download/diccionario_organos_colegiados_2025.csv",
+        "created": "2025-07-21T18:17:24.178476",
+        "last_modified": "2025-07-21T18:17:24.152891",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "65f05033-60e3-42fa-bd44-571ea392becc",
+        "name": "Diccionario_Organos_colegiados_2024.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6f580827-b83c-493b-b9f2-8fde14e1c8e6/resource/65f05033-60e3-42fa-bd44-571ea392becc/download/diccionario_organos_colegiados.csv",
+        "created": "2024-08-13T18:09:19.742007",
+        "last_modified": "2024-08-13T18:09:19.716442",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "14be6f1d-ecd1-4313-981a-09fab1666648",
+    "name": "tramites_y_servicios",
+    "title": "Tramites y Servicios a Pequeñas y Medianas Empresas",
+    "category": "economía",
+    "organization": " Secretaría de Economía",
+    "metadata_created": "2026-02-25T22:23:56.690610",
+    "metadata_modified": "2026-02-26T22:18:33.932516",
+    "resources": [
+      {
+        "id": "c9e11919-168c-41da-83d6-1fd07fa70fa8",
+        "name": "2026_tramites_servicios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/14be6f1d-ecd1-4313-981a-09fab1666648/resource/c9e11919-168c-41da-83d6-1fd07fa70fa8/download/2026_tramites_servicios.csv",
+        "created": "2026-02-25T22:32:18.701623",
+        "last_modified": "2026-02-25T23:40:15.435753",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c2600c62-7355-42d1-b0f0-a0ad0c8d36fa",
+        "name": "2026_diccionario_tramites_servicios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/14be6f1d-ecd1-4313-981a-09fab1666648/resource/c2600c62-7355-42d1-b0f0-a0ad0c8d36fa/download/2026_diccionario_tramites_servicios.csv",
+        "created": "2026-02-25T23:24:44.267813",
+        "last_modified": "2026-02-25T23:39:30.007130",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "8f41b053-03a7-4aca-bea1-801b9fdfc2aa",
+    "name": "personas-beneficiarias-del-programa-impulso-a-cuidadoras",
+    "title": "Personas beneficiarias del programa Impulso a Cuidadoras",
+    "category": "Asistencia Social",
+    "organization": "Secretaría de Igualdad e Inclusión",
+    "metadata_created": "2026-02-26T20:48:56.855628",
+    "metadata_modified": "2026-02-26T22:02:08.346462",
+    "resources": [
+      {
+        "id": "cd56d54e-221e-46f2-a424-dc890665d55c",
+        "name": "2024_2025_personas_beneficiarias_impulso_cuidadoras.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8f41b053-03a7-4aca-bea1-801b9fdfc2aa/resource/cd56d54e-221e-46f2-a424-dc890665d55c/download/2024_2025_personas_beneficiarias_impulso_cuidadoras.csv",
+        "created": "2026-02-26T20:49:57.876078",
+        "last_modified": "2026-02-26T20:49:57.854137",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "3699312d-cf4d-4de4-9e39-1c3676b92407",
+        "name": "2024_2025_diccionario_personas_beneficiarias_impulso_cuidadoras.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8f41b053-03a7-4aca-bea1-801b9fdfc2aa/resource/3699312d-cf4d-4de4-9e39-1c3676b92407/download/2024_2025_diccionario_personas_beneficiarias_impulso_cuidadoras.csv",
+        "created": "2026-02-26T20:50:16.184202",
+        "last_modified": "2026-02-26T20:50:16.162216",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "8d9a12da-2ec0-426c-aaff-9614259c4876",
+    "name": "personas-beneficiarias-del-programa-hambre-cero",
+    "title": "Personas beneficiarias del programa Hambre Cero",
+    "category": "Asistencia Social",
+    "organization": "Secretaría de Igualdad e Inclusión",
+    "metadata_created": "2026-02-26T20:45:14.180884",
+    "metadata_modified": "2026-02-26T21:28:49.306710",
+    "resources": [
+      {
+        "id": "7c097ab9-c28d-4d98-9aec-cde6bf60bd34",
+        "name": "2024_2025_personas_beneficiarias_hambre_cero.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8d9a12da-2ec0-426c-aaff-9614259c4876/resource/7c097ab9-c28d-4d98-9aec-cde6bf60bd34/download/2024_2025_personas_beneficiarias_hambre_cero.csv",
+        "created": "2026-02-26T20:45:35.078778",
+        "last_modified": "2026-02-26T20:45:35.056699",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "29c2397c-d40d-4e0c-a297-54291beeee92",
+        "name": "2024_2025_diccionario_personas_beneficiarias_hambre_cero.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8d9a12da-2ec0-426c-aaff-9614259c4876/resource/29c2397c-d40d-4e0c-a297-54291beeee92/download/2024_2025_diccionario_personas_beneficiarias_hambre_cero.csv",
+        "created": "2026-02-26T20:46:02.045197",
+        "last_modified": "2026-02-26T20:46:02.021441",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "ccab1a16-f1c7-4216-8c0e-53e0d80573b0",
+    "name": "servicios-para-el-campo",
+    "title": "Servicios para el campo",
+    "category": "agropecuario",
+    "organization": "Promotora de Desarrollo Rural de Nuevo León – PRODERLEON",
+    "metadata_created": "2026-02-26T17:13:36.313296",
+    "metadata_modified": "2026-02-26T18:14:05.054664",
+    "resources": [
+      {
+        "id": "032c8626-f628-4b10-9bf8-ddbd6528a3e6",
+        "name": "2025_2026_servicios_trabajos_campo",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ccab1a16-f1c7-4216-8c0e-53e0d80573b0/resource/032c8626-f628-4b10-9bf8-ddbd6528a3e6/download/2025_2026_servicios_trabajos_campo..csv",
+        "created": "2026-02-26T17:17:41.241314",
+        "last_modified": "2026-02-26T17:17:41.221616",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c6108c63-c017-4e01-9cc4-cc74bc0d9ae3",
+        "name": "2025_2026_diccionario_servicios_trabajos_campo",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ccab1a16-f1c7-4216-8c0e-53e0d80573b0/resource/c6108c63-c017-4e01-9cc4-cc74bc0d9ae3/download/2025_2026_diccionario_servicios_trabajos_campo.csv",
+        "created": "2026-02-26T17:20:46.292625",
+        "last_modified": "2026-02-26T17:44:54.170272",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "e79aa899-f355-4ca8-a720-433aedbbe306",
+    "name": "capacitaciones-portafolio-2025-2026",
+    "title": "Capacitaciones-portafolio 2025-2026",
+    "category": "Prevención de violencia",
+    "organization": "Instituto Estatal de las Mujeres",
+    "metadata_created": "2026-02-26T15:53:43.770853",
+    "metadata_modified": "2026-02-26T16:31:40.263584",
+    "resources": [
+      {
+        "id": "1da9d2fa-a926-4d4d-aa93-f14a9a2e6ab3",
+        "name": "2025_2026_portafolio_capacitaciones.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e79aa899-f355-4ca8-a720-433aedbbe306/resource/1da9d2fa-a926-4d4d-aa93-f14a9a2e6ab3/download/2025_2026_portafolio_capacitaciones.csv",
+        "created": "2026-02-26T15:54:24.831933",
+        "last_modified": "2026-02-26T15:54:24.813180",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c44f4ae9-eeeb-4947-a481-263a58cccd80",
+        "name": "2025_2026_diccionario_portafolio_capacitaciones.csv",
+        "format": ".CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e79aa899-f355-4ca8-a720-433aedbbe306/resource/c44f4ae9-eeeb-4947-a481-263a58cccd80/download/2025_2026_diccionario_portafolio_capacitaciones.csv",
+        "created": "2026-02-26T15:56:09.466302",
+        "last_modified": "2026-02-26T15:56:09.442921",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "67be5008-00d6-43e1-a692-83078d26baa4",
+    "name": "datos-de-fidecultural-2019-2024",
+    "title": "Datos de FIDECULTURAL 2019-2024",
+    "category": "Conservasion",
+    "organization": "Fideicomiso para la Conservación del Patrimonio Cultural de Nuevo León (FIDECULTURAL)",
+    "metadata_created": "2026-02-21T01:43:38.596592",
+    "metadata_modified": "2026-02-25T23:57:46.475038",
+    "resources": [
+      {
+        "id": "7ff66df4-341f-4bc0-a5b8-81352aaef3e2",
+        "name": "2024_proyectos_FIDECULTURAL",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/67be5008-00d6-43e1-a692-83078d26baa4/resource/7ff66df4-341f-4bc0-a5b8-81352aaef3e2/download/2024_proyectos_fidecultural.csv",
+        "created": "2026-02-21T01:47:27.295449",
+        "last_modified": "2026-02-21T01:47:27.269714",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "09e5fa7d-6a31-403b-b2f3-221f2e828ff4",
+        "name": "2024_diccionario_proyectos_FIDECULTURAL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/67be5008-00d6-43e1-a692-83078d26baa4/resource/09e5fa7d-6a31-403b-b2f3-221f2e828ff4/download/2024_diccionario_proyectos_fidecultural.csv",
+        "created": "2026-02-21T01:48:29.147122",
+        "last_modified": "2026-02-23T16:53:19.536903",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "db8413d0-deb9-4401-89e1-9993b228d810",
+    "name": "solicitudes-de-acceso-a-la-informacion-sistema-de-caminos",
+    "title": "Solicitudes de Acceso a la Información",
+    "category": "Transparencia y Combate a la Corrupción",
+    "organization": "Sistema de Caminos de Nuevo León",
+    "metadata_created": "2026-02-24T18:50:27.843120",
+    "metadata_modified": "2026-02-25T22:06:42.503552",
+    "resources": [
+      {
+        "id": "c77d5edc-2c18-4376-9b1d-dd67ee8fec18",
+        "name": "2025_solicitudes _informacion_SCNL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/db8413d0-deb9-4401-89e1-9993b228d810/resource/c77d5edc-2c18-4376-9b1d-dd67ee8fec18/download/2025_solicitudes-_informacion_scnl.csv",
+        "created": "2026-02-24T18:51:27.836982",
+        "last_modified": "2026-02-24T18:51:27.807127",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "7332eacd-395a-43c5-a31d-b306070d8340",
+        "name": "2025_diccionario_solicitudes _informacion_SCNL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/db8413d0-deb9-4401-89e1-9993b228d810/resource/7332eacd-395a-43c5-a31d-b306070d8340/download/2025_diccionario_solicitudes-_informacion_scnl.csv",
+        "created": "2026-02-24T18:51:57.754426",
+        "last_modified": "2026-02-24T18:51:57.732176",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "0c8d6efc-3d31-4f38-9c3f-f38fdab34660",
+    "name": "directorio-iiiepe",
+    "title": "Maestrías ofertadas por el IIIEPE",
+    "category": "educacion",
+    "organization": "Instituto de Investigación, Innovación y Estudios de Posgrado para la Educación del Estado de Nuevo León",
+    "metadata_created": "2026-02-25T20:37:21.159819",
+    "metadata_modified": "2026-02-25T22:04:21.574067",
+    "resources": [
+      {
+        "id": "614b21be-e31f-4f5a-aeba-f448fae358c1",
+        "name": "2025_directorio_iiiepe.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/0c8d6efc-3d31-4f38-9c3f-f38fdab34660/resource/614b21be-e31f-4f5a-aeba-f448fae358c1/download/2025_directorio_iiiepe.csv",
+        "created": "2026-02-25T20:39:23.583135",
+        "last_modified": "2026-02-25T20:39:23.556198",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "de8c8f13-a9eb-43f3-a9fb-52813c870f88",
+        "name": "2025_diccionario_directorio_iiiepe.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/0c8d6efc-3d31-4f38-9c3f-f38fdab34660/resource/de8c8f13-a9eb-43f3-a9fb-52813c870f88/download/2025_diccionario_directorio_iiiepe.csv",
+        "created": "2026-02-25T20:40:00.951521",
+        "last_modified": "2026-02-25T22:03:54.255453",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "0a5c9056-4f7d-49ec-a343-3ddcf046c851",
+    "name": "solicitudes-de-acceso-a-la-informacion-recibidas-por-el-sistema-estatal-de-informacion",
+    "title": "Solicitudes de acceso a la información recibidas por el Sistema Estatal de Información",
+    "category": "Transparencia y Combate a la Corrupción",
+    "organization": "Sistema Estatal de Información",
+    "metadata_created": "2026-02-23T23:40:13.332716",
+    "metadata_modified": "2026-02-24T16:09:20.078027",
+    "resources": [
+      {
+        "id": "9c744c69-e9a5-4f4b-b180-93e90017e402",
+        "name": "Solicitudes_enero_diciembre_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/0a5c9056-4f7d-49ec-a343-3ddcf046c851/resource/9c744c69-e9a5-4f4b-b180-93e90017e402/download/solicitudes_enero_diciembre_2025.csv",
+        "created": "2026-02-23T23:41:23.624753",
+        "last_modified": "2026-02-24T01:10:48.849068",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "1ec8599b-b9b1-416a-b5ef-2341c04b22ca",
+        "name": "diccionario_solicitudes_enero_diciembre.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/0a5c9056-4f7d-49ec-a343-3ddcf046c851/resource/1ec8599b-b9b1-416a-b5ef-2341c04b22ca/download/diccionario_solicitudes_enero_diciembre.csv",
+        "created": "2026-02-23T23:42:34.566384",
+        "last_modified": "2026-02-24T01:12:09.173848",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "a93b8a57-9308-4559-ae7a-e27c2766dfa0",
+    "name": "proyectos-apoyados-por-el-i2t2",
+    "title": "Proyectos apoyados por el I2T2",
+    "category": "Innovación",
+    "organization": "Instituto de Innovación y Transferencia Tecnológica de Nuevo León",
+    "metadata_created": "2026-02-23T16:37:08.968607",
+    "metadata_modified": "2026-02-23T18:32:37.963161",
+    "resources": [
+      {
+        "id": "4159d6e8-40ca-430f-81a3-218f68199c05",
+        "name": "2024_apoyo_proyectos_i2t2.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/a93b8a57-9308-4559-ae7a-e27c2766dfa0/resource/4159d6e8-40ca-430f-81a3-218f68199c05/download/2024_apoyo_proyectos_i2t2.csv",
+        "created": "2026-02-23T16:43:27.210356",
+        "last_modified": "2026-02-23T16:43:27.187163",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ba66c6dc-099e-4d6c-9514-1a884d6ad4d9",
+        "name": "diccionario_2024_apoyo_proyectos_i2t2.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/a93b8a57-9308-4559-ae7a-e27c2766dfa0/resource/ba66c6dc-099e-4d6c-9514-1a884d6ad4d9/download/diccionario_2024_apoyo_proyectos_i2t2.csv",
+        "created": "2026-02-23T16:47:33.559769",
+        "last_modified": "2026-02-23T16:47:33.535004",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "040aa1f5-4442-4525-944d-cf256607d0d2",
+    "name": "lista-de-libros-del-fonedi",
+    "title": "Lista de libros del Fonedi",
+    "category": "Fonedi",
+    "organization": "Fondo Editorial de Nuevo León",
+    "metadata_created": "2026-02-23T18:25:59.019843",
+    "metadata_modified": "2026-02-23T18:27:53.675704",
+    "resources": [
+      {
+        "id": "e7f6183e-7ef1-4690-bf2e-59c246877388",
+        "name": "2025_titulos_editoriales_FONEDI.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/040aa1f5-4442-4525-944d-cf256607d0d2/resource/e7f6183e-7ef1-4690-bf2e-59c246877388/download/2025_titulos_editoriales_fonedi.csv",
+        "created": "2026-02-23T18:26:59.584424",
+        "last_modified": "2026-02-23T18:26:59.550822",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "3c432e29-ee4a-46f1-9717-4121861e9887",
+        "name": "2025_diccionario_titulos_editoriales_FONEDI.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/040aa1f5-4442-4525-944d-cf256607d0d2/resource/3c432e29-ee4a-46f1-9717-4121861e9887/download/2025_diccionario_titulos_editoriales_fonedi.csv",
+        "created": "2026-02-23T18:27:53.521355",
+        "last_modified": "2026-02-23T18:27:53.494802",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "ecead9fc-c93a-4e39-8b65-8eb2a46f9f8a",
+    "name": "asistencia-de-personas-a-actividades-de-conarte",
+    "title": "Asistencia de personas a actividades de CONARTE",
+    "category": "Cultura",
+    "organization": "Consejo para la Cultura y las Artes de Nuevo León",
+    "metadata_created": "2026-02-20T23:49:47.505902",
+    "metadata_modified": "2026-02-23T16:39:10.716286",
+    "resources": [
+      {
+        "id": "9f2c7693-3a2f-43dd-8778-8fa6c6c3ea01",
+        "name": "Asistencias_2025_CONARTE_Bien_Servicio.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ecead9fc-c93a-4e39-8b65-8eb2a46f9f8a/resource/9f2c7693-3a2f-43dd-8778-8fa6c6c3ea01/download/asistencias_2025_conarte_bien_servicio.csv",
+        "created": "2026-02-20T23:52:28.667478",
+        "last_modified": "2026-02-20T23:52:28.647077",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "dcc4532c-4e34-4685-9bdc-43b60089f3b3",
+        "name": "Diccionario_Asistencias_2025_CONARTE.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ecead9fc-c93a-4e39-8b65-8eb2a46f9f8a/resource/dcc4532c-4e34-4685-9bdc-43b60089f3b3/download/diccionario_asistencias_2025_conarte.csv",
+        "created": "2026-02-20T23:54:10.368973",
+        "last_modified": "2026-02-20T23:54:10.346901",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "5b61d4d0-a3d3-497a-97c2-08532be56f2c",
+    "name": "solicitud-de-informacion-instituto-registral-y-catastral",
+    "title": "Solicitud de informacion Instituto Registral y Catastral",
+    "category": "Administración y Finanzas",
+    "organization": "Instituto Registral y Catastral del Estado de Nuevo León",
+    "metadata_created": "2026-02-23T15:20:45.905557",
+    "metadata_modified": "2026-02-23T16:22:43.896864",
+    "resources": [
+      {
+        "id": "7d2a2c61-5a56-41e6-bfb1-91fdf8e99466",
+        "name": "2025_t4_atencionesirc.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5b61d4d0-a3d3-497a-97c2-08532be56f2c/resource/7d2a2c61-5a56-41e6-bfb1-91fdf8e99466/download/2025_t4_atencionesirc.csv",
+        "created": "2026-02-23T15:23:35.970745",
+        "last_modified": "2026-02-23T15:23:35.941536",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "24a75ae5-a418-449d-86c3-ec7136935754",
+        "name": "2025_diccionario_t4_atencionesirc.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5b61d4d0-a3d3-497a-97c2-08532be56f2c/resource/24a75ae5-a418-449d-86c3-ec7136935754/download/2025_diccionario_t4_atencionesirc.csv",
+        "created": "2026-02-23T15:25:31.696277",
+        "last_modified": "2026-02-23T16:22:14.597780",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "15225a8d-68d9-455c-92af-366d1c875ec7",
+    "name": "2025_directorio_colaboradores_junta-local-de-conciliacion-y-arbitraje",
+    "title": "Directorio de colaboradores de conciliación",
+    "category": "Base de datos de contactos",
+    "organization": "Junta Local de Conciliación y Arbitraje",
+    "metadata_created": "2026-02-20T22:46:51.189050",
+    "metadata_modified": "2026-02-21T02:07:21.086239",
+    "resources": [
+      {
+        "id": "ae2dca45-5c35-48f5-aebd-3372c86361da",
+        "name": "2025_directorio_colaboradores_conciliacion",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/15225a8d-68d9-455c-92af-366d1c875ec7/resource/ae2dca45-5c35-48f5-aebd-3372c86361da/download/2025_directorio_colaboradores_conciliacion.csv",
+        "created": "2026-02-20T22:48:35.162633",
+        "last_modified": "2026-02-20T22:48:35.130501",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "39248d07-1d82-4044-a422-91b49100b1b8",
+        "name": "2025_diccionario_directorio_colaboradores_conciliacion.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/15225a8d-68d9-455c-92af-366d1c875ec7/resource/39248d07-1d82-4044-a422-91b49100b1b8/download/2025_diccionario_directorio_colaboradores_conciliacion.csv",
+        "created": "2026-02-21T00:58:42.078612",
+        "last_modified": "2026-02-21T00:58:42.058637",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "427660e3-7d0b-4ad2-9f39-07f1495a81d7",
+    "name": "indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon",
+    "title": "Indicadores de Desempeño del Gobierno del Estado de Nuevo León.",
+    "category": "Gobierno y Transparencia",
+    "organization": "Secretaría Técnica de Gobierno",
+    "metadata_created": "2026-02-19T16:30:06.205601",
+    "metadata_modified": "2026-02-21T01:53:35.002526",
+    "resources": [
+      {
+        "id": "9a3aec72-983b-4a68-8dd7-1a9aef308316",
+        "name": "2022_2027_indicadores_PED",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/427660e3-7d0b-4ad2-9f39-07f1495a81d7/resource/9a3aec72-983b-4a68-8dd7-1a9aef308316/download/2022_2027_indicadores_ped.csv",
+        "created": "2026-02-19T16:35:36.277148",
+        "last_modified": "2026-02-19T16:35:36.253763",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "0ae4594e-17c5-4b76-99f5-293f99b85adf",
+        "name": "2020_2025_reporte_indicadores_IAG",
+        "format": "CSV",
+        "url": "",
+        "created": "2026-02-19T16:36:02.426074",
+        "last_modified": "2026-02-21T01:53:35.002526",
+        "status_code": 404,
+        "is_broken": true
+      },
+      {
+        "id": "99807e4a-34eb-43da-8401-ffd85b8be992",
+        "name": "2020_2025_diccionario_reporte_indicadores_IAG",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/427660e3-7d0b-4ad2-9f39-07f1495a81d7/resource/99807e4a-34eb-43da-8401-ffd85b8be992/download/2020_2025_diccionario_reporte_indicadores_iag.csv",
+        "created": "2026-02-19T16:31:12.443008",
+        "last_modified": "2026-02-19T16:31:12.411397",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d77226bc-de35-4fa6-a6d9-d9f9fdc73cf8",
+        "name": "2022_2027_diccionario_indicadores_PED",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/427660e3-7d0b-4ad2-9f39-07f1495a81d7/resource/d77226bc-de35-4fa6-a6d9-d9f9fdc73cf8/download/2022_2027_indicadores_ped.csv",
+        "created": "2026-02-19T16:34:47.578532",
+        "last_modified": "2026-02-19T16:34:47.557395",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "ddbaf423-b6fe-4fe5-bc92-1004be4f8168",
+    "name": "pib-agroindustrial-por-entidad-federativa-2022-2024",
+    "title": "PIB Agroindustrial por Entidad Federativa 2022-2024",
+    "category": "Agricultura",
+    "organization": "Secretaría de Desarrollo Regional y Agropecuario",
+    "metadata_created": "2026-02-20T19:30:18.635199",
+    "metadata_modified": "2026-02-20T20:44:28.489021",
+    "resources": [
+      {
+        "id": "9118d642-507e-4b4b-8073-c5fa3a6919c9",
+        "name": "2022_2024_PIB_Agroindustrial.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ddbaf423-b6fe-4fe5-bc92-1004be4f8168/resource/9118d642-507e-4b4b-8073-c5fa3a6919c9/download/2022_2024_pib_agroindustrial.csv",
+        "created": "2026-02-20T19:30:42.708250",
+        "last_modified": "2026-02-20T19:30:42.687850",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "1dff5f8f-fdad-4918-88d5-f055f58e2ab3",
+        "name": "diccionario_2022_2024_PIB_Agroindustrial.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ddbaf423-b6fe-4fe5-bc92-1004be4f8168/resource/1dff5f8f-fdad-4918-88d5-f055f58e2ab3/download/diccionario_2022_2024_pib_agroindustrial.csv",
+        "created": "2026-02-20T19:31:12.395644",
+        "last_modified": "2026-02-20T19:31:12.372623",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "57f3bc44-dd91-43f8-a2b9-6dcb92a19699",
+    "name": "produccion-agricola-2022-2024",
+    "title": "Producción Agrícola 2022-2024",
+    "category": "Agroalimentario",
+    "organization": "Secretaría de Desarrollo Regional y Agropecuario",
+    "metadata_created": "2026-02-20T19:16:54.183517",
+    "metadata_modified": "2026-02-20T20:43:48.913053",
+    "resources": [
+      {
+        "id": "09f4c4b1-818f-4e56-9364-4d7b2ac08c3e",
+        "name": "2022_2024_Prod_Agricola.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/57f3bc44-dd91-43f8-a2b9-6dcb92a19699/resource/09f4c4b1-818f-4e56-9364-4d7b2ac08c3e/download/2022_2024_prod_agricola.csv",
+        "created": "2026-02-20T19:19:07.855155",
+        "last_modified": "2026-02-20T19:19:07.823154",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "3ab0628e-8e76-4509-a273-992cd423f008",
+        "name": "diccionario_2022_2024_Prod_Agricola.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/57f3bc44-dd91-43f8-a2b9-6dcb92a19699/resource/3ab0628e-8e76-4509-a273-992cd423f008/download/diccionario_2022_2024_prod_agricola.csv",
+        "created": "2026-02-20T19:20:07.783800",
+        "last_modified": "2026-02-20T19:25:40.021852",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "4c2acb78-d45a-4e4f-815d-00f3b3348859",
+    "name": "declaraciones-oficiales-de-la-oficina-ejecutiva",
+    "title": "Declaraciones oficiales de la Oficina Ejecutiva",
+    "category": "Declaraciones",
+    "organization": "Oficina Ejecutiva del Titular del Poder Ejecutivo del Estado de Nuevo León",
+    "metadata_created": "2026-02-19T20:07:36.006667",
+    "metadata_modified": "2026-02-19T20:13:38.667711",
+    "resources": [
+      {
+        "id": "61d34709-7ba8-4867-b8ab-4efdf1c96e74",
+        "name": "2026_2025_declaraciones_oficiales_OEG.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/4c2acb78-d45a-4e4f-815d-00f3b3348859/resource/61d34709-7ba8-4867-b8ab-4efdf1c96e74/download/2026_2025_declaraciones_oficiales_oeg.csv",
+        "created": "2026-02-19T20:10:57.571598",
+        "last_modified": "2026-02-19T20:10:57.545969",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a279417c-98ad-48ab-a1a1-7d346685eac0",
+        "name": "2026-2025_Diccionario_declaraciones_oficiales_OEG",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/4c2acb78-d45a-4e4f-815d-00f3b3348859/resource/a279417c-98ad-48ab-a1a1-7d346685eac0/download/2026-2025_diccionario_declaraciones_oficiales_oeg.csv",
+        "created": "2026-02-19T20:12:41.205232",
+        "last_modified": "2026-02-19T20:12:41.178212",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "4a0e8b04-c1f4-4482-810e-3bee54a1c37b",
+    "name": "directorio-de-planteles-cecytenl",
+    "title": "Directorio de Planteles CECyTENL",
+    "category": "Educación",
+    "organization": "Colegio de Estudios Científicos y Tecnológicos del Estado de Nuevo León (CECyTENL)",
+    "metadata_created": "2026-02-19T16:20:23.711045",
+    "metadata_modified": "2026-02-19T17:29:55.016686",
+    "resources": [
+      {
+        "id": "208c900e-26eb-435e-ac71-41c5243f5f01",
+        "name": "2025_directorio_planteles.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/4a0e8b04-c1f4-4482-810e-3bee54a1c37b/resource/208c900e-26eb-435e-ac71-41c5243f5f01/download/2025_directorio_planteles.csv",
+        "created": "2026-02-19T16:25:29.142217",
+        "last_modified": "2026-02-19T16:25:29.122991",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ee23aa57-6385-4ba3-a306-f5b002878b30",
+        "name": "2025_diccionario_directorio_planteles.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/4a0e8b04-c1f4-4482-810e-3bee54a1c37b/resource/ee23aa57-6385-4ba3-a306-f5b002878b30/download/2025_diccionario_directorio_planteles.csv",
+        "created": "2026-02-19T16:26:52.407274",
+        "last_modified": "2026-02-19T17:29:55.007062",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "e995282e-023a-48bf-a123-4390a11734fb",
+    "name": "asambleas-juntas-de-mejora",
+    "title": "Asambleas Juntas de Mejora",
+    "category": "Participación",
+    "organization": "Secretaría de Participación Ciudadana",
+    "metadata_created": "2024-08-07T20:28:55.942485",
+    "metadata_modified": "2026-02-18T16:12:48.490404",
+    "resources": [
+      {
+        "id": "4403c066-4c14-4612-acdf-d90612fd4dcb",
+        "name": "2025_CT3_asambleas_juntasdemejoras.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/4403c066-4c14-4612-acdf-d90612fd4dcb/download/2025_ct3_asambleas_juntasdemejoras.csv",
+        "created": "2026-02-18T16:08:00.876845",
+        "last_modified": "2026-02-18T16:08:00.847852",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "afb3be37-c268-4ea5-bcdb-df481e1f1a78",
+        "name": "2025_CT2_asambleas_juntasdemejoras.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/afb3be37-c268-4ea5-bcdb-df481e1f1a78/download/2025_ct2_asambleas_juntasdemejoras.csv",
+        "created": "2025-09-26T20:19:07.192639",
+        "last_modified": "2025-09-26T20:19:07.147289",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "04646fb4-c313-4e1f-a630-8a1011e0d363",
+        "name": "2025_CT1_asambleas_juntasdemejoras.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/04646fb4-c313-4e1f-a630-8a1011e0d363/download/2025_ct1_asambleas_juntasdemejoras.csv",
+        "created": "2025-06-06T19:34:08.626016",
+        "last_modified": "2025-06-06T19:34:08.595524",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c6467e6a-a609-4d6b-9b64-975344d1a7f2",
+        "name": "2024_CT3_asambleas_juntasdemejoras.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/c6467e6a-a609-4d6b-9b64-975344d1a7f2/download/2024_ct3_asambleas_juntasdemejoras.csv",
+        "created": "2025-02-19T18:52:16.559538",
+        "last_modified": "2025-02-19T18:52:16.515733",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b843dea5-c6a6-4b2c-aede-49b8bd0fe89c",
+        "name": "2024_CT2_asambleas_juntasdemejora.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/b843dea5-c6a6-4b2c-aede-49b8bd0fe89c/download/2024_ct2_asambleas_juntasdemejoras.csv",
+        "created": "2024-10-23T21:21:33.528435",
+        "last_modified": "2024-10-23T21:21:33.500081",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e4564448-3c9b-4289-82c8-6abc174fd25b",
+        "name": "2024_CT1_asambleas_juntasdemejora.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/e4564448-3c9b-4289-82c8-6abc174fd25b/download/asambleas_juntasdemejora_2024.csv",
+        "created": "2024-08-07T20:35:54.291219",
+        "last_modified": "2024-08-07T20:35:54.167350",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "9cbc6fa2-3629-4abe-ac59-0caf16cbafd9",
+        "name": "diccionario_asambleas_juntasdemejora_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/9cbc6fa2-3629-4abe-ac59-0caf16cbafd9/download/diccionario_asambleas_juntasdemejora_2025.csv",
+        "created": "2025-06-06T19:35:22.263253",
+        "last_modified": "2025-06-06T19:35:22.227652",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e69b7cf7-d466-44d9-9016-79634fe62132",
+        "name": "diccionario_asambleas_juntasdemejora_2024-2.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/e69b7cf7-d466-44d9-9016-79634fe62132/download/diccionario_asambleas_juntasdemejora_2024_fmgc.csv",
+        "created": "2025-02-19T18:55:20.781370",
+        "last_modified": "2025-02-19T18:55:20.753717",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "7fcb0249-e026-4adf-9c52-965ced503a94",
+        "name": "diccionario_asambleas_juntasdemejora_2024.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e995282e-023a-48bf-a123-4390a11734fb/resource/7fcb0249-e026-4adf-9c52-965ced503a94/download/diccionario_asambleas_juntasdemejora_2024.csv",
+        "created": "2024-08-07T20:36:15.903601",
+        "last_modified": "2024-08-08T19:12:55.927736",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "c859ebde-9929-444b-b777-687f6727e102",
+    "name": "espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon",
+    "title": "Espacios participativos en el Gobierno del Estado de Nuevo León",
+    "category": "Participación",
+    "organization": "Secretaría de Participación Ciudadana",
+    "metadata_created": "2024-08-13T17:00:13.647797",
+    "metadata_modified": "2026-02-18T15:45:03.172156",
+    "resources": [
+      {
+        "id": "77128e4c-84e0-427f-9e93-23545f02de36",
+        "name": "Espacios_participativos_GENL_2023.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/77128e4c-84e0-427f-9e93-23545f02de36/download/espacios_participativos_genl_2023.csv",
+        "created": "2024-08-13T17:19:48.277026",
+        "last_modified": "2024-08-13T17:19:48.246644",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c86c20da-7b38-4b47-b5bd-d89837086532",
+        "name": "Diccionario_Espacios_participativos_GENL_2023.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/c86c20da-7b38-4b47-b5bd-d89837086532/download/diccionario_espacios_participativos_genl_2023.csv",
+        "created": "2024-08-13T17:20:08.538617",
+        "last_modified": "2024-08-13T17:20:08.513618",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "95b69955-c02f-49a3-aa5a-91944f03db61",
+        "name": "Glosario_Espacios_participativos_GENL_2023.xlsx",
+        "format": "XLSX",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/95b69955-c02f-49a3-aa5a-91944f03db61/download/glosario_espacios_participativos_genl_2023.xlsx",
+        "created": "2024-08-13T17:28:46.614003",
+        "last_modified": "2024-08-13T17:28:46.585669",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "32706a10-e914-40cf-95c3-8159a8f6c0a2",
+        "name": "Espacios_participativos_GENL_2022.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/32706a10-e914-40cf-95c3-8159a8f6c0a2/download/espacios_participativos_genl_2022.csv",
+        "created": "2024-09-04T19:43:36.060304",
+        "last_modified": "2024-09-04T19:43:36.028471",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c0aad76d-df10-4204-9383-d99bc27cdf9f",
+        "name": "Diccionario_Espacios_participativos_GENL_2022.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/c0aad76d-df10-4204-9383-d99bc27cdf9f/download/diccionario_espacios_participativos_genl_2022.csv",
+        "created": "2024-09-04T19:44:11.371895",
+        "last_modified": "2024-09-04T19:44:11.342076",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e07f3dd4-8450-45bc-b276-2b067cc17020",
+        "name": "Glosario_espacios_participativos_GENL_2022.xlsx",
+        "format": "XLSX",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/e07f3dd4-8450-45bc-b276-2b067cc17020/download/glosario_espacios_participativos_genl_2022.xlsx",
+        "created": "2024-09-04T19:51:25.794245",
+        "last_modified": "2024-09-04T19:51:25.762221",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "eae918c2-d167-43e5-a993-370f3cbecf66",
+        "name": "Espacios_participativos_GENL_2021.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/eae918c2-d167-43e5-a993-370f3cbecf66/download/espacios_participativos_genl_2021.csv",
+        "created": "2024-09-17T02:46:03.395336",
+        "last_modified": "2024-09-17T02:46:03.353287",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ec8d9810-061d-45a6-ac7f-c72d25986007",
+        "name": "Diccionario_espacios_participativos_GENL_2021.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/ec8d9810-061d-45a6-ac7f-c72d25986007/download/diccionario_espacios_participativos_genl_2021.csv",
+        "created": "2024-09-17T02:46:49.773645",
+        "last_modified": "2024-09-17T02:46:49.739137",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "17010c27-0d57-46e8-b826-00826b4bd542",
+        "name": "Glosario_espacios_participativos_GENL_2021.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c859ebde-9929-444b-b777-687f6727e102/resource/17010c27-0d57-46e8-b826-00826b4bd542/download/glosario_espacios_participativos_genl_2021.csv",
+        "created": "2024-09-17T02:47:41.103758",
+        "last_modified": "2024-09-17T02:47:41.070368",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "6585a2e2-9725-4f89-9005-965d0f4e619e",
+    "name": "hecho-por-tipo-de-violencia",
+    "title": "Hecho por tipo de Violencia",
+    "category": "ambito de violencia",
+    "organization": "Secretaría de las Mujeres",
+    "metadata_created": "2026-02-17T19:17:07.798752",
+    "metadata_modified": "2026-02-17T22:55:17.781017",
+    "resources": [
+      {
+        "id": "77003e0a-4644-4280-9ef9-76b2955e3750",
+        "name": "2025_registro_banavim_nuevoleon.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6585a2e2-9725-4f89-9005-965d0f4e619e/resource/77003e0a-4644-4280-9ef9-76b2955e3750/download/2025_registro_banavim_nuevoleon.csv",
+        "created": "2026-02-17T19:20:53.865980",
+        "last_modified": "2026-02-17T22:43:49.048988",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d5233a2e-4c4e-4e8f-a574-98e724c39582",
+        "name": "2025_diccionario_registro_banavim_nuevoleon.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6585a2e2-9725-4f89-9005-965d0f4e619e/resource/d5233a2e-4c4e-4e8f-a574-98e724c39582/download/2025_diccionario_registro_banavim_nuevoleon.csv",
+        "created": "2026-02-17T19:22:41.410539",
+        "last_modified": "2026-02-17T22:55:17.774880",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "9fbb70cb-8c37-4e25-ab5f-ba6386cb3d35",
+    "name": "cursos-de-capacitacion-de-genl",
+    "title": "Cursos de Capacitación del Instituto de Profesionalización",
+    "category": "Educación",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-08-02T17:15:47.826216",
+    "metadata_modified": "2026-02-05T00:04:59.722043",
+    "resources": [
+      {
+        "id": "58b3f2d9-2705-4c07-b533-990295a60942",
+        "name": "2025_Cursos_capacitacion_GENL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/9fbb70cb-8c37-4e25-ab5f-ba6386cb3d35/resource/58b3f2d9-2705-4c07-b533-990295a60942/download/2025_cursos-de-capacitacion.csv",
+        "created": "2025-10-27T22:56:04.051090",
+        "last_modified": "2025-10-27T22:56:04.026046",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b1e018d3-c5ca-4a25-aa4e-262e34051096",
+        "name": "2024_Cursos_capacitacion_GENL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/9fbb70cb-8c37-4e25-ab5f-ba6386cb3d35/resource/b1e018d3-c5ca-4a25-aa4e-262e34051096/download/1.-cursos_capacitacion_genl.csv",
+        "created": "2024-08-02T17:20:11.948234",
+        "last_modified": "2024-08-02T17:20:11.931275",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e08f4f9b-4ec6-4029-9caa-333eda59de09",
+        "name": "Diccionario_de_datos_Cursos_capacitacion_GENL",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/9fbb70cb-8c37-4e25-ab5f-ba6386cb3d35/resource/e08f4f9b-4ec6-4029-9caa-333eda59de09/download/diccionario_de_datos_cursos_capacitacion_genl.csv",
+        "created": "2024-08-07T21:39:23.542568",
+        "last_modified": "2024-08-07T21:39:23.521167",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "f05be10f-2276-4c3a-8b74-987943f81afa",
+    "name": "cultura-para-la-primera-infancia-2022-2023",
+    "title": "Datos de Cultura para la Primera Infancia 2022-2023",
+    "category": "Arte y Cultura",
+    "organization": "Secretaría de Cultura",
+    "metadata_created": "2024-08-09T16:47:46.942245",
+    "metadata_modified": "2026-02-05T00:04:09.610368",
+    "resources": [
+      {
+        "id": "decbc1d8-fa89-4c86-8499-a56f42c67988",
+        "name": "Cultura_primera _infancia_2022_2023.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/f05be10f-2276-4c3a-8b74-987943f81afa/resource/decbc1d8-fa89-4c86-8499-a56f42c67988/download/cultura_primera-_infancia_2022_2023.csv",
+        "created": "2024-08-09T16:53:06.612484",
+        "last_modified": "2024-08-09T16:53:06.590483",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "5b3248d0-e4ab-439b-9580-922515c0e92a",
+        "name": "Diccionario cultura_primera _infancia_2022_2023.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/f05be10f-2276-4c3a-8b74-987943f81afa/resource/5b3248d0-e4ab-439b-9580-922515c0e92a/download/diccionario-cultura_primera-_infancia_2022_2023.csv",
+        "created": "2024-08-09T16:55:10.172881",
+        "last_modified": "2024-08-09T16:55:10.151988",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "c2ebe7a6-d56a-4646-a816-ac5be728c9a4",
+    "name": "estadistica-de-quejas-peticiones-sugerencias-y-o-reconocimientos-del-sistema-opinared",
+    "title": "Estadística de quejas, peticiones, sugerencias y/o reconocimientos del sistema OpinaRed",
+    "category": "Asistencia Social",
+    "organization": "Contraloría y Transparencia Gubernamental",
+    "metadata_created": "2024-08-02T17:11:10.115873",
+    "metadata_modified": "2026-02-04T23:37:30.209172",
+    "resources": [
+      {
+        "id": "7353baa8-6ca0-4a9b-a111-a3790bd82d3c",
+        "name": "diccionario_datosopinared.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c2ebe7a6-d56a-4646-a816-ac5be728c9a4/resource/7353baa8-6ca0-4a9b-a111-a3790bd82d3c/download/diccionario_datosopinared.csv",
+        "created": "2024-08-12T19:33:48.525405",
+        "last_modified": "2025-10-01T19:48:38.152203",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "5c1c814e-f2f8-4740-8a3f-fcaf63c6c1c9",
+        "name": "opinared_enero_2023_diciembre_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c2ebe7a6-d56a-4646-a816-ac5be728c9a4/resource/5c1c814e-f2f8-4740-8a3f-fcaf63c6c1c9/download/opinared_enero_2023_diciembre_2025.csv",
+        "created": "2025-01-13T14:57:26.749792",
+        "last_modified": "2026-01-16T15:32:11.355891",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "14c01625-ef21-4c77-b75e-a9fd5e935e83",
+    "name": "solicitudes-de-acceso-a-la-informacion-recibidas-en-la-administracion-publica-estatal",
+    "title": "Solicitudes de acceso a la información recibidas en la Administración Pública Estatal",
+    "category": "Administración y Finanzas",
+    "organization": "Contraloría y Transparencia Gubernamental",
+    "metadata_created": "2024-08-02T17:32:05.461055",
+    "metadata_modified": "2026-02-04T23:34:32.945495",
+    "resources": [
+      {
+        "id": "dae5a206-3d7c-4e8e-bef2-1075bf653bbd",
+        "name": "Diccionario_Solicitudes.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/14c01625-ef21-4c77-b75e-a9fd5e935e83/resource/dae5a206-3d7c-4e8e-bef2-1075bf653bbd/download/diccionario_solicitudes.csv",
+        "created": "2024-08-07T23:45:23.347667",
+        "last_modified": "2025-07-01T15:37:47.801827",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "76962551-1354-460e-a241-88026ffc2d87",
+        "name": "Solicitudes_enero_2023_diciembre_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/14c01625-ef21-4c77-b75e-a9fd5e935e83/resource/76962551-1354-460e-a241-88026ffc2d87/download/solicitudes_enero_2023_diciembre_2025-4.csv",
+        "created": "2025-07-01T15:33:55.057468",
+        "last_modified": "2026-01-16T16:14:22.758775",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "c81d0b73-8aa5-44a1-aecd-868154fc1ff2",
+    "name": "atenciones070",
+    "title": "Atenciones del 070 por canal",
+    "category": "Asistencia Social",
+    "organization": "Secretaría de Participación Ciudadana",
+    "metadata_created": "2024-08-02T17:14:31.329275",
+    "metadata_modified": "2026-02-04T23:04:06.541250",
+    "resources": [
+      {
+        "id": "58f15d64-b226-4bcc-9f06-14af4765aac2",
+        "name": "2025_T4_Atenciones070.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/58f15d64-b226-4bcc-9f06-14af4765aac2/download/2025_t4_atenciones070.csv",
+        "created": "2026-02-04T23:03:56.015381",
+        "last_modified": "2026-02-04T23:03:55.984767",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "71957ab6-9df8-430d-baaa-72443a82d32c",
+        "name": "2025_T3_Atenciones070.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/71957ab6-9df8-430d-baaa-72443a82d32c/download/2025_t3_atenciones070.csv",
+        "created": "2026-02-04T23:02:46.538174",
+        "last_modified": "2026-02-04T23:02:46.508846",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "713337e7-1f95-4213-b0fe-1e505917841d",
+        "name": "2025_T2_Atenciones070.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/713337e7-1f95-4213-b0fe-1e505917841d/download/2025_t2_atenciones070.csv",
+        "created": "2025-09-01T14:41:54.561074",
+        "last_modified": "2025-09-01T14:41:54.533066",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c61e07e1-ee11-4617-be33-73e122a3ccb6",
+        "name": "2025_T1_Atenciones070.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/c61e07e1-ee11-4617-be33-73e122a3ccb6/download/2025_t1_atenciones070.csv",
+        "created": "2025-08-29T23:43:54.559210",
+        "last_modified": "2025-08-29T23:43:54.532372",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "cb26017b-f8bf-42ce-925f-32f9d0e0c5ac",
+        "name": "2025_t1_atenciones070.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/cb26017b-f8bf-42ce-925f-32f9d0e0c5ac/download/2025_t1_atenciones070.csv",
+        "created": "2025-09-01T14:35:36.595450",
+        "last_modified": "2025-09-01T14:35:36.555453",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "6b962a76-e4b5-43c9-a943-46f24300918d",
+        "name": "2024_T4_Atenciones070",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/6b962a76-e4b5-43c9-a943-46f24300918d/download/atenciones070_2024.csv",
+        "created": "2025-01-28T21:45:50.744003",
+        "last_modified": "2025-01-28T21:45:50.705239",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "dd7a7856-8dab-469f-9700-2134d284470a",
+        "name": "2024_T3_Atenciones070",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/dd7a7856-8dab-469f-9700-2134d284470a/download/2024_t3_atenciones070.csv",
+        "created": "2024-10-14T21:16:45.407106",
+        "last_modified": "2024-10-14T21:16:45.381916",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "8dd1fae8-d5cc-4b46-a61d-334682c3185b",
+        "name": "2024_T2_Atenciones070",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/8dd1fae8-d5cc-4b46-a61d-334682c3185b/download/atenciones070_2024.csv",
+        "created": "2024-08-02T17:20:30.215145",
+        "last_modified": "2024-08-02T17:20:30.194999",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "60a0b617-535f-4274-974f-ffddfc532632",
+        "name": "Diccionario_Atenciones070_2024.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/c81d0b73-8aa5-44a1-aecd-868154fc1ff2/resource/60a0b617-535f-4274-974f-ffddfc532632/download/diccionario_atenciones070_2024.csv",
+        "created": "2024-08-02T17:23:59.802556",
+        "last_modified": "2024-08-02T17:23:59.780363",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "72ffb92b-d1af-4485-8689-91f7df88b14b",
+    "name": "contratos-smpu",
+    "title": "Contratos SMPU",
+    "category": "Infraestructura",
+    "organization": "Secretaría de Movilidad y Planeación Urbana",
+    "metadata_created": "2025-07-09T23:53:51.115758",
+    "metadata_modified": "2026-02-04T22:27:37.808250",
+    "resources": [
+      {
+        "id": "5c3b236c-0585-4d31-a692-5983c7b45067",
+        "name": "Contratos_Licitacion.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/72ffb92b-d1af-4485-8689-91f7df88b14b/resource/5c3b236c-0585-4d31-a692-5983c7b45067/download/contratos_licitacion.csv",
+        "created": "2025-07-10T00:04:51.499869",
+        "last_modified": "2026-02-04T15:17:29.037588",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "1f77703a-0efa-4886-8286-6c9804b809e0",
+        "name": "diccionario_Contratos_Licitacion.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/72ffb92b-d1af-4485-8689-91f7df88b14b/resource/1f77703a-0efa-4886-8286-6c9804b809e0/download/diccionario_contratos_licitacion.csv",
+        "created": "2025-07-10T00:07:22.836745",
+        "last_modified": "2026-02-04T22:27:37.800265",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "11bd967c-6068-43d3-9a9a-872f45e137ec",
+    "name": "estadistica-penitenciaria-de-ingresos",
+    "title": "Estadística Penitenciaria de Ingresos",
+    "category": "Seguridad",
+    "organization": "Secretaría de Seguridad",
+    "metadata_created": "2025-11-12T16:33:31.143441",
+    "metadata_modified": "2026-01-14T20:12:35.188886",
+    "resources": [
+      {
+        "id": "48f51ecb-6de1-4db4-bf50-738fe1faa83a",
+        "name": "2024_2025_estadistica_penitenciaria_ingresos.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/11bd967c-6068-43d3-9a9a-872f45e137ec/resource/48f51ecb-6de1-4db4-bf50-738fe1faa83a/download/2024_2025_estadistica_penitenciaria_ingresos.csv",
+        "created": "2025-11-12T16:34:08.481078",
+        "last_modified": "2025-11-12T16:34:08.459772",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "cd9fed3d-6937-4dd1-8a71-e6a3875abb18",
+        "name": "diccionario_seguridad_ingresos.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/11bd967c-6068-43d3-9a9a-872f45e137ec/resource/cd9fed3d-6937-4dd1-8a71-e6a3875abb18/download/diccionario_seguridad_ingresos.csv",
+        "created": "2025-11-12T16:35:44.757947",
+        "last_modified": "2025-11-12T16:35:44.739044",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b73d486c-de6f-498d-b837-75b3eb724c1c",
+        "name": "ingresos_octubre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/11bd967c-6068-43d3-9a9a-872f45e137ec/resource/b73d486c-de6f-498d-b837-75b3eb724c1c/download/ingresos_octubre_2025.csv",
+        "created": "2026-01-14T20:11:41.362058",
+        "last_modified": "2026-01-14T20:11:41.336074",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ebd25bbc-9c20-41d4-86cf-033d7d760b0d",
+        "name": "ingresos_noviembre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/11bd967c-6068-43d3-9a9a-872f45e137ec/resource/ebd25bbc-9c20-41d4-86cf-033d7d760b0d/download/ingresos_noviembre_2025.csv",
+        "created": "2026-01-14T20:12:07.530543",
+        "last_modified": "2026-01-14T20:12:07.501030",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "89e654e1-d020-40fc-a009-944cfe85cd19",
+        "name": "ingresos_diciembre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/11bd967c-6068-43d3-9a9a-872f45e137ec/resource/89e654e1-d020-40fc-a009-944cfe85cd19/download/ingresos_diciembre_2025.csv",
+        "created": "2026-01-14T20:12:35.201351",
+        "last_modified": "2026-01-14T20:12:35.173781",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "463de2b2-1cc6-4ad3-9cfd-ed1ce5a4ca36",
+    "name": "estadistica-penitenciaria-egresos",
+    "title": "Estadística Penitenciaria de Egresos",
+    "category": "Seguridad",
+    "organization": "Secretaría de Seguridad",
+    "metadata_created": "2025-10-25T00:06:15.406481",
+    "metadata_modified": "2026-01-14T20:10:53.235525",
+    "resources": [
+      {
+        "id": "5c05f5dc-d91a-4de1-bca7-1f27d4ba2859",
+        "name": "2024_2025_estadistica_penitenciaria_egresos.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/463de2b2-1cc6-4ad3-9cfd-ed1ce5a4ca36/resource/5c05f5dc-d91a-4de1-bca7-1f27d4ba2859/download/2024_2025_estadistica_penitenciaria_egresos.csv",
+        "created": "2025-11-12T16:10:44.451869",
+        "last_modified": "2025-11-12T16:10:44.430879",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "197d8c49-56d0-48d6-86fe-78a916db9716",
+        "name": "diccionario_seguridad_egresos.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/463de2b2-1cc6-4ad3-9cfd-ed1ce5a4ca36/resource/197d8c49-56d0-48d6-86fe-78a916db9716/download/diccionario_seguridad_egresos.csv",
+        "created": "2025-11-12T16:13:36.397017",
+        "last_modified": "2025-11-12T16:13:36.373438",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d5b97d3f-76eb-444e-af29-b2ebde85f0aa",
+        "name": "egresos_octubre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/463de2b2-1cc6-4ad3-9cfd-ed1ce5a4ca36/resource/d5b97d3f-76eb-444e-af29-b2ebde85f0aa/download/egresos_octubre_2025.csv",
+        "created": "2026-01-14T20:09:00.458209",
+        "last_modified": "2026-01-14T20:09:00.430666",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e5d4c004-c105-4fc0-b864-f7a7f7da4ba5",
+        "name": "egresos_noviembre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/463de2b2-1cc6-4ad3-9cfd-ed1ce5a4ca36/resource/e5d4c004-c105-4fc0-b864-f7a7f7da4ba5/download/egresos_noviembre_2025.csv",
+        "created": "2026-01-14T20:09:37.271439",
+        "last_modified": "2026-01-14T20:10:06.047594",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "cf463701-3b26-429c-814b-0d945c86cc51",
+        "name": "egresos_diciembre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/463de2b2-1cc6-4ad3-9cfd-ed1ce5a4ca36/resource/cf463701-3b26-429c-814b-0d945c86cc51/download/egresos_diciembre_2025.csv",
+        "created": "2026-01-14T20:10:53.249159",
+        "last_modified": "2026-01-14T20:10:53.219091",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "6e3ab009-a9c4-41d0-8558-62d2c20c82c3",
+    "name": "estadistica-penitenciaria",
+    "title": "Estadística Penitenciaria",
+    "category": "Seguridad",
+    "organization": "Secretaría de Seguridad",
+    "metadata_created": "2025-10-03T21:46:35.231271",
+    "metadata_modified": "2026-01-14T20:07:44.795534",
+    "resources": [
+      {
+        "id": "1549eaea-436d-4254-85cc-15c980dfcf89",
+        "name": "2024_2025_estadistica_estatus_penitenciario_parte1",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6e3ab009-a9c4-41d0-8558-62d2c20c82c3/resource/1549eaea-436d-4254-85cc-15c980dfcf89/download/2024_2025_estadistica_estatus_penitenciario_parte1.csv",
+        "created": "2025-10-24T19:58:46.312214",
+        "last_modified": "2025-10-27T17:22:02.199415",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "9e521abe-32f5-423e-9b37-65291afa3155",
+        "name": "2024_2025_estadistica_estatus_penitenciario_parte2.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6e3ab009-a9c4-41d0-8558-62d2c20c82c3/resource/9e521abe-32f5-423e-9b37-65291afa3155/download/2024_2025_estadistica_estatus_penitenciario_parte2.csv",
+        "created": "2025-10-24T21:01:50.973859",
+        "last_modified": "2025-10-27T17:22:44.248230",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d743539b-fc05-42ef-82de-6efd71ab9ecf",
+        "name": "diccionario_seguridad_estatus_penitenciario.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6e3ab009-a9c4-41d0-8558-62d2c20c82c3/resource/d743539b-fc05-42ef-82de-6efd71ab9ecf/download/diccionario_seguridad_estatus_penitenciario.csv",
+        "created": "2025-10-24T18:37:10.522949",
+        "last_modified": "2025-10-27T17:04:48.707304",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f0115a56-a51e-4d18-bed1-28162b743e33",
+        "name": "estadistica_penitenciaria_octubre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6e3ab009-a9c4-41d0-8558-62d2c20c82c3/resource/f0115a56-a51e-4d18-bed1-28162b743e33/download/estadistica_penitenciaria_octubre_2025.csv",
+        "created": "2026-01-14T20:06:11.832791",
+        "last_modified": "2026-01-14T20:06:11.793238",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "305815b5-4b7a-4772-acef-74acefd333f6",
+        "name": "estadistica_penitenciaria_noviembre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6e3ab009-a9c4-41d0-8558-62d2c20c82c3/resource/305815b5-4b7a-4772-acef-74acefd333f6/download/estadistica_penitenciaria_noviembre_2025.csv",
+        "created": "2026-01-14T20:07:18.722987",
+        "last_modified": "2026-01-14T20:07:18.691236",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "1ea42bea-3cd5-454e-8413-04f91c94ed3e",
+        "name": "estadistica_penitenciaria_diciembre_2025",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6e3ab009-a9c4-41d0-8558-62d2c20c82c3/resource/1ea42bea-3cd5-454e-8413-04f91c94ed3e/download/estadistica_penitenciaria_diciembre_2025.csv",
+        "created": "2026-01-14T20:07:44.825486",
+        "last_modified": "2026-01-14T20:07:44.761033",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "cf7095a0-5126-4bad-a046-35d5ba2b7968",
+    "name": "rutas-por-empresa-stc-metrorrey",
+    "title": "Rutas por Empresa STC Metrorrey",
+    "category": "Movilidad",
+    "organization": "Sistema de Transporte Colectivo Metrorrey",
+    "metadata_created": "2025-11-13T00:51:03.292673",
+    "metadata_modified": "2025-11-13T01:19:32.083103",
+    "resources": [
+      {
+        "id": "48931e85-c95a-42ed-8022-345cdf755592",
+        "name": "RutaEmpresa_STCM_2024_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/cf7095a0-5126-4bad-a046-35d5ba2b7968/resource/48931e85-c95a-42ed-8022-345cdf755592/download/rutaempresa_stcm_2024_2025.csv",
+        "created": "2025-11-13T00:53:20.095793",
+        "last_modified": "2025-11-13T00:53:20.076076",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "662c58e9-26a6-4a3e-ae62-00a7c3bbd9bc",
+        "name": "Diccionario_RutaEmpresa_STCM_2024_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/cf7095a0-5126-4bad-a046-35d5ba2b7968/resource/662c58e9-26a6-4a3e-ae62-00a7c3bbd9bc/download/diccionario_rutaempresa_stcm_2024_2025.csv",
+        "created": "2025-11-13T01:18:29.687837",
+        "last_modified": "2025-11-13T01:18:29.664607",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "f540222f-dfd8-47d0-a10a-8527e89be84c",
+    "name": "unidades-del-stcm",
+    "title": "Unidades del STCM",
+    "category": "Movilidad",
+    "organization": "Sistema de Transporte Colectivo Metrorrey",
+    "metadata_created": "2025-11-13T00:57:36.670178",
+    "metadata_modified": "2025-11-13T01:02:30.464163",
+    "resources": [
+      {
+        "id": "5730db76-c92a-48b4-92be-1a0678fc7b29",
+        "name": "2024_2025_unidades_STCM.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/f540222f-dfd8-47d0-a10a-8527e89be84c/resource/5730db76-c92a-48b4-92be-1a0678fc7b29/download/2024_2025_unidades_stcm.csv",
+        "created": "2025-11-13T00:58:15.459745",
+        "last_modified": "2025-11-13T00:58:15.438568",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "f3fa5910-0ed5-4877-8917-4e8e604f887b",
+        "name": "diccionario_2024_2025_unidades_STCM.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/f540222f-dfd8-47d0-a10a-8527e89be84c/resource/f3fa5910-0ed5-4877-8917-4e8e604f887b/download/diccionario_2024_2025_unidades_stcm.csv",
+        "created": "2025-11-13T00:58:36.052189",
+        "last_modified": "2025-11-13T00:58:36.030749",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "a9cf7f08-2c6c-4f73-a304-7eb2406de1bf",
+    "name": "rutas-empresas",
+    "title": "Rutas y Empresas concesionarias",
+    "category": "Movilidad y Transporte",
+    "organization": "Instituto de Movilidad y Accesibilidad",
+    "metadata_created": "2025-11-12T23:47:00.132897",
+    "metadata_modified": "2025-11-13T00:06:18.786576",
+    "resources": [
+      {
+        "id": "f458e80b-dd42-404e-9063-880954de57ed",
+        "name": "diccionario_2024_2025_rutas_empresas_tp.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/a9cf7f08-2c6c-4f73-a304-7eb2406de1bf/resource/f458e80b-dd42-404e-9063-880954de57ed/download/diccionario_2024_2025_rutas_empresas_tp.csv",
+        "created": "2025-11-12T23:48:03.319416",
+        "last_modified": "2025-11-12T23:48:03.298508",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "63e767f5-a29a-44a3-83c8-e39378e92fc8",
+        "name": "2024_2025_rutas_empresas_tp.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/a9cf7f08-2c6c-4f73-a304-7eb2406de1bf/resource/63e767f5-a29a-44a3-83c8-e39378e92fc8/download/2024_2025_rutas_empresas_tp.csv",
+        "created": "2025-11-12T23:54:41.118272",
+        "last_modified": "2025-11-12T23:54:41.094516",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "74e80633-632c-4104-a84e-ce27f65802c4",
+    "name": "paradas-oficiales-stc-metrorrey",
+    "title": "Paradas Oficiales STC Metrorrey",
+    "category": "Movilidad y Transporte",
+    "organization": "Sistema de Transporte Colectivo Metrorrey",
+    "metadata_created": "2025-11-12T23:35:09.896581",
+    "metadata_modified": "2025-11-12T23:57:20.266890",
+    "resources": [
+      {
+        "id": "1606b958-185e-4dd9-b76e-29cf39f7c38b",
+        "name": "2024_2025_paradas_STCM.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/74e80633-632c-4104-a84e-ce27f65802c4/resource/1606b958-185e-4dd9-b76e-29cf39f7c38b/download/2024_2025_paradas_stcm.csv",
+        "created": "2025-11-12T23:36:26.555183",
+        "last_modified": "2025-11-12T23:36:26.539494",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "0d71cfa6-b410-4f00-9848-875e8a7aa06b",
+        "name": "diccionario_paradas_stcm_2024_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/74e80633-632c-4104-a84e-ce27f65802c4/resource/0d71cfa6-b410-4f00-9848-875e8a7aa06b/download/diccionario_paradas_stcm_2024_2025.csv",
+        "created": "2025-11-12T23:57:09.437479",
+        "last_modified": "2025-11-12T23:57:09.421140",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "8e733b18-0a06-4188-9041-9b6422b156b2",
+    "name": "paradas",
+    "title": "Paradas",
+    "category": "Movilidad y Transporte",
+    "organization": "Instituto de Movilidad y Accesibilidad",
+    "metadata_created": "2025-11-12T23:23:50.283731",
+    "metadata_modified": "2025-11-12T23:56:30.543883",
+    "resources": [
+      {
+        "id": "96a453fd-95ee-4ee2-9529-15824922a1c7",
+        "name": "2024_2025_paradas_tp.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8e733b18-0a06-4188-9041-9b6422b156b2/resource/96a453fd-95ee-4ee2-9529-15824922a1c7/download/2024_2025_paradas_tp.csv",
+        "created": "2025-11-12T23:28:18.483487",
+        "last_modified": "2025-11-12T23:37:11.231354",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e6955f5b-93d2-489c-b2c9-e46535f6915f",
+        "name": "diccionario_2024_2025_paradas_tp.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8e733b18-0a06-4188-9041-9b6422b156b2/resource/e6955f5b-93d2-489c-b2c9-e46535f6915f/download/diccionario_2024_2025_paradas_tp.csv",
+        "created": "2025-11-12T23:28:58.059254",
+        "last_modified": "2025-11-12T23:28:58.034332",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "89f1df19-85d2-4ac7-8239-dd2a852c7bb0",
+    "name": "2024_2025_tpe_publico_setme",
+    "title": "Información del Sistema de Transporte Público SETME 2024–2025",
+    "category": "Movilidad",
+    "organization": "Instituto de Movilidad y Accesibilidad",
+    "metadata_created": "2025-11-12T16:18:49.661289",
+    "metadata_modified": "2025-11-12T17:34:18.700799",
+    "resources": [
+      {
+        "id": "9e424286-f05e-4b8c-a687-15685af39ba9",
+        "name": "2024_2025_paradas_TP.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/89f1df19-85d2-4ac7-8239-dd2a852c7bb0/resource/9e424286-f05e-4b8c-a687-15685af39ba9/download/2024_2025_paradas_tp.csv",
+        "created": "2025-11-12T16:30:25.989110",
+        "last_modified": "2025-11-12T16:30:25.965592",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "0f8bc318-7141-49ba-ab70-248cb20750e0",
+        "name": "2024_2025_rutas_empresas_TP.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/89f1df19-85d2-4ac7-8239-dd2a852c7bb0/resource/0f8bc318-7141-49ba-ab70-248cb20750e0/download/2024_2025_rutas_empresas_tp.csv",
+        "created": "2025-11-12T16:33:43.530733",
+        "last_modified": "2025-11-12T16:33:43.502275",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a6073571-6080-4ff9-9687-bebbda398cf4",
+        "name": "2024_2025_unidades_TP.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/89f1df19-85d2-4ac7-8239-dd2a852c7bb0/resource/a6073571-6080-4ff9-9687-bebbda398cf4/download/2024_2025_unidades_tp.csv",
+        "created": "2025-11-12T16:34:20.858487",
+        "last_modified": "2025-11-12T16:34:20.828779",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "fcf89177-400e-498e-98cf-7074a92ccc35",
+        "name": "Diccionario_tpe_publico_SETME_2024_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/89f1df19-85d2-4ac7-8239-dd2a852c7bb0/resource/fcf89177-400e-498e-98cf-7074a92ccc35/download/diccionario_tpe_publico_setme_2024_2025.csv",
+        "created": "2025-11-12T16:37:20.712034",
+        "last_modified": "2025-11-12T16:37:20.682557",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "cf7eebca-83f2-40db-bd30-32de3f5dd425",
+    "name": "denuncias-de-maltrato-animal",
+    "title": "Denuncias de maltrato animal",
+    "category": "Medio Ambiente",
+    "organization": "Secretaría de Medio Ambiente",
+    "metadata_created": "2025-10-08T01:33:05.984711",
+    "metadata_modified": "2025-11-07T23:52:09.311325",
+    "resources": [
+      {
+        "id": "c2a90a85-4c62-44f1-b3af-49bdd96d0fe0",
+        "name": "2025_T3_maltrato_animal",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/cf7eebca-83f2-40db-bd30-32de3f5dd425/resource/c2a90a85-4c62-44f1-b3af-49bdd96d0fe0/download/2024_t4_2025_t1_t2_t3_maltrato_animal.csv",
+        "created": "2025-10-08T01:35:07.486620",
+        "last_modified": "2025-10-08T01:45:26.540048",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a9b47734-19b1-4ef5-9fae-039cb50fa6b5",
+        "name": "diccionario_denuncias_maltrato_animal.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/cf7eebca-83f2-40db-bd30-32de3f5dd425/resource/a9b47734-19b1-4ef5-9fae-039cb50fa6b5/download/diccionario_denuncias_maltrato_animal.csv",
+        "created": "2025-10-08T14:15:33.232398",
+        "last_modified": "2025-10-08T14:15:33.210270",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "17ef0ad5-dc1a-4f22-83b9-66cf6845be93",
+    "name": "fuentes-de-agua",
+    "title": "Fuentes de agua",
+    "category": "Infraestructura",
+    "organization": "Servicios de Agua y Drenaje de Monterrey, I.P.D.",
+    "metadata_created": "2025-10-27T14:46:41.329029",
+    "metadata_modified": "2025-11-07T23:51:12.700151",
+    "resources": [
+      {
+        "id": "f93cda62-eae4-4aaf-9a44-f54afabb50b7",
+        "name": "2025_fuentes_agua.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/17ef0ad5-dc1a-4f22-83b9-66cf6845be93/resource/f93cda62-eae4-4aaf-9a44-f54afabb50b7/download/2025_fuentes_agua.csv",
+        "created": "2025-10-27T14:47:17.468250",
+        "last_modified": "2025-10-27T14:47:17.445236",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4d9ef6da-84e3-4aef-bc94-9f4843716f13",
+        "name": "diccionario_fuentes_agua.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/17ef0ad5-dc1a-4f22-83b9-66cf6845be93/resource/4d9ef6da-84e3-4aef-bc94-9f4843716f13/download/diccionario_fuentes_agua.csv",
+        "created": "2025-10-27T14:47:41.778281",
+        "last_modified": "2025-10-27T14:47:41.754927",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "ac8539c7-0c4b-4845-a53c-58f46c90cf7c",
+    "name": "uso-de-agua",
+    "title": "Uso de agua",
+    "category": "Infraestructura",
+    "organization": "Servicios de Agua y Drenaje de Monterrey, I.P.D.",
+    "metadata_created": "2025-10-27T14:44:19.873458",
+    "metadata_modified": "2025-11-07T23:50:41.936734",
+    "resources": [
+      {
+        "id": "81bed7a2-ed69-4ad6-93cb-d7e244084df1",
+        "name": "2024_2025_uso_agua.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ac8539c7-0c4b-4845-a53c-58f46c90cf7c/resource/81bed7a2-ed69-4ad6-93cb-d7e244084df1/download/2024_2025_uso_agua.csv",
+        "created": "2025-10-27T14:44:57.538160",
+        "last_modified": "2025-10-27T14:44:57.515339",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b4ed7b81-dd89-4566-b6ad-a5491e5fc314",
+        "name": "diccionario_uso_agua.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ac8539c7-0c4b-4845-a53c-58f46c90cf7c/resource/b4ed7b81-dd89-4566-b6ad-a5491e5fc314/download/diccionario_uso_agua.csv",
+        "created": "2025-10-27T14:45:48.204378",
+        "last_modified": "2025-10-27T14:45:48.181781",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "2f7dcf16-be70-4ce7-a92e-b9c3f4850016",
+    "name": "agua-reutilizada",
+    "title": "Agua reutilizada",
+    "category": "Infraestructura",
+    "organization": "Servicios de Agua y Drenaje de Monterrey, I.P.D.",
+    "metadata_created": "2025-10-27T16:59:40.281805",
+    "metadata_modified": "2025-11-07T23:50:04.594133",
+    "resources": [
+      {
+        "id": "97f3b61c-8050-4a0b-9ee6-3033f82d0e1d",
+        "name": "agua_reutilizada.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/2f7dcf16-be70-4ce7-a92e-b9c3f4850016/resource/97f3b61c-8050-4a0b-9ee6-3033f82d0e1d/download/agua_reutilizada.csv",
+        "created": "2025-10-27T17:01:46.970486",
+        "last_modified": "2025-10-27T17:59:10.541596",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "598dadac-2ebc-4c53-b6f3-9a921b4cd691",
+        "name": "diccionario_agua_reutilizada.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/2f7dcf16-be70-4ce7-a92e-b9c3f4850016/resource/598dadac-2ebc-4c53-b6f3-9a921b4cd691/download/diccionario_agua_reutilizada.csv",
+        "created": "2025-10-27T17:02:18.812876",
+        "last_modified": "2025-10-27T17:02:18.790348",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "3a92b539-2135-4dd6-b8ac-9168da34a700",
+    "name": "infraestructura-de-agua",
+    "title": "Infraestructura de agua",
+    "category": "Infraestructura",
+    "organization": "Servicios de Agua y Drenaje de Monterrey, I.P.D.",
+    "metadata_created": "2025-10-27T14:38:33.942863",
+    "metadata_modified": "2025-11-07T23:49:27.773184",
+    "resources": [
+      {
+        "id": "5c9150ca-95a2-4dd6-a007-1ab07e1f5f5c",
+        "name": "2025_infraestructura_agua.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/3a92b539-2135-4dd6-b8ac-9168da34a700/resource/5c9150ca-95a2-4dd6-a007-1ab07e1f5f5c/download/2025_infraestructura_agua.csv",
+        "created": "2025-10-27T14:41:31.557640",
+        "last_modified": "2025-10-27T14:41:31.491289",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "95c01bff-8b8d-48ab-a8b0-6e1d8cee6954",
+        "name": "diccionario_infraestructura_agua.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/3a92b539-2135-4dd6-b8ac-9168da34a700/resource/95c01bff-8b8d-48ab-a8b0-6e1d8cee6954/download/diccionario_infraestructura_agua.csv",
+        "created": "2025-10-27T14:42:33.376542",
+        "last_modified": "2025-10-27T14:42:33.354530",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "e390bce6-5e3d-4b71-8f79-23c6cccec0d4",
+    "name": "convenios",
+    "title": "Convenios",
+    "category": "Administración",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-08-02T17:53:37.370998",
+    "metadata_modified": "2025-10-27T23:22:00.779487",
+    "resources": [
+      {
+        "id": "33aecb9a-7900-486c-8555-100c8632ffb9",
+        "name": "2024_Convenios_colaboracion.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e390bce6-5e3d-4b71-8f79-23c6cccec0d4/resource/33aecb9a-7900-486c-8555-100c8632ffb9/download/2024_convenios_de_colaboracion.csv",
+        "created": "2024-08-02T17:55:19.568385",
+        "last_modified": "2025-10-27T23:12:12.037186",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b7f1599f-81e7-4778-a187-564a9a500c5e",
+        "name": "Diccionario_convenios_colaboracion.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e390bce6-5e3d-4b71-8f79-23c6cccec0d4/resource/b7f1599f-81e7-4778-a187-564a9a500c5e/download/diccionario_convenios_colaboracion.csv",
+        "created": "2024-08-09T16:21:37.499230",
+        "last_modified": "2024-08-09T16:21:37.477144",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "e6d1d7af-eafa-418f-97f2-984e337e1c9a",
+    "name": "sitios-de-internet-gratuitos-conectatenl",
+    "title": "Sitios de Internet Gratuitos ConectateNL",
+    "category": "Administración",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-08-09T14:35:00.977223",
+    "metadata_modified": "2025-10-27T23:06:02.602619",
+    "resources": [
+      {
+        "id": "eac1299d-7683-44e8-8176-d1279373b174",
+        "name": "2025_Sitios_internet_gratuitos_CONECTATENL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e6d1d7af-eafa-418f-97f2-984e337e1c9a/resource/eac1299d-7683-44e8-8176-d1279373b174/download/sitios_internet_gratuitos_conectatenl-2025.csv",
+        "created": "2025-10-06T16:31:11.943939",
+        "last_modified": "2025-10-06T16:31:11.910874",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4d7c34c0-eee1-46f8-867d-943c7400d257",
+        "name": "2024_Sitios_Internet_Gratuitos_CONECTATENL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e6d1d7af-eafa-418f-97f2-984e337e1c9a/resource/4d7c34c0-eee1-46f8-867d-943c7400d257/download/sitios_internet_gratuitos_conectatenl.csv",
+        "created": "2024-08-09T14:37:25.881622",
+        "last_modified": "2024-08-09T14:37:25.864742",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a5f9a4e3-d188-465a-81ba-16f294cacef5",
+        "name": "Diccionario_Sitios_Internet_Gratuitos_CONECTATENL.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/e6d1d7af-eafa-418f-97f2-984e337e1c9a/resource/a5f9a4e3-d188-465a-81ba-16f294cacef5/download/diccionario_sitios_internet_gratuitos_conectatenl.csv",
+        "created": "2024-08-09T14:39:29.472764",
+        "last_modified": "2024-08-09T14:39:29.455077",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "044a85f6-0f35-4f07-9261-486d7ead2681",
+    "name": "resultados-clima-laboral",
+    "title": "Resultados del clima laboral de la Administración Pública Estatal",
+    "category": "Administración",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-08-02T17:18:13.960774",
+    "metadata_modified": "2025-10-13T18:12:59.718433",
+    "resources": [
+      {
+        "id": "7808916e-036f-4147-965f-fa62658225b1",
+        "name": "Resultados_satisfaccion_laboral_2022_2023_2024.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/044a85f6-0f35-4f07-9261-486d7ead2681/resource/7808916e-036f-4147-965f-fa62658225b1/download/resultados_satisfaccionlaboral_2022_2023_2024.csv",
+        "created": "2025-10-06T20:30:19.396812",
+        "last_modified": "2025-10-06T20:30:19.365954",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e7c37785-1236-42b7-81ff-05304ae52dea",
+        "name": "Resultados_SatisfaccionLaboral_2022_2023.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/044a85f6-0f35-4f07-9261-486d7ead2681/resource/e7c37785-1236-42b7-81ff-05304ae52dea/download/resultados_satisfaccionlaboral_2022_2023.csv",
+        "created": "2024-08-15T21:48:13.757072",
+        "last_modified": "2024-08-15T21:48:13.731345",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "320b8c25-4b6f-41e0-bc19-0ee61bf3f70d",
+        "name": "Diccionario_Resultados_SatisfaccionLaboral_2022_2023.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/044a85f6-0f35-4f07-9261-486d7ead2681/resource/320b8c25-4b6f-41e0-bc19-0ee61bf3f70d/download/diccionario_resultados_satisfaccionlaboral_2022_2023.csv",
+        "created": "2024-08-15T21:38:39.495073",
+        "last_modified": "2024-08-15T21:38:39.473632",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "6c7a4088-c9a3-4e04-bb59-81d2e75a35f0",
+    "name": "directorio-de-servicios-ofrecidos-en-pabellon-ciudadano",
+    "title": "Directorio de Trámites y Servicios en Pabellón Ciudadano",
+    "category": "Administración",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-08-09T20:26:26.181166",
+    "metadata_modified": "2025-10-13T17:07:59.449070",
+    "resources": [
+      {
+        "id": "ee24828c-2d75-47c5-b0cb-22d71289cf64",
+        "name": "Directorio_servicios_Pabellon_Ciudadano.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6c7a4088-c9a3-4e04-bb59-81d2e75a35f0/resource/ee24828c-2d75-47c5-b0cb-22d71289cf64/download/directorio_servicios_pabellon_ciudadano.csv",
+        "created": "2024-08-09T20:28:10.439815",
+        "last_modified": "2024-08-09T20:28:10.416585",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "fe71a84d-c44c-4575-9475-917a29ded311",
+        "name": "Diccionario_de_datos_directorio_servicios_Pabellon_Ciudadano.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/6c7a4088-c9a3-4e04-bb59-81d2e75a35f0/resource/fe71a84d-c44c-4575-9475-917a29ded311/download/diccionario_de_datos_directorio_servicios_pabellon_ciudadano.csv",
+        "created": "2024-08-09T20:29:04.550535",
+        "last_modified": "2024-08-09T20:29:04.528437",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "7d2dc127-4073-42a0-b078-f83de1ace222",
+    "name": "personal-de-las-dependencias-por-rango-de-edad",
+    "title": "Personal de las dependencias por rango de edad",
+    "category": "Administración",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-08-02T17:32:38.206154",
+    "metadata_modified": "2025-10-13T16:54:31.512067",
+    "resources": [
+      {
+        "id": "a4323d67-bded-4901-a497-f62b370eda6c",
+        "name": "Personal_Dependencias_ Edad.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/7d2dc127-4073-42a0-b078-f83de1ace222/resource/a4323d67-bded-4901-a497-f62b370eda6c/download/2.-personal_dependencias_-edad.csv",
+        "created": "2024-08-02T17:34:04.487189",
+        "last_modified": "2024-08-02T17:34:04.464499",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "a8651479-95e7-472d-a8ad-634014ce1877",
+        "name": "Diccionario_de_datos_Personal_Dependencias_ Edad.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/7d2dc127-4073-42a0-b078-f83de1ace222/resource/a8651479-95e7-472d-a8ad-634014ce1877/download/diccionario_de_datos_personal_dependencias_-edad.csv",
+        "created": "2024-08-07T21:57:03.815013",
+        "last_modified": "2024-08-07T21:57:03.793751",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "ae22c2a0-5530-4552-ab32-3e360f8bdf69",
+    "name": "personal-de-las-dependencias-gubernamentales-por-sexo",
+    "title": "Personas servidoras públicas del Gobierno del Estado de Nuevo León.",
+    "category": "Administración y Finanzas",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-08-02T17:39:12.063073",
+    "metadata_modified": "2025-10-13T16:54:25.874037",
+    "resources": [
+      {
+        "id": "7b0af62d-94e3-4bf2-93e7-5f4f6381624d",
+        "name": "Personal_Dependencias_2022_2023_2024",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ae22c2a0-5530-4552-ab32-3e360f8bdf69/resource/7b0af62d-94e3-4bf2-93e7-5f4f6381624d/download/personal_dependencias_2022_2023_2024.csv",
+        "created": "2024-08-02T17:42:16.235984",
+        "last_modified": "2024-10-21T16:18:04.240437",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "208df8ef-909a-44c0-8043-1f31c0ec1480",
+        "name": "Diccionario de datos Personal de las Dependencias",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ae22c2a0-5530-4552-ab32-3e360f8bdf69/resource/208df8ef-909a-44c0-8043-1f31c0ec1480/download/diccionario_de_datos_personal_dependencias_2022_2023_2024.csv",
+        "created": "2024-08-07T21:48:22.115095",
+        "last_modified": "2024-10-21T16:21:19.766394",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "544da164-1bc7-4c41-8758-fc4f572ec1aa",
+    "name": "consulta-general-y-especialidades",
+    "title": "Consulta General y Especialidades",
+    "category": "Salud",
+    "organization": "Secretaría de Salud",
+    "metadata_created": "2025-10-09T21:04:50.942821",
+    "metadata_modified": "2025-10-10T22:53:40.763016",
+    "resources": [
+      {
+        "id": "31aaff3d-cb07-4dd7-a676-97468589953e",
+        "name": "2024_2025_consulta_general_y_especialidad_parte1.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/31aaff3d-cb07-4dd7-a676-97468589953e/download/2024_2025_consulta_general_y_especialidad_parte1.csv",
+        "created": "2025-10-09T22:59:43.292618",
+        "last_modified": "2025-10-09T22:59:43.231220",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "faba7852-cfd1-420a-8b3c-f53963c2cf7d",
+        "name": "2024_2025_consulta_general_y_especialidad_parte2.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/faba7852-cfd1-420a-8b3c-f53963c2cf7d/download/2024_2025_consulta_general_y_especialidad_parte2.csv",
+        "created": "2025-10-09T23:00:45.748012",
+        "last_modified": "2025-10-09T23:00:45.681040",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d85df189-00ac-4d4a-9069-04f47e10bbb5",
+        "name": "2024_2025_consulta_general_y_especialidad_parte3.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/d85df189-00ac-4d4a-9069-04f47e10bbb5/download/2024_2025_consulta_general_y_especialidad_parte3.csv",
+        "created": "2025-10-09T23:01:47.133834",
+        "last_modified": "2025-10-09T23:01:47.073780",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "7503b4a4-8f46-4beb-8d5a-0afaf05b9851",
+        "name": "2024_2025_consulta_general_y_especialidad_parte4.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/7503b4a4-8f46-4beb-8d5a-0afaf05b9851/download/2024_2025_consulta_general_y_especialidad_parte4.csv",
+        "created": "2025-10-09T23:02:46.647755",
+        "last_modified": "2025-10-09T23:02:46.586368",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "e7e593d2-a0a2-4d38-9dc4-a9d5a2706e43",
+        "name": "2024_2025_consulta_general_y_especialidad_parte5.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/e7e593d2-a0a2-4d38-9dc4-a9d5a2706e43/download/2024_2025_consulta_general_y_especialidad_parte5.csv",
+        "created": "2025-10-09T23:03:44.476907",
+        "last_modified": "2025-10-09T23:03:44.407635",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4f31cf0a-4b71-4e90-94dd-5ca115f7310f",
+        "name": "2024_2025_consulta_general_y_especialidad_parte6.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/4f31cf0a-4b71-4e90-94dd-5ca115f7310f/download/2024_2025_consulta_general_y_especialidad_parte6.csv",
+        "created": "2025-10-09T23:04:42.761818",
+        "last_modified": "2025-10-09T23:04:42.697825",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "38dbcd0c-d6de-42d7-9b58-d0be7d0eab99",
+        "name": "2024_2025_consulta_general_y_especialidad_parte7.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/38dbcd0c-d6de-42d7-9b58-d0be7d0eab99/download/2024_2025_consulta_general_y_especialidad_parte7.csv",
+        "created": "2025-10-09T23:05:39.192279",
+        "last_modified": "2025-10-09T23:05:39.125488",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "af2c51e7-fc89-4f6e-9fa5-c196986baa7d",
+        "name": "2024_2025_consulta_general_y_especialidad_parte8.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/af2c51e7-fc89-4f6e-9fa5-c196986baa7d/download/2024_2025_consulta_general_y_especialidad_parte8.csv",
+        "created": "2025-10-09T23:07:59.217496",
+        "last_modified": "2025-10-09T23:07:59.144786",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "2330dd0f-7d7d-4267-8f3f-d527a9a6e687",
+        "name": "2024_2025_consulta_general_y_especialidad_parte9.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/2330dd0f-7d7d-4267-8f3f-d527a9a6e687/download/2024_2025_consulta_general_y_especialidad_parte9.csv",
+        "created": "2025-10-09T23:09:10.220105",
+        "last_modified": "2025-10-09T23:09:10.151956",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "4db54a97-cade-4687-b7b4-8e0b58e5ca51",
+        "name": "2024_2025_consulta_general_y_especialidad_parte10.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/4db54a97-cade-4687-b7b4-8e0b58e5ca51/download/2024_2025_consulta_general_y_especialidad_parte10.csv",
+        "created": "2025-10-09T23:10:23.244441",
+        "last_modified": "2025-10-09T23:10:23.170083",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "bc82db32-ed4a-4cf0-b2f0-cb0e73429018",
+        "name": "2024_2025_consulta_general_y_especialidad_parte11.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/bc82db32-ed4a-4cf0-b2f0-cb0e73429018/download/2024_2025_consulta_general_y_especialidad_parte11.csv",
+        "created": "2025-10-09T23:11:38.785465",
+        "last_modified": "2025-10-09T23:11:38.710083",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "474c0882-dc83-4377-beaa-19ee114af3f0",
+        "name": "2024_2025_consulta_general_y_especialidad_parte12.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/474c0882-dc83-4377-beaa-19ee114af3f0/download/2024_2025_consulta_general_y_especialidad_parte12.csv",
+        "created": "2025-10-09T23:21:25.049386",
+        "last_modified": "2025-10-09T23:21:24.972388",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "385e710e-6cbe-4742-a911-019873b6250b",
+        "name": "2024_2025_consulta_general_y_especialidad_parte13.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/385e710e-6cbe-4742-a911-019873b6250b/download/2024_2025_consulta_general_y_especialidad_parte13.csv",
+        "created": "2025-10-09T23:22:24.770682",
+        "last_modified": "2025-10-09T23:22:24.694154",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b72e9429-964e-4319-9695-2ef9a26bcb3f",
+        "name": "2024_2025_consulta_general_y_especialidad_parte14.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/b72e9429-964e-4319-9695-2ef9a26bcb3f/download/2024_2025_consulta_general_y_especialidad_parte14.csv",
+        "created": "2025-10-09T23:23:23.833278",
+        "last_modified": "2025-10-09T23:23:23.752815",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "fc9661d7-304f-4a6b-8d43-2b928d62d6e4",
+        "name": "2024_2025_consulta_general_y_especialidad_parte15.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/fc9661d7-304f-4a6b-8d43-2b928d62d6e4/download/2024_2025_consulta_general_y_especialidad_parte15.csv",
+        "created": "2025-10-09T23:24:29.962069",
+        "last_modified": "2025-10-09T23:24:29.885499",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "825fcec0-e44e-4412-92ba-bd7c7e761fbd",
+        "name": "2024_2025_consulta_general_y_especialidad_parte16.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/825fcec0-e44e-4412-92ba-bd7c7e761fbd/download/2024_2025_consulta_general_y_especialidad_parte16.csv",
+        "created": "2025-10-09T23:25:30.125759",
+        "last_modified": "2025-10-09T23:25:30.046538",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "ec23496c-7cb1-4fc8-a770-d00fb36df442",
+        "name": "2024_2025_consulta_general_y_especialidad_parte17.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/ec23496c-7cb1-4fc8-a770-d00fb36df442/download/2024_2025_consulta_general_y_especialidad_parte17.csv",
+        "created": "2025-10-09T23:26:26.845870",
+        "last_modified": "2025-10-09T23:26:26.763497",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "3d7d427b-f752-4f77-b8e0-021090b08c84",
+        "name": "2024_2025_consulta_general_y_especialidad_parte18.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/3d7d427b-f752-4f77-b8e0-021090b08c84/download/2024_2025_consulta_general_y_especialidad_parte18.csv",
+        "created": "2025-10-09T23:27:27.361734",
+        "last_modified": "2025-10-09T23:27:27.276125",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "aee620de-6147-4805-9fac-67b292bf50c7",
+        "name": "2024_2025_consulta_general_y_especialidad_parte19.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/aee620de-6147-4805-9fac-67b292bf50c7/download/2024_2025_consulta_general_y_especialidad_parte19.csv",
+        "created": "2025-10-09T23:28:25.493095",
+        "last_modified": "2025-10-09T23:28:25.409265",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "879bfb84-09c0-4f0b-bcf6-ff9d484e5eee",
+        "name": "2024_2025_consulta_general_y_especialidad_parte20.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/879bfb84-09c0-4f0b-bcf6-ff9d484e5eee/download/2024_2025_consulta_general_y_especialidad_parte20.csv",
+        "created": "2025-10-09T23:29:23.714251",
+        "last_modified": "2025-10-09T23:29:23.624355",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "1c160354-6c8c-4360-acc0-8d1789e7cff0",
+        "name": "2024_2025_consulta_general_y_especialidad_parte21.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/1c160354-6c8c-4360-acc0-8d1789e7cff0/download/2024_2025_consulta_general_y_especialidad_parte21.csv",
+        "created": "2025-10-09T23:30:10.678313",
+        "last_modified": "2025-10-09T23:30:10.588889",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "89d09bdc-1ad4-4172-9ba1-e51114cc8904",
+        "name": "diccionario_2024_2025_consulta_general_y_especialidad.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/544da164-1bc7-4c41-8758-fc4f572ec1aa/resource/89d09bdc-1ad4-4172-9ba1-e51114cc8904/download/diccionario_2024_2025_consulta_general_y_especialidad.csv",
+        "created": "2025-10-10T18:56:08.587290",
+        "last_modified": "2025-10-10T18:56:08.528654",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "d1b33c57-00a8-4c6b-96a5-e421d0754fa7",
+    "name": "planificacion-familiar",
+    "title": "Planificación Familiar",
+    "category": "Perspectiva de Género e Interseccionalidad",
+    "organization": "Secretaría de Salud",
+    "metadata_created": "2025-10-09T23:39:34.701700",
+    "metadata_modified": "2025-10-10T22:53:16.139251",
+    "resources": [
+      {
+        "id": "15dd6494-a9db-440a-a38c-c21f0517ac80",
+        "name": "2024_2025_planificacion_familiar.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/d1b33c57-00a8-4c6b-96a5-e421d0754fa7/resource/15dd6494-a9db-440a-a38c-c21f0517ac80/download/2024_2025_planificacion_familiar.csv",
+        "created": "2025-10-09T23:40:42.619299",
+        "last_modified": "2025-10-09T23:40:42.596313",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "442cb2d2-1b18-4039-af4a-8f1a481a1d02",
+        "name": "diccionario_2024_2025_planificacion_familiar.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/d1b33c57-00a8-4c6b-96a5-e421d0754fa7/resource/442cb2d2-1b18-4039-af4a-8f1a481a1d02/download/diccionario_2024_2025_planificacion_familiar.csv",
+        "created": "2025-10-10T19:04:08.048152",
+        "last_modified": "2025-10-10T19:04:08.025006",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "0bbed872-7388-4510-b21d-9924be3852e8",
+    "name": "salud-bucal",
+    "title": "Salud Bucal",
+    "category": "Salud",
+    "organization": "Secretaría de Salud",
+    "metadata_created": "2025-10-09T23:49:43.483565",
+    "metadata_modified": "2025-10-10T22:52:55.678799",
+    "resources": [
+      {
+        "id": "eb5a6c8e-8e9e-4e8f-95a3-34871c0f39ea",
+        "name": "2024_2025_salud_bucal_parte1.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/0bbed872-7388-4510-b21d-9924be3852e8/resource/eb5a6c8e-8e9e-4e8f-95a3-34871c0f39ea/download/2024_2025_salud_bucal_parte1.csv",
+        "created": "2025-10-09T23:51:52.145841",
+        "last_modified": "2025-10-09T23:51:52.121708",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "c6fd5b1f-c215-4af3-b467-535e91e4c8b7",
+        "name": "2024_2025_salud_bucal_Parte2.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/0bbed872-7388-4510-b21d-9924be3852e8/resource/c6fd5b1f-c215-4af3-b467-535e91e4c8b7/download/2024_2025_salud_bucal_parte2.csv",
+        "created": "2025-10-09T23:52:56.469079",
+        "last_modified": "2025-10-09T23:52:56.444208",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "809cb999-9463-4a9d-905f-53443e713e7e",
+        "name": "diccionario_2024_2025_salud_bucal.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/0bbed872-7388-4510-b21d-9924be3852e8/resource/809cb999-9463-4a9d-905f-53443e713e7e/download/diccionario_2024_2025_salud_bucal.csv",
+        "created": "2025-10-10T19:06:03.888313",
+        "last_modified": "2025-10-10T19:06:03.863067",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "ca2d8b92-af03-4d7f-a0f3-d5799b8e6795",
+    "name": "salud-mental",
+    "title": "Salud Mental",
+    "category": "Salud",
+    "organization": "Secretaría de Salud",
+    "metadata_created": "2025-10-10T00:02:26.351448",
+    "metadata_modified": "2025-10-10T22:52:30.019188",
+    "resources": [
+      {
+        "id": "ec081a09-31f5-40b9-86e6-9ebe8333a688",
+        "name": "2024_2025_salud_mental.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ca2d8b92-af03-4d7f-a0f3-d5799b8e6795/resource/ec081a09-31f5-40b9-86e6-9ebe8333a688/download/2024_2025_salud_mental.csv",
+        "created": "2025-10-10T00:03:51.145473",
+        "last_modified": "2025-10-10T22:41:10.269285",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d87a452c-6d71-4bbc-a952-f629d4d67584",
+        "name": "diccionario_2024_2025_salud_mental.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/ca2d8b92-af03-4d7f-a0f3-d5799b8e6795/resource/d87a452c-6d71-4bbc-a952-f629d4d67584/download/diccionario_2024_2025_salud_mental.csv",
+        "created": "2025-10-10T19:00:27.122277",
+        "last_modified": "2025-10-10T19:00:27.097063",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "8ec78eac-a5c4-49d4-81e1-a1dc4dc71241",
+    "name": "politica-de-publicacion-ocds-sanl-dgas-nl",
+    "title": "Política de Publicación de Datos Abiertos - Secretaría de Administración del Gobierno del Estado de Nuevo León",
+    "category": "Administración",
+    "organization": "Secretaría de Administración",
+    "metadata_created": "2024-11-11T13:05:00.876667",
+    "metadata_modified": "2025-09-23T17:18:56.509475",
+    "resources": [
+      {
+        "id": "60f6f2da-0e54-4a33-9503-7b0160f0809d",
+        "name": "Política de publicación - DGAS Datos Abiertos OCDS.pdf",
+        "format": "PDF",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/8ec78eac-a5c4-49d4-81e1-a1dc4dc71241/resource/60f6f2da-0e54-4a33-9503-7b0160f0809d/download/politica-de-publicacion-dgas-datos-abiertos-ocds.pdf",
+        "created": "2024-11-11T13:07:34.683029",
+        "last_modified": "2024-11-11T13:07:34.644575",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "5f5ab64f-49e8-40e1-8c3c-5d3b7e0e55d2",
+    "name": "diagnosticos-comunitarios-2024",
+    "title": "Diagnósticos comunitarios",
+    "category": "Participación",
+    "organization": "Secretaría de Participación Ciudadana",
+    "metadata_created": "2024-08-07T20:57:22.508429",
+    "metadata_modified": "2025-09-18T18:36:44.840881",
+    "resources": [
+      {
+        "id": "44c54f18-25fb-491a-998a-c6cb146df78a",
+        "name": "2025_CT1_diagnosticos_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5f5ab64f-49e8-40e1-8c3c-5d3b7e0e55d2/resource/44c54f18-25fb-491a-998a-c6cb146df78a/download/2025_ct1_diagnosticos_comunitarios.csv",
+        "created": "2025-06-06T19:31:41.525000",
+        "last_modified": "2025-06-06T19:31:41.484985",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "84a528f3-2a01-4c22-8956-c6b57df2eece",
+        "name": "2024_CT3_diagnosticos_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5f5ab64f-49e8-40e1-8c3c-5d3b7e0e55d2/resource/84a528f3-2a01-4c22-8956-c6b57df2eece/download/2024_ct3_diagnosticos_comunitarios.csv",
+        "created": "2025-01-23T18:51:53.219720",
+        "last_modified": "2025-05-08T21:31:55.596312",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "b029260e-275d-4fab-a417-83a5dc93ece9",
+        "name": "2024_CT2_diagnosticos_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5f5ab64f-49e8-40e1-8c3c-5d3b7e0e55d2/resource/b029260e-275d-4fab-a417-83a5dc93ece9/download/diagnosticos_comunitarios_2024.csv",
+        "created": "2024-10-23T21:36:49.689129",
+        "last_modified": "2024-10-23T21:36:49.656330",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "8a81b023-fdea-43f5-a453-b09e3d8f41e6",
+        "name": "2024_CT1_diagnosticos_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5f5ab64f-49e8-40e1-8c3c-5d3b7e0e55d2/resource/8a81b023-fdea-43f5-a453-b09e3d8f41e6/download/diagnosticos_comunitarios_2024.csv",
+        "created": "2024-08-07T20:57:34.077241",
+        "last_modified": "2024-08-09T23:45:07.460983",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "d4898934-8fc0-4779-9686-da1fb45be733",
+        "name": "diccionario_diagnosticos_comunitarios.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/5f5ab64f-49e8-40e1-8c3c-5d3b7e0e55d2/resource/d4898934-8fc0-4779-9686-da1fb45be733/download/diccionario_diagnosticos_comunitarios_2024.csv",
+        "created": "2024-08-07T20:57:53.361722",
+        "last_modified": "2024-08-09T23:45:27.400525",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  },
+  {
+    "id": "055312e0-7f27-4835-9e6e-1dae93e33580",
+    "name": "audiencias-publicas",
+    "title": "Audiencias Públicas",
+    "category": "Participación",
+    "organization": "Secretaría de Participación Ciudadana",
+    "metadata_created": "2024-08-02T17:02:19.653927",
+    "metadata_modified": "2025-09-17T16:41:27.326474",
+    "resources": [
+      {
+        "id": "51cf6c82-a71e-490b-b414-2e7b93173ba0",
+        "name": "2025_audiencias_publicas.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/055312e0-7f27-4835-9e6e-1dae93e33580/resource/51cf6c82-a71e-490b-b414-2e7b93173ba0/download/2025_audiencias_publicas.csv",
+        "created": "2025-07-21T18:23:02.576550",
+        "last_modified": "2025-07-21T18:23:02.554324",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "3be81e37-8ae8-451c-b58e-8da9db0b5ef1",
+        "name": "2024_audiencias_publicas_.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/055312e0-7f27-4835-9e6e-1dae93e33580/resource/3be81e37-8ae8-451c-b58e-8da9db0b5ef1/download/audiencias_publicas_.csv",
+        "created": "2024-08-02T17:04:22.085236",
+        "last_modified": "2024-08-02T17:04:22.064077",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "45e4da6f-7f18-4794-a2a2-fd7b70df2643",
+        "name": "Diccionario_audiencias_publicas_2025.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/055312e0-7f27-4835-9e6e-1dae93e33580/resource/45e4da6f-7f18-4794-a2a2-fd7b70df2643/download/diccionario_audiencias_publicas_2025.csv",
+        "created": "2025-07-21T18:24:17.800465",
+        "last_modified": "2025-07-21T18:24:17.777680",
+        "status_code": 200,
+        "is_broken": false
+      },
+      {
+        "id": "944ed61f-d4de-42bf-9b62-a9d3de70a93c",
+        "name": "Diccionario_audiencias_publicas_2024.csv",
+        "format": "CSV",
+        "url": "https://catalogodatos.nl.gob.mx/dataset/055312e0-7f27-4835-9e6e-1dae93e33580/resource/944ed61f-d4de-42bf-9b62-a9d3de70a93c/download/diccionario_audiencias_publicas.csv",
+        "created": "2024-08-02T17:05:06.310356",
+        "last_modified": "2024-08-02T17:05:06.289175",
+        "status_code": 200,
+        "is_broken": false
+      }
+    ]
+  }
+]

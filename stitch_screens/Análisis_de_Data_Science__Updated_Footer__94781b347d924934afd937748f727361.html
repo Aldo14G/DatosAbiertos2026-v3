@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+
+<html class="light dark" lang="es-MX"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">tailwind.config = {darkMode: "class", theme: {extend: {colors: {"on-tertiary-fixed": "#400050", "surface-dim": "#000b2f", "on-surface": "#dfe4ff", "on-tertiary": "#68207b", "inverse-on-surface": "#48547a", "surface-container-high": "#091c4c", outline: "#69749d", primary: "#7faeff", "on-surface-variant": "#9eaad5", tertiary: "#f5b2ff", "surface-container-low": "#011038", background: "#000b2f", surface: "#000b2f", "inverse-surface": "#faf8ff", "on-secondary": "#001b56", "on-primary-fixed": "#000000", "on-tertiary-fixed-variant": "#681f7a", error: "#ff716c", "on-primary": "#002e60", "on-background": "#dfe4ff", "inverse-primary": "#005db9", "tertiary-container": "#f09dff", "outline-variant": "#3b466c", "surface-bright": "#132860", secondary: "#7999ff", "surface-container": "#051642", "error-container": "#9f0519", "surface-container-highest": "#0e2256", "on-error": "#490006", "tertiary-fixed": "#f09dff", "primary-fixed-dim": "#4693ff", "on-secondary-fixed": "#002c82", "secondary-fixed": "#c4d0ff", "primary-fixed": "#65a1ff", "on-error-container": "#ffa8a3", "on-tertiary-container": "#5e1470", "tertiary-fixed-dim": "#e190f0", "secondary-fixed-dim": "#b1c2ff", "on-secondary-container": "#c2cfff", "on-primary-container": "#00224b", "on-primary-fixed-variant": "#002b5c", "secondary-container": "#133fa1", "primary-container": "#65a1ff", "surface-container-lowest": "#000000", "on-secondary-fixed-variant": "#2349ac", "surface-tint": "#7faeff", "surface-variant": "#0e2256", "tertiary-dim": "#e190f0", "error-dim": "#d7383b", "primary-dim": "#0073e1", "secondary-dim": "#7999ff"}, fontFamily: {headline: ["Inter"], body: ["Inter"], label: ["Inter"], display: "Inter"}, borderRadius: {DEFAULT: "0.25rem", lg: "0.5rem", xl: "0.75rem", full: "9999px"}}}};</script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .gauge-svg { transform: rotate(-90deg); }
+        .heatmap-cell { aspect-ratio: 1 / 1; }
+    </style>
+</head>
+<body class="bg-background font-body text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-16 z-50 bg-white/70 backdrop-blur-md border-b border-slate-200 flex items-center justify-between px-8 mx-auto">
+<div class="flex items-center gap-8 w-full max-w-[1440px] mx-auto">
+<span class="text-xl font-bold tracking-tighter text-slate-900">NL 2026</span>
+<div class="hidden md:flex items-center gap-6">
+<a class="text-slate-600 hover:text-blue-600 transition-colors font-['Plus_Jakarta_Sans'] text-sm font-medium leading-relaxed tracking-tight" href="#">Resumen</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors font-['Plus_Jakarta_Sans'] text-sm font-medium leading-relaxed tracking-tight" href="#">Categorías</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors font-['Plus_Jakarta_Sans'] text-sm font-medium leading-relaxed tracking-tight" href="#">Datasets</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors font-['Plus_Jakarta_Sans'] text-sm font-medium leading-relaxed tracking-tight" href="#">Alertas</a>
+<a class="text-slate-600 hover:text-blue-600 transition-colors font-['Plus_Jakarta_Sans'] text-sm font-medium leading-relaxed tracking-tight" href="#">Evolución</a>
+<a class="text-blue-600 border-b-2 border-blue-600 pb-1 font-['Plus_Jakarta_Sans'] text-sm font-medium leading-relaxed tracking-tight" href="#">Avanzado</a>
+</div>
+<div class="ml-auto flex items-center gap-4">
+<button class="px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-slate-50 rounded-lg transition-all">Descargar CSV</button>
+<button class="px-5 py-2 bg-primary-container text-white rounded-full text-sm font-bold shadow-sm hover:bg-primary transition-all active:scale-95">Ver Portal NL</button>
+</div>
+</div>
+</nav>
+<div class="pt-24 pb-12 px-8 max-w-[1440px] mx-auto flex gap-8">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col gap-4 p-4 sticky top-24 w-[200px] rounded-lg h-fit border border-slate-200 bg-slate-50">
+<div class="flex flex-col gap-1 mb-4">
+<span class="text-sm font-bold text-slate-900">Gobernanza Pro</span>
+<span class="text-[11px] text-slate-500">v2.0.26</span>
+</div>
+<nav class="flex flex-col gap-2">
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:translate-x-1 transition-transform font-['Plus_Jakarta_Sans'] text-[13px]" href="#">
+<span class="material-symbols-outlined text-lg">dashboard</span> Dashboard
+                </a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:translate-x-1 transition-transform font-['Plus_Jakarta_Sans'] text-[13px]" href="#">
+<span class="material-symbols-outlined text-lg">explore</span> Explorar
+                </a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:translate-x-1 transition-transform font-['Plus_Jakarta_Sans'] text-[13px]" href="#">
+<span class="material-symbols-outlined text-lg">analytics</span> Reportes
+                </a>
+<a class="flex items-center gap-3 bg-blue-50 text-blue-700 font-semibold rounded-full px-4 py-2 font-['Plus_Jakarta_Sans'] text-[13px]" href="#">
+<span class="material-symbols-outlined text-lg">insights</span> Avanzado
+                </a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:translate-x-1 transition-transform font-['Plus_Jakarta_Sans'] text-[13px]" href="#">
+<span class="material-symbols-outlined text-lg">settings</span> Configuración
+                </a>
+</nav>
+<div class="mt-8 pt-4 border-t border-slate-200">
+<button class="w-full py-2 px-4 bg-white border border-slate-200 rounded-lg text-[13px] font-medium text-blue-600 hover:border-blue-300 transition-colors">Abrir Portal →</button>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="flex-1">
+<header class="mb-10">
+<h2 class="text-[40px] font-bold tracking-tight text-[#202124] leading-tight mb-2">Análisis Avanzado de Data Science</h2>
+<p class="text-lg text-on-surface-variant max-w-2xl leading-relaxed">Modelos predictivos y métricas de gobernanza de alta precisión aplicados al inventario de datos abiertos.</p>
+</header>
+<!-- Section A: Circular Gauges -->
+<section class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-12">
+<!-- Gauge 1 -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col items-center border border-transparent hover:border-outline-variant transition-colors">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">Integridad</span>
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full gauge-svg" viewbox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-tertiary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="92, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-on-surface">92%</span>
+</div>
+</div>
+<span class="px-3 py-1 bg-tertiary/10 text-tertiary text-[11px] font-bold rounded-full">OPTIMAL</span>
+</div>
+<!-- Gauge 2 -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col items-center border border-transparent hover:border-outline-variant transition-colors">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">Completitud</span>
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full gauge-svg" viewbox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-secondary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="84, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-on-surface">84%</span>
+</div>
+</div>
+<span class="px-3 py-1 bg-secondary/10 text-secondary text-[11px] font-bold rounded-full">STABLE</span>
+</div>
+<!-- Gauge 3 -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col items-center border border-transparent hover:border-outline-variant transition-colors">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">Consistencia</span>
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full gauge-svg" viewbox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-primary stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="76, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-on-surface">76%</span>
+</div>
+</div>
+<span class="px-3 py-1 bg-primary/10 text-primary text-[11px] font-bold rounded-full">REGULAR</span>
+</div>
+<!-- Gauge 4 -->
+<div class="bg-surface-container-low rounded-xl p-6 flex flex-col items-center border border-transparent hover:border-outline-variant transition-colors">
+<span class="text-xs font-bold uppercase tracking-widest text-on-surface-variant mb-4">Actualización</span>
+<div class="relative w-32 h-32 mb-4">
+<svg class="w-full h-full gauge-svg" viewbox="0 0 36 36">
+<path class="text-surface-container-highest stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-width="3"></path>
+<path class="text-error stroke-current" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" fill="none" stroke-dasharray="64, 100" stroke-linecap="round" stroke-width="3"></path>
+</svg>
+<div class="absolute inset-0 flex flex-col items-center justify-center">
+<span class="text-2xl font-bold text-on-surface">64%</span>
+</div>
+</div>
+<span class="px-3 py-1 bg-error/10 text-error text-[11px] font-bold rounded-full">CRITICAL</span>
+</div>
+</section>
+<!-- Section B & C: Bento Grid Layout -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-12">
+<!-- Section B: Scatter Plot -->
+<div class="lg:col-span-8 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/30">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h3 class="text-xl font-bold text-on-surface mb-1">Distribución de Calidad</h3>
+<p class="text-sm text-on-surface-variant">Completitud vs Score Global (Detección de Outliers)</p>
+</div>
+<div class="flex gap-4">
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-primary-container/40 border border-primary"></span>
+<span class="text-xs font-medium">Nominal</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-error"></span>
+<span class="text-xs font-medium">Outlier (Z &gt; 2.0)</span>
+</div>
+</div>
+</div>
+<div class="relative h-[300px] w-full border-l-2 border-b-2 border-outline-variant bg-surface-container-low/30 overflow-hidden">
+<!-- Quadrant lines -->
+<div class="absolute bottom-[70%] left-0 w-full border-t border-dashed border-outline-variant/50"></div>
+<div class="absolute bottom-[90%] left-0 w-full border-t border-dashed border-outline-variant/50"></div>
+<div class="absolute left-[70%] top-0 h-full border-l border-dashed border-outline-variant/50"></div>
+<div class="absolute left-[90%] top-0 h-full border-l border-dashed border-outline-variant/50"></div>
+<!-- Axis Labels -->
+<span class="absolute -left-12 top-1/2 -rotate-90 text-[10px] uppercase font-bold text-on-surface-variant">Score Global</span>
+<span class="absolute bottom-[-24px] left-1/2 -translate-x-1/2 text-[10px] uppercase font-bold text-on-surface-variant">Completitud</span>
+<!-- Mock Scatter Data -->
+<div class="absolute bottom-[75%] left-[65%] w-3 h-3 rounded-full bg-primary-container/60 border border-primary"></div>
+<div class="absolute bottom-[82%] left-[78%] w-3 h-3 rounded-full bg-primary-container/60 border border-primary"></div>
+<div class="absolute bottom-[91%] left-[92%] w-4 h-4 rounded-full bg-tertiary/60 border border-tertiary"></div>
+<div class="absolute bottom-[68%] left-[85%] w-3 h-3 rounded-full bg-primary-container/60 border border-primary"></div>
+<div class="absolute bottom-[20%] left-[15%] w-4 h-4 rounded-full bg-error shadow-sm"></div> <!-- Outlier -->
+<div class="absolute bottom-[95%] left-[88%] w-3 h-3 rounded-full bg-primary-container/60 border border-primary"></div>
+<div class="absolute bottom-[72%] left-[45%] w-4 h-4 rounded-full bg-error shadow-sm"></div> <!-- Outlier -->
+<div class="absolute bottom-[88%] left-[72%] w-3 h-3 rounded-full bg-primary-container/60 border border-primary"></div>
+<div class="absolute bottom-[55%] left-[90%] w-3 h-3 rounded-full bg-primary-container/60 border border-primary"></div>
+</div>
+</div>
+<!-- Section C: Pearson Heatmap -->
+<div class="lg:col-span-4 bg-surface-container-lowest rounded-xl p-8 border border-outline-variant/30">
+<h3 class="text-xl font-bold text-on-surface mb-1">Pearson Correlation</h3>
+<p class="text-sm text-on-surface-variant mb-6">RdBu Colorscale Matrix</p>
+<div class="grid grid-cols-4 gap-1">
+<!-- Row 1 -->
+<div class="heatmap-cell bg-[#053061] flex items-center justify-center text-[10px] text-white font-bold" title="1.0">1.0</div>
+<div class="heatmap-cell bg-[#4393c3] flex items-center justify-center text-[10px] text-white font-bold" title="0.65">.65</div>
+<div class="heatmap-cell bg-[#d1e5f0] flex items-center justify-center text-[10px] text-slate-900 font-bold" title="0.12">.12</div>
+<div class="heatmap-cell bg-[#f7f7f7] flex items-center justify-center text-[10px] text-slate-900 font-bold" title="0.01">.01</div>
+<!-- Row 2 -->
+<div class="heatmap-cell bg-[#4393c3] flex items-center justify-center text-[10px] text-white font-bold">.65</div>
+<div class="heatmap-cell bg-[#053061] flex items-center justify-center text-[10px] text-white font-bold">1.0</div>
+<div class="heatmap-cell bg-[#fddbc7] flex items-center justify-center text-[10px] text-slate-900 font-bold">-.15</div>
+<div class="heatmap-cell bg-[#ef8a62] flex items-center justify-center text-[10px] text-white font-bold">-.42</div>
+<!-- Row 3 -->
+<div class="heatmap-cell bg-[#d1e5f0] flex items-center justify-center text-[10px] text-slate-900 font-bold">.12</div>
+<div class="heatmap-cell bg-[#fddbc7] flex items-center justify-center text-[10px] text-slate-900 font-bold">-.15</div>
+<div class="heatmap-cell bg-[#053061] flex items-center justify-center text-[10px] text-white font-bold">1.0</div>
+<div class="heatmap-cell bg-[#b2182b] flex items-center justify-center text-[10px] text-white font-bold">-.88</div>
+<!-- Row 4 -->
+<div class="heatmap-cell bg-[#f7f7f7] flex items-center justify-center text-[10px] text-slate-900 font-bold">.01</div>
+<div class="heatmap-cell bg-[#ef8a62] flex items-center justify-center text-[10px] text-white font-bold">-.42</div>
+<div class="heatmap-cell bg-[#b2182b] flex items-center justify-center text-[10px] text-white font-bold">-.88</div>
+<div class="heatmap-cell bg-[#053061] flex items-center justify-center text-[10px] text-white font-bold">1.0</div>
+</div>
+<div class="mt-4 flex justify-between text-[10px] font-bold text-on-surface-variant uppercase">
+<span>Negativo</span>
+<span>Neutral</span>
+<span>Positivo</span>
+</div>
+<div class="mt-1 h-2 w-full bg-gradient-to-r from-[#67001f] via-[#f7f7f7] to-[#053061] rounded-full"></div>
+</div>
+</div>
+<!-- Section D: Forecast Chart -->
+<section class="bg-surface-container-low rounded-xl p-8 border border-transparent">
+<div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-8">
+<div>
+<h3 class="text-2xl font-bold text-on-surface mb-2">Proyección de Gobernanza 2026</h3>
+<p class="text-on-surface-variant">Regresión lineal con intervalo de confianza del 95% para datasets prioritarios.</p>
+</div>
+<div class="flex items-center gap-6 text-sm font-medium">
+<div class="flex items-center gap-2">
+<span class="w-8 h-1 bg-primary"></span>
+<span>Histórico</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-8 h-1 border-t-2 border-dashed border-primary"></span>
+<span>Proyectado</span>
+</div>
+<div class="flex items-center gap-2">
+<span class="w-8 h-4 bg-primary/10 border-x border-primary/20"></span>
+<span>Confianza (95%)</span>
+</div>
+</div>
+</div>
+<div class="relative h-[400px] w-full bg-white rounded-lg p-6 border border-outline-variant/20 overflow-hidden">
+<svg class="w-full h-full" preserveaspectratio="none" viewbox="0 0 1000 400">
+<!-- Confidence Band -->
+<path d="M0 300 L200 280 L400 250 L600 220 L750 180 L1000 120 L1000 160 L750 220 L600 260 L400 290 L200 320 L0 340 Z" fill="rgba(26, 115, 232, 0.08)"></path>
+<!-- Grid Lines -->
+<line stroke="#f1f3f4" stroke-width="1" x1="0" x2="1000" y1="350" y2="350"></line>
+<line stroke="#f1f3f4" stroke-width="1" x1="0" x2="1000" y1="250" y2="250"></line>
+<line stroke="#f1f3f4" stroke-width="1" x1="0" x2="1000" y1="150" y2="150"></line>
+<line stroke="#f1f3f4" stroke-width="1" x1="0" x2="1000" y1="50" y2="50"></line>
+<!-- Historical Line -->
+<path d="M0 320 L200 300 L400 270 L600 240" fill="none" stroke="#1a73e8" stroke-width="3"></path>
+<!-- Forecast Line -->
+<path d="M600 240 L750 200 L1000 140" fill="none" stroke="#1a73e8" stroke-dasharray="8,8" stroke-width="3"></path>
+<!-- Data Points -->
+<circle cx="200" cy="300" fill="#1a73e8" r="4"></circle>
+<circle cx="400" cy="270" fill="#1a73e8" r="4"></circle>
+<circle cx="600" cy="240" fill="#1a73e8" r="6"></circle>
+</svg>
+<!-- X Axis -->
+<div class="flex justify-between mt-4 px-2 text-[11px] font-bold text-on-surface-variant uppercase tracking-wider">
+<span>Q1 2024</span>
+<span>Q3 2024</span>
+<span>Q1 2025</span>
+<span class="text-primary font-black">Hoy</span>
+<span>Q1 2026</span>
+<span>Q4 2026</span>
+</div>
+</div>
+</section>
+</main>
+</div>
+<!-- Footer -->
+<footer class="w-full py-8 border-t border-[#e8eaed] bg-white mt-12">
+<div class="max-w-[1440px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="flex flex-col md:flex-row justify-between items-center gap-6 w-full">
+<div class="flex flex-col md:flex-row items-center gap-8">
+<a class="text-[13px] font-medium text-[#5f6368] hover:text-[#1a73e8] transition-colors font-['Plus_Jakarta_Sans']" href="#">Portal de Datos Abiertos NL</a>
+<div class="hidden md:block h-4 w-[1px] bg-[#e8eaed]"></div>
+<div class="flex gap-6">
+<a class="text-[13px] text-[#5f6368] hover:text-[#1a73e8] transition-colors font-['Plus_Jakarta_Sans']" href="#">Privacidad</a>
+<a class="text-[13px] text-[#5f6368] hover:text-[#1a73e8] transition-colors font-['Plus_Jakarta_Sans']" href="#">Términos</a>
+<a class="text-[13px] text-[#5f6368] hover:text-[#1a73e8] transition-colors font-['Plus_Jakarta_Sans']" href="#">Contacto</a>
+<a class="text-[13px] text-[#5f6368] hover:text-[#1a73e8] transition-colors font-['Plus_Jakarta_Sans']" href="#">Accesibilidad</a>
+</div>
+</div>
+<p class="text-[13px] text-[#5f6368] font-['Plus_Jakarta_Sans']">© 2026 Gobierno de Nuevo León</p>
+</div></div>
+</footer>
+</body></html>

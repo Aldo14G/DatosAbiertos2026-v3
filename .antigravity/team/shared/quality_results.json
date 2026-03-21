@@ -1,0 +1,1115 @@
+{
+  "metadata": {
+    "generado": "2026-03-19",
+    "datasets_procesados": 79,
+    "version_script": "2.0"
+  },
+  "datasets": [
+    {
+      "slug": "unidades-de-transporte-publico",
+      "categoria": "Movilidad",
+      "organizacion": "Instituto de Movilidad y Accesibilidad",
+      "filas": 2186,
+      "columnas": 12,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 71.67,
+        "uniqueness": 99.95,
+        "global": 92.9
+      }
+    },
+    {
+      "slug": "licitaciones",
+      "categoria": "Infraestructura",
+      "organizacion": "Instituto Constructor de Infraestructura Física Educativa y Deportiva",
+      "filas": 294,
+      "columnas": 8,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 84.56,
+        "uniqueness": 100.0,
+        "global": 96.14
+      }
+    },
+    {
+      "slug": "solicitudes-de-informacion",
+      "categoria": "Electronica",
+      "organizacion": "Instituto del Agua del Estado de Nuevo León",
+      "filas": 301,
+      "columnas": 11,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 90.85,
+        "uniqueness": 100.0,
+        "global": 97.71
+      }
+    },
+    {
+      "slug": "insumos_politicas_publicas",
+      "categoria": "Anticorrupcion",
+      "organizacion": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL)",
+      "filas": 6,
+      "columnas": 3,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 85.0,
+        "uniqueness": 100.0,
+        "global": 96.25
+      }
+    },
+    {
+      "slug": "tecnoparques-fidesur-2025",
+      "categoria": "Agricultura",
+      "organizacion": "Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León",
+      "filas": 8,
+      "columnas": 4,
+      "scores": {
+        "completeness": 93.75,
+        "accuracy": 100.0,
+        "consistency": 88.75,
+        "uniqueness": 100.0,
+        "global": 95.62
+      }
+    },
+    {
+      "slug": "sesiones_comite_coordinador_seanl",
+      "categoria": "Anticorrupcion",
+      "organizacion": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL)",
+      "filas": 8,
+      "columnas": 7,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 92.5,
+        "uniqueness": 100.0,
+        "global": 98.12
+      }
+    },
+    {
+      "slug": "2022_2026_solicitudes_fofae",
+      "categoria": "Transparencia",
+      "organizacion": "Fideicomiso Fondo de Fomento Agropecuario del Estado de Nuevo León",
+      "filas": 42,
+      "columnas": 11,
+      "scores": {
+        "completeness": 90.69,
+        "accuracy": 100.0,
+        "consistency": 94.0,
+        "uniqueness": 100.0,
+        "global": 96.17
+      }
+    },
+    {
+      "slug": "sesiones_organo_gobierno_seseanl",
+      "categoria": "Anticorrupcion",
+      "organizacion": "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL)",
+      "filas": 12,
+      "columnas": 7,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 92.5,
+        "uniqueness": 100.0,
+        "global": 98.12
+      }
+    },
+    {
+      "slug": "pueblos_magicos_nuevo_leon",
+      "categoria": "Turismo",
+      "organizacion": "Secretaría de Turismo",
+      "filas": 5,
+      "columnas": 4,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 86.67,
+        "uniqueness": 100.0,
+        "global": 96.67
+      }
+    },
+    {
+      "slug": "conciliacioneslaborales",
+      "categoria": "Administración y Finanzas",
+      "organizacion": "Centro de Conciliación Laboral",
+      "filas": 59964,
+      "columnas": 15,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 87.98,
+        "uniqueness": 91.22,
+        "global": 94.8
+      }
+    },
+    {
+      "slug": "matricula-total-de-la-universidad",
+      "categoria": "Educacion",
+      "organizacion": "Universidad Tecnológica Gral. Mariano Escobedo",
+      "filas": 23,
+      "columnas": 6,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 98.91,
+        "uniqueness": 100.0,
+        "global": 99.73
+      }
+    },
+    {
+      "slug": "2025-proyectos-estrategicos",
+      "categoria": "Desarrollo Urbano",
+      "organizacion": "Fideicomiso FIDEURB (BP6823)",
+      "filas": 233,
+      "columnas": 7,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 87.5,
+        "uniqueness": 100.0,
+        "global": 96.88
+      }
+    },
+    {
+      "slug": "planteles-colegio-militarizado-general-mariano-escobedo-del-estado-de-nuevo-leon",
+      "categoria": "Educación",
+      "organizacion": "Colegio Militarizado \"General Mariano Escobedo\"",
+      "filas": 11,
+      "columnas": 12,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 92.5,
+        "uniqueness": 100.0,
+        "global": 98.12
+      }
+    },
+    {
+      "slug": "conjunto-de-datos-idpnl",
+      "categoria": "Atención Ciudadana",
+      "organizacion": "Instituto de Defensoría Pública de Nuevo León",
+      "filas": 111,
+      "columnas": 35,
+      "scores": {
+        "completeness": 73.87,
+        "accuracy": 100.0,
+        "consistency": 88.62,
+        "uniqueness": 100.0,
+        "global": 90.62
+      }
+    },
+    {
+      "slug": "solicitudes-de-acceso-a-la-informacion-recibidas-por-codetur",
+      "categoria": "Transparencia",
+      "organizacion": "Corporación para el Desarrollo Turístico de Nuevo León",
+      "filas": 11,
+      "columnas": 20,
+      "scores": {
+        "completeness": 90.91,
+        "accuracy": 100.0,
+        "consistency": 93.68,
+        "uniqueness": 100.0,
+        "global": 96.15
+      }
+    },
+    {
+      "slug": "residuos-solidos-urbanos",
+      "categoria": "Medio Ambiente",
+      "organizacion": "Sistema Integral para el Manejo Ecológico y Procesamiento de Desechos (SIMEPRODE)",
+      "filas": 195,
+      "columnas": 4,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 87.31,
+        "uniqueness": 100.0,
+        "global": 96.83
+      }
+    },
+    {
+      "slug": "base-de-datos-de-entrega-de-acciones-de-vivienda",
+      "categoria": "Ivnl",
+      "organizacion": "Instituto de la Vivienda",
+      "filas": 374,
+      "columnas": 9,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 91.31,
+        "uniqueness": 100.0,
+        "global": 97.83
+      }
+    },
+    {
+      "slug": "conferencias-cursos-y-foros-2025",
+      "categoria": "Igualdad De Género",
+      "organizacion": "Universidad de Ciencias de la Seguridad",
+      "filas": 12,
+      "columnas": 8,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 88.0,
+        "uniqueness": 100.0,
+        "global": 97.0
+      }
+    },
+    {
+      "slug": "solicitudes-de-acceso-a-la-informacion-enero-2025-enero2026",
+      "categoria": "Gobierno Y Transparencia",
+      "organizacion": "Oficina de Representación del Estado en la Ciudad de Mexico",
+      "filas": 5,
+      "columnas": 20,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 94.47,
+        "uniqueness": 100.0,
+        "global": 98.62
+      }
+    },
+    {
+      "slug": "maltrato-animal-t4-2025",
+      "categoria": "Administracion",
+      "organizacion": "Secretaría de Medio Ambiente",
+      "filas": 122,
+      "columnas": 9,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 94.38,
+        "uniqueness": 100.0,
+        "global": 98.6
+      }
+    },
+    {
+      "slug": "labnl-lab-cultural-ciudadano-2022-2023",
+      "categoria": "Arte y Cultura",
+      "organizacion": "Secretaría de Cultura",
+      "filas": 1799,
+      "columnas": 88,
+      "scores": {
+        "completeness": 63.2,
+        "accuracy": 100.0,
+        "consistency": 76.68,
+        "uniqueness": 75.38,
+        "global": 78.82
+      }
+    },
+    {
+      "slug": "personas-beneficiarias-del-programa-jefas-de-familia",
+      "categoria": "Asistencia Social",
+      "organizacion": "Secretaría de Igualdad e Inclusión",
+      "filas": 51,
+      "columnas": 13,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 89.54,
+        "uniqueness": 100.0,
+        "global": 97.38
+      }
+    },
+    {
+      "slug": "directorio-de-centros-comunitarios",
+      "categoria": "Arte y Cultura",
+      "organizacion": "Secretaría de Igualdad e Inclusión",
+      "filas": 47,
+      "columnas": 8,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 93.57,
+        "uniqueness": 100.0,
+        "global": 98.39
+      }
+    },
+    {
+      "slug": "directorio-de-centros-de-atencion-integral-para-adolescentes",
+      "categoria": "Asistencia Social",
+      "organizacion": "Secretaría de Igualdad e Inclusión",
+      "filas": 22,
+      "columnas": 7,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 89.29,
+        "uniqueness": 100.0,
+        "global": 97.32
+      }
+    },
+    {
+      "slug": "personas-beneficiarias-de-del-programa-personas-con-discapacidad",
+      "categoria": "Programas",
+      "organizacion": "Secretaría de Igualdad e Inclusión",
+      "filas": 51,
+      "columnas": 13,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 86.27,
+        "uniqueness": 100.0,
+        "global": 96.57
+      }
+    },
+    {
+      "slug": "talleres-realizados-en-los-centros-comunitarios-de-desarrollo-social",
+      "categoria": "Arte y Cultura",
+      "organizacion": "Secretaría de Igualdad e Inclusión",
+      "filas": 47,
+      "columnas": 7,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 93.19,
+        "uniqueness": 100.0,
+        "global": 98.3
+      }
+    },
+    {
+      "slug": "organos-colegiados",
+      "categoria": "Participación",
+      "organizacion": "Secretaría de Participación Ciudadana",
+      "filas": 77,
+      "columnas": 26,
+      "scores": {
+        "completeness": 96.45,
+        "accuracy": 100.0,
+        "consistency": 84.42,
+        "uniqueness": 100.0,
+        "global": 95.22
+      }
+    },
+    {
+      "slug": "tramites_y_servicios",
+      "categoria": "Economía",
+      "organizacion": " Secretaría de Economía",
+      "filas": 16,
+      "columnas": 12,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 87.73,
+        "uniqueness": 100.0,
+        "global": 96.93
+      }
+    },
+    {
+      "slug": "personas-beneficiarias-del-programa-impulso-a-cuidadoras",
+      "categoria": "Asistencia Social",
+      "organizacion": "Secretaría de Igualdad e Inclusión",
+      "filas": 51,
+      "columnas": 13,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 91.18,
+        "uniqueness": 100.0,
+        "global": 97.8
+      }
+    },
+    {
+      "slug": "personas-beneficiarias-del-programa-hambre-cero",
+      "categoria": "Asistencia Social",
+      "organizacion": "Secretaría de Igualdad e Inclusión",
+      "filas": 51,
+      "columnas": 4,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 85.62,
+        "uniqueness": 100.0,
+        "global": 96.4
+      }
+    },
+    {
+      "slug": "datos-de-fidecultural-2019-2024",
+      "categoria": "Conservasion",
+      "organizacion": "Fideicomiso para la Conservación del Patrimonio Cultural de Nuevo León (FIDECULTURAL)",
+      "filas": 981,
+      "columnas": 5,
+      "scores": {
+        "completeness": 5.69,
+        "accuracy": 100.0,
+        "consistency": 88.75,
+        "uniqueness": 5.81,
+        "global": 50.06
+      }
+    },
+    {
+      "slug": "solicitudes-de-acceso-a-la-informacion-sistema-de-caminos",
+      "categoria": "Transparencia y Anticorrupción",
+      "organizacion": "Sistema de Caminos de Nuevo León",
+      "filas": 69,
+      "columnas": 13,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 94.55,
+        "uniqueness": 100.0,
+        "global": 98.64
+      }
+    },
+    {
+      "slug": "directorio-iiiepe",
+      "categoria": "Educacion",
+      "organizacion": "Instituto de Investigación, Innovación y Estudios de Posgrado para la Educación del Estado de Nuevo León",
+      "filas": 4,
+      "columnas": 9,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 80.0,
+        "uniqueness": 100.0,
+        "global": 95.0
+      }
+    },
+    {
+      "slug": "solicitudes-de-acceso-a-la-informacion-recibidas-por-el-sistema-estatal-de-informacion",
+      "categoria": "Transparencia y Anticorrupción",
+      "organizacion": "Sistema Estatal de Información",
+      "filas": 65,
+      "columnas": 16,
+      "scores": {
+        "completeness": 44.62,
+        "accuracy": 100.0,
+        "consistency": 93.0,
+        "uniqueness": 46.15,
+        "global": 70.94
+      }
+    },
+    {
+      "slug": "proyectos-apoyados-por-el-i2t2",
+      "categoria": "Innovación",
+      "organizacion": "Instituto de Innovación y Transferencia Tecnológica de Nuevo León",
+      "filas": 9,
+      "columnas": 8,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 87.5,
+        "uniqueness": 100.0,
+        "global": 96.88
+      }
+    },
+    {
+      "slug": "lista-de-libros-del-fonedi",
+      "categoria": "Fonedi",
+      "organizacion": "Fondo Editorial de Nuevo León",
+      "filas": 981,
+      "columnas": 7,
+      "scores": {
+        "completeness": 63.2,
+        "accuracy": 100.0,
+        "consistency": 85.0,
+        "uniqueness": 70.23,
+        "global": 79.61
+      }
+    },
+    {
+      "slug": "asistencia-de-personas-a-actividades-de-conarte",
+      "categoria": "Cultura",
+      "organizacion": "Consejo para la Cultura y las Artes de Nuevo León",
+      "filas": 530,
+      "columnas": 7,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 82.22,
+        "uniqueness": 100.0,
+        "global": 95.56
+      }
+    },
+    {
+      "slug": "solicitud-de-informacion-instituto-registral-y-catastral",
+      "categoria": "Administración y Finanzas",
+      "organizacion": "Instituto Registral y Catastral del Estado de Nuevo León",
+      "filas": 31,
+      "columnas": 4,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 85.0,
+        "uniqueness": 100.0,
+        "global": 96.25
+      }
+    },
+    {
+      "slug": "2025_directorio_colaboradores_junta-local-de-conciliacion-y-arbitraje",
+      "categoria": "Base De Datos De Contactos",
+      "organizacion": "Junta Local de Conciliación y Arbitraje",
+      "filas": 235,
+      "columnas": 9,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 97.87,
+        "uniqueness": 100.0,
+        "global": 99.47
+      }
+    },
+    {
+      "slug": "indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon",
+      "categoria": "Gobierno Y Transparencia",
+      "organizacion": "Secretaría Técnica de Gobierno",
+      "filas": 86,
+      "columnas": 11,
+      "scores": {
+        "completeness": 95.77,
+        "accuracy": 100.0,
+        "consistency": 85.47,
+        "uniqueness": 100.0,
+        "global": 95.31
+      }
+    },
+    {
+      "slug": "pib-agroindustrial-por-entidad-federativa-2022-2024",
+      "categoria": "Agricultura",
+      "organizacion": "Secretaría de Desarrollo Regional y Agropecuario",
+      "filas": 99,
+      "columnas": 5,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 91.41,
+        "uniqueness": 100.0,
+        "global": 97.85
+      }
+    },
+    {
+      "slug": "produccion-agricola-2022-2024",
+      "categoria": "Agroalimentario",
+      "organizacion": "Secretaría de Desarrollo Regional y Agropecuario",
+      "filas": 1134,
+      "columnas": 12,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 82.92,
+        "uniqueness": 100.0,
+        "global": 95.73
+      }
+    },
+    {
+      "slug": "declaraciones-oficiales-de-la-oficina-ejecutiva",
+      "categoria": "Declaraciones",
+      "organizacion": "Oficina Ejecutiva del Titular del Poder Ejecutivo del Estado de Nuevo León",
+      "filas": 1000,
+      "columnas": 6,
+      "scores": {
+        "completeness": 1.25,
+        "accuracy": 100.0,
+        "consistency": 91.0,
+        "uniqueness": 1.6,
+        "global": 48.46
+      }
+    },
+    {
+      "slug": "directorio-de-planteles-cecytenl",
+      "categoria": "Educación",
+      "organizacion": "Colegio de Estudios Científicos y Tecnológicos del Estado de Nuevo León (CECyTENL)",
+      "filas": 34,
+      "columnas": 11,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 99.26,
+        "uniqueness": 100.0,
+        "global": 99.82
+      }
+    },
+    {
+      "slug": "asambleas-juntas-de-mejora",
+      "categoria": "Participación",
+      "organizacion": "Secretaría de Participación Ciudadana",
+      "filas": 209,
+      "columnas": 50,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 90.89,
+        "uniqueness": 100.0,
+        "global": 97.72
+      }
+    },
+    {
+      "slug": "espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon",
+      "categoria": "Participación",
+      "organizacion": "Secretaría de Participación Ciudadana",
+      "filas": 1297,
+      "columnas": 34,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 94.77,
+        "uniqueness": 100.0,
+        "global": 98.69
+      }
+    },
+    {
+      "slug": "hecho-por-tipo-de-violencia",
+      "categoria": "Ambito De Violencia",
+      "organizacion": "Secretaría de las Mujeres",
+      "filas": 54701,
+      "columnas": 12,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 98.64,
+        "uniqueness": 100.0,
+        "global": 99.66
+      }
+    },
+    {
+      "slug": "cursos-de-capacitacion-de-genl",
+      "categoria": "Educación",
+      "organizacion": "Secretaría de Administración",
+      "filas": 181,
+      "columnas": 6,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 96.41,
+        "uniqueness": 100.0,
+        "global": 99.1
+      }
+    },
+    {
+      "slug": "cultura-para-la-primera-infancia-2022-2023",
+      "categoria": "Arte y Cultura",
+      "organizacion": "Secretaría de Cultura",
+      "filas": 182,
+      "columnas": 43,
+      "scores": {
+        "completeness": 56.24,
+        "accuracy": 100.0,
+        "consistency": 82.13,
+        "uniqueness": 99.45,
+        "global": 84.46
+      }
+    },
+    {
+      "slug": "estadistica-de-quejas-peticiones-sugerencias-y-o-reconocimientos-del-sistema-opinared",
+      "categoria": "Asistencia Social",
+      "organizacion": "Contraloría y Transparencia Gubernamental",
+      "filas": 21,
+      "columnas": 2,
+      "scores": {
+        "completeness": 78.57,
+        "accuracy": 100.0,
+        "consistency": 85.0,
+        "uniqueness": 100.0,
+        "global": 90.89
+      }
+    },
+    {
+      "slug": "solicitudes-de-acceso-a-la-informacion-recibidas-en-la-administracion-publica-estatal",
+      "categoria": "Administración y Finanzas",
+      "organizacion": "Contraloría y Transparencia Gubernamental",
+      "filas": 21,
+      "columnas": 2,
+      "scores": {
+        "completeness": 95.24,
+        "accuracy": 100.0,
+        "consistency": 92.5,
+        "uniqueness": 100.0,
+        "global": 96.94
+      }
+    },
+    {
+      "slug": "atenciones070",
+      "categoria": "Asistencia Social",
+      "organizacion": "Secretaría de Participación Ciudadana",
+      "filas": 92,
+      "columnas": 4,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 84.28,
+        "uniqueness": 100.0,
+        "global": 96.07
+      }
+    },
+    {
+      "slug": "contratos-smpu",
+      "categoria": "Infraestructura",
+      "organizacion": "Secretaría de Movilidad y Planeación Urbana",
+      "filas": 179,
+      "columnas": 8,
+      "scores": {
+        "completeness": 97.77,
+        "accuracy": 100.0,
+        "consistency": 92.33,
+        "uniqueness": 100.0,
+        "global": 97.52
+      }
+    },
+    {
+      "slug": "estadistica-penitenciaria-de-ingresos",
+      "categoria": "Seguridad",
+      "organizacion": "Secretaría de Seguridad",
+      "filas": 8575,
+      "columnas": 14,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 80.0,
+        "uniqueness": 70.51,
+        "global": 87.63
+      }
+    },
+    {
+      "slug": "estadistica-penitenciaria-egresos",
+      "categoria": "Seguridad",
+      "organizacion": "Secretaría de Seguridad",
+      "filas": 7469,
+      "columnas": 15,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 100.0,
+        "uniqueness": 87.31,
+        "global": 96.83
+      }
+    },
+    {
+      "slug": "estadistica-penitenciaria",
+      "categoria": "Seguridad",
+      "organizacion": "Secretaría de Seguridad",
+      "filas": 63693,
+      "columnas": 14,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 97.99,
+        "uniqueness": 85.59,
+        "global": 95.9
+      }
+    },
+    {
+      "slug": "rutas-por-empresa-stc-metrorrey",
+      "categoria": "Movilidad",
+      "organizacion": "Sistema de Transporte Colectivo Metrorrey",
+      "filas": 36,
+      "columnas": 15,
+      "scores": {
+        "completeness": 68.15,
+        "accuracy": 100.0,
+        "consistency": 90.1,
+        "uniqueness": 100.0,
+        "global": 89.56
+      }
+    },
+    {
+      "slug": "unidades-del-stcm",
+      "categoria": "Movilidad",
+      "organizacion": "Sistema de Transporte Colectivo Metrorrey",
+      "filas": 564,
+      "columnas": 13,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 83.18,
+        "uniqueness": 100.0,
+        "global": 95.8
+      }
+    },
+    {
+      "slug": "rutas-empresas",
+      "categoria": "Movilidad Y Transporte",
+      "organizacion": "Instituto de Movilidad y Accesibilidad",
+      "filas": 14,
+      "columnas": 6,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 87.5,
+        "uniqueness": 100.0,
+        "global": 96.88
+      }
+    },
+    {
+      "slug": "paradas-oficiales-stc-metrorrey",
+      "categoria": "Movilidad Y Transporte",
+      "organizacion": "Sistema de Transporte Colectivo Metrorrey",
+      "filas": 72,
+      "columnas": 8,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 96.81,
+        "uniqueness": 100.0,
+        "global": 99.2
+      }
+    },
+    {
+      "slug": "paradas",
+      "categoria": "Movilidad Y Transporte",
+      "organizacion": "Instituto de Movilidad y Accesibilidad",
+      "filas": 166,
+      "columnas": 5,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 91.0,
+        "uniqueness": 98.8,
+        "global": 97.45
+      }
+    },
+    {
+      "slug": "2024_2025_tpe_publico_setme",
+      "categoria": "Movilidad",
+      "organizacion": "Instituto de Movilidad y Accesibilidad",
+      "filas": 166,
+      "columnas": 5,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 91.0,
+        "uniqueness": 98.8,
+        "global": 97.45
+      }
+    },
+    {
+      "slug": "denuncias-de-maltrato-animal",
+      "categoria": "Medio Ambiente",
+      "organizacion": "Secretaría de Medio Ambiente",
+      "filas": 488,
+      "columnas": 9,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 94.38,
+        "uniqueness": 95.29,
+        "global": 97.42
+      }
+    },
+    {
+      "slug": "fuentes-de-agua",
+      "categoria": "Infraestructura",
+      "organizacion": "Servicios de Agua y Drenaje de Monterrey, I.P.D.",
+      "filas": 49,
+      "columnas": 3,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 91.84,
+        "uniqueness": 100.0,
+        "global": 97.96
+      }
+    },
+    {
+      "slug": "uso-de-agua",
+      "categoria": "Infraestructura",
+      "organizacion": "Servicios de Agua y Drenaje de Monterrey, I.P.D.",
+      "filas": 12,
+      "columnas": 5,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 95.83,
+        "uniqueness": 100.0,
+        "global": 98.96
+      }
+    },
+    {
+      "slug": "agua-reutilizada",
+      "categoria": "Infraestructura",
+      "organizacion": "Servicios de Agua y Drenaje de Monterrey, I.P.D.",
+      "filas": 12,
+      "columnas": 4,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 88.89,
+        "uniqueness": 100.0,
+        "global": 97.22
+      }
+    },
+    {
+      "slug": "infraestructura-de-agua",
+      "categoria": "Infraestructura",
+      "organizacion": "Servicios de Agua y Drenaje de Monterrey, I.P.D.",
+      "filas": 20,
+      "columnas": 4,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 95.0,
+        "uniqueness": 100.0,
+        "global": 98.75
+      }
+    },
+    {
+      "slug": "convenios",
+      "categoria": "Administración",
+      "organizacion": "Secretaría de Administración",
+      "filas": 29,
+      "columnas": 5,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 94.0,
+        "uniqueness": 100.0,
+        "global": 98.5
+      }
+    },
+    {
+      "slug": "sitios-de-internet-gratuitos-conectatenl",
+      "categoria": "Administración",
+      "organizacion": "Secretaría de Administración",
+      "filas": 565,
+      "columnas": 14,
+      "scores": {
+        "completeness": 99.96,
+        "accuracy": 100.0,
+        "consistency": 81.41,
+        "uniqueness": 100.0,
+        "global": 95.34
+      }
+    },
+    {
+      "slug": "resultados-clima-laboral",
+      "categoria": "Administración",
+      "organizacion": "Secretaría de Administración",
+      "filas": 38,
+      "columnas": 6,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 92.5,
+        "uniqueness": 100.0,
+        "global": 98.12
+      }
+    },
+    {
+      "slug": "directorio-de-servicios-ofrecidos-en-pabellon-ciudadano",
+      "categoria": "Administración",
+      "organizacion": "Secretaría de Administración",
+      "filas": 171,
+      "columnas": 10,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 80.0,
+        "uniqueness": 100.0,
+        "global": 95.0
+      }
+    },
+    {
+      "slug": "personal-de-las-dependencias-por-rango-de-edad",
+      "categoria": "Administración",
+      "organizacion": "Secretaría de Administración",
+      "filas": 114,
+      "columnas": 22,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 80.22,
+        "uniqueness": 100.0,
+        "global": 95.06
+      }
+    },
+    {
+      "slug": "personal-de-las-dependencias-gubernamentales-por-sexo",
+      "categoria": "Administración y Finanzas",
+      "organizacion": "Secretaría de Administración",
+      "filas": 51356,
+      "columnas": 6,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 97.0,
+        "uniqueness": 38.11,
+        "global": 83.78
+      }
+    },
+    {
+      "slug": "consulta-general-y-especialidades",
+      "categoria": "Salud",
+      "organizacion": "Secretaría de Salud",
+      "filas": 50000,
+      "columnas": 14,
+      "scores": {
+        "completeness": 99.58,
+        "accuracy": 100.0,
+        "consistency": 95.49,
+        "uniqueness": 100.0,
+        "global": 98.77
+      }
+    },
+    {
+      "slug": "planificacion-familiar",
+      "categoria": "Perspectiva de Género",
+      "organizacion": "Secretaría de Salud",
+      "filas": 27742,
+      "columnas": 14,
+      "scores": {
+        "completeness": 99.73,
+        "accuracy": 100.0,
+        "consistency": 97.09,
+        "uniqueness": 100.0,
+        "global": 99.21
+      }
+    },
+    {
+      "slug": "salud-bucal",
+      "categoria": "Salud",
+      "organizacion": "Secretaría de Salud",
+      "filas": 49999,
+      "columnas": 14,
+      "scores": {
+        "completeness": 97.59,
+        "accuracy": 100.0,
+        "consistency": 97.01,
+        "uniqueness": 100.0,
+        "global": 98.65
+      }
+    },
+    {
+      "slug": "salud-mental",
+      "categoria": "Salud",
+      "organizacion": "Secretaría de Salud",
+      "filas": 48224,
+      "columnas": 14,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 95.86,
+        "uniqueness": 100.0,
+        "global": 98.96
+      }
+    },
+    {
+      "slug": "diagnosticos-comunitarios-2024",
+      "categoria": "Participación",
+      "organizacion": "Secretaría de Participación Ciudadana",
+      "filas": 52,
+      "columnas": 91,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 93.03,
+        "uniqueness": 100.0,
+        "global": 98.26
+      }
+    },
+    {
+      "slug": "audiencias-publicas",
+      "categoria": "Participación",
+      "organizacion": "Secretaría de Participación Ciudadana",
+      "filas": 8,
+      "columnas": 35,
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 79.94,
+        "uniqueness": 100.0,
+        "global": 94.98
+      }
+    }
+  ]
+}

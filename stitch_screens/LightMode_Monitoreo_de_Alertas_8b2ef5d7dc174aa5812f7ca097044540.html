@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+
+<html lang="es-MX"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>NL 2026 — Alertas Críticas</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "on-tertiary-fixed": "#002108",
+              "surface-dim": "#dbd9dd",
+              "on-surface": "#1a1b1e",
+              "on-tertiary": "#ffffff",
+              "inverse-on-surface": "#f1f0f4",
+              "surface-container-high": "#e9e7eb",
+              "outline": "#727785",
+              "primary": "#005bbf",
+              "on-surface-variant": "#414754",
+              "tertiary": "#006d2a",
+              "surface-container-low": "#f4f3f7",
+              "background": "#faf9fd",
+              "surface": "#faf9fd",
+              "inverse-surface": "#2f3033",
+              "on-secondary": "#ffffff",
+              "on-primary-fixed": "#001a41",
+              "on-tertiary-fixed-variant": "#00531e",
+              "error": "#ba1a1a",
+              "on-primary": "#ffffff",
+              "on-background": "#1a1b1e",
+              "inverse-primary": "#adc7ff",
+              "tertiary-container": "#16893a",
+              "outline-variant": "#dadce0",
+              "surface-bright": "#faf9fd",
+              "secondary": "#2a5bb3",
+              "surface-container": "#efedf1",
+              "error-container": "#ffdad6",
+              "surface-container-highest": "#e3e2e6",
+              "on-error": "#ffffff",
+              "tertiary-fixed": "#8ffa9b",
+              "primary-fixed-dim": "#adc7ff",
+              "on-secondary-fixed": "#001944",
+              "secondary-fixed": "#d9e2ff",
+              "primary-fixed": "#d8e2ff",
+              "on-error-container": "#93000a",
+              "on-tertiary-container": "#000701",
+              "tertiary-fixed-dim": "#73dc82",
+              "secondary-fixed-dim": "#afc6ff",
+              "on-secondary-container": "#00367e",
+              "on-primary-container": "#ffffff",
+              "on-primary-fixed-variant": "#004493",
+              "secondary-container": "#76a1fe",
+              "primary-container": "#1a73e8",
+              "surface-container-lowest": "#ffffff",
+              "on-secondary-fixed-variant": "#004299",
+              "surface-tint": "#005bc0",
+              "surface-variant": "#e3e2e6"
+            },
+            fontFamily: {
+              "headline": ["Plus Jakarta Sans"],
+              "body": ["Inter"],
+              "label": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; -webkit-font-smoothing: antialiased; }
+        .font-headline { font-family: 'Plus Jakarta Sans', sans-serif; }
+        .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+    </style>
+</head>
+<body class="bg-surface text-on-surface">
+<!-- TopNavBar -->
+<nav class="fixed top-0 w-full h-16 z-50 bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between px-8 w-full max-w-[1440px] mx-auto h-full">
+<div class="text-xl font-bold tracking-tighter text-slate-900 dark:text-white font-headline">NL 2026</div>
+<div class="hidden md:flex items-center gap-8 font-['Plus_Jakarta_Sans'] text-sm font-medium leading-relaxed tracking-tight">
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Resumen</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Categorías</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Datasets</a>
+<a class="text-blue-600 dark:text-blue-400 border-b-2 border-blue-600 pb-1" href="#">Alertas</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Evolución</a>
+<a class="text-slate-600 dark:text-slate-400 hover:text-blue-600 transition-colors" href="#">Avanzado</a>
+</div>
+<div class="flex items-center gap-4">
+<button class="px-4 py-2 text-sm font-semibold text-blue-600 hover:bg-slate-50 rounded-lg transition-all active:scale-95 duration-200">Descargar CSV</button>
+<button class="px-4 py-2 text-sm font-semibold bg-primary text-on-primary rounded-full hover:opacity-90 transition-all active:scale-95 duration-200">Ver Portal NL</button>
+</div>
+</div>
+</nav>
+<main class="pt-24 pb-12 px-8 max-w-[1440px] mx-auto flex gap-8">
+<!-- SideNavBar -->
+<aside class="hidden lg:flex flex-col gap-4 p-4 sticky top-24 w-[200px] rounded-lg h-fit border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-950">
+<div class="mb-4">
+<div class="text-[13px] font-bold text-slate-900 dark:text-white uppercase tracking-wider">Gobernanza Pro</div>
+<div class="text-[11px] text-slate-500">v2.0.26</div>
+</div>
+<div class="flex flex-col gap-1 font-['Plus_Jakarta_Sans'] text-[13px] leading-[1.75]">
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-2 hover:translate-x-1 transition-transform hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="dashboard">dashboard</span>
+                    Dashboard
+                </a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-2 hover:translate-x-1 transition-transform hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="explore">explore</span>
+                    Explorar
+                </a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-2 hover:translate-x-1 transition-transform hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="analytics">analytics</span>
+                    Reportes
+                </a>
+<a class="flex items-center gap-3 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-semibold rounded-full px-4 py-2" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="notifications">notifications</span>
+                    Alertas
+                </a>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 px-4 py-2 hover:translate-x-1 transition-transform hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="settings">settings</span>
+                    Configuración
+                </a>
+</div>
+<hr class="border-slate-200 dark:border-slate-800 my-2"/>
+<div class="flex flex-col gap-1 font-['Plus_Jakarta_Sans'] text-[13px]">
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="shield">shield</span>
+                    Privacidad
+                </a>
+<a class="flex items-center gap-3 text-slate-500 px-4 py-2 hover:text-blue-600" href="#">
+<span class="material-symbols-outlined text-lg" data-icon="contact_support">contact_support</span>
+                    Soporte
+                </a>
+</div>
+<button class="mt-4 px-4 py-2 text-[12px] font-bold text-blue-600 border border-blue-600/20 rounded-lg hover:bg-blue-50 transition-colors">
+                Abrir Portal →
+            </button>
+</aside>
+<!-- Main Content -->
+<div class="flex-1 space-y-8">
+<header>
+<h2 class="text-[40px] font-bold tracking-tight text-[#202124] font-headline mb-4">Tablero de Monitoreo — Alertas Críticas</h2>
+<!-- Alert Banner -->
+<div class="bg-[#fce8e6] border border-red-200 text-[#d93025] px-6 py-4 rounded-xl flex items-center gap-4">
+<span class="material-symbols-outlined" data-icon="warning" style="font-variation-settings: 'FILL' 1;">warning</span>
+<span class="font-semibold text-lg">⚠ 2 Datasets requieren intervención inmediata</span>
+</div>
+</header>
+<section class="grid grid-cols-1 xl:grid-cols-2 gap-8">
+<!-- Alert Card 1 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 border-l-[6px] border-l-red-600 rounded-xl overflow-hidden flex flex-col">
+<div class="p-8 flex-1">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-2xl font-bold font-headline text-[#202124] mb-1">declarations-oficiales</h3>
+<p class="text-sm text-[#5f6368]">Oficina Ejecutiva</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-extrabold text-red-600 font-headline leading-none">48.46%</div>
+<div class="text-[10px] uppercase font-bold tracking-widest text-[#5f6368] mt-1">Score de Calidad</div>
+</div>
+</div>
+<!-- Dimension Mini-bars -->
+<div class="grid grid-cols-2 gap-6 mb-8">
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-[#5f6368]">
+<span>INTEGRIDAD</span>
+<span>32%</span>
+</div>
+<div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-[32%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-[#5f6368]">
+<span>FRECUENCIA</span>
+<span>55%</span>
+</div>
+<div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 w-[55%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-[#5f6368]">
+<span>FORMATO</span>
+<span>40%</span>
+</div>
+<div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-[40%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-[#5f6368]">
+<span>CONSISTENCIA</span>
+<span>67%</span>
+</div>
+<div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 w-[67%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-3 pt-6 border-t border-slate-100">
+<h4 class="text-xs font-bold uppercase tracking-wider text-[#5f6368] mb-4">Acciones recomendadas</h4>
+<ol class="space-y-3">
+<li class="flex items-start gap-3 text-sm text-[#3c4043] leading-relaxed">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-600">1</span>
+                                    Validar esquemas de metadatos faltantes en el último cargue trimestral.
+                                </li>
+<li class="flex items-start gap-3 text-sm text-[#3c4043] leading-relaxed">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-600">2</span>
+                                    Estandarizar formatos de fecha según la norma ISO 8601 local.
+                                </li>
+<li class="flex items-start gap-3 text-sm text-[#3c4043] leading-relaxed">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-600">3</span>
+                                    Notificar al enlace técnico de la Oficina Ejecutiva vía ticket interno.
+                                </li>
+</ol>
+</div>
+</div>
+<div class="bg-slate-50/50 px-8 py-4 border-t border-slate-100">
+<a class="text-blue-600 font-semibold text-sm hover:underline flex items-center gap-2" href="#">
+                            Ver en catalogodatos.nl.gob.mx →
+                        </a>
+</div>
+</div>
+<!-- Alert Card 2 -->
+<div class="bg-surface-container-lowest border border-outline-variant/30 border-l-[6px] border-l-red-600 rounded-xl overflow-hidden flex flex-col">
+<div class="p-8 flex-1">
+<div class="flex justify-between items-start mb-6">
+<div>
+<h3 class="text-2xl font-bold font-headline text-[#202124] mb-1">datos-de-fidecultural</h3>
+<p class="text-sm text-[#5f6368]">FIDECULTURAL</p>
+</div>
+<div class="text-right">
+<div class="text-4xl font-extrabold text-red-600 font-headline leading-none">50.06%</div>
+<div class="text-[10px] uppercase font-bold tracking-widest text-[#5f6368] mt-1">Score de Calidad</div>
+</div>
+</div>
+<!-- Dimension Mini-bars -->
+<div class="grid grid-cols-2 gap-6 mb-8">
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-[#5f6368]">
+<span>INTEGRIDAD</span>
+<span>48%</span>
+</div>
+<div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-red-500 w-[48%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-[#5f6368]">
+<span>FRECUENCIA</span>
+<span>12%</span>
+</div>
+<div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-red-600 w-[12%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-[#5f6368]">
+<span>FORMATO</span>
+<span>72%</span>
+</div>
+<div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-orange-400 w-[72%]"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-[11px] font-bold text-[#5f6368]">
+<span>CONSISTENCIA</span>
+<span>68%</span>
+</div>
+<div class="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+<div class="h-full bg-orange-500 w-[68%]"></div>
+</div>
+</div>
+</div>
+<div class="space-y-3 pt-6 border-t border-slate-100">
+<h4 class="text-xs font-bold uppercase tracking-wider text-[#5f6368] mb-4">Acciones recomendadas</h4>
+<ol class="space-y-3">
+<li class="flex items-start gap-3 text-sm text-[#3c4043] leading-relaxed">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-600">1</span>
+                                    Actualizar el calendario de publicación; retraso detectado de 45 días.
+                                </li>
+<li class="flex items-start gap-3 text-sm text-[#3c4043] leading-relaxed">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-600">2</span>
+                                    Corregir nulos detectados en campos de presupuesto y beneficiarios.
+                                </li>
+<li class="flex items-start gap-3 text-sm text-[#3c4043] leading-relaxed">
+<span class="flex-shrink-0 w-5 h-5 rounded-full bg-slate-100 flex items-center justify-center text-[10px] font-bold text-slate-600">3</span>
+                                    Ejecutar proceso de limpieza OpenRefine para registros duplicados.
+                                </li>
+</ol>
+</div>
+</div>
+<div class="bg-slate-50/50 px-8 py-4 border-t border-slate-100">
+<a class="text-blue-600 font-semibold text-sm hover:underline flex items-center gap-2" href="#">
+                            Ver en catalogodatos.nl.gob.mx →
+                        </a>
+</div>
+</div>
+</section>
+<!-- Status Section -->
+<section class="bg-surface-container-low p-8 rounded-2xl border border-outline-variant/20">
+<div class="flex flex-col md:flex-row items-center gap-8 justify-between">
+<div class="max-w-md">
+<h4 class="text-xl font-bold font-headline text-[#202124] mb-2">Protocolo de Escalación</h4>
+<p class="text-[#5f6368] text-sm leading-relaxed">Las alertas críticas en rojo son notificadas automáticamente al Sistema Estatal de Gobernanza si no se resuelven en un periodo de 72 horas hábiles.</p>
+</div>
+<div class="flex gap-4">
+<div class="bg-white p-4 rounded-xl border border-slate-200 text-center min-w-[120px]">
+<div class="text-2xl font-bold text-red-600">2</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Datasets</div>
+</div>
+<div class="bg-white p-4 rounded-xl border border-slate-200 text-center min-w-[120px]">
+<div class="text-2xl font-bold text-orange-500">14</div>
+<div class="text-[10px] font-bold text-slate-400 uppercase tracking-tighter">Advertencias</div>
+</div>
+</div>
+</div>
+</section>
+</div>
+</main>
+<!-- Footer -->
+<footer class="w-full py-12 border-t border-slate-100 dark:border-slate-800 bg-white dark:bg-slate-900 mt-20">
+<div class="max-w-[1440px] mx-auto px-8 flex flex-col md:flex-row justify-between items-center gap-6">
+<div class="text-lg font-black text-slate-400">NL 2026</div>
+<p class="font-['Plus_Jakarta_Sans'] text-[13px] text-slate-500 dark:text-slate-400">
+                © 2026 Gobierno de Nuevo León - Datos Abiertos
+            </p>
+<div class="flex gap-6">
+<a class="text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 text-[13px] font-['Plus_Jakarta_Sans'] underline text-blue-600 transition-opacity opacity-80 hover:opacity-100" href="#">Privacidad</a>
+<a class="text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 text-[13px] font-['Plus_Jakarta_Sans'] transition-opacity opacity-80 hover:opacity-100" href="#">Términos</a>
+<a class="text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 text-[13px] font-['Plus_Jakarta_Sans'] transition-opacity opacity-80 hover:opacity-100" href="#">Contacto</a>
+<a class="text-slate-500 hover:text-slate-800 dark:hover:text-slate-200 text-[13px] font-['Plus_Jakarta_Sans'] transition-opacity opacity-80 hover:opacity-100" href="#">Accesibilidad</a>
+</div>
+</div>
+</footer>
+</body></html>
