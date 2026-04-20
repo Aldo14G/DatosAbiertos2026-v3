@@ -1,31 +1,46 @@
 # dashboard_v3.py
-# Orquestador principal del dashboard NL 2026.
+# Orquestador principal del dashboard NL 2026 — Single-Page Scrollable.
 # Ejecutar con: streamlit run dashboard_v3.py
+#
+# Arquitectura v3.3 — Narrativa vertical con 5 secciones:
+# Inicio → Desarrollo → Dashboards → Conclusiones → Footer.
 
-import streamlit as st
+import base64
+import datetime
+
 import pandas as pd
+import streamlit as st
+
+from config import CACHE_TTL_SECONDS, UMBRAL_GOBERNANZA, VERSION
 
 st.set_page_config(
     page_title="NL 2026 — Gobernanza de Datos",
-    page_icon="📊",
+    page_icon="◆",
     layout="wide",
-    initial_sidebar_state="expanded",
+    initial_sidebar_state="collapsed",
 )
 
-# ── Inyectar sistema de diseño Stitch ────────────────────────
-from styles.global_css import inject_stitch_design_system
-st.markdown(inject_stitch_design_system(), unsafe_allow_html=True)
+# ── Tema ──────────────────────────────────────────────────────
+if "theme" not in st.session_state:
+    st.session_state.theme = "dark"
+
+# ── Inyectar sistema de diseño NL 2026 ───────────────────────
+from styles.global_css import inject_design_system  # noqa: E402
+
+st.markdown(inject_design_system(st.session_state.theme), unsafe_allow_html=True)
 
 
 # ── Carga de datos ────────────────────────────────────────────
-@st.cache_data(ttl=3600)
+@st.cache_data(ttl=CACHE_TTL_SECONDS)
 def load_data() -> pd.DataFrame:
+    """Carga y cachea los resultados de calidad desde CSV o JSON."""
     from data_layer import load_results
     return load_results()
 
 
 try:
-    df = load_data()
+    with st.spinner("Cargando datos de calidad…"):
+        df = load_data()
 except (FileNotFoundError, ValueError, KeyError) as e:
     st.error(
         f"**Error al cargar los datos:** {e}\n\n"
@@ -39,142 +54,141 @@ if df.empty:
     st.stop()
 
 
-# ── Métricas de cabecera para el sidebar ─────────────────────
-_n_alertas  = int((df["score_global"] < 70).sum()) if "score_global" in df.columns else 0
-_score_prom = df["score_global"].mean()             if "score_global" in df.columns else 0
+# ── Métricas para la Status Bar ──────────────────────────────
+_n_alertas  = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
+_score_prom = float(df["score_global"].mean()) if "score_global" in df.columns and not df["score_global"].empty else 0.0
+
+_csv_bytes = df.to_csv(index=False).encode("utf-8")
+_csv_b64 = base64.b64encode(_csv_bytes).decode("ascii")
+_download_href = f"data:text/csv;base64,{_csv_b64}"
 
 
-# ── SIDEBAR ───────────────────────────────────────────────────
+# ── Secciones de la topbar (single-page, anchor-based) ───────
+_SECTIONS: list[tuple[str, str, str]] = [
+    ("Inicio",        "inicio",        "home"),
+    ("Desarrollo",    "desarrollo",    "account_tree"),
+    ("Dashboards",    "dashboards",    "insights"),
+    ("Conclusiones",  "conclusiones",  "lightbulb"),
+    ("Footer",        "footer",        "bookmark"),
+]
+
+
+# ── STATUS BAR (sidebar colapsado) ────────────────────────────
+_alert_cls   = "is-critical" if _n_alertas > 0 else "is-ok"
+_alert_icon  = "warning" if _n_alertas > 0 else "check_circle"
+_today_iso   = datetime.date.today().isoformat()
+
 with st.sidebar:
-    st.markdown("""
-    <div style="padding:0 0 20px">
-        <div style="font-family:'Plus Jakarta Sans',sans-serif;
-                    font-size:15px;font-weight:700;color:#1a1b1e">
+    st.markdown(f"""
+    <div class="nl-sb-brand">
+        <div class="nl-sb-title">
+            <span class="material-symbols-outlined" aria-hidden="true">shield</span>
             Gobernanza Pro
         </div>
-        <div style="font-size:11px;color:#9aa0a6;text-transform:uppercase;
-                    letter-spacing:0.08em">v2.1 · Stitch M3</div>
+        <div class="nl-sb-version">Sistema de Calidad v{VERSION}</div>
     </div>
-    """, unsafe_allow_html=True)
-
-    nav = st.radio(
-        "nav",
-        [
-            "dashboard  Resumen",
-            "explore  Categorías",
-            "table_view  Datasets",
-            "notifications  Alertas",
-            "show_chart  Evolución",
-            "insights  Avanzado",
-        ],
-        label_visibility="collapsed",
-        format_func=lambda x: x.split("  ")[1],
-    )
-
-    st.markdown(
-        "<hr style='border:none;border-top:1px solid #dadce0;margin:16px 0'>",
-        unsafe_allow_html=True,
-    )
-
-    # Badge de alertas (rojo si hay críticos)
-    alert_color = "#d93025" if _n_alertas > 0 else "#1e8e3e"
-    alert_icon  = "⚠️" if _n_alertas > 0 else "✓"
-    st.markdown(f"""
-    <div style="font-size:11px;color:#9aa0a6;line-height:2.2;padding:4px 16px">
-        <div>🗓️ Análisis: 2026-03-19</div>
-        <div>📁 {len(df)} datasets procesados</div>
-        <div>📊 Score promedio: <strong style="color:#1a1b1e">{_score_prom:.1f}%</strong></div>
-        <div style="color:{alert_color};font-weight:600">
-            {alert_icon} {_n_alertas} alertas críticas
+    <hr class="nl-sb-divider" />
+    <div class="nl-sb-status">
+        <div class="nl-sb-row">
+            <span class="material-symbols-outlined" aria-hidden="true">calendar_today</span>
+            <span>Actualizado: <strong>{_today_iso}</strong></span>
+        </div>
+        <div class="nl-sb-row">
+            <span class="material-symbols-outlined" aria-hidden="true">database</span>
+            <span>Universo: <strong>{len(df)} datasets</strong></span>
+        </div>
+        <div class="nl-sb-row">
+            <span class="material-symbols-outlined" aria-hidden="true">bar_chart</span>
+            <span>Promedio: <strong>{_score_prom:.1f}%</strong></span>
+        </div>
+        <div class="nl-sb-alerts {_alert_cls}">
+            <span class="material-symbols-outlined" aria-hidden="true">{_alert_icon}</span>
+            {_n_alertas} alertas críticas
         </div>
     </div>
+    <div class="nl-sb-gap"></div>
     """, unsafe_allow_html=True)
 
-    st.markdown(
-        "<hr style='border:none;border-top:1px solid #dadce0;margin:12px 0'>",
-        unsafe_allow_html=True,
-    )
+    _t_label = "Modo Claro" if st.session_state.theme == "dark" else "Modo Oscuro"
+    if st.button(f"{_t_label}", key="theme_toggle", use_container_width=True):
+        st.session_state.theme = "light" if st.session_state.theme == "dark" else "dark"
+        st.rerun()
 
-    st.markdown("""
-    <div style="padding:4px 16px 8px">
-        <a href="https://catalogodatos.nl.gob.mx" target="_blank"
-           style="color:#005bbf;font-weight:700;font-size:13px;text-decoration:none">
-            Abrir Portal →
-        </a>
+
+# ── TOPBAR (navegación por anchors + IntersectionObserver) ───
+_nav_links = "".join(
+    f'<a href="#{slug}" data-section="{slug}">'
+    f'<span class="material-symbols-outlined" aria-hidden="true">{icon}</span>{name}</a>'
+    for name, slug, icon in _SECTIONS
+)
+
+st.markdown(f"""
+<div class="stitch-topbar">
+    <div class="stitch-topbar-inner">
+        <div class="stitch-topbar-brand">
+            <span class="material-symbols-outlined" aria-hidden="true">analytics</span>
+            <div>
+                <span>Gobernanza Pro</span>
+                <span>Nuevo León 2026</span>
+            </div>
+        </div>
+        <nav class="stitch-topbar-nav" aria-label="Navegación principal">
+            {_nav_links}
+        </nav>
+        <div class="stitch-topbar-actions" aria-label="Acciones globales">
+            <a class="stitch-topbar-btn stitch-topbar-btn-primary"
+               href="{_download_href}" download="resultados_nl_2026.csv">
+                <span class="material-symbols-outlined" aria-hidden="true">download</span>
+                Exportar CSV
+            </a>
+            <a class="stitch-topbar-btn stitch-topbar-btn-secondary"
+               href="https://catalogodatos.nl.gob.mx" target="_blank" rel="noopener noreferrer">
+                <span class="material-symbols-outlined" aria-hidden="true">open_in_new</span>
+                Portal NL
+            </a>
+        </div>
     </div>
-    """, unsafe_allow_html=True)
+</div>
 
+<div class="stitch-mobile-shell">
+    <details class="stitch-mobile-menu">
+        <summary>
+            <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+            Menú de Navegación
+        </summary>
+        <div class="stitch-mobile-panel">
+            <nav class="stitch-mobile-nav" aria-label="Navegación móvil">
+                {_nav_links}
+            </nav>
+        </div>
+    </details>
+</div>
 
-# ── NAVBAR ────────────────────────────────────────────────────
-section = nav.split("  ")[1]
+<script>
+(function() {{
+    const observer = new IntersectionObserver((entries) => {{
+        entries.forEach((entry) => {{
+            if (entry.isIntersecting) {{
+                const id = entry.target.id;
+                document.querySelectorAll('.stitch-topbar-nav a, .stitch-mobile-nav a').forEach((a) => {{
+                    a.classList.toggle('active', a.dataset.section === id);
+                }});
+            }}
+        }});
+    }}, {{ rootMargin: '-40% 0px -55% 0px', threshold: 0 }});
 
-nc1, nc2 = st.columns([1, 2])
-with nc1:
-    st.markdown("""
-    <div style="font-size:21px;font-weight:700;letter-spacing:-0.02em;
-                font-family:'Plus Jakarta Sans',sans-serif;color:#1a1b1e;
-                padding-top:16px;margin-bottom:8px">
-        NL 2026
-    </div>
-    """, unsafe_allow_html=True)
-with nc2:
-    # Botón de descarga global disponible en todas las secciones
-    _, btn_col = st.columns([3, 1])
-    with btn_col:
-        st.download_button(
-            "⬇ CSV completo",
-            df.to_csv(index=False).encode("utf-8"),
-            "resultados_nl_2026.csv",
-            "text/csv",
-            key="nav_dl",
-        )
-
-st.markdown("<div style='margin-bottom:24px'></div>", unsafe_allow_html=True)
-
-
-# ── ENRUTAMIENTO ──────────────────────────────────────────────
-if section == "Resumen":
-    from sections.resumen import render_resumen
-    render_resumen(df, {})
-
-elif section == "Categorías":
-    from sections.categorias import render_categorias
-    render_categorias(df, {})
-
-elif section == "Datasets":
-    from sections.datasets import render_datasets
-    render_datasets(df, {})
-
-elif section == "Alertas":
-    from sections.alertas import render_alertas
-    render_alertas(df, {})
-
-elif section == "Evolución":
-    from sections.evolucion import render_evolucion
-    render_evolucion(df, {})
-
-elif section == "Avanzado":
-    from sections.avanzado import render_avanzado
-    render_avanzado(df, {})
-
-
-# ── FOOTER ────────────────────────────────────────────────────
-st.markdown("""
-<footer style="border-top:1px solid #f1f0f4;padding:32px 0;margin-top:56px;
-               display:flex;justify-content:space-between;align-items:center;
-               flex-wrap:wrap;gap:16px">
-    <span style="font-size:18px;font-weight:900;color:#9aa0a6">NL 2026</span>
-    <p style="font-family:'Plus Jakarta Sans',sans-serif;font-size:13px;
-              color:#5f6368;margin:0">
-        © 2026 Gobierno de Nuevo León — Datos Abiertos
-    </p>
-    <div style="display:flex;gap:24px">
-        <a href="https://datosabiertos.nl.gob.mx"  target="_blank"
-           style="color:#5f6368;font-size:13px;text-decoration:none">Portal</a>
-        <a href="https://catalogodatos.nl.gob.mx"  target="_blank"
-           style="color:#5f6368;font-size:13px;text-decoration:none">Catálogo</a>
-        <a href="https://nl.gob.mx/transparencia" target="_blank"
-           style="color:#5f6368;font-size:13px;text-decoration:none">Transparencia</a>
-    </div>
-</footer>
+    ['inicio', 'desarrollo', 'dashboards', 'conclusiones', 'footer'].forEach((id) => {{
+        const el = document.getElementById(id);
+        if (el) observer.observe(el);
+    }});
+}})();
+</script>
 """, unsafe_allow_html=True)
+
+
+# ── Render de la página ───────────────────────────────────────
+_tokens = {"theme": st.session_state.theme}
+
+from sections.app import render as render_app  # noqa: E402
+
+render_app(df, _tokens)
