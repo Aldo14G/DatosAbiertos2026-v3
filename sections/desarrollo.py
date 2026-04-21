@@ -123,7 +123,7 @@ def render_desarrollo(df: pd.DataFrame, tokens: dict) -> None:
     _divider("Proceso de análisis")
     cards_html = "".join(_pipeline_card(*step) for step in _PIPELINE_STEPS)
     st.markdown(
-        f'<div class="nl-pipeline-grid">{cards_html}</div>',
+        f'<div class="nl-pipeline-grid nl-reveal">{cards_html}</div>',
         unsafe_allow_html=True,
     )
 
@@ -146,7 +146,7 @@ def render_desarrollo(df: pd.DataFrame, tokens: dict) -> None:
         weight_rows.append(_weight_row(label, weight, desc))
 
     st.markdown(
-        '<div class="nl-weights-grid">' + "".join(weight_rows) + '</div>',
+        '<div class="nl-weights-grid nl-reveal nl-reveal-d1">' + "".join(weight_rows) + '</div>',
         unsafe_allow_html=True,
     )
 
@@ -167,26 +167,36 @@ def render_desarrollo(df: pd.DataFrame, tokens: dict) -> None:
     pct_umbral = (by_umbral / len(df) * 100) if len(df) else 0
 
     stats_cards = [
-        ("database",    f"{total_catalogo:,}",          "Datasets en catálogo"),
-        ("check_circle", f"{procesados:,}",              "Procesados con éxito"),
-        ("error",        f"{fallidos:,}",                "Fallos de extracción"),
-        ("timer",        f"{elapsed:.0f}s",              "Tiempo total de evaluación"),
-        ("apartment",    f"{n_orgs}",                    "Organizaciones representadas"),
-        ("category",     f"{n_cats}",                    "Categorías temáticas"),
-        ("description",  f"{n_fmts}",                    "Formatos distintos"),
-        ("dataset",      f"{filas_total:,}",             "Filas evaluadas (total)"),
-        ("verified",     f"{pct_umbral:.0f}%",           "Sobre umbral de gobernanza"),
+        ("database",     f"{total_catalogo:,}",  "Datasets en catálogo",
+         "Total de datasets publicados en el portal CKAN de NL en el momento del análisis."),
+        ("check_circle", f"{procesados:,}",       "Procesados con éxito",
+         "Datasets que superaron el pipeline completo de extracción y evaluación ISO 25012."),
+        ("error",        f"{fallidos:,}",         "Fallos de extracción",
+         "Datasets que no pudieron descargarse o procesarse. Ver trazabilidad en la sección Alertas."),
+        ("timer",        f"{elapsed:.0f}s",       "Tiempo de evaluación",
+         "Duración total del último run completo del pipeline de calidad."),
+        ("apartment",    f"{n_orgs}",             "Organizaciones",
+         "Dependencias gubernamentales con al menos un dataset publicado en el catálogo."),
+        ("category",     f"{n_cats}",             "Categorías temáticas",
+         "Grupos temáticos distintos asignados en CKAN (excluye registros sin categoría)."),
+        ("description",  f"{n_fmts}",             "Formatos distintos",
+         "Tipos de archivo distintos detectados: CSV, JSON, XLSX, GeoJSON, XML y otros."),
+        ("dataset",      f"{filas_total:,}",      "Filas evaluadas",
+         "Suma de registros en todos los datasets procesados exitosamente."),
+        ("verified",     f"{pct_umbral:.0f}%",    "Sobre umbral de gobernanza",
+         f"Datasets con score global >= {UMBRAL_GOBERNANZA:.0f}% — considerados gobernables bajo ISO 25012."),
     ]
-    card_html = "".join(f"""
-    <div class="nl-stat-card">
-        <span class="material-symbols-outlined nl-stat-icon" aria-hidden="true">{icon}</span>
-        <span class="nl-stat-value">{_html.escape(str(value))}</span>
-        <span class="nl-stat-label">{_html.escape(label)}</span>
-    </div>
-    """ for icon, value, label in stats_cards)
+    card_html = "".join(
+        f'<div class="nl-stat-card" data-tooltip="{_html.escape(tip)}">'
+        f'<span class="material-symbols-outlined nl-stat-icon" aria-hidden="true">{icon}</span>'
+        f'<span class="nl-stat-value">{_html.escape(str(value))}</span>'
+        f'<span class="nl-stat-label">{_html.escape(label)}</span>'
+        f'</div>'
+        for icon, value, label, tip in stats_cards
+    )
 
     st.markdown(
-        f'<div class="nl-stats-grid">{card_html}</div>',
+        f'<div class="nl-stats-grid nl-reveal nl-reveal-d2">{card_html}</div>',
         unsafe_allow_html=True,
     )
 

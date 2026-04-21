@@ -197,3 +197,27 @@ _tokens = {"theme": st.session_state.theme}
 from sections.app import render as render_app  # noqa: E402
 
 render_app(df, _tokens)
+
+# ── Scroll-reveal IntersectionObserver ───────────────────
+st.markdown("""
+<script>
+(function() {
+    function setupReveal() {
+        var io = new IntersectionObserver(function(entries) {
+            entries.forEach(function(e) {
+                if (e.isIntersecting) {
+                    e.target.classList.add('nl-revealed');
+                    io.unobserve(e.target);
+                }
+            });
+        }, { threshold: 0.06, rootMargin: '0px 0px -60px 0px' });
+        document.querySelectorAll('.nl-reveal').forEach(function(el) { io.observe(el); });
+    }
+    if (document.readyState === 'complete') {
+        setupReveal();
+    } else {
+        window.addEventListener('load', setupReveal);
+    }
+})();
+</script>
+""", unsafe_allow_html=True)

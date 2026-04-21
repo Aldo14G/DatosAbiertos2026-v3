@@ -2064,6 +2064,122 @@ button:focus-visible {
 
 """
 
+_CSS_UX_ENHANCEMENTS = """
+/* ══ UX ENHANCEMENTS ══════════════════════════════════════ */
+
+/* Hover lift for stat cards */
+.nl-stat-card {{
+    transition: transform 0.25s var(--ease-out, cubic-bezier(0,0,0.2,1)),
+                border-color 0.25s ease,
+                box-shadow 0.25s ease;
+}}
+.nl-stat-card:hover {{
+    transform: translateY(-4px);
+    border-color: var(--border);
+    box-shadow: var(--shadow-md);
+}}
+
+/* Hover lift for pipeline steps */
+.nl-pipeline-step {{
+    transition: transform 0.22s var(--ease-out), border-color 0.22s ease, box-shadow 0.22s ease;
+}}
+.nl-pipeline-step:hover {{
+    transform: translateY(-3px);
+    border-color: var(--border);
+    box-shadow: var(--shadow-md);
+}}
+
+/* Hover lift for insight cards */
+.nl-insight-card {{
+    transition: transform 0.22s var(--ease-out), box-shadow 0.22s ease;
+}}
+.nl-insight-card:hover {{
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-md);
+}}
+
+/* Hover lift for recommendation items */
+.nl-rec-item {{
+    transition: background 0.18s ease, box-shadow 0.18s ease;
+}}
+.nl-rec-item:hover {{
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+}}
+
+/* ── Scroll-reveal ─────────────────────────────────────── */
+.nl-reveal {{
+    opacity: 0;
+    transform: translateY(22px);
+    transition: opacity 0.55s var(--ease-out, cubic-bezier(0,0,0.2,1)),
+                transform 0.55s var(--ease-out, cubic-bezier(0,0,0.2,1));
+}}
+.nl-reveal.nl-revealed {{
+    opacity: 1;
+    transform: translateY(0);
+}}
+.nl-reveal-d1 {{ transition-delay: 0.06s; }}
+.nl-reveal-d2 {{ transition-delay: 0.13s; }}
+.nl-reveal-d3 {{ transition-delay: 0.20s; }}
+
+/* ── Chart insight panel ───────────────────────────────── */
+.nl-chart-insight {{
+    background: var(--surface-alt);
+    border-left: 3px solid var(--teal);
+    border-radius: 0 10px 10px 0;
+    padding: 14px 20px;
+    margin: 10px 0 28px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}}
+.nl-chart-insight-icon {{
+    color: var(--teal-light);
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 1px;
+}}
+.nl-chart-insight-text {{
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0;
+}}
+.nl-chart-insight-text strong {{ color: var(--cream); }}
+
+/* ── CSS Tooltips via data-tooltip ─────────────────────── */
+[data-tooltip] {{ position: relative; cursor: help; }}
+[data-tooltip]::after {{
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--surface-high);
+    border: 1px solid var(--card-border);
+    border-radius: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    font-family: 'DM Sans', sans-serif;
+    color: var(--muted);
+    white-space: normal;
+    max-width: 240px;
+    z-index: 200;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+    box-shadow: var(--shadow-md);
+    text-align: left;
+    line-height: 1.5;
+}}
+[data-tooltip]:hover::after {{ opacity: 1; }}
+
+@media (max-width: 600px) {{
+    .nl-chart-insight {{ flex-direction: column; gap: 6px; }}
+    [data-tooltip]::after {{ left: 0; transform: none; max-width: 200px; }}
+}}
+"""
+
 _CSS_BACKGROUNDS = """
 /* ══ ATMOSPHERIC BACKGROUNDS ══════════════════════════════ */
 .bg-hero {
@@ -2249,6 +2365,7 @@ def inject_design_system(theme: str = "dark") -> str:
         _CSS_PIPELINE,
         _CSS_SINGLEPAGE,
         _CSS_A11Y,
+        _CSS_UX_ENHANCEMENTS,
         _CSS_BACKGROUNDS,
         _CSS_UTILITIES,
     ]

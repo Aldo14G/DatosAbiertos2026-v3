@@ -154,7 +154,7 @@ def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
         ),
     ]
     st.markdown(
-        f'<div class="nl-insights-grid">{"".join(hallazgos)}</div>',
+        f'<div class="nl-insights-grid nl-reveal">{"".join(hallazgos)}</div>',
         unsafe_allow_html=True,
     )
 
@@ -197,7 +197,7 @@ def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
     ))
 
     st.markdown(
-        f'<div class="nl-insights-grid">{"".join(insights)}</div>',
+        f'<div class="nl-insights-grid nl-reveal nl-reveal-d1">{"".join(insights)}</div>',
         unsafe_allow_html=True,
     )
 
@@ -244,6 +244,6 @@ def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
     """ for icon, title, body in recomendaciones)
 
     st.markdown(
-        f'<ol class="nl-rec-list" aria-label="Recomendaciones priorizadas">{rec_html}</ol>',
+        f'<ol class="nl-rec-list nl-reveal nl-reveal-d2" aria-label="Recomendaciones priorizadas">{rec_html}</ol>',
         unsafe_allow_html=True,
     )
