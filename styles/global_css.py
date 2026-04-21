@@ -1415,6 +1415,11 @@ _CSS_PIPELINE = """
     border-radius: var(--radius-full, 9999px);
     padding: 2px 10px;
 }}
+.failure-panel-note {{
+    color: var(--muted);
+    font-size: 12px;
+    margin: 12px 0 0;
+}}
 .failure-cause-row {{
     display: flex;
     align-items: center;
@@ -1571,6 +1576,27 @@ section[id="footer"] {{
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--card-border) 40%, var(--card-border) 60%, transparent);
     margin: 56px 0 24px;
+}}
+
+.nl-section-error {{
+    border: 1px solid var(--rose-dim);
+    background: var(--rose-dim);
+    border-radius: 14px;
+    padding: 20px 24px;
+    margin: 24px 0;
+}}
+.nl-section-error-title {{
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--rose-light);
+    margin: 0 0 8px;
+}}
+.nl-section-error-body {{
+    color: var(--muted);
+    font-size: 13px;
+    font-family: 'DM Mono', monospace;
+    margin: 0;
+    overflow-wrap: anywhere;
 }}
 
 .nl-subsection-header {{

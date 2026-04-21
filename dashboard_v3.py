@@ -55,8 +55,13 @@ if df.empty:
 
 
 # ── Métricas para la Status Bar ──────────────────────────────
-_n_alertas  = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
-_score_prom = float(df["score_global"].mean()) if "score_global" in df.columns and not df["score_global"].empty else 0.0
+if "score_global" in df.columns:
+    _n_alertas  = int((df["score_global"] < UMBRAL_GOBERNANZA).sum())
+    _mean       = df["score_global"].mean()
+    _score_prom = float(_mean) if pd.notna(_mean) else 0.0
+else:
+    _n_alertas  = 0
+    _score_prom = 0.0
 
 _csv_bytes = df.to_csv(index=False).encode("utf-8")
 _csv_b64 = base64.b64encode(_csv_bytes).decode("ascii")

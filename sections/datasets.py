@@ -52,14 +52,23 @@ def _load_toml_thresholds() -> dict:
         return {}
 
 
+def _as_pct(value: object, default: float) -> float:
+    """Convierte un valor a porcentaje float; usa default solo si es None o NaN."""
+    if value is None or pd.isna(value):
+        return default
+    return float(value)
+
+
 def _recomendaciones(row: dict, umbral: float = UMBRAL_GOBERNANZA) -> list[str]:
     """Genera hasta 4 recomendaciones ordenadas por impacto según las dimensiones críticas."""
     recs = []
-    comp  = row.get("comp_completitud_global_pct", 100) or 100
-    acc   = row.get("acc_score_accuracy_pct",      100) or 100
-    cons  = row.get("cons_score_consistency_pct",  100) or 100
-    uniq  = row.get("uniq_score_uniqueness_pct",   100) or 100
-    time_ = row.get("time_score_timeliness_pct",    50) or 50
+    # Si falta el campo: default permisivo (no recomendar sobre datos ausentes).
+    # Un valor real de 0.0 SE PRESERVA (no se colapsa con `or`).
+    comp  = _as_pct(row.get("comp_completitud_global_pct"), 100)
+    acc   = _as_pct(row.get("acc_score_accuracy_pct"),      100)
+    cons  = _as_pct(row.get("cons_score_consistency_pct"),  100)
+    uniq  = _as_pct(row.get("uniq_score_uniqueness_pct"),   100)
+    time_ = _as_pct(row.get("time_score_timeliness_pct"),    50)
 
     if comp < umbral:
         recs.append(
@@ -176,21 +185,42 @@ def _render_failure_panel(coverage: dict | None) -> None:
                 {"".join(detail_rows)}
             </div>
         </details>
-        <p style="color:var(--muted);font-size:12px;margin:12px 0 0">
-            Corregible: 3 por mismatch .CSV declarado vs .xlsx real
-            (usar --force en proximo run), 2 sin URL en fuente CKAN.
-        </p>
+        {_failure_summary_html(causes)}
     </div>
     """, unsafe_allow_html=True)
+
+
+def _failure_summary_html(causes: dict[str, list[dict]]) -> str:
+    """Mensaje dinámico de remediación derivado de las causas reales."""
+    parts: list[str] = []
+    n_mismatch = len(causes.get("download_failed", []))
+    n_no_url   = len(causes.get("no_url", []))
+    n_other    = len(causes.get("other", []))
+    if n_mismatch:
+        parts.append(
+            f"{n_mismatch} por mismatch de formato declarado (usar "
+            f"<code>--force</code> en el próximo run)"
+        )
+    if n_no_url:
+        parts.append(f"{n_no_url} sin URL en la fuente CKAN")
+    if n_other:
+        parts.append(f"{n_other} otros")
+    if not parts:
+        return ""
+    return (
+        '<p class="failure-panel-note">'
+        f'Remediación sugerida: {"; ".join(parts)}.'
+        "</p>"
+    )
 
 
 def _render_alerta_card(row: dict, umbral: float = UMBRAL_GOBERNANZA) -> str:
     """Genera el HTML de una tarjeta de alerta crítica con barras por dimensión."""
     dims = [
-        ("COMPLETITUD",  row.get("comp_completitud_global_pct", 0) or 0),
-        ("EXACTITUD",    row.get("acc_score_accuracy_pct",      0) or 0),
-        ("CONSISTENCIA", row.get("cons_score_consistency_pct",  0) or 0),
-        ("PUNTUALIDAD",  row.get("time_score_timeliness_pct",  50) or 50),
+        ("COMPLETITUD",  _as_pct(row.get("comp_completitud_global_pct"),  0)),
+        ("EXACTITUD",    _as_pct(row.get("acc_score_accuracy_pct"),       0)),
+        ("CONSISTENCIA", _as_pct(row.get("cons_score_consistency_pct"),   0)),
+        ("PUNTUALIDAD",  _as_pct(row.get("time_score_timeliness_pct"),   50)),
     ]
 
     bars_html = ""
@@ -211,7 +241,7 @@ def _render_alerta_card(row: dict, umbral: float = UMBRAL_GOBERNANZA) -> str:
         ds_name = "N/A"
     slug    = str(row.get("slug", "")).strip() or ds_name.replace(" ", "-").lower()
     url     = f"https://catalogodatos.nl.gob.mx/dataset/{slug}"
-    score   = float(row.get("score_global", 0) or 0)
+    score   = _as_pct(row.get("score_global"), 0)
     org     = str(row.get("organizacion", ""))[:65]
     cat     = str(row.get("categoria", ""))
 
@@ -253,9 +283,9 @@ def _render_alerta_card(row: dict, umbral: float = UMBRAL_GOBERNANZA) -> str:
 </div>"""
 
 
-# ── Tab de alertas ────────────────────────────────────────────
+# ── Panel de alertas (reutilizable tab/sección) ───────────────
 
-def _render_tab_alertas(df: pd.DataFrame) -> None:
+def _render_alerts_body(df: pd.DataFrame) -> None:
     """Renderiza el monitor de alertas críticas (ex-sección independiente)."""
     toml_thresholds = _load_toml_thresholds()
     umbral = toml_thresholds.get("gobernanza", UMBRAL_GOBERNANZA)
@@ -498,4 +528,4 @@ def render_alertas(df: pd.DataFrame, tokens: dict) -> None:
         Basado en ISO/IEC 25012:2008.
     </p>
     """, unsafe_allow_html=True)
-    _render_tab_alertas(df)
+    _render_alerts_body(df)
