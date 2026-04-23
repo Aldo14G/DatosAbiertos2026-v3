@@ -70,11 +70,11 @@ _download_href = f"data:text/csv;base64,{_csv_b64}"
 
 # ── Secciones de la topbar (single-page, anchor-based) ───────
 _SECTIONS: list[tuple[str, str, str]] = [
-    ("Inicio",        "inicio",        "home"),
-    ("Desarrollo",    "desarrollo",    "account_tree"),
-    ("Dashboards",    "dashboards",    "insights"),
-    ("Conclusiones",  "conclusiones",  "lightbulb"),
-    ("Footer",        "footer",        "bookmark"),
+    ("Inicio",       "inicio",       "home"),
+    ("Dashboards",   "dashboards",   "insights"),
+    ("Conclusiones", "conclusiones", "lightbulb"),
+    ("Metodología",  "desarrollo",   "account_tree"),
+    ("Footer",       "footer",       "bookmark"),
 ]
 
 
@@ -131,16 +131,18 @@ st.markdown(f"""
 <div class="stitch-topbar">
     <div class="stitch-topbar-inner">
         <div class="stitch-topbar-brand">
-            <span class="material-symbols-outlined" aria-hidden="true">analytics</span>
-            <div>
-                <span>Gobernanza Pro</span>
-                <span>Nuevo León 2026</span>
-            </div>
+            <span class="material-symbols-outlined" aria-hidden="true">shield</span>
+            <span>Gobernanza Pro</span>
         </div>
         <nav class="stitch-topbar-nav" aria-label="Navegación principal">
             {_nav_links}
         </nav>
         <div class="stitch-topbar-actions" aria-label="Acciones globales">
+            <a class="stitch-topbar-btn stitch-topbar-btn-secondary"
+               href="http://localhost:3000" style="border-color:var(--gold); color:var(--gold-light)">
+                <span class="material-symbols-outlined" aria-hidden="true">home</span>
+                Volver al Inicio
+            </a>
             <a class="stitch-topbar-btn stitch-topbar-btn-primary"
                href="{_download_href}" download="resultados_nl_2026.csv">
                 <span class="material-symbols-outlined" aria-hidden="true">download</span>
@@ -202,6 +204,7 @@ render_app(df, _tokens)
 st.markdown("""
 <script>
 (function() {
+    document.documentElement.classList.add('js-reveals');
     function setupReveal() {
         var io = new IntersectionObserver(function(entries) {
             entries.forEach(function(e) {

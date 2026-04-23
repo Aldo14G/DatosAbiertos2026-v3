@@ -1,0 +1,34 @@
+{
+  "run_id": "20260418_144034",
+  "total_catalogo": 282,
+  "procesados_limit": 282,
+  "procesados_exitosos": 277,
+  "fallidos": 5,
+  "cobertura_pct": 98.2,
+  "elapsed_total_s": 917.39,
+  "avg_time_per_dataset_s": 3.31,
+  "failed_details": [
+    {
+      "slug": "directorio-de-parques-osetur-nuevo-leon",
+      "reason": "Download failed (.CSV): https://catalogodatos.nl.gob.mx/dataset/8aa0d5e3-89ff-46c1-9c41-2e076a9863ad/resource/f3a5d5e2-8975-4b22-9410-8ca19ccc0cd5/download/directorio_parques_osetur_nuevoleon.xlsx"
+    },
+    {
+      "slug": "directorio-de-parques-osetur-nuevo-leon",
+      "reason": "Download failed (.CSV): https://catalogodatos.nl.gob.mx/dataset/8aa0d5e3-89ff-46c1-9c41-2e076a9863ad/resource/bf8344c2-bcf7-4800-8c28-9e94649fcc01/download/diccionario_directorio_parques.xlsx"
+    },
+    {
+      "slug": "visitantes-a-parques-nuevo-leon",
+      "reason": "Download failed (.CSV): https://catalogodatos.nl.gob.mx/dataset/4a4ea6c2-0811-4079-9b56-bf288d3ac5e1/resource/b917826e-4089-48b1-91ac-3f9f88a95659/download/visitantes_parques_nuevoleon.xlsx"
+    },
+    {
+      "slug": "visitantes-a-parques-nuevo-leon",
+      "reason": "No URL"
+    },
+    {
+      "slug": "indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon",
+      "reason": "No URL"
+    }
+  ],
+  "snapshot_dir": "snapshots\\run_20260418_144034",
+  "snapshot_sha256": "631bec740ba9441886ab2b3fc2d81365e76fa83ec3b55e5c060c5b3ffaa33046"
+}

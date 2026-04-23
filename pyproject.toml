@@ -1,0 +1,42 @@
+[project]
+name = "datos-abiertos-nl-2026"
+version = "2.1.0"
+description = "Dashboard de calidad de datos abiertos de Nuevo León 2026"
+requires-python = ">=3.11"
+readme = "README.md"
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+extend-exclude = [".venv", "__pycache__", "lecturas_txt", "Lecturas"]
+
+[tool.ruff.lint]
+select = [
+    "E",   # pycodestyle errors
+    "F",   # pyflakes
+    "W",   # pycodestyle warnings
+    "I",   # isort
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "SIM", # flake8-simplify
+]
+ignore = [
+    "E501",  # line too long (compensado por line-length)
+    "B008",  # do not call X in argument defaults (Streamlit idiomático)
+]
+
+[tool.ruff.lint.per-file-ignores]
+"pipeline/*" = ["ALL"]   # pipeline es read-only — no auto-format destructivo
+"sections/*" = ["E402"]  # streamlit imports a veces condicionales
+
+[tool.mypy]
+python_version = "3.11"
+strict_optional = true
+warn_unused_ignores = true
+ignore_missing_imports = true  # streamlit, plotly sin stubs oficiales
+exclude = "(pipeline|.venv|__pycache__)"
+
+[tool.pytest.ini_options]
+testpaths = ["pipeline"]
+python_files = ["test_*.py"]
+addopts = "-v --tb=short"

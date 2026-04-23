@@ -1,129 +1,124 @@
-# DESIGN.md — Calidad de Datos Abiertos NL 2026
-# Formato: Stitch Design System (vibe design specification)
-# Referencia: stitch.withgoogle.com/docs/design-systems
+# DESIGN.md — Sistema de Diseño NL 2026
+# Gobernanza de Datos — Nuevo León
+# Canon visual para todo el proyecto. Referencia: .agent/skills/design-system-pro/SKILL.md
 
 ## Identity
-name: "Gobernanza de Datos NL"
-platform: web
-theme: dark
-primary_language: es-MX
 
-## Color System (Material Design 3 × NL Government Palette)
-colors:
-  primary:           "#2E75B6"   # Azul Gobierno NL — acción principal
-  primary_container: "#1A4A7A"   # Contenedor primario (hover, pressed)
-  on_primary:        "#FFFFFF"   # Texto sobre primario
-  secondary:         "#0288D1"   # Acento informativo
-  tertiary:          "#00ACC1"   # Acento de apoyo (tabs, badges)
+- **Name**: Gobernanza de Datos — Nuevo León 2026
+- **Platform**: Web (Streamlit)
+- **Theme**: Dark (default), Light (toggle)
+- **Language**: es-MX
+- **Design System**: Midnight/Teal/Gold/Rose
 
-  surface_0:  "#0F0F1A"          # Fondo base (más oscuro)
-  surface_1:  "#1A1A2E"          # Cards de nivel 1
-  surface_2:  "#22223A"          # Cards de nivel 2 (elevados)
-  surface_3:  "#2A2A46"          # Modales, tooltips
+## Fonts (Google Fonts CDN)
 
-  on_surface:         "#E8E8F0"  # Texto principal
-  on_surface_variant: "#9898B8"  # Texto secundario / labels
+| Font | Role | Weight | Usage |
+|---|---|---|---|
+| **Playfair Display** | Display/Serif | 400, 600, 700 (+ italic) | H1–H3 titles, hero stats, quote text |
+| **DM Sans** | Body/Sans | 300, 400, 500, 600, 700 | Body text, UI, nav, descriptions |
+| **DM Mono** | Data/Mono | 400, 500 | Eyebrows, badges, dates, counters, labels |
 
-  outline:         "#3A3A5C"     # Bordes de cards
-  outline_variant: "#2A2A42"     # Bordes sutiles
+## Color System
 
-  # Semántica de calidad (NO decorativa)
-  quality_excellent: "#4CAF50"   # Score >= 90%
-  quality_good:      "#FF9800"   # Score 70–89%
-  quality_poor:      "#F44336"   # Score < 70%
-  quality_na:        "#607D8B"   # Sin datos
+### Dark Theme (default)
 
-## Typography (Roboto — Google Fonts)
-fonts:
-  display:  { family: "Roboto", size: 36, weight: 700, tracking: -0.5 }
-  headline: { family: "Roboto", size: 24, weight: 600, tracking: 0    }
-  title:    { family: "Roboto", size: 18, weight: 500, tracking: 0.15 }
-  body:     { family: "Roboto", size: 14, weight: 400, tracking: 0.25 }
-  label:    { family: "Roboto", size: 11, weight: 400, tracking: 0.5  }
-  mono:     { family: "Roboto Mono", size: 12, weight: 400            }
+| Token | Hex | Usage |
+|---|---|---|
+| `--midnight` | `#0f1c2e` | Page background |
+| `--navy` | `#1a2d45` | Elevated surfaces |
+| `--card-bg` | `rgba(255,255,255,0.04)` | Card backgrounds |
+| `--cream` | `#faf6ee` | Primary titles |
+| `--paper` | `#f5f0e8` | Body text |
+| `--muted` | `#8a9bb0` | Secondary text, labels |
+| `--teal` | `#2a7a6f` | Positive/data/success |
+| `--teal-light` | `#3aa895` | Positive highlight |
+| `--gold` | `#c8973a` | Structural/highlight |
+| `--gold-light` | `#e4b96a` | Gold highlight |
+| `--rose` | `#b85c6e` | Alert/negative |
+| `--rose-light` | `#d4738a` | Alert highlight |
+| `--border` | `rgba(200,151,58,0.25)` | Hover borders |
+| `--card-border` | `rgba(255,255,255,0.07)` | Card borders |
+| `--surface` | `#1a2d45` | Surface level 1 |
+| `--surface-alt` | `#152538` | Surface level 2 |
 
-## Spacing Scale (8px base grid — Google Material)
-spacing:
-  xs:   4px
-  sm:   8px
-  md:  16px
-  lg:  24px
-  xl:  32px
-  xxl: 48px
-  xxxl: 64px
+### Quality Tiers (ISO 25012)
+
+| Tier | Condition | Color |
+|---|---|---|
+| Excellent | Score ≥ 90% | `var(--teal)` |
+| Good | Score 70–89% | `var(--gold)` |
+| Poor | Score < 70% | `var(--rose)` |
+
+## Spacing Scale (8px base)
+
+| Token | Size |
+|---|---|
+| xs | 4px |
+| sm | 8px |
+| md | 16px |
+| lg | 24px |
+| xl | 32px |
+| xxl | 48px |
 
 ## Shape (Border Radius)
-shape:
-  xs:   4px    # Badges, chips
-  sm:   8px    # Botones, inputs
-  md:  12px    # Cards normales
-  lg:  16px    # Cards destacadas, KPIs
-  xl:  24px    # Modales, drawers
-  pill: 50px   # Tags de categoría
 
-## Elevation (Tonal Surface — sin box-shadow)
-elevation:
-  0: surface_0   # Fondo de página
-  1: surface_1   # Cards base
-  2: surface_2   # Cards interactivas
-  3: surface_3   # Tooltips, overlays
+| Token | Size | Usage |
+|---|---|---|
+| xs | 4px | Heatmap cells, small tags |
+| sm | 8px | Buttons, inputs |
+| md | 10px | Cards |
+| lg | 12px | KPI cards, filter bars |
+| xl | 20px | Bento panels, hero cards |
+| pill | 9999px | Badges, nav pills, CTAs |
 
-## Components
-kpi_card:
-  background: surface_2
-  border_top_accent: 3px solid <quality_color_by_score>
-  border_radius: lg
-  padding: "24px 20px 18px"
-  value_font: display
-  label_font: label
-  progress_bar_height: 4px
-  progress_bar_radius: xs
+## Component Architecture
 
-data_table:
-  header_bg: surface_2
-  row_bg_odd: surface_1
-  row_bg_even: surface_0
-  border: "0.5px solid outline"
-  cell_padding: "10px 14px"
-  score_column_width: 100px
-  sortable: true
-  sticky_header: true
+### KPI Card
+- 3px top accent stripe (tier color)
+- `border-radius: 12px`
+- Padding: `24px 20px 18px`
+- Value: Playfair Display 32px 700
+- Label: DM Mono 13px uppercase
 
-heatmap:
-  colorscale: "RdYlGn"
-  text_in_cell: true
-  cell_font: label
-  category_axis_width: 180px
-  dimension_axis_height: 48px
+### Data Table
+- Header: `var(--surface)` bg, DM Mono 11px uppercase
+- Rows: `var(--card-border)` separator
+- Hover: `var(--overlay)` highlight
 
-sidebar:
-  width: 240px
-  background: surface_1
-  border_right: "1px solid outline"
-  nav_item_height: 44px
-  nav_item_radius: sm
-  nav_active_bg: primary_container
+### Heatmap
+- Cells: 40px height, rounded 4px
+- Colors: teal/gold/rose based on score
+- Hover: `scale(1.05)` transform
 
-alert_banner:
-  background: "rgba(244, 67, 54, 0.10)"
-  border_left: "4px solid quality_poor"
-  border_radius: "0 md md 0"
-  padding: "16px 20px"
+### Alert Card
+- Left border: 6px solid `var(--rose)`
+- `border-radius: 0 12px 12px 0`
+- Score: Playfair Display 36px 700 rose
+- Recommendations: numbered list
+
+### Navigation (Top Bar)
+- Fixed, 64px height
+- Blur backdrop: `blur(16px) saturate(180%)`
+- Active link: gold-light text, gold bg at 12%
+- Mobile: hamburger menu
 
 ## Screens
-screens:
-  - id: "screen_resumen"
-    route: "/"
-    title: "Resumen del Portal"
-  - id: "screen_categorias"
-    route: "/categorias"
-    title: "Por Categoría"
-  - id: "screen_datasets"
-    route: "/datasets"
-    title: "Explorador de Datasets"
-  - id: "screen_alertas"
-    route: "/alertas"
-    title: "Alertas Críticas"
-  - id: "screen_evolucion"
-    route: "/evolucion"
-    title: "Evolución Histórica"
+
+| ID | Route | Title |
+|---|---|---|
+| inicio | `/?section=inicio` | Landing Page |
+| categorias | `/?section=categorias` | Rendimiento por Categoría |
+| datasets | `/?section=datasets` | Explorador de Datasets |
+| organizaciones | `/?section=organizaciones` | Organizaciones |
+| evolucion | `/?section=evolucion` | Evolución Histórica |
+| avanzado | `/?section=avanzado` | Análisis Avanzado |
+| calidad_pro | `/?section=calidad_pro` | Calidad Pro (ISO 8000/DAMA) |
+
+## Files
+
+| File | Role |
+|---|---|
+| `styles/global_css.py` | Token injection, CSS classes, Plotly themes |
+| `sections/*.py` | Section renderers using design tokens |
+| `.streamlit/config.toml` | Streamlit native theme config |
+| `.agent/skills/design-system-pro/SKILL.md` | Agent skill reference |

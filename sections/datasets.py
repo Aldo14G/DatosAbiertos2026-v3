@@ -143,51 +143,43 @@ def _render_failure_panel(coverage: dict | None) -> None:
     }
     for key, items in causes.items():
         lbl, badge_cls = labels.get(key, labels["other"])
-        cause_rows.append(f"""
-        <div class="failure-cause-row">
-            <span class="{badge_cls}">{len(items)}</span>
-            <span class="failure-reason">{_html.escape(lbl)}</span>
-        </div>""")
+        cause_rows.append(
+            f'<div class="failure-cause-row">'
+            f'<span class="{badge_cls}">{len(items)}</span>'
+            f'<span class="failure-reason">{_html.escape(lbl)}</span>'
+            f'</div>'
+        )
 
     # Detalle por dataset
     detail_rows = []
     for item in failed_details:
         slug = _html.escape(item.get("slug", "desconocido"))
         reason = _html.escape(item.get("reason", ""))
-        detail_rows.append(f"""
-        <div class="failure-cause-row">
-            <span class="failure-slug">{slug}</span>
-            <span class="failure-reason">{reason}</span>
-        </div>""")
+        detail_rows.append(
+            f'<div class="failure-cause-row">'
+            f'<span class="failure-slug">{slug}</span>'
+            f'<span class="failure-reason">{reason}</span>'
+            f'</div>'
+        )
 
-    st.markdown(f"""
-    <div class="failure-panel fade-up" aria-live="polite">
-        <div class="failure-panel-header">
-            <span class="failure-panel-title">
-                <span class="material-symbols-outlined"
-                      aria-hidden="true"
-                      style="font-size:18px;color:var(--rose-light)">
-                    error_outline
-                </span>
-                Fallos de Extraccion
-            </span>
-            <span class="failure-panel-count"
-                  aria-label="{fallidos} fallos de extraccion">
-                {fallidos}
-            </span>
-        </div>
-        {"".join(cause_rows)}
-        <details style="margin-top:12px">
-            <summary style="color:var(--muted);font-size:13px;cursor:pointer">
-                Ver detalle por dataset
-            </summary>
-            <div style="margin-top:8px">
-                {"".join(detail_rows)}
-            </div>
-        </details>
-        {_failure_summary_html(causes)}
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(
+        f'<div class="failure-panel fade-up" aria-live="polite">'
+        f'<div class="failure-panel-header">'
+        f'<span class="failure-panel-title">'
+        f'<span class="material-symbols-outlined nl-failure-icon" aria-hidden="true">error_outline</span>'
+        f'Fallos de Extraccion'
+        f'</span>'
+        f'<span class="failure-panel-count" aria-label="{fallidos} fallos de extraccion">{fallidos}</span>'
+        f'</div>'
+        f'{"".join(cause_rows)}'
+        f'<details class="nl-failure-details">'
+        f'<summary class="nl-failure-summary">Ver detalle por dataset</summary>'
+        f'<div class="nl-failure-detail-list">{"".join(detail_rows)}</div>'
+        f'</details>'
+        f'{_failure_summary_html(causes)}'
+        f'</div>',
+        unsafe_allow_html=True,
+    )
 
 
 def _failure_summary_html(causes: dict[str, list[dict]]) -> str:
@@ -225,16 +217,19 @@ def _render_alerta_card(row: dict, umbral: float = UMBRAL_GOBERNANZA) -> str:
 
     bars_html = ""
     for dim_name, val in dims:
-        bar_color = "var(--rose)" if val < umbral else "var(--gold)" if val < 90 else "var(--teal)"
-        bars_html += f"""<div class="mb-3">
-<div class="d-flex justify-between" style="font-size:11px;font-weight:700;color:var(--muted);margin-bottom:5px">
-<span>{_html.escape(str(dim_name))}</span>
-<span>{_html.escape(f"{val:.0f}")}%</span>
-</div>
-<div class="bar-track" role="progressbar" aria-label="{_html.escape(str(dim_name))}" aria-valuenow="{val:.0f}" aria-valuemin="0" aria-valuemax="100">
-<div class="bar-fill" style="width:{min(val, 100):.0f}%;background:{bar_color}"></div>
-</div>
-</div>"""
+        bar_cls = "nl-bar-critical" if val < umbral else "nl-bar-warn" if val < 90 else "nl-bar-ok"
+        bars_html += (
+            f'<div class="nl-alerta-dim-row">'
+            f'<div class="nl-alerta-dim-head">'
+            f'<span>{_html.escape(str(dim_name))}</span>'
+            f'<span>{_html.escape(f"{val:.0f}")}%</span>'
+            f'</div>'
+            f'<div class="bar-track" role="progressbar" aria-label="{_html.escape(str(dim_name))}"'
+            f' aria-valuenow="{val:.0f}" aria-valuemin="0" aria-valuemax="100">'
+            f'<div class="bar-fill {bar_cls}" style="width:{min(val, 100):.0f}%"></div>'
+            f'</div>'
+            f'</div>'
+        )
 
     ds_name = str(row.get("dataset", "N/A"))
     if not ds_name or ds_name == "nan":
@@ -246,41 +241,41 @@ def _render_alerta_card(row: dict, umbral: float = UMBRAL_GOBERNANZA) -> str:
     cat     = str(row.get("categoria", ""))
 
     recs      = _recomendaciones(row, umbral=umbral)
-    recs_html = "".join([
-        f"""<li class="d-flex gap-3" style="font-size:13px;color:var(--cream);line-height:1.6">
-<span class="icon-box" style="width:20px;height:20px;min-width:20px;font-size:10px;border-radius:50%;background:var(--surface-alt)">{i+1}</span>
-{_html.escape(str(rec))}
-</li>"""
+    recs_html = "".join(
+        f'<li class="nl-alerta-rec-item">'
+        f'<span class="nl-alerta-rec-num">{i + 1}</span>'
+        f'{_html.escape(str(rec))}'
+        f'</li>'
         for i, rec in enumerate(recs)
-    ])
+    )
 
-    return f"""<div class="stitch-card stitch-card-accent-rose p-0 mb-5" style="overflow:hidden;">
-<div class="p-5">
-<div class="d-flex justify-between mb-4" style="align-items:flex-start">
-<div style="flex:1;min-width:0;margin-right:16px">
-<h3 class="section-title text-truncate" style="margin:0 0 4px" title="{_html.escape(ds_name)}">{_html.escape(ds_name[:55])}</h3>
-<p class="section-subtitle" style="margin:0">{_html.escape(str(org))}</p>
-<span class="badge mt-2">{_html.escape(str(cat))}</span>
-</div>
-<div class="text-right" style="flex-shrink:0">
-<div class="alert-score">{_html.escape(f"{score:.1f}")}%</div>
-<div class="kpi-label mt-2">Score de Calidad</div>
-</div>
-</div>
-<div class="card-grid card-grid-2 mb-4">
-{bars_html}
-</div>
-<div style="padding-top:20px;border-top:1px solid var(--card-border)">
-<h4 class="kpi-label">Acciones recomendadas</h4>
-<ul class="icon-list p-0">
-{recs_html}
-</ul>
-</div>
-</div>
-<div class="p-4" style="background:var(--surface-alt);border-top:1px solid var(--card-border)">
-<a href="{_html.escape(url)}" target="_blank" style="color:var(--gold-light);font-weight:600;font-size:14px;text-decoration:none">Ver en catalogodatos.nl.gob.mx →</a>
-</div>
-</div>"""
+    return (
+        f'<div class="stitch-card stitch-card-accent-rose p-0 mb-5" style="overflow:hidden;">'
+        f'<div class="p-5">'
+        f'<div class="d-flex justify-between mb-4" style="align-items:flex-start">'
+        f'<div class="nl-alerta-card-inner">'
+        f'<h3 class="section-title text-truncate" style="margin:0 0 4px"'
+        f' title="{_html.escape(ds_name)}">{_html.escape(ds_name[:55])}</h3>'
+        f'<p class="section-subtitle" style="margin:0">{_html.escape(str(org))}</p>'
+        f'<span class="badge mt-2">{_html.escape(str(cat))}</span>'
+        f'</div>'
+        f'<div class="text-right nl-alerta-card-score-col">'
+        f'<div class="alert-score">{_html.escape(f"{score:.1f}")}%</div>'
+        f'<div class="kpi-label mt-2">Score de Calidad</div>'
+        f'</div>'
+        f'</div>'
+        f'<div class="card-grid card-grid-2 mb-4">{bars_html}</div>'
+        f'<div class="nl-alerta-card-actions">'
+        f'<h4 class="kpi-label">Acciones recomendadas</h4>'
+        f'<ul class="icon-list p-0">{recs_html}</ul>'
+        f'</div>'
+        f'</div>'
+        f'<div class="nl-alerta-card-footer p-4">'
+        f'<a href="{_html.escape(url)}" target="_blank" class="nl-alerta-card-link">'
+        f'Ver en catalogodatos.nl.gob.mx →</a>'
+        f'</div>'
+        f'</div>'
+    )
 
 
 # ── Panel de alertas (reutilizable tab/sección) ───────────────
@@ -338,7 +333,7 @@ def _render_alerts_body(df: pd.DataFrame) -> None:
     if sin_cat > 0:
         st.markdown("---")
         st.markdown(
-            "<h3 class='section-title' style='color:var(--rose); margin-bottom:12px; display:flex; align-items:center; gap:8px;'>"
+            "<h3 class='section-title nl-alerta-heading'>"
             "<span class='material-symbols-outlined' aria-hidden='true' style='font-size:22px'>warning</span>"
             "Alerta de Gobernanza de Metadatos</h3>",
             unsafe_allow_html=True,
@@ -367,10 +362,74 @@ def _render_alerts_body(df: pd.DataFrame) -> None:
 """, unsafe_allow_html=True)
 
 
+def _render_app_card(row: dict, tokens: dict) -> str:
+    """Genera el HTML de una tarjeta estilo App Store para un dataset."""
+    score = _as_pct(row.get("score_global"), 0)
+    
+    # Determinar color y clase de salud
+    health_cls = "app-card-score-excellent" if score >= 90 else "app-card-score-good" if score >= 70 else "app-card-score-poor"
+    health_label = "Excelente" if score >= 90 else "Aceptable" if score >= 70 else "Crítico"
+    
+    # Determinar ícono según categoría
+    cat = str(row.get("categoria", "Otros")).lower()
+    icon = "database"
+    if "finanzas" in cat or "economía" in cat: icon = "payments"
+    elif "salud" in cat: icon = "medical_services"
+    elif "educación" in cat: icon = "school"
+    elif "transporte" in cat or "movilidad" in cat: icon = "directions_bus"
+    elif "seguridad" in cat: icon = "shield"
+    elif "gobierno" in cat: icon = "account_balance"
+    elif "ambiente" in cat or "ecología" in cat: icon = "eco"
+    
+    ds_name = str(row.get("dataset", "N/A"))
+    org = str(row.get("organizacion", "Dependencia desconocida"))
+    
+    # Resumen en lenguaje natural
+    recs = _recomendaciones(row)
+    summary = recs[0] if recs else "Dataset con estructura estable y metadatos completos."
+    if score >= 90:
+        summary = "Este conjunto de datos cumple con los más altos estándares de gobernanza y transparencia."
+    
+    slug = str(row.get("slug", "")).strip() or ds_name.replace(" ", "-").lower()
+    url = f"https://catalogodatos.nl.gob.mx/dataset/{slug}"
+    
+    rows_count = int(row.get("filas", 0))
+    fmt = str(row.get("formato", "CSV")).upper()
+
+    return (
+        f'<div class="app-card fade-up">'
+        f'  <div class="app-card-header">'
+        f'    <div class="app-card-icon">'
+        f'      <span class="material-symbols-outlined">{icon}</span>'
+        f'    </div>'
+        f'    <div class="app-card-score-badge {health_cls}">'
+        f'      {health_label} · {score:.1f}%'
+        f'    </div>'
+        f'  </div>'
+        f'  <div class="app-card-content">'
+        f'    <h3 class="app-card-title" title="{_html.escape(ds_name)}">{_html.escape(ds_name)}</h3>'
+        f'    <p class="app-card-org">{_html.escape(org)}</p>'
+        f'    <p class="app-card-summary">{_html.escape(summary)}</p>'
+        f'  </div>'
+        f'  <div class="app-card-footer">'
+        f'    <div class="app-card-meta">'
+        f'      <span class="app-card-meta-label">Registros</span>'
+        f'      <span class="app-card-meta-value">{rows_count:,}</span>'
+        f'    </div>'
+        f'    <div class="app-card-meta">'
+        f'      <span class="app-card-meta-label">Formato</span>'
+        f'      <span class="app-card-meta-value">{fmt}</span>'
+        f'    </div>'
+        f'    <a href="{url}" target="_blank" class="app-card-btn">Explorar →</a>'
+        f'  </div>'
+        f'</div>'
+    )
+
+
 # ── Render principal ──────────────────────────────────────────
 
 def render_datasets(df: pd.DataFrame, tokens: dict) -> None:
-    """Sección Datasets — Explorador + Monitor de Alertas (tabs)."""
+    """Sección Datasets — Explorador App Store + Monitor de Alertas (tabs)."""
 
     # ── Encabezado ────────────────────────────────────────────
     n_alertas = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
@@ -378,52 +437,45 @@ def render_datasets(df: pd.DataFrame, tokens: dict) -> None:
 
     st.markdown("""
     <h2 class="hero-title" style="margin-bottom:8px;">
-        Explorador de Datasets
+        Catálogo de Datos Abiertos
     </h2>
     <p class="hero-subtitle">
-        Visualiza y analiza la integridad de los activos de datos abiertos del Estado de NL.
+        Descubre y accede a los activos de información del Estado de Nuevo León con una mirada ciudadana.
     </p>
     """, unsafe_allow_html=True)
 
     # ── Tabs ──────────────────────────────────────────────────
     tab_explorador, tab_orgs, tab_alertas = st.tabs([
-        "Explorador de Datos",
+        "Explorar Catálogo",
         "Por Organización",
-        f"Alertas Críticas{alert_badge}",
+        f"Alertas de Calidad{alert_badge}",
     ])
 
     # ══════════════════════════════════════════════════════════
-    # TAB 1 — Explorador full-text con filtros
+    # TAB 1 — Explorador App Store
     # ══════════════════════════════════════════════════════════
     with tab_explorador:
         # ── Barra de filtros ──────────────────────────────────
-        st.markdown('<div class="section-panel" style="margin-bottom:20px">', unsafe_allow_html=True)
-        fc1, fc2, fc3, fc4, fc5 = st.columns(5)
+        st.markdown('<div class="section-panel" style="margin-bottom:24px">', unsafe_allow_html=True)
+        fc1, fc2, fc3, fc4 = st.columns([1.5, 1.5, 1, 2])
         with fc1:
-            cats       = ["Todas"] + sorted(df["categoria"].dropna().unique().tolist())
-            cat_filter = st.selectbox("Categoría", cats)
+            cats       = ["Todas las categorías"] + sorted(df["categoria"].dropna().unique().tolist())
+            cat_filter = st.selectbox("Categoría", cats, label_visibility="collapsed")
         with fc2:
-            orgs       = ["Todas"] + sorted(df["organizacion"].dropna().unique().tolist())
-            org_filter = st.selectbox("Organización", orgs)
+            orgs       = ["Todas las organizaciones"] + sorted(df["organizacion"].dropna().unique().tolist())
+            org_filter = st.selectbox("Organización", orgs, label_visibility="collapsed")
         with fc3:
-            # Formato filter — Fase 5
-            fmts        = ["Todos"] + sorted(
-                df["formato"].dropna().unique().tolist()
-            ) if "formato" in df.columns else ["Todos"]
-            fmt_filter  = st.selectbox("Formato", fmts)
+            score_min  = st.select_slider("Calidad mínima", options=[0, 70, 80, 90], value=0)
         with fc4:
-            score_min  = st.slider("Score mínimo", 0, 100, 0)
-        with fc5:
-            search     = st.text_input("Buscar", placeholder="Nombre del dataset…",
+            search     = st.text_input("Buscar dataset", placeholder="Ej: Catastro, Nómina, Calidad del aire...",
                                        label_visibility="collapsed")
         st.markdown("</div>", unsafe_allow_html=True)
 
         # ── Aplicar filtros ───────────────────────────────────
         df_f = apply_filters(
             df,
-            categorias     = [cat_filter] if cat_filter != "Todas" else None,
-            organizaciones = [org_filter] if org_filter != "Todas" else None,
-            formatos       = [fmt_filter] if fmt_filter != "Todos" else None,
+            categorias     = [cat_filter] if cat_filter != "Todas las categorías" else None,
+            organizaciones = [org_filter] if org_filter != "Todas las organizaciones" else None,
             score_min      = score_min,
         )
         if search:
@@ -432,68 +484,59 @@ def render_datasets(df: pd.DataFrame, tokens: dict) -> None:
 
         # ── Conteo de resultados ──────────────────────────────
         st.markdown(f"""
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:16px">
-            <span style="font-size:18px;font-weight:700;font-family:'Playfair Display',serif;color:var(--cream)">{len(df_f)}</span>
-            <span style="color:var(--muted);font-weight:500;font-family:'DM Sans',sans-serif">datasets encontrados</span>
+        <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:24px">
+            <div style="display:flex;align-items:center;gap:8px">
+                <span style="font-size:20px;font-weight:700;font-family:'Playfair Display',serif;color:var(--cream)">{len(df_f)}</span>
+                <span style="color:var(--muted);font-weight:500;font-family:'DM Sans',sans-serif">resultados encontrados</span>
+            </div>
         </div>
         """, unsafe_allow_html=True)
 
-        # ── Tabla ─────────────────────────────────────────────
-        cols_ok  = [c for c in _DISPLAY_COLS if c in df_f.columns]
-        df_show  = df_f[cols_ok].rename(columns=_DISPLAY_COLS)
-
-        col_config: dict = {
-            "Score": st.column_config.ProgressColumn(
-                "Score Global", min_value=0, max_value=100, format="%.1f%%",
-            ),
-            "Filas": st.column_config.NumberColumn(format="%d"),
-        }
-        for dim in _PROGRESS_COLS:
-            if dim in df_show.columns:
-                col_config[dim] = st.column_config.ProgressColumn(
-                    dim, min_value=0, max_value=100, format="%.1f%%",
-                )
-
-        if df_show.empty:
+        if df_f.empty:
             st.info("No se encontraron datasets con los filtros seleccionados.")
         else:
-            st.dataframe(
-                df_show,
-                use_container_width=True,
-                height=520,
-                column_config=col_config,
-                hide_index=True,
-            )
+            # ── Grid de tarjetas ──────────────────────────────
+            # Limitamos a 24 resultados por página para no saturar el DOM de Streamlit
+            MAX_CARDS = 24
+            df_display = df_f.head(MAX_CARDS)
+            
+            cards_html = "".join([_render_app_card(row.to_dict(), tokens) for _, row in df_display.iterrows()])
+            
+            st.markdown(f'<div class="dataset-grid">{cards_html}</div>', unsafe_allow_html=True)
+            
+            if len(df_f) > MAX_CARDS:
+                st.markdown(f"""
+                <div style="text-align:center;margin-top:32px;padding:24px;background:var(--surface-alt);border-radius:16px;border:1px dashed var(--card-border)">
+                    <p style="color:var(--muted);margin-bottom:16px">Mostrando los primeros {MAX_CARDS} de {len(df_f)} datasets.</p>
+                    <p style="font-size:13px">Usa los filtros superiores para refinar tu búsqueda.</p>
+                </div>
+                """, unsafe_allow_html=True)
 
-        # ── Barra de exportación ──────────────────────────────
-        st.markdown(
-            "<div class='section-panel' style='margin-top:32px; padding:24px'>",
-            unsafe_allow_html=True
-        )
-        st.markdown(
-            "<h4 style='font-family:\"Playfair Display\",serif; color:var(--gold-light); "
-            "margin:0 0 16px'>Centro de Exportación de Resultados</h4>",
-            unsafe_allow_html=True
-        )
+        # ── Barra de exportación (simplificada) ───────────────
+        with st.expander("Opciones avanzadas de exportación"):
+            st.markdown(
+                "<div class='p-4'>",
+                unsafe_allow_html=True
+            )
+            bc1, bc2, _ = st.columns([1, 1, 2])
+            with bc1:
+                st.download_button(
+                    "EXPORTAR CSV",
+                    df_f.to_csv(index=False).encode("utf-8"),
+                    "results_nl_2026.csv",
+                    "text/csv",
+                    use_container_width=True,
+                )
+            with bc2:
+                st.download_button(
+                    "EXPORTAR JSON",
+                    df_f.to_json(orient="records", force_ascii=False, indent=2).encode("utf-8"),
+                    "results_nl_2026.json",
+                    "application/json",
+                    use_container_width=True,
+                )
+            st.markdown("</div>", unsafe_allow_html=True)
 
-        bc1, bc2, _ = st.columns([1, 1, 2.5])
-        with bc1:
-            st.download_button(
-                "EXPORTAR CSV",
-                df_f.to_csv(index=False).encode("utf-8"),
-                "results_nl_2026.csv",
-                "text/csv",
-                use_container_width=True,
-            )
-        with bc2:
-            st.download_button(
-                "EXPORTAR JSON",
-                df_f.to_json(orient="records", force_ascii=False, indent=2).encode("utf-8"),
-                "results_nl_2026.json",
-                "application/json",
-                use_container_width=True,
-            )
-        st.markdown("</div>", unsafe_allow_html=True)
 
 
     # ══════════════════════════════════════════════════════════

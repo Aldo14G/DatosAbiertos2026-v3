@@ -29,15 +29,15 @@ def _divider(label: str) -> None:
 
 
 def _insight_card(icon: str, tier: str, title: str, body: str) -> str:
-    return f"""
-    <article class="nl-insight-card nl-insight-{_html.escape(tier)}">
-        <span class="material-symbols-outlined nl-insight-icon" aria-hidden="true">{icon}</span>
-        <div class="nl-insight-body">
-            <h3 class="nl-insight-title">{_html.escape(title)}</h3>
-            <p class="nl-insight-text">{body}</p>
-        </div>
-    </article>
-    """
+    return (
+        f'<article class="nl-insight-card nl-insight-{_html.escape(tier)}">'
+        f'<span class="material-symbols-outlined nl-insight-icon" aria-hidden="true">{icon}</span>'
+        f'<div class="nl-insight-body">'
+        f'<h3 class="nl-insight-title">{_html.escape(title)}</h3>'
+        f'<p class="nl-insight-text">{body}</p>'
+        f'</div>'
+        f'</article>'
+    )
 
 
 # ══════════════════════════════════════════════════════════════
@@ -110,7 +110,7 @@ def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
     # ── Encabezado ────────────────────────────────────────────
     st.markdown("""
     <section id="conclusiones" class="nl-section" aria-labelledby="conclusiones-title">
-        <span class="eyebrow">04 · Conclusiones</span>
+        <span class="eyebrow">03 · Conclusiones</span>
         <h2 id="conclusiones-title" class="hero-title nl-section-title">
             Hallazgos clave y recomendaciones
         </h2>
@@ -153,10 +153,10 @@ def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
             f"por debajo de {UMBRAL_GOBERNANZA:.0f}% y requieren intervención.",
         ),
     ]
-    st.markdown(
-        f'<div class="nl-insights-grid nl-reveal">{"".join(hallazgos)}</div>',
-        unsafe_allow_html=True,
-    )
+    _hcols = st.columns(2, gap="small")
+    for _i, _card in enumerate(hallazgos):
+        with _hcols[_i % 2]:
+            st.markdown(_card, unsafe_allow_html=True)
 
     # ── 2. Insights adicionales ──────────────────────────────
     _divider("Insights adicionales")
@@ -196,10 +196,10 @@ def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
         f"de oro del portal — candidatos a mostrar como ejemplo de buenas prácticas.",
     ))
 
-    st.markdown(
-        f'<div class="nl-insights-grid nl-reveal nl-reveal-d1">{"".join(insights)}</div>',
-        unsafe_allow_html=True,
-    )
+    _icols = st.columns(2, gap="small")
+    for _i, _card in enumerate(insights):
+        with _icols[_i % 2]:
+            st.markdown(_card, unsafe_allow_html=True)
 
     # ── 3. Recomendaciones ───────────────────────────────────
     _divider("Recomendaciones")
@@ -233,15 +233,16 @@ def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
         ),
     ]
 
-    rec_html = "".join(f"""
-    <li class="nl-rec-item">
-        <span class="material-symbols-outlined nl-rec-icon" aria-hidden="true">{icon}</span>
-        <div class="nl-rec-body">
-            <h4 class="nl-rec-title">{_html.escape(title)}</h4>
-            <p class="nl-rec-text">{_html.escape(body)}</p>
-        </div>
-    </li>
-    """ for icon, title, body in recomendaciones)
+    rec_html = "".join(
+        f'<li class="nl-rec-item">'
+        f'<span class="material-symbols-outlined nl-rec-icon" aria-hidden="true">{icon}</span>'
+        f'<div class="nl-rec-body">'
+        f'<h4 class="nl-rec-title">{_html.escape(title)}</h4>'
+        f'<p class="nl-rec-text">{_html.escape(body)}</p>'
+        f'</div>'
+        f'</li>'
+        for icon, title, body in recomendaciones
+    )
 
     st.markdown(
         f'<ol class="nl-rec-list nl-reveal nl-reveal-d2" aria-label="Recomendaciones priorizadas">{rec_html}</ol>',

@@ -1,0 +1,123 @@
+{
+  "generado": "2026-04-18T14:39:25.622837+00:00",
+  "run_id": "20260418_143802",
+  "pipeline_version": "3.1",
+  "dimensiones": 7,
+  "datasets": [
+    {
+      "slug": "listado-cendis",
+      "dataset": "Listado Cendis",
+      "descripcion": "Los CENDIS (Centros de Desarrollo Infantil) en Nuevo León son instituciones educativas y de atención integral para la primera infancia, enfocadas en niños desde 45 días de nacidos hasta los 6 años. Ofrecen servicios de cuidado, estimulación temprana y educación, apoyando a madres trabajadoras y promoviendo el desarrollo integral de los menores, muchos de ellos ubicados en zonas vulnerables. ",
+      "categoria": "Sin categoría",
+      "organizacion": "Fideicomiso BP3417 CENDIS",
+      "formato": ".CSV",
+      "filas": 13,
+      "columnas": 11,
+      "metadata_modified": "2026-04-17T17:25:58.512403",
+      "frequency": "",
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 94.55,
+        "consistency": 100.0,
+        "uniqueness": 100.0,
+        "timeliness": 100.0,
+        "documentation": 80.0,
+        "openness": 60.0
+      },
+      "descripcion_ciudadana": "",
+      "tags_sugeridos": []
+    },
+    {
+      "slug": "listado-de-escuelas",
+      "dataset": "Listado de Escuelas",
+      "descripcion": "Nuevo León cuenta con un amplio listado de escuelas de educación básica, media superior y superior, tanto públicas como privadas. La Secretaría de Educación de Nuevo León (SENL) concentra la información oficial, destacando planteles de tiempo completo y jornadas ampliadas en municipios como Monterrey, Guadalupe, Apodaca y San Nicolás.",
+      "categoria": "Sin categoría",
+      "organizacion": "Secretaría de Educación del Estado de Nuevo León",
+      "formato": ".CSV",
+      "filas": 1344,
+      "columnas": 11,
+      "metadata_modified": "2026-04-15T22:25:48.551360",
+      "frequency": "",
+      "scores": {
+        "completeness": 100.0,
+        "accuracy": 100.0,
+        "consistency": 100.0,
+        "uniqueness": 100.0,
+        "timeliness": 99.89,
+        "documentation": 80.0,
+        "openness": 60.0
+      },
+      "descripcion_ciudadana": "",
+      "tags_sugeridos": []
+    },
+    {
+      "slug": "prepa-abierta",
+      "dataset": "Prepa Abierta",
+      "descripcion": "La Preparatoria Abierta en Nuevo León es un sistema no escolarizado de la Secretaría de Educación, ideal para trabajar y estudiar a tu propio ritmo. Ofrece un plan de 22 módulos, sin exámenes de admisión y con inscripciones todo el año a través de su portal oficial",
+      "categoria": "Sin categoría",
+      "organizacion": "Secretaría de Educación del Estado de Nuevo León",
+      "formato": ".CSV",
+      "filas": 125,
+      "columnas": 6,
+      "metadata_modified": "2026-04-15T22:25:03.942204",
+      "frequency": "",
+      "scores": {
+        "completeness": 99.2,
+        "accuracy": 92.5,
+        "consistency": 99.5,
+        "uniqueness": 100.0,
+        "timeliness": 99.89,
+        "documentation": 80.0,
+        "openness": 60.0
+      },
+      "descripcion_ciudadana": "",
+      "tags_sugeridos": []
+    },
+    {
+      "slug": "prepa-abierta",
+      "dataset": "Prepa Abierta",
+      "descripcion": "La Preparatoria Abierta en Nuevo León es un sistema no escolarizado de la Secretaría de Educación, ideal para trabajar y estudiar a tu propio ritmo. Ofrece un plan de 22 módulos, sin exámenes de admisión y con inscripciones todo el año a través de su portal oficial",
+      "categoria": "Sin categoría",
+      "organizacion": "Secretaría de Educación del Estado de Nuevo León",
+      "formato": ".CSV",
+      "filas": 16366,
+      "columnas": 6,
+      "metadata_modified": "2026-04-15T22:25:03.942204",
+      "frequency": "",
+      "scores": {
+        "completeness": 0.03,
+        "accuracy": 94.17,
+        "consistency": 100.0,
+        "uniqueness": 0,
+        "timeliness": 99.89,
+        "documentation": 80.0,
+        "openness": 60.0
+      },
+      "descripcion_ciudadana": "",
+      "tags_sugeridos": []
+    },
+    {
+      "slug": "solicitudes-de-informacion-fid-2284-tren-suburbano",
+      "dataset": "Solicitudes de Información Fid. 2284 Tren Suburbano",
+      "descripcion": "Solicitudes de información Fid. 2284, 2025",
+      "categoria": "Atención Ciudadana",
+      "organizacion": "Fideicomiso No. 2284 \"Tren Suburbano Villa García-Aeropuerto de Monterrey, Primera fase, Etapa 1\"",
+      "formato": "CSV",
+      "filas": 16,
+      "columnas": 14,
+      "metadata_modified": "2026-04-15T22:18:23.504616",
+      "frequency": "",
+      "scores": {
+        "completeness": 14.29,
+        "accuracy": 91.79,
+        "consistency": 100.0,
+        "uniqueness": 0,
+        "timeliness": 99.89,
+        "documentation": 60.0,
+        "openness": 100.0
+      },
+      "descripcion_ciudadana": "",
+      "tags_sugeridos": []
+    }
+  ]
+}

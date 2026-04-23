@@ -1,3 +1,35 @@
-streamlit>=1.20.0
-pandas
-plotly
+# DatosAbiertos2026 — requirements.txt
+# Actualizado: Abril 2026
+# Python mínimo: 3.11
+
+# Core data
+pandas>=3.0.0,<4.0.0
+pyarrow>=14.0.0          # Requerido por pandas 3.0 StringDtype
+
+# Dashboard
+streamlit>=1.42.0,<2.0.0
+plotly>=5.18.0
+
+# HTTP y fetching
+requests>=2.31.0
+urllib3>=2.0.0
+
+# Validación de datos
+pydantic>=2.0.0,<3.0.0   # ⚠ v2 API — no compatible con v1
+
+# Fechas
+python-dateutil>=2.8.2
+
+# Pipeline avanzado (extractor.py)
+beautifulsoup4>=4.12.0     # Parsing HTML/XML para detección de plataforma
+chardet>=5.0.0             # Detección automática de encoding
+lxml>=5.0.0                # Parser XML/HTML backend para BeautifulSoup
+
+# Configuración
+                   # Builtin Python 3.11+, no instalar por separado
+
+# Desarrollo (separar en requirements-dev.txt)
+# pytest>=7.4.0
+# ruff>=0.1.0             # Linter moderno, reemplaza flake8
+# mypy>=1.5.0
+

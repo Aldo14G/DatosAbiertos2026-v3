@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import pandas as pd; df = pd.read_csv\\('resultados_calidad_datos_nl.csv'\\); print\\(f'Rows: {len\\(df\\)}'\\); print\\(f'Columns: {list\\(df.columns\\)}'\\)\")",
+      "Bash(wc -l /c/Users/aldog/OneDrive/Escritorio/DatosAbiertos2026/pipeline/test_*.py)",
+      "Bash(python -c ' *)"
+    ]
+  }
+}

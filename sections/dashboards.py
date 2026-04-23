@@ -28,7 +28,7 @@ def _chart_insight(icon: str, text: str) -> None:
 
 
 def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
-    """Sección Dashboards — compone métricas live del pipeline."""
+    """Sección Dashboards — compone métricas live del pipeline con narrativa ciudadana."""
     from sections.calidad_pro import render_calidad_pro
     from sections.datasets import render_alertas
     from sections.organizaciones import render_organizaciones
@@ -39,38 +39,22 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
     n_total      = len(df)
     n_below      = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if has_score else 0
     n_above      = n_total - n_below
-    pct_above    = (n_above / n_total * 100) if n_total else 0.0
-
-    n_orgs = int(df["organizacion"].nunique()) if "organizacion" in df.columns else 0
-
-    dim_cols = [
-        ("comp_completitud_global_pct", "Completitud"),
-        ("acc_score_accuracy_pct",      "Exactitud"),
-        ("cons_score_consistency_pct",  "Consistencia"),
-        ("uniq_score_uniqueness_pct",   "Unicidad"),
-        ("time_score_timeliness_pct",   "Puntualidad"),
-        ("doc_score_documentation_pct", "Documentación"),
-        ("open_score_openness_pct",     "Apertura"),
-    ]
-    weak_label = "N/A"
-    weak_val   = 0.0
-    for col, label in dim_cols:
-        if col in df.columns:
-            mean = float(df[col].mean())
-            if mean < weak_val or weak_label == "N/A":
-                weak_label, weak_val = label, mean
 
     st.markdown("""
     <section id="dashboards" class="nl-section" aria-labelledby="dashboards-title">
-        <span class="eyebrow">03 · Dashboards y Métricas</span>
+        <span class="eyebrow">02 · Calidad en Tiempo Real</span>
         <h2 id="dashboards-title" class="hero-title nl-section-title">
-            Visualización <em>live</em> del pipeline
+            Salud de los Datos Abiertos
         </h2>
-        <p class="hero-subtitle nl-section-subtitle">
-            Cobertura, dimensiones, organizaciones y alertas críticas — todo
-            alimentado desde la última ejecución del pipeline.
-        </p>
     </section>
+    
+    <div class="editorial-container fade-up">
+        <p>
+            El <strong>Score de Calidad</strong> indica qué tan confiable es un dato. 
+            Buscamos el color <span style="color:var(--teal-light)">Verde (Óptimo)</span>. 
+            El <span style="color:var(--rose-light)">Rojo (Crítico)</span> avisa que el dato tiene fallas que impiden su uso.
+        </p>
+    </div>
     """, unsafe_allow_html=True)
 
     # ── Bloque 1 — Calidad Pro (cobertura + dimensiones + radial + tabla) ─
@@ -78,10 +62,8 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
 
     _chart_insight(
         "insights",
-        f"El catálogo registra un score promedio de <strong>{score_mean:.1f}%</strong>. "
-        f"<strong>{n_above}</strong> de {n_total} datasets ({pct_above:.0f}%) superan el "
-        f"umbral de gobernanza. La dimensión con mayor oportunidad de mejora es "
-        f"<strong>{_html.escape(weak_label)}</strong> ({weak_val:.1f}% promedio).",
+        f"Promedio de salud estatal: <strong>{score_mean:.1f}%</strong>. "
+        f"Hay <strong>{n_above}</strong> datasets listos para usarse con total confianza.",
     )
 
     # ── Bloque 2 — Organizaciones (heatmap + top orgs) ──────────────────
@@ -89,15 +71,15 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
         '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
         unsafe_allow_html=True,
     )
+    
+    st.markdown("""
+    <header class="nl-subsection-header">
+        <span class="eyebrow">02.2</span>
+        <h3 class="section-title">¿Quiénes publican mejor?</h3>
+    </header>
+    """, unsafe_allow_html=True)
+    
     render_organizaciones(df, tokens)
-
-    _chart_insight(
-        "apartment",
-        f"El catálogo agrupa datasets de <strong>{n_orgs}</strong> organizaciones distintas. "
-        f"El heatmap superior identifica qué dependencias concentran las dimensiones de mayor "
-        f"riesgo — priorizando ahí los esfuerzos de remediación se obtiene el mayor impacto "
-        f"marginal sobre el score global.",
-    )
 
     # ── Bloque 3 — Alertas críticas + fallos de extracción ─────────────
     st.markdown(
@@ -106,17 +88,16 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
     )
     st.markdown("""
     <header class="nl-subsection-header">
-        <span class="eyebrow">03.3</span>
-        <h3 class="section-title">Alertas críticas & trazabilidad del pipeline</h3>
+        <span class="eyebrow">02.3</span>
+        <h3 class="section-title">Zonas de Riesgo y Alertas</h3>
     </header>
+    <p class="section-subtitle mb-4">Identificamos automáticamente los conjuntos de datos que requieren atención inmediata por parte de las dependencias.</p>
     """, unsafe_allow_html=True)
 
     if n_below > 0:
         _chart_insight(
             "warning",
-            f"<strong>{n_below}</strong> datasets están por debajo del umbral de gobernanza "
-            f"({UMBRAL_GOBERNANZA:.0f}%). Cada tarjeta incluye recomendaciones específicas "
-            f"por dimensión para orientar la remediación.",
+            f"Existen <strong>{n_below}</strong> datasets que presentan inconsistencias críticas. Abajo encontrarás las tarjetas con las acciones recomendadas para cada uno.",
         )
 
     render_alertas(df, tokens)
