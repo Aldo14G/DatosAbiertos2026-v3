@@ -116,6 +116,7 @@ class ReporteGlobal:
     distribucion_clasificacion: Dict[str, int] = field(default_factory=dict)
     problemas_por_severidad: Dict[str, int] = field(default_factory=dict)
     problemas_por_categoria: Dict[str, int] = field(default_factory=dict)
+    promedio_por_organizacion: Dict[str, float] = field(default_factory=dict)
     top_problemas_recurrentes: List[Dict] = field(default_factory=list)
     reportes_datasets: List[ReporteDataset] = field(default_factory=list)
     recomendaciones_priorizadas: List[Dict] = field(default_factory=list)
@@ -786,8 +787,26 @@ class SkillEvaluadorDatos:
                 reporte_global.problemas_por_categoria[p.categoria.value] = reporte_global.problemas_por_categoria.get(p.categoria.value, 0) + 1
 
         reporte_global.total_datasets_evaluados = len(datos_extraidos)
-        if reporte_global.reportes_datasets:
-            reporte_global.score_promedio_catalogo = round(np.mean([r.score_global for r in reporte_global.reportes_datasets]), 2)
         
+        # Calcular estadísticas globales agregadas para el Dashboard
+        if reporte_global.reportes_datasets:
+            # Score promedio global
+            reporte_global.score_promedio_catalogo = round(np.mean([r.score_global for r in reporte_global.reportes_datasets]), 2)
+            
+            # Distribución de Clasificación (Excelente, Bueno, etc.)
+            clasificaciones = [r.clasificacion for r in reporte_global.reportes_datasets]
+            reporte_global.distribucion_clasificacion = dict(Counter(clasificaciones))
+            
+            # Promedio de calidad por Organización (Secretarías)
+            org_scores = {}
+            for r in reporte_global.reportes_datasets:
+                org = r.organizacion or "Desconocida"
+                if org not in org_scores:
+                    org_scores[org] = []
+                org_scores[org].append(r.score_global)
+            
+            for org, scores in org_scores.items():
+                reporte_global.promedio_por_organizacion[org] = round(np.mean(scores), 2)
+
         self.logger.info("Evaluación de Calidad Completada.")
         return reporte_global
