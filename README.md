@@ -1,26 +1,33 @@
 # Gobernanza de Datos Abiertos Nuevo León 2026
 
-![Estado](https://img.shields.io/badge/Estado-En_Desarrollo-amber)
+![Estado](https://img.shields.io/badge/Estado-Producci%C3%B3n-success)
 ![Python](https://img.shields.io/badge/Python-3.13+-blue)
 ![Next.js](https://img.shields.io/badge/Next.js-15.0+-black)
 
-Plataforma automatizada para la auditoría y gobernanza de los datos abiertos del Gobierno del Estado de Nuevo León (`catalogodatos.nl.gob.mx`). Este proyecto evalúa conjuntos de datos (datasets) contra estándares internacionales de calidad de la industria (**ISO/IEC 25012:2008**, **ISO 8000** y **DAMA-DMBOK**) y proporciona dos interfaces de alto rendimiento: un *Dashboard Analítico en Streamlit* y una *Landing Page Premium en Next.js*.
+Plataforma automatizada para la auditoría y gobernanza de los datos abiertos del Gobierno del Estado de Nuevo León (`catalogodatos.nl.gob.mx`). Este proyecto evalúa conjuntos de datos (datasets) contra estándares internacionales de calidad de la industria (**ISO/IEC 25012:2008**, **ISO 8000** y **DAMA-DMBOK**) y proporciona dos interfaces de alto rendimiento: un *Dashboard Analítico en Streamlit* (backend de evaluación) y una *Landing Page Premium en Next.js* (frontend público).
+
+---
 
 ## 🌟 Arquitectura del Proyecto
 
-El ecosistema se compone de dos frentes tecnológicos:
+El ecosistema se compone de dos frentes tecnológicos, manteniendo una estricta separación de responsabilidades y un orden jerárquico limpio:
 
 1. **Pipeline de Datos & Dashboard (Python / Streamlit)**
-   - **Motor ETL:** Extrae metadatos y recursos del API de CKAN.
-   - **Motor de Scoring:** Audita las 5 dimensiones de calidad de datos.
-   - **Dashboard (Streamlit):** Visualización interactiva para analistas, con un sistema de diseño inyectado vía CSS (Material Design 3 / Stitch).
+   - **Motor ETL:** Extrae metadatos y recursos del API de CKAN de Nuevo León (`pipeline/fetcher.py`).
+   - **Motor de Scoring:** Audita las 5 dimensiones de calidad de datos (`data_layer.py`).
+   - **Dashboard Interno:** Visualización interactiva para analistas, con un sistema de diseño inyectado vía CSS (Material Design 3 / Stitch).
    - *Ubicación:* Carpeta raíz (`dashboard_v3.py`, `pipeline/`, `sections/`).
 
-2. **Plataforma Pública (Next.js 15 / React / Tailwind)**
+2. **Plataforma Pública Web (Next.js 15 / React / Tailwind)**
    - Landing page moderna que expone el ranking y la metodología al público.
-   - Desarrollada con componentes de interfaz premium (*Glassmorphism*, paleta *Midnight/Teal/Gold*).
-   - Componentes interactivos como `PremiumFeatureTabs`.
+   - Desarrollada con componentes de interfaz premium (*Glassmorphism*, paleta *Midnight/Teal/Gold*), componentes de Shadcn UI y animaciones con Framer Motion.
    - *Ubicación:* Carpeta `landing/`.
+
+3. **Documentación & Agentes de IA (`docs/`, `.agent/`, `.gemini/`)**
+   - El proyecto cuenta con un sistema multi-agente de Inteligencia Artificial que asegura la coherencia del diseño y la calidad del código.
+   - La documentación técnica detallada se encuentra en la carpeta `docs/`.
+
+---
 
 ## 📐 Estándar de Evaluación (ISO/IEC 25012:2008)
 
@@ -31,45 +38,90 @@ El algoritmo de calidad penaliza o premia los datasets en base a las siguientes 
 - **Documentación (15%):** Diccionarios de datos, descripciones detalladas.
 - **Apertura (10%):** Formatos estructurados y abiertos (CSV, JSON vs PDF).
 
-Los datasets se agrupan en tres niveles (*Tiers*):
-- 🥇 **Gold (≥ 90 pts):** Datos óptimos.
-- 🥈 **Silver (70–89 pts):** Accesibles pero con áreas de mejora.
-- 🥉 **Bronze (< 70 pts):** Requieren remediación inmediata.
+Los datasets se agrupan en tres niveles de salud de datos (*Tiers*):
+- 🥇 **Gold (≥ 90 pts):** Datos óptimos y altamente confiables.
+- 🥈 **Silver (70–89 pts):** Accesibles pero con áreas de mejora técnica.
+- 🥉 **Bronze (< 70 pts):** Requieren remediación inmediata por parte de la dependencia.
 
-## 🚀 Guía de Inicio Rápido (Quick Start)
+---
 
-### 1. Iniciar el Dashboard Analítico (Python)
-Requiere Python 3.13+.
+## 🚀 Guía de Instalación y Ejecución (Paso a Paso)
+
+Si deseas clonar, mejorar o auditar este proyecto, sigue estos pasos cuidadosamente:
+
+### Pre-requisitos
+- **Python 3.13+** (Para el motor de datos)
+- **Node.js 20+** (Para la interfaz web pública)
+- **Git**
+
+### Paso 1: Clonar el Repositorio
+```bash
+git clone https://github.com/Aldo14G/DatosAbiertos2026-v3.git
+cd DatosAbiertos2026-v3
+```
+
+### Paso 2: Configurar y Correr el Backend de Datos (Python)
+Este entorno ejecuta las evaluaciones de calidad y levanta el dashboard interno.
 
 ```bash
-# Instalar dependencias base y de desarrollo
+# 1. Crear y activar entorno virtual (Opcional pero recomendado)
+python -m venv .venv
+source .venv/Scripts/activate # En Windows
+# source .venv/bin/activate   # En Mac/Linux
+
+# 2. Instalar dependencias base y de desarrollo
 pip install -r requirements.txt
 pip install -r requirements-dev.txt
 
-# Correr el dashboard en Streamlit
+# 3. Extraer y evaluar datos (Actualiza el modelo de scoring local)
+python pipeline/refresh_engine.py
+
+# 4. Correr el dashboard analítico en Streamlit
 streamlit run dashboard_v3.py
 ```
+> El dashboard estará disponible en `http://localhost:8501`.
 
-### 2. Iniciar la Plataforma Pública (Next.js)
-Requiere Node.js 20+.
+### Paso 3: Iniciar la Plataforma Pública (Next.js)
+Este entorno levanta la página web moderna orientada a la ciudadanía.
 
 ```bash
-# Navegar a la carpeta frontend
+# 1. Navegar a la carpeta frontend
 cd landing
 
-# Instalar dependencias
+# 2. Instalar dependencias de Node
 npm install
 
-# Iniciar servidor de desarrollo
+# 3. Iniciar el servidor de desarrollo
 npm run dev
 ```
-La aplicación estará disponible en `http://localhost:3000`.
-
-## ☁️ Despliegue en la Nube
-El proyecto está configurado para desplegarse ágilmente en **Google Cloud Run**. Se recomienda utilizar un archivo ZIP ligero omitiendo carpetas pesadas (`.venv`, `node_modules`, `.git`) para evitar cuellos de botella del *Cloud Build*.
-
-## 🤝 Contribuir al Proyecto
-Si deseas mejorar el código, crear nuevos componentes o ajustar la lógica de las métricas, por favor revisa el archivo [CONTRIBUTING.md](CONTRIBUTING.md). Encontrarás las guías de estilo, el uso estricto de la paleta *Midnight/Teal/Gold*, y las instrucciones para el ecosistema multi-agente (AI).
+> La web pública estará disponible en `http://localhost:3000`.
 
 ---
-*Datos Abiertos NL 2026 - Gobernanza y Transparencia.*
+
+## ☁️ Guía de Despliegue en la Nube (Google Cloud Run)
+
+El proyecto está diseñado de forma contenerizada (o empaquetable) para desplegarse ágilmente en la nube.
+
+**Opción A: Despliegue Manual Empaquetado (Recomendado para Windows)**
+Debido a bloqueos ocasionales del sistema de archivos al indexar módulos de node en local, se recomienda:
+1. Crear un archivo ZIP ligero omitiendo carpetas pesadas (`.venv`, `node_modules`, `.git`, `__pycache__`).
+2. Subir este archivo directamente a **Google Cloud Build**.
+3. Desplegar la imagen resultante a **Google Cloud Run**.
+
+**Opción B: Despliegue Backend y Frontend Separados**
+- El dashboard de Python puede ser alojado en *Streamlit Community Cloud* o un *Docker Container* en Cloud Run.
+- La carpeta `landing/` puede ser conectada directamente a **Vercel** o **Netlify** apuntando el "Build Command" a la subcarpeta.
+
+---
+
+## 🤝 ¿Cómo Contribuir o Mejorar el Proyecto?
+
+El repositorio ha sido optimizado y limpiado para dejar únicamente los módulos críticos. Si deseas contribuir:
+
+1. Lee detenidamente el archivo [CONTRIBUTING.md](CONTRIBUTING.md) y [AGENTS.md](AGENTS.md). Encontrarás las guías de estilo rigurosas y el uso estricto de la paleta *Midnight/Teal/Gold*.
+2. Asegúrate de que cualquier nuevo componente web siga la filosofía *Glassmorphism* y respete las variables CSS.
+3. Para la capa de datos, se asume el uso de **Pandas 3.0+ con Copy-on-Write** (minimiza mutaciones en el lugar).
+4. Crea tu propia rama funcional, valida que tus cambios no rompen el build (`npm run build` en landing y `pytest` en la raíz) y levanta un Pull Request.
+
+---
+*Gobernanza de Datos Abiertos NL 2026 — Transparencia, Calidad y Rigor Analítico.*
