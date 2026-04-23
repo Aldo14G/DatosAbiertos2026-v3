@@ -98,19 +98,12 @@ npm run dev
 
 ---
 
-## ☁️ Guía de Despliegue en la Nube (Google Cloud Run)
+## ☁️ Guía de Despliegue en la Nube (Firebase Studio)
 
-El proyecto está diseñado de forma contenerizada (o empaquetable) para desplegarse ágilmente en la nube.
+El proyecto está diseñado para ejecutarse y probarse primero en entorno local (**LocalHost**). 
+Una vez que el proyecto esté validado y estable en local, se utilizará **Firebase Studio** para el alojamiento y despliegue del frontend, ya que ofrece un flujo mucho más ágil y sencillo que configurar contenedores en Google Cloud. 
 
-**Opción A: Despliegue Manual Empaquetado (Recomendado para Windows)**
-Debido a bloqueos ocasionales del sistema de archivos al indexar módulos de node en local, se recomienda:
-1. Crear un archivo ZIP ligero omitiendo carpetas pesadas (`.venv`, `node_modules`, `.git`, `__pycache__`).
-2. Subir este archivo directamente a **Google Cloud Build**.
-3. Desplegar la imagen resultante a **Google Cloud Run**.
-
-**Opción B: Despliegue Backend y Frontend Separados**
-- El dashboard de Python puede ser alojado en *Streamlit Community Cloud* o un *Docker Container* en Cloud Run.
-- La carpeta `landing/` puede ser conectada directamente a **Vercel** o **Netlify** apuntando el "Build Command" a la subcarpeta.
+La configuración exacta y el paso a paso para el despliegue en Firebase se detallarán posteriormente en el ciclo de desarrollo una vez aprobadas las pruebas locales.
 
 ---
 

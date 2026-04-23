@@ -50,4 +50,4 @@ Este proyecto está dotado de habilidades de Inteligencia Artificial (Skills) ub
 
 1. **Ramas (Branches)**: Crea ramas descriptivas (`feat/mejora-ranking`, `fix/metricas-nulas`).
 2. **Commits**: Usa *Conventional Commits* (`feat:`, `fix:`, `docs:`, `refactor:`).
-3. **Despliegue**: El código de la rama `main` se asume estable y listo para integrarse a Google Cloud Run o Vercel.
+3. **Despliegue**: El código de la rama `main` se asume estable. Primero se validará en **LocalHost** y posteriormente se integrará a **Firebase Studio** para el despliegue del frontend.
