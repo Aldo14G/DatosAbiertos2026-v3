@@ -384,6 +384,7 @@ def compute_accuracy(df: pd.DataFrame) -> dict:
     """
     [FIX-1] Penalización proporcional al % de columnas afectadas.
     Refactorizado a procesamiento vectorizado Pandas.
+    Detección de tipos mixtos mejorada (evita falsos positivos en columnas casi vacías).
     """
     n_cols = len(df.columns)
     if n_cols == 0:
@@ -399,16 +400,21 @@ def compute_accuracy(df: pd.DataFrame) -> dict:
     if len(obj_cols) > 0:
         df_obj = df[obj_cols]
 
-        # Detección vectorizada de espacios
-        has_spaces = df_obj.apply(lambda x: x.astype(str).str.contains(r"^\s|\s$", regex=True).any())
+        # Detección vectorizada de espacios (trimmed vs original)
+        # Una columna tiene espacios si al quitarle espacios el contenido cambia
+        has_spaces = df_obj.apply(lambda x: x.astype(str).str.strip().ne(x.astype(str)).any())
         spaces = int(has_spaces.sum())
 
-        # Tipos mixtos (numérico vs string en misma columna)
+        # Tipos mixtos mejorado: solo si hay suficientes datos no nulos
         def is_mixed(s):
             s_val = s.dropna()
-            if s_val.empty: return False
-            pct = pd.to_numeric(s_val, errors="coerce").notna().mean()
-            return 0.05 < pct < 0.95
+            if len(s_val) < 10: return False  # Evitar ruido en muestras pequeñas
+            # Intentar convertir a numérico. Si hay mezcla significante de num y no-num: mixed.
+            converted = pd.to_numeric(s_val, errors="coerce")
+            is_num = converted.notna()
+            pct_num = is_num.mean()
+            # Si entre 5% y 95% es numérico, es tipo mixto
+            return 0.05 < pct_num < 0.95
 
         mixed = int(df_obj.apply(is_mixed).sum())
 
@@ -909,16 +915,21 @@ def save_to_bigquery(df: pd.DataFrame) -> None:
 
 
 def _deduplicate_by_slug(df: pd.DataFrame) -> pd.DataFrame:
-    """[FIX-8] Deduplica múltiples recursos CSV del mismo dataset.
+    """[FIX-8] Deduplica múltiples recursos del mismo dataset.
 
-    Un dataset CKAN puede tener varios recursos CSV (ej. diccionario + datos).
-    El pipeline los registra a todos; aquí conservamos sólo el que obtenga el
-    score_global más alto, evitando que los KPIs de Resumen dupliquen entradas.
+    Un dataset CKAN puede tener varios recursos (ej. diccionario + datos).
+    Priorizamos el recurso con mayor número de filas (datos principales)
+    y usamos el score_global como criterio de desempate.
     """
     if "dataset" not in df.columns or "score_global" not in df.columns:
         return df
+    
+    # Asegurar que filas sea numérico para el sort
+    if "filas" in df.columns:
+        df["filas"] = pd.to_numeric(df["filas"], errors="coerce").fillna(0)
+
     deduped = (
-        df.sort_values("score_global", ascending=False)
+        df.sort_values(by=["filas", "score_global"], ascending=[False, False])
           .drop_duplicates(subset=["dataset"], keep="first")
           .reset_index(drop=True)
     )

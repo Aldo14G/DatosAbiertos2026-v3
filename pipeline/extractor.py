@@ -250,33 +250,30 @@ class ExtractorCKAN:
             self.logger.error(f"Error llamando {url}: {e}")
             raise
 
-    def descubrir_datasets(self) -> List[DatasetDescubierto]:
-        """Descubre TODOS los datasets disponibles en el catálogo."""
+    def descubrir_datasets(self, limite: int = 0) -> List[DatasetDescubierto]:
+        """Descubre datasets disponibles en el catálogo, respetando el límite opcional."""
         datasets = []
         offset = 0
-        limit = 100
+        batch_limit = 100
 
-        self.logger.info("Obteniendo lista completa de datasets...")
+        self.logger.info("Obteniendo lista de datasets...")
         try:
+            # Intentar obtener la lista completa de nombres primero
             lista_completa = self._llamar_api(
                 "package_list", {"limit": 100000}
             )
-            total_esperado = len(lista_completa)
+            total_disponible = len(lista_completa)
             self.logger.info(
-                f"Total de datasets en catálogo: {total_esperado}"
+                f"Total de datasets en catálogo: {total_disponible}"
             )
-        except Exception:
-            lista_completa = None
-            count_resp = self._llamar_api(
-                "package_search", {"rows": 0}
-            )
-            total_esperado = count_resp.get("count", 0)
-            self.logger.info(
-                f"Total de datasets (via search): {total_esperado}"
-            )
+            
+            # Si hay límite, solo procesamos los primeros N nombres
+            nombres_a_procesar = lista_completa
+            if limite > 0:
+                nombres_a_procesar = lista_completa[:limite]
+                self.logger.info(f"Limitando descubrimiento a los primeros {limite} datasets.")
 
-        if lista_completa and isinstance(lista_completa, list):
-            for i, nombre_dataset in enumerate(lista_completa):
+            for i, nombre_dataset in enumerate(nombres_a_procesar):
                 try:
                     detalle = self._llamar_api(
                         "package_show", {"id": nombre_dataset}
@@ -286,20 +283,32 @@ class ExtractorCKAN:
 
                     if (i + 1) % 50 == 0:
                         self.logger.info(
-                            f"Descubiertos {i+1}/{total_esperado} datasets"
+                            f"Descubiertos {i+1}/{len(nombres_a_procesar)} datasets"
                         )
-                    time.sleep(0.2)
+                    time.sleep(0.1)
                 except Exception as e:
                     self.logger.warning(
                         f"Error obteniendo dataset '{nombre_dataset}': {e}"
                     )
                     continue
-        else:
-            while offset < total_esperado:
+        except Exception:
+            # Fallback a package_search si package_list falla
+            self.logger.info("Fallback a package_search...")
+            count_resp = self._llamar_api(
+                "package_search", {"rows": 0}
+            )
+            total_esperado = count_resp.get("count", 0)
+            
+            a_descubrir = total_esperado
+            if limite > 0:
+                a_descubrir = min(limite, total_esperado)
+
+            while len(datasets) < a_descubrir:
                 try:
+                    rows = min(batch_limit, a_descubrir - len(datasets))
                     resultado = self._llamar_api(
                         "package_search",
-                        {"rows": limit, "start": offset}
+                        {"rows": rows, "start": offset}
                     )
                     resultados_pagina = resultado.get("results", [])
 
@@ -309,16 +318,18 @@ class ExtractorCKAN:
                     for detalle in resultados_pagina:
                         dataset = self._parsear_dataset_ckan(detalle)
                         datasets.append(dataset)
+                        if len(datasets) >= a_descubrir:
+                            break
 
-                    offset += limit
+                    offset += batch_limit
                     self.logger.info(
-                        f"Descubiertos {len(datasets)}/{total_esperado}"
+                        f"Descubiertos {len(datasets)}/{a_descubrir}"
                     )
                     time.sleep(0.3)
 
                 except Exception as e:
                     self.logger.error(f"Error en paginación offset={offset}: {e}")
-                    offset += limit
+                    break
 
         return datasets
 
@@ -834,7 +845,7 @@ class SkillExtractorDatasets:
             format="%(asctime)s [%(name)s] %(levelname)s: %(message)s"
         )
 
-    def ejecutar(self, url: str) -> Dict[str, Any]:
+    def ejecutar(self, url: str, limite_datasets: int = 0) -> Dict[str, Any]:
         """Punto de entrada principal."""
         self.logger.info(f"═══ INICIANDO EXTRACCIÓN: {url} ═══")
 
@@ -850,11 +861,17 @@ class SkillExtractorDatasets:
         self.logger.info(f"Plataforma detectada: {tipo_plataforma.value}")
 
         self.logger.info("FASE 2: Descubriendo datasets...")
-        datasets_descubiertos = self._descubrir(tipo_plataforma, info_plataforma, url)
+        datasets_descubiertos = self._descubrir(tipo_plataforma, info_plataforma, url, limite=limite_datasets)
+        
+        # Aplicar límite si se especifica
+        if limite_datasets > 0:
+            datasets_descubiertos = datasets_descubiertos[:limite_datasets]
+            self.logger.info(f"Límite aplicado: {limite_datasets} datasets.")
+
         manifiesto.total_datasets_descubiertos = len(datasets_descubiertos)
         manifiesto.total_recursos_descubiertos = sum(len(d.recursos) for d in datasets_descubiertos)
         self.logger.info(
-            f"Descubiertos: {manifiesto.total_datasets_descubiertos} datasets, "
+            f"Procesando: {manifiesto.total_datasets_descubiertos} datasets, "
             f"{manifiesto.total_recursos_descubiertos} recursos"
         )
 
@@ -865,11 +882,12 @@ class SkillExtractorDatasets:
         for i, dataset in enumerate(datasets_descubiertos):
             self.logger.info(f"Procesando dataset {i+1}/{len(datasets_descubiertos)}: {dataset.titulo}")
 
-            for recurso in dataset.recursos:
-                if recurso.formato == FormatoDataset.PDF:
-                    continue
-
-                resultado = motor.extraer_recurso(recurso, dataset.dataset_id)
+            # SELECCIÓN DE RECURSO: Priorizar datos reales sobre diccionarios
+            mejor_recurso = self._seleccionar_mejor_recurso(dataset.recursos)
+            
+            if mejor_recurso:
+                self.logger.info(f"  -> Extrayendo mejor recurso: {mejor_recurso.nombre} ({mejor_recurso.formato.value})")
+                resultado = motor.extraer_recurso(mejor_recurso, dataset.dataset_id)
                 resultados.append(resultado)
 
                 if resultado.estado == EstadoExtraccion.EXITOSO:
@@ -878,8 +896,10 @@ class SkillExtractorDatasets:
                     manifiesto.datasets_parciales += 1
                 else:
                     manifiesto.datasets_fallidos += 1
+            else:
+                self.logger.warning(f"  x No se encontró recurso apto para extraction en {dataset.titulo}")
 
-                time.sleep(0.5)
+            time.sleep(0.3)
 
         manifiesto.resultados = resultados
         manifiesto.total_datasets_extraidos = len({r.dataset_id for r in resultados})
@@ -906,16 +926,57 @@ class SkillExtractorDatasets:
         self.logger.info(f"  Datasets: {manifiesto.total_datasets_extraidos}")
         return output
 
-    def _descubrir(self, plataforma: TipoPlataforma, info: Dict, url: str) -> List[DatasetDescubierto]:
+    def _seleccionar_mejor_recurso(self, recursos: List[RecursoDescubierto]) -> Optional[RecursoDescubierto]:
+        """
+        Selecciona el recurso con más probabilidad de ser el dataset principal.
+        Evita PDFs, diccionarios y metadatos.
+        """
+        if not recursos:
+            return None
+
+        # 1. Filtrar formatos soportados y no PDF
+        candidatos = [
+            r for r in recursos 
+            if r.formato not in [FormatoDataset.PDF, FormatoDataset.DESCONOCIDO]
+        ]
+        
+        if not candidatos:
+            return None
+
+        # 2. Puntuación de candidatos
+        def puntuar(r: RecursoDescubierto) -> float:
+            score = 0.0
+            nombre_desc = (r.nombre + " " + (r.descripcion or "")).lower()
+            
+            # Formatos preferidos
+            if r.formato == FormatoDataset.CSV: score += 50
+            elif r.formato == FormatoDataset.XLSX: score += 40
+            elif r.formato == FormatoDataset.JSON: score += 30
+            
+            # Penalizar diccionarios/metadatos
+            keywords_ruido = ["diccionario", "glosario", "metadatos", "estructura", "catalogo", "catalogos"]
+            if any(k in nombre_desc for k in keywords_ruido):
+                score -= 100
+                
+            # Bonus por tamaño (si está disponible)
+            if r.tamano_bytes:
+                score += min(20, r.tamano_bytes / 1024 / 1024) # Max 20 pts por MB
+                
+            return score
+
+        candidatos.sort(key=puntuar, reverse=True)
+        return candidatos[0]
+
+    def _descubrir(self, plataforma: TipoPlataforma, info: Dict, url: str, limite: int = 0) -> List[DatasetDescubierto]:
         if plataforma == TipoPlataforma.CKAN:
             extractor = ExtractorCKAN(info["api_base"])
-            return extractor.descubrir_datasets()
+            return extractor.descubrir_datasets(limite=limite)
         else:
             parsed = urlparse(url)
             base = f"{parsed.scheme}://{parsed.netloc}/api/3/action"
             extractor = ExtractorCKAN(base)
             try:
-                return extractor.descubrir_datasets()
+                return extractor.descubrir_datasets(limite=limite)
             except Exception as e:
                 self.logger.error(f"Fallback CKAN falló: {e}")
                 return []
@@ -949,6 +1010,7 @@ class SkillExtractorDatasets:
                 "metadata": {
                     "dataset_id": resultado.dataset_id, "recurso_id": resultado.recurso_id,
                     "titulo_dataset": dataset_info.titulo if dataset_info else "",
+                    "descripcion": dataset_info.descripcion if dataset_info else "",
                     "organizacion": dataset_info.organizacion if dataset_info else "",
                     "categoria": dataset_info.categoria if dataset_info else "",
                     "formato": resultado.formato_detectado.value,

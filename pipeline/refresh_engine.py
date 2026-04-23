@@ -351,7 +351,7 @@ def run_pipeline(force: bool = False, limit: int = 0, snapshot_dir: str = "") ->
     return coverage_report
 
 
-def run_advanced_pipeline():
+def run_advanced_pipeline(limit: int = 0):
     """Ejecuta el pipeline avanzado con los agentes Extractor y Evaluador (ISO 25012, ISO 8000, DAMA)."""
     from pipeline.extractor import SkillExtractorDatasets
     from pipeline.evaluator import SkillEvaluadorDatos
@@ -361,7 +361,7 @@ def run_advanced_pipeline():
     CATALOG_URL = "https://catalogodatos.nl.gob.mx"
 
     extractor = SkillExtractorDatasets()
-    resultados_extraccion = extractor.ejecutar(CATALOG_URL)
+    resultados_extraccion = extractor.ejecutar(CATALOG_URL, limite_datasets=limit)
 
     manifiesto = resultados_extraccion["manifiesto"]
     datos = resultados_extraccion["datos_extraidos"]
@@ -415,6 +415,6 @@ if __name__ == "__main__":
             pass
 
     if run_advanced:
-        run_advanced_pipeline()
+        run_advanced_pipeline(limit=limit_val)
     else:
         run_pipeline(force=force_refresh, limit=limit_val, snapshot_dir=snap_dir)

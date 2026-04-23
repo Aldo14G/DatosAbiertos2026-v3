@@ -16,6 +16,15 @@ import re
 import json
 import hashlib
 import logging
+import os
+
+# Intento de importar Vertex AI para análisis semántico
+try:
+    import vertexai
+    from vertexai.generative_models import GenerativeModel
+    _AI_AVAILABLE = True
+except ImportError:
+    _AI_AVAILABLE = False
 
 # ============================================================
 # MODELOS Y ENUMERACIONES
@@ -39,11 +48,13 @@ class CategoriaProblema(Enum):
     ACCESIBILIDAD = "accesibilidad"
     TRAZABILIDAD = "trazabilidad"
     COMPRENSIBILIDAD = "comprensibilidad"
+    SEMANTICA = "exactitud_semantica"
 
 class MarcoReferencia(Enum):
     ISO_25012 = "ISO/IEC 25012"
     ISO_8000 = "ISO 8000"
     DAMA_DMBOK = "DAMA-DMBOK"
+    IA_GENERATIVA = "Análisis Semántico IA"
 
 class NivelAnalisis(Enum):
     RAPIDO = "rapido"
@@ -61,6 +72,7 @@ class ProblemaDetectado:
     titulo: str
     descripcion: str
     columnas_afectadas: List[str] = field(default_factory=list)
+    registros_affected: int = 0 # Corregido de registros_afectados para consistencia si es necesario, pero mantengamos el original
     registros_afectados: int = 0
     porcentaje_afectado: float = 0.0
     ejemplo_valores: List[Any] = field(default_factory=list)
@@ -88,6 +100,7 @@ class ReporteDataset:
     score_iso_25012: float = 0.0
     score_iso_8000: float = 0.0
     score_dama: float = 0.0
+    score_ia_semantica: Optional[float] = None
     metricas: List[MetricaCalidad] = field(default_factory=list)
     problemas: List[ProblemaDetectado] = field(default_factory=list)
     estadisticas_basicas: Dict[str, Any] = field(default_factory=dict)
@@ -111,6 +124,114 @@ class ReporteGlobal:
 # ============================================================
 # ANALIZADORES POR MARCO DE REFERENCIA
 # ============================================================
+
+class AnalizadorSemanticoIA:
+    """Detecta discrepancias entre la descripción técnica y los datos reales usando IA."""
+    
+    def __init__(self, project_id: str = None, location: str = "us-central1"):
+        self.project_id = project_id or os.getenv("GOOGLE_CLOUD_PROJECT", "datos-abiertos-nl")
+        self.location = location
+        self.initialized = False
+        self.logger = logging.getLogger("AnalizadorSemanticoIA")
+        
+    def _init_ai(self) -> bool:
+        if not _AI_AVAILABLE: return False
+        if self.initialized: return True
+        try:
+            vertexai.init(project=self.project_id, location=self.location)
+            self.model = GenerativeModel("gemini-1.5-flash-001")
+            self.initialized = True
+            return True
+        except Exception as e:
+            self.logger.warning(f"No se pudo inicializar Vertex AI: {e}")
+            return False
+
+    def analizar_discrepancia(
+        self, df: pd.DataFrame, metadata: Dict
+    ) -> Tuple[Optional[MetricaCalidad], List[ProblemaDetectado]]:
+        if not self._init_ai():
+            return None, []
+
+        titulo = metadata.get("titulo_dataset", "")
+        descripcion_ckan = metadata.get("descripcion", "") or metadata.get("notes", "")
+        columnas = df.columns.tolist()
+        muestra = df.head(5).to_json(orient="records")
+        
+        prompt = f"""
+        Actúa como un Auditor de Calidad de Datos. Evalúa si existe una discrepancia entre lo que dice la descripción de un dataset y lo que realmente contienen sus datos.
+
+        METADATOS:
+        Título: {titulo}
+        Descripción declarada: {descripcion_ckan}
+
+        DATOS REALES:
+        Columnas: {columnas}
+        Muestra de datos (primeras 5 filas): {muestra}
+
+        TAREAS:
+        1. Identifica si la descripción coincide con las columnas y datos reales.
+        2. Detecta si faltan columnas mencionadas en la descripción.
+        3. Detecta si los datos no corresponden al tema declarado (ej: dice ser de salud pero contiene finanzas).
+        4. Asigna un score de "Exactitud Semántica" de 0 a 100.
+
+        RESPUESTA:
+        Responde ÚNICAMENTE con un objeto JSON válido con este formato:
+        {{
+            "score_semantico": float,
+            "discrepancia_detectada": bool,
+            "motivo": "string",
+            "hallazgos": ["list of strings"],
+            "recomendacion": "string",
+            "severidad": "baja|media|alta|critica"
+        }}
+        """
+
+        try:
+            response = self.model.generate_content(
+                prompt,
+                generation_config={"temperature": 0.1, "response_mime_type": "application/json"}
+            )
+            res = json.loads(response.text)
+            
+            score = res.get("score_semantico", 100.0)
+            problemas = []
+            
+            metrica = MetricaCalidad(
+                nombre="exactitud_semantica",
+                categoria=CategoriaProblema.SEMANTICA,
+                marco_referencia=MarcoReferencia.IA_GENERATIVA,
+                valor=score,
+                umbral_aceptable=80.0,
+                aprobado=score >= 80.0,
+                detalles=res
+            )
+            
+            if res.get("discrepancia_detectada"):
+                sev_map = {
+                    "baja": SeveridadProblema.BAJA,
+                    "media": SeveridadProblema.MEDIA,
+                    "alta": SeveridadProblema.ALTA,
+                    "critica": SeveridadProblema.CRITICA
+                }
+                problemas.append(ProblemaDetectado(
+                    problema_id=hashlib.md5(f"semantica_{metadata.get('dataset_id')}".encode()).hexdigest()[:12],
+                    dataset_id=metadata.get("dataset_id", ""),
+                    recurso_id=metadata.get("recurso_id", ""),
+                    categoria=CategoriaProblema.SEMANTICA,
+                    severidad=sev_map.get(res.get("severidad", "media"), SeveridadProblema.MEDIA),
+                    marco_referencia=MarcoReferencia.IA_GENERATIVA,
+                    titulo="Discrepancia Semántica Detectada",
+                    descripcion=res.get("motivo", "La descripción no coincide con el contenido de los datos."),
+                    columnas_afectadas=columnas,
+                    recomendacion=res.get("recomendacion", ""),
+                    metrica_asociada="score_semantico",
+                    valor_metrica=score
+                ))
+                
+            return metrica, problemas
+        except Exception as e:
+            self.logger.error(f"Error en análisis semántico IA: {e}")
+            return None, []
 
 class AnalizadorISO25012:
     PATRON_CURP = re.compile(r'^[A-Z]{4}\d{6}[HM][A-Z]{5}[A-Z0-9]\d$')
@@ -203,17 +324,15 @@ class AnalizadorISO25012:
 
     def _evaluar_exactitud(self, df: pd.DataFrame, dataset_id: str, recurso_id: str) -> Tuple[List[MetricaCalidad], List[ProblemaDetectado]]:
         metricas, problemas = [], []
-        # Similar simplification for brevity and structure.
+        # Implementación simplificada para brevedad
         return metricas, problemas
 
     def _evaluar_consistencia(self, df: pd.DataFrame, dataset_id: str, recurso_id: str) -> Tuple[List[MetricaCalidad], List[ProblemaDetectado]]:
         metricas, problemas = [], []
-        # Logic here...
         return metricas, problemas
 
     def _evaluar_actualidad(self, df: pd.DataFrame, metadata: Dict, dataset_id: str, recurso_id: str) -> Tuple[List[MetricaCalidad], List[ProblemaDetectado]]:
         metricas, problemas = [], []
-        # Logic here...
         return metricas, problemas
 
     def _evaluar_conformidad(self, df: pd.DataFrame, dataset_id: str, recurso_id: str) -> Tuple[List[MetricaCalidad], List[ProblemaDetectado]]:
@@ -380,7 +499,6 @@ class AnalizadorISO8000:
 
     def _evaluar_unicidad(self, df: pd.DataFrame, dataset_id: str, recurso_id: str) -> Tuple[List[MetricaCalidad], List[ProblemaDetectado]]:
         metricas, problemas = [], []
-        # Convert objects to strings to prevent 'unhashable type: list' error
         try:
             duplicados = df.astype(str).duplicated().sum()
         except Exception:
@@ -599,6 +717,7 @@ class SkillEvaluadorDatos:
         self.iso25012 = AnalizadorISO25012()
         self.iso8000 = AnalizadorISO8000()
         self.dama = AnalizadorDAMA()
+        self.ia_semantica = AnalizadorSemanticoIA()
 
     def evaluar_catalogo(self, datos_extraidos: Dict, manifiesto: Dict, nivel: NivelAnalisis = NivelAnalisis.ESTANDAR) -> ReporteGlobal:
         """Evalúa todos los datos proporcionados desde la Skill 1."""
@@ -619,15 +738,24 @@ class SkillEvaluadorDatos:
             m2, p2 = self.iso8000.analizar(df, metadata, datos_extraidos)
             # Análisis DAMA
             m3, p3 = self.dama.analizar(df, metadata, manifiesto, datos_extraidos)
+            # Análisis Semántico IA (Opcional si hay credenciales)
+            m4, p4 = self.ia_semantica.analizar_discrepancia(df, metadata)
 
-            metricas_totales = m1 + m2 + m3
-            problemas_totales = p1 + p2 + p3
+            metricas_totales = m1 + m2 + m3 + ([m4] if m4 else [])
+            problemas_totales = p1 + p2 + p3 + p4
 
             # Consolidar Dataset
             score_25012 = np.mean([m.valor for m in m1]) if m1 else 0
             score_8000 = np.mean([m.valor for m in m2]) if m2 else 0
             score_dama = np.mean([m.valor for m in m3]) if m3 else 0
-            score_global = np.mean([score_25012, score_8000, score_dama])
+            
+            scores_para_global = [score_25012, score_8000, score_dama]
+            score_semantico = None
+            if m4:
+                score_semantico = m4.valor
+                scores_para_global.append(score_semantico)
+                
+            score_global = np.mean(scores_para_global)
 
             clasificacion = (
                 "Excelente" if score_global >= 90 else
@@ -645,6 +773,7 @@ class SkillEvaluadorDatos:
                 score_iso_25012=round(score_25012, 2),
                 score_iso_8000=round(score_8000, 2),
                 score_dama=round(score_dama, 2),
+                score_ia_semantica=round(score_semantico, 2) if score_semantico is not None else None,
                 metricas=metricas_totales,
                 problemas=problemas_totales,
                 clasificacion=clasificacion
