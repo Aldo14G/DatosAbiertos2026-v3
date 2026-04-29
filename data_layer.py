@@ -29,56 +29,79 @@ import requests
 try:
     from google.cloud import bigquery
     from google.cloud.exceptions import NotFound
+
     _BQ_AVAILABLE = True
 except ImportError:
     _BQ_AVAILABLE = False
 from functools import lru_cache
 
-CKAN_API  = "https://catalogodatos.nl.gob.mx/api/3/action"
+CKAN_API = "https://catalogodatos.nl.gob.mx/api/3/action"
 DELAY_SEC = 1.5
 
 # Formatos soportados para descarga multiformato (Fase 2)
-_MULTIFORMAT_PARSERS: frozenset[str] = frozenset({
-    "CSV", ".CSV", "JSON", "XLSX", "XLS", "GEOJSON", "XML",
-})
+_MULTIFORMAT_PARSERS: frozenset[str] = frozenset(
+    {
+        "CSV",
+        ".CSV",
+        "JSON",
+        "XLSX",
+        "XLS",
+        "GEOJSON",
+        "XML",
+    }
+)
 
 # ── PESOS ISO 25012 ───────────────────────────────────────────
 # Fuente única: config.py. No redefinir aquí.
-from config import CLASIFICACION_DEFAULT, CLASIFICACION_THRESHOLDS, QUALITY_WEIGHTS
+from config import CLASIFICACION_DEFAULT, CLASIFICACION_THRESHOLDS, QUALITY_WEIGHTS  # noqa: E402
 
 # Etiquetas de presentación para cada columna de dimensión
 DIM_LABEL_MAP: dict[str, str] = {
     "comp_completitud_global_pct": "Completitud",
-    "acc_score_accuracy_pct":      "Exactitud",
-    "cons_score_consistency_pct":  "Consistencia",
-    "uniq_score_uniqueness_pct":   "Unicidad",
-    "time_score_timeliness_pct":   "Puntualidad",
+    "acc_score_accuracy_pct": "Exactitud",
+    "cons_score_consistency_pct": "Consistencia",
+    "uniq_score_uniqueness_pct": "Unicidad",
+    "time_score_timeliness_pct": "Puntualidad",
     "doc_score_documentation_pct": "Documentación",
-    "open_score_openness_pct":     "Apertura",
-    "score_global":                "Score Global",
+    "open_score_openness_pct": "Apertura",
+    "score_global": "Score Global",
 }
 
 # Días esperados entre publicaciones para cada frecuencia declarada
 _UPDATE_FREQ_DAYS: dict[str, int] = {
-    "diaria":     1,    "daily":      1,
-    "semanal":    7,    "weekly":     7,
-    "quincenal":  15,
-    "mensual":    30,   "monthly":    30,
-    "trimestral": 90,   "quarterly":  90,
-    "semestral":  180,
-    "anual":      365,  "yearly":     365,
+    "diaria": 1,
+    "daily": 1,
+    "semanal": 7,
+    "weekly": 7,
+    "quincenal": 15,
+    "mensual": 30,
+    "monthly": 30,
+    "trimestral": 90,
+    "quarterly": 90,
+    "semestral": 180,
+    "anual": 365,
+    "yearly": 365,
 }
 
 # Columnas mínimas para que el dashboard funcione
 _REQUIRED_COLS = {
-    "dataset", "categoria", "organizacion", "filas",
-    "comp_completitud_global_pct", "acc_score_accuracy_pct",
-    "cons_score_consistency_pct",  "uniq_score_uniqueness_pct",
+    "dataset",
+    "categoria",
+    "organizacion",
+    "filas",
+    "comp_completitud_global_pct",
+    "acc_score_accuracy_pct",
+    "cons_score_consistency_pct",
+    "uniq_score_uniqueness_pct",
+    "time_score_timeliness_pct",
+    "doc_score_documentation_pct",
+    "open_score_openness_pct",
     "score_global",
 }
 
 
 # ── 1. DESCUBRIMIENTO ─────────────────────────────────────────
+
 
 @lru_cache(maxsize=1)
 def fetch_portal_catalog() -> list[dict]:
@@ -89,10 +112,12 @@ def fetch_portal_catalog() -> list[dict]:
     """
     try:
         from pipeline.ckan_client import discover_catalog
+
         return discover_catalog(use_fallback=True)
     except Exception as exc:
         # Fallback al método original si ckan_client no está disponible
         import logging
+
         logging.getLogger("data_layer").error(
             "ckan_client unavailable (%s) — falling back to legacy fetch", exc
         )
@@ -109,39 +134,44 @@ def _legacy_fetch_portal_catalog() -> list[dict]:
             timeout=30,
         )
         r.raise_for_status()
-        data    = r.json()
+        data = r.json()
         results = data["result"]["results"]
-        total   = data["result"]["count"]
+        total = data["result"]["count"]
         if not results:
             break
         for ds in results:
-            org    = (ds.get("organization") or {}).get("title", "Desconocida")
+            org = (ds.get("organization") or {}).get("title", "Desconocida")
             grupos = [g.get("title", "") for g in ds.get("groups", [])]
-            cat    = grupos[0].strip().title() if grupos else "Sin categoría"
+            cat = grupos[0].strip().title() if grupos else "Sin categoría"
             for recurso in ds.get("resources", []):
                 fmt = recurso.get("format", "").upper().strip()
                 if fmt not in ("CSV", ".CSV"):
                     continue
-                datasets.append({
-                    "slug"             : ds.get("name", ""),
-                    "recurso_id"       : recurso.get("id", ""),
-                    "dataset"          : ds.get("title", "Sin nombre"),
-                    "organizacion"     : org,
-                    "categoria"        : cat,
-                    "formato"          : fmt,
-                    "url"              : recurso.get("url", ""),
-                    "modificado"       : ds.get("metadata_modified", ""),
-                    "frecuencia_update": ds.get("frequency", "").lower().strip()
-                                        if isinstance(ds.get("frequency"), str) else "",
-                    "descripcion"      : ds.get("notes", "") or "",
-                    "licencia"         : ds.get("license_title", "") or "",
-                    "licencia_id"      : ds.get("license_id", "") or "",
-                    "num_resources"    : len(ds.get("resources", [])),
-                    "resource_formats" : [rx.get("format", "").upper().strip()
-                                          for rx in ds.get("resources", [])],
-                    "resource_descs"   : [rx.get("description", "") or ""
-                                          for rx in ds.get("resources", [])],
-                })
+                datasets.append(
+                    {
+                        "slug": ds.get("name", ""),
+                        "recurso_id": recurso.get("id", ""),
+                        "dataset": ds.get("title", "Sin nombre"),
+                        "organizacion": org,
+                        "categoria": cat,
+                        "formato": fmt,
+                        "url": recurso.get("url", ""),
+                        "modificado": ds.get("metadata_modified", ""),
+                        "frecuencia_update": ds.get("frequency", "").lower().strip()
+                        if isinstance(ds.get("frequency"), str)
+                        else "",
+                        "descripcion": ds.get("notes", "") or "",
+                        "licencia": ds.get("license_title", "") or "",
+                        "licencia_id": ds.get("license_id", "") or "",
+                        "num_resources": len(ds.get("resources", [])),
+                        "resource_formats": [
+                            rx.get("format", "").upper().strip() for rx in ds.get("resources", [])
+                        ],
+                        "resource_descs": [
+                            rx.get("description", "") or "" for rx in ds.get("resources", [])
+                        ],
+                    }
+                )
         start += len(results)
         if start >= total:
             break
@@ -151,9 +181,11 @@ def _legacy_fetch_portal_catalog() -> list[dict]:
 
 # ── 2. DESCARGA Y NORMALIZACIÓN ────────────────────────────────
 
+
 def is_safe_url(url: str) -> bool:
     """Verifica dominios permitidos para evitar SSRF."""
     from config import DOMINIOS_PERMITIDOS
+
     try:
         parsed = urlparse(url)
         if parsed.scheme not in ("http", "https"):
@@ -171,13 +203,17 @@ def is_safe_url(url: str) -> bool:
 
 
 def download_csv(url: str) -> pd.DataFrame | None:
+    """Download CSV resources with robust charset detection and separator inference.
+    Returns a pandas DataFrame or None on failure.
+    """
     if not is_safe_url(url):
         print(f"URL rechazada por política de seguridad SSRF: {url}")
         return None
 
     try:
         r = requests.get(
-            url, timeout=30,
+            url,
+            timeout=30,
             headers={"User-Agent": "DatosAbiertosNL-Analyzer/2.2"},
         )
         r.raise_for_status()
@@ -221,9 +257,12 @@ def download_resource(url: str, formato: str) -> pd.DataFrame | None:
     # Resolver formato real desde extensión de URL cuando hay mismatch
     url_ext = os.path.splitext(urlparse(url).path)[1].upper().lstrip(".")
     _EXT_OVERRIDE: dict[str, str] = {
-        "XLSX": "XLSX", "XLS": "XLS",
-        "JSON": "JSON", "GEOJSON": "GEOJSON",
-        "XML": "XML", "CSV": "CSV",
+        "XLSX": "XLSX",
+        "XLS": "XLS",
+        "JSON": "JSON",
+        "GEOJSON": "GEOJSON",
+        "XML": "XML",
+        "CSV": "CSV",
     }
     if url_ext in _EXT_OVERRIDE and _EXT_OVERRIDE[url_ext] != fmt.lstrip("."):
         fmt = _EXT_OVERRIDE[url_ext]
@@ -236,7 +275,8 @@ def download_resource(url: str, formato: str) -> pd.DataFrame | None:
 
     try:
         r = requests.get(
-            url, timeout=(10, 60),
+            url,
+            timeout=(10, 60),
             headers={"User-Agent": "DatosAbiertosNL-Analyzer/2.2"},
         )
         r.raise_for_status()
@@ -262,6 +302,7 @@ def _detect_encoding(content: bytes) -> str:
     """Detecta encoding por chardet o defaultea a utf-8."""
     try:
         import chardet
+
         result = chardet.detect(content[:10_000])
         return result.get("encoding") or "utf-8"
     except ImportError:
@@ -270,6 +311,7 @@ def _detect_encoding(content: bytes) -> str:
 
 def _parse_json(content: bytes) -> pd.DataFrame | None:
     import json as _json
+
     enc = _detect_encoding(content)
     data = _json.loads(content.decode(enc, errors="replace"))
     if isinstance(data, list):
@@ -296,6 +338,7 @@ def _parse_excel(content: bytes) -> pd.DataFrame | None:
 
 def _parse_geojson(content: bytes) -> pd.DataFrame | None:
     import json as _json
+
     enc = _detect_encoding(content)
     data = _json.loads(content.decode(enc, errors="replace"))
     features = data.get("features", [])
@@ -317,6 +360,7 @@ def _parse_xml(content: bytes) -> pd.DataFrame | None:
         pass
     try:
         from bs4 import BeautifulSoup
+
         soup = BeautifulSoup(content, "lxml-xml")
         tag_counts: dict[str, int] = {}
         for el in soup.find_all(True):
@@ -340,43 +384,46 @@ def _parse_xml(content: bytes) -> pd.DataFrame | None:
 
 def normalize_categories(df: pd.DataFrame) -> pd.DataFrame:
     corrections = {
-        "Administración Y Finanzas"                      : "Administración y Finanzas",
-        "Arte Y Cultura"                                 : "Arte y Cultura",
-        "Perspectiva De Género E Interseccionalidad"     : "Perspectiva de Género",
-        "Transparencia Y Combate A La Corrupción"        : "Transparencia y Anticorrupción",
-        "Transparencia Y Anticorrupción"                 : "Transparencia y Anticorrupción",
-        "Atención Ciudadana"                             : "Atención Ciudadana",
-        "Gobierno Y Transparencia"                       : "Gobierno y Transparencia",
-        "Igualdad De Género"                             : "Igualdad de Género",
-        "Desarrollo Urbano"                              : "Desarrollo Urbano",
-        "Medio Ambiente"                                 : "Medio Ambiente",
-        "Asistencia Social"                              : "Asistencia Social",
+        "Administración Y Finanzas": "Administración y Finanzas",
+        "Arte Y Cultura": "Arte y Cultura",
+        "Perspectiva De Género E Interseccionalidad": "Perspectiva de Género",
+        "Transparencia Y Combate A La Corrupción": "Transparencia y Anticorrupción",
+        "Transparencia Y Anticorrupción": "Transparencia y Anticorrupción",
+        "Atención Ciudadana": "Atención Ciudadana",
+        "Gobierno Y Transparencia": "Gobierno y Transparencia",
+        "Igualdad De Género": "Igualdad de Género",
+        "Desarrollo Urbano": "Desarrollo Urbano",
+        "Medio Ambiente": "Medio Ambiente",
+        "Asistencia Social": "Asistencia Social",
     }
     df = df.copy()
     if "categoria" in df.columns:
-        df["categoria"] = (
-            df["categoria"]
-            .astype(str).str.strip().str.title()
-            .replace(corrections)
-        )
+        df["categoria"] = df["categoria"].astype(str).str.strip().str.title().replace(corrections)
     return df
 
 
 # ── 3. MÉTRICAS DE CALIDAD (7 DIMENSIONES) ────────────────────
 
+
 def compute_completeness(df: pd.DataFrame) -> dict:
     total = df.size
     if not total:
-        return {k: 0.0 for k in [
-            "comp_completitud_global_pct", "comp_completitud_media_col",
-            "comp_completitud_min_col", "comp_filas_incompletas_pct"]}
-    nulos   = df.isnull().sum().sum()
+        return {
+            k: 0.0
+            for k in [
+                "comp_completitud_global_pct",
+                "comp_completitud_media_col",
+                "comp_completitud_min_col",
+                "comp_filas_incompletas_pct",
+            ]
+        }
+    nulos = df.isnull().sum().sum()
     col_pct = 1 - df.isnull().mean()
     return {
         "comp_completitud_global_pct": round((total - nulos) / total * 100, 2),
-        "comp_completitud_media_col" : round(col_pct.mean() * 100, 2),
-        "comp_completitud_min_col"   : round(col_pct.min()  * 100, 2),
-        "comp_filas_incompletas_pct" : round(df.isnull().any(axis=1).mean() * 100, 2),
+        "comp_completitud_media_col": round(col_pct.mean() * 100, 2),
+        "comp_completitud_min_col": round(col_pct.min() * 100, 2),
+        "comp_filas_incompletas_pct": round(df.isnull().any(axis=1).mean() * 100, 2),
     }
 
 
@@ -388,8 +435,12 @@ def compute_accuracy(df: pd.DataFrame) -> dict:
     """
     n_cols = len(df.columns)
     if n_cols == 0:
-        return {"acc_score_accuracy_pct": 0, "acc_columnas_tipo_mixto": 0,
-                "acc_columnas_espacios": 0,   "acc_columnas_constantes": 0}
+        return {
+            "acc_score_accuracy_pct": 0,
+            "acc_columnas_tipo_mixto": 0,
+            "acc_columnas_espacios": 0,
+            "acc_columnas_constantes": 0,
+        }
 
     # Vectorizado a nivel Dataframe
     const = int((df.nunique() == 1).sum())
@@ -408,7 +459,8 @@ def compute_accuracy(df: pd.DataFrame) -> dict:
         # Tipos mixtos mejorado: solo si hay suficientes datos no nulos
         def is_mixed(s):
             s_val = s.dropna()
-            if len(s_val) < 10: return False  # Evitar ruido en muestras pequeñas
+            if len(s_val) < 3:
+                return False  # Evitar ruido en muestras pequeñas
             # Intentar convertir a numérico. Si hay mezcla significante de num y no-num: mixed.
             converted = pd.to_numeric(s_val, errors="coerce")
             is_num = converted.notna()
@@ -418,17 +470,17 @@ def compute_accuracy(df: pd.DataFrame) -> dict:
 
         mixed = int(df_obj.apply(is_mixed).sum())
 
-    score = max(0, round(
-        100
-        - (mixed  / n_cols) * 40
-        - (spaces / n_cols) * 15
-        - (const  / n_cols) * 20,
-        2,
-    ))
+    score = max(
+        0,
+        round(
+            100 - (mixed / n_cols) * 40 - (spaces / n_cols) * 15 - (const / n_cols) * 20,
+            2,
+        ),
+    )
     return {
-        "acc_score_accuracy_pct" : score,
+        "acc_score_accuracy_pct": score,
         "acc_columnas_tipo_mixto": mixed,
-        "acc_columnas_espacios"  : spaces,
+        "acc_columnas_espacios": spaces,
         "acc_columnas_constantes": const,
     }
 
@@ -449,8 +501,8 @@ def compute_consistency(df: pd.DataFrame) -> dict:
 
         if len(valid_cols) > 0:
             df_valid = df_num[valid_cols]
-            Q1 = df_valid.quantile(.25)
-            Q3 = df_valid.quantile(.75)
+            Q1 = df_valid.quantile(0.25)
+            Q3 = df_valid.quantile(0.75)
             IQR = Q3 - Q1
 
             valid_iqr = IQR[IQR > 0].index
@@ -475,28 +527,32 @@ def compute_consistency(df: pd.DataFrame) -> dict:
         incons_txt = int(diff[diff > 0].sum())
 
     pct_out = round(total_out / total_num * 100, 2) if total_num else 0
-    score   = max(0, round(100 - pct_out * 2 - min(incons_txt * 0.5, 20), 2))
+    score = max(0, round(100 - pct_out * 2 - min(incons_txt * 0.5, 20), 2))
     return {
         "cons_score_consistency_pct": score,
-        "cons_pct_outliers"         : pct_out,
+        "cons_pct_outliers": pct_out,
         "cons_inconsistencias_texto": incons_txt,
-        "cons_columnas_numericas"   : len(cols_num),
+        "cons_columnas_numericas": len(cols_num),
     }
 
 
 def compute_uniqueness(df: pd.DataFrame) -> dict:
     n = len(df)
     if not n:
-        return {"uniq_score_uniqueness_pct": 0, "uniq_pct_duplicados": 0,
-                "uniq_duplicados_exactos": 0,   "uniq_cardinalidad_media": 0}
-    dups     = df.duplicated().sum()
-    pct_dup  = round(dups / n * 100, 2)
+        return {
+            "uniq_score_uniqueness_pct": 0,
+            "uniq_pct_duplicados": 0,
+            "uniq_duplicados_exactos": 0,
+            "uniq_cardinalidad_media": 0,
+        }
+    dups = df.duplicated().sum()
+    pct_dup = round(dups / n * 100, 2)
     card_med = round((df.nunique() / n * 100).mean(), 2)
     return {
         "uniq_score_uniqueness_pct": max(0, round(100 - pct_dup * 2, 2)),
-        "uniq_pct_duplicados"      : pct_dup,
-        "uniq_duplicados_exactos"  : int(dups),
-        "uniq_cardinalidad_media"  : card_med,
+        "uniq_pct_duplicados": pct_dup,
+        "uniq_duplicados_exactos": int(dups),
+        "uniq_cardinalidad_media": card_med,
     }
 
 
@@ -513,22 +569,20 @@ def compute_timeliness(meta: dict) -> dict:
         - Sin frecuencia declarada              → penalización leve por año sin actualizar
     """
     modificado = meta.get("modificado", "") or ""
-    freq_key   = (meta.get("frecuencia_update") or "").lower().strip()
-    freq_dias  = _UPDATE_FREQ_DAYS.get(freq_key, 0)
+    freq_key = (meta.get("frecuencia_update") or "").lower().strip()
+    freq_dias = _UPDATE_FREQ_DAYS.get(freq_key, 0)
 
     no_date_result = {
         "time_score_timeliness_pct": np.nan,
         "time_dias_desde_modificado": None,
-        "time_frecuencia_declarada" : freq_key or "desconocida",
+        "time_frecuencia_declarada": freq_key or "desconocida",
     }
 
     if not modificado:
         return no_date_result
 
     try:
-        dt_mod = datetime.fromisoformat(
-            modificado.replace("Z", "+00:00")
-        ).replace(tzinfo=UTC)
+        dt_mod = datetime.fromisoformat(modificado.replace("Z", "+00:00")).replace(tzinfo=UTC)
         dias = (datetime.now(UTC) - dt_mod).days
     except (ValueError, TypeError):
         return no_date_result
@@ -546,7 +600,7 @@ def compute_timeliness(meta: dict) -> dict:
     return {
         "time_score_timeliness_pct": score,
         "time_dias_desde_modificado": dias,
-        "time_frecuencia_declarada" : freq_key or "desconocida",
+        "time_frecuencia_declarada": freq_key or "desconocida",
     }
 
 
@@ -593,10 +647,7 @@ def compute_documentation(meta: dict) -> dict:
     # 3. Licencia explícita (20 pts)
     licencia = str(meta.get("licencia", "") or "").strip()
     licencia_id = str(meta.get("licencia_id", "") or "").strip()
-    if licencia or licencia_id:
-        lic_pts = 20.0
-    else:
-        lic_pts = 0.0
+    lic_pts = 20.0 if (licencia or licencia_id) else 0.0
     score += lic_pts
     details["doc_licencia"] = licencia or licencia_id or "sin especificar"
     details["doc_licencia_pts"] = lic_pts
@@ -604,8 +655,17 @@ def compute_documentation(meta: dict) -> dict:
     # 4. Notas metodológicas (20 pts)
     texto_buscar = desc.lower()
     keywords_found: list[str] = []
-    for kw in ["metodolog", "fuente", "diccionario", "glosario", "nota",
-               "definici", "metadat", "variable", "indicador"]:
+    for kw in [
+        "metodolog",
+        "fuente",
+        "diccionario",
+        "glosario",
+        "nota",
+        "definici",
+        "metadat",
+        "variable",
+        "indicador",
+    ]:
         if kw in texto_buscar:
             keywords_found.append(kw)
     meth_pts = min(20.0, len(keywords_found) * 5.0)
@@ -658,9 +718,17 @@ def compute_openness(meta: dict) -> dict:
     licencia_id = str(meta.get("licencia_id", "") or "").lower()
     lic_text = f"{licencia} {licencia_id}"
 
-    OPEN_LIC_KEYWORDS = ["creative commons", "cc-by", "cc0", "open",
-                         "libre", "abierta", "datos abiertos",
-                         "public domain", "dominio público"]
+    OPEN_LIC_KEYWORDS = [
+        "creative commons",
+        "cc-by",
+        "cc0",
+        "open",
+        "libre",
+        "abierta",
+        "datos abiertos",
+        "public domain",
+        "dominio público",
+    ]
     if any(kw in lic_text for kw in OPEN_LIC_KEYWORDS):
         lic_pts = 35.0
     elif licencia or licencia_id:
@@ -673,10 +741,7 @@ def compute_openness(meta: dict) -> dict:
 
     # 3. Acceso sin registro (25 pts)
     url = str(meta.get("url", "") or "")
-    if url.startswith(("http://", "https://")):
-        access_pts = 25.0
-    else:
-        access_pts = 0.0
+    access_pts = 25.0 if url.startswith(("http://", "https://")) else 0.0
     score += access_pts
     details["open_acceso_directo"] = bool(url)
     details["open_acceso_pts"] = access_pts
@@ -693,20 +758,19 @@ def compute_quality_scores(meta: dict, df: pd.DataFrame) -> dict:
     5 ISO 25012 (contenido) + 2 catálogo (documentation, openness).
     """
     row = {
-        "dataset"          : meta.get("dataset", ""),
-        "slug"             : meta.get("slug", ""),
-        "recurso_id"       : meta.get("recurso_id", ""),
-        "categoria"        : meta.get("categoria", ""),
-        "organizacion"     : meta.get("organizacion", ""),
-        "filas"            : len(df),
-        "columnas"         : len(df.columns),
-        "modificado"       : meta.get("modificado", ""),
+        "dataset": meta.get("dataset", ""),
+        "slug": meta.get("slug", ""),
+        "recurso_id": meta.get("recurso_id", ""),
+        "categoria": meta.get("categoria", ""),
+        "organizacion": meta.get("organizacion", ""),
+        "filas": len(df),
+        "columnas": len(df.columns),
+        "modificado": meta.get("modificado", ""),
         "frecuencia_update": meta.get("frecuencia_update", ""),
     }
 
     # Dimensiones de contenido (operan sobre DataFrame)
-    for fn in [compute_completeness, compute_accuracy,
-               compute_consistency,  compute_uniqueness]:
+    for fn in [compute_completeness, compute_accuracy, compute_consistency, compute_uniqueness]:
         row.update(fn(df))
 
     # Dimensiones de catálogo (operan sobre metadatos CKAN)
@@ -716,29 +780,30 @@ def compute_quality_scores(meta: dict, df: pd.DataFrame) -> dict:
 
     # Score ponderado — 7 dimensiones
     dim_score_map = {
-        "completeness" : row.get("comp_completitud_global_pct", 0) or 0,
-        "accuracy"     : row.get("acc_score_accuracy_pct",      0) or 0,
-        "consistency"  : row.get("cons_score_consistency_pct",  0) or 0,
-        "uniqueness"   : row.get("uniq_score_uniqueness_pct",   0) or 0,
+        "completeness": row.get("comp_completitud_global_pct", 0) or 0,
+        "accuracy": row.get("acc_score_accuracy_pct", 0) or 0,
+        "consistency": row.get("cons_score_consistency_pct", 0) or 0,
+        "uniqueness": row.get("uniq_score_uniqueness_pct", 0) or 0,
         "documentation": row.get("doc_score_documentation_pct", 0) or 0,
-        "openness"     : row.get("open_score_openness_pct",     0) or 0,
+        "openness": row.get("open_score_openness_pct", 0) or 0,
     }
     timeliness_score = row.get("time_score_timeliness_pct")
     weights = dict(QUALITY_WEIGHTS)
 
-    if timeliness_score is None or (isinstance(timeliness_score, float) and np.isnan(timeliness_score)):
+    if timeliness_score is None or (
+        isinstance(timeliness_score, float) and np.isnan(timeliness_score)
+    ):
         weights.pop("timeliness", None)
     else:
         dim_score_map["timeliness"] = timeliness_score
 
     total_w = sum(weights.values())
-    row["score_global"] = round(
-        sum(dim_score_map[k] * weights[k] for k in weights) / total_w, 2
-    )
+    row["score_global"] = round(sum(dim_score_map[k] * weights[k] for k in weights) / total_w, 2)
     return row
 
 
 # ── 4. AGREGACIÓN ─────────────────────────────────────────────
+
 
 def get_aggregations(df: pd.DataFrame, by: str = "categoria") -> pd.DataFrame:
     """
@@ -746,7 +811,7 @@ def get_aggregations(df: pd.DataFrame, by: str = "categoria") -> pd.DataFrame:
     falta alguna dimensión (e.g. puntualidad en carga desde JSON).
     """
     dim_cols = list(DIM_LABEL_MAP.keys())
-    cols_ok  = [c for c in dim_cols if c in df.columns]
+    cols_ok = [c for c in dim_cols if c in df.columns]
 
     agg = (
         df.groupby(by)[cols_ok]
@@ -760,17 +825,17 @@ def get_aggregations(df: pd.DataFrame, by: str = "categoria") -> pd.DataFrame:
 
     # Agregar conteo de datasets por grupo
     counts = df.groupby(by).size().reset_index(name="n_datasets")
-    agg    = agg.merge(counts, on=by, how="left")
+    agg = agg.merge(counts, on=by, how="left")
     return agg
 
 
 def apply_filters(
     df: pd.DataFrame,
-    categorias:     list[str] | None = None,
+    categorias: list[str] | None = None,
     organizaciones: list[str] | None = None,
-    formatos:       list[str] | None = None,
-    score_min:      float            = 0,
-    score_max:      float            = 100,
+    formatos: list[str] | None = None,
+    score_min: float = 0,
+    score_max: float = 100,
 ) -> pd.DataFrame:
     """Aplica filtros combinados sobre el DataFrame de resultados.
 
@@ -782,15 +847,12 @@ def apply_filters(
     """
     mask = pd.Series([True] * len(df), index=df.index)
 
-    if categorias and "categoria" in df.columns:
-        if "Todas" not in categorias:
-            mask &= df["categoria"].isin(categorias)
-    if organizaciones and "organizacion" in df.columns:
-        if "Todas" not in organizaciones:
-            mask &= df["organizacion"].isin(organizaciones)
-    if formatos and "formato" in df.columns:
-        if "Todos" not in formatos:
-            mask &= df["formato"].isin(formatos)
+    if categorias and "categoria" in df.columns and "Todas" not in categorias:
+        mask &= df["categoria"].isin(categorias)
+    if organizaciones and "organizacion" in df.columns and "Todas" not in organizaciones:
+        mask &= df["organizacion"].isin(organizaciones)
+    if formatos and "formato" in df.columns and "Todos" not in formatos:
+        mask &= df["formato"].isin(formatos)
     if "score_global" in df.columns:
         mask &= (df["score_global"] >= score_min) & (df["score_global"] <= score_max)
 
@@ -798,6 +860,7 @@ def apply_filters(
 
 
 # ── 5. CARGA DE RESULTADOS ─────────────────────────────────────
+
 
 def load_results(path: str = "") -> pd.DataFrame:
     """
@@ -810,6 +873,11 @@ def load_results(path: str = "") -> pd.DataFrame:
     df = normalize_categories(df)
     df = _deduplicate_by_slug(df)
     _validate_schema(df)
+
+    # [FIX] Clean data fragmentation: strip leading/trailing spaces from agency names
+    if "organizacion" in df.columns:
+        df["organizacion"] = df["organizacion"].astype(str).str.strip()
+
     return df
 
 
@@ -821,7 +889,9 @@ def _load_raw(path: str) -> pd.DataFrame:
         abs_path = os.path.abspath(path)
         base_dir = os.path.abspath(os.getcwd())
         if not abs_path.startswith(base_dir):
-            raise PermissionError("Path traversal detectado. Acceso denegado a rutas fuera del directorio de trabajo.")
+            raise PermissionError(
+                "Path traversal detectado. Acceso denegado a rutas fuera del directorio de trabajo."
+            )
 
     csv_path = path or "resultados_calidad_datos_nl.csv"
     try:
@@ -835,8 +905,7 @@ def _load_raw(path: str) -> pd.DataFrame:
             data = json.load(f)
     except FileNotFoundError as exc:
         raise FileNotFoundError(
-            f"No se encontró '{csv_path}' ni '{json_path}'. "
-            "Ejecuta primero el pipeline de calidad."
+            f"No se encontró '{csv_path}' ni '{json_path}'. Ejecuta primero el pipeline de calidad."
         ) from exc
 
     rows = []
@@ -847,9 +916,7 @@ def _load_raw(path: str) -> pd.DataFrame:
 
         missing = {"completeness", "accuracy", "consistency", "uniqueness"} - set(scores)
         if missing:
-            raise KeyError(
-                f"Dataset '{d.get('slug')}' en el JSON le faltan claves: {missing}"
-            )
+            raise KeyError(f"Dataset '{d.get('slug')}' en el JSON le faltan claves: {missing}")
 
         # [FIX-4] Recalcular score_global con pesos disponibles
         available_dims = {}
@@ -858,30 +925,32 @@ def _load_raw(path: str) -> pd.DataFrame:
                 available_dims[wk] = scores[wk]
         if not available_dims:
             continue
-        w_avail    = {k: QUALITY_WEIGHTS[k] for k in available_dims}
-        total_w    = sum(w_avail.values())
+        w_avail = {k: QUALITY_WEIGHTS[k] for k in available_dims}
+        total_w = sum(w_avail.values())
         score_glob = round(
             sum(available_dims[k] * w_avail[k] for k in available_dims) / total_w,
             2,
         )
 
-        rows.append({
-            "dataset"                    : d.get("slug", ""),
-            "categoria"                  : d.get("categoria", ""),
-            "organizacion"               : d.get("organizacion", ""),
-            "filas"                      : d.get("filas", 0),
-            "columnas"                   : d.get("columnas", 0),
-            "modificado"                 : d.get("metadata_modified", ""),
-            "frecuencia_update"          : d.get("frequency", ""),
-            "comp_completitud_global_pct": scores.get("completeness", 0),
-            "acc_score_accuracy_pct"     : scores.get("accuracy", 0),
-            "cons_score_consistency_pct" : scores.get("consistency", 0),
-            "uniq_score_uniqueness_pct"  : scores.get("uniqueness", 0),
-            "time_score_timeliness_pct"  : scores.get("timeliness", np.nan),
-            "doc_score_documentation_pct": scores.get("documentation", 0),
-            "open_score_openness_pct"    : scores.get("openness", 0),
-            "score_global"               : score_glob,
-        })
+        rows.append(
+            {
+                "dataset": d.get("slug", ""),
+                "categoria": d.get("categoria", ""),
+                "organizacion": d.get("organizacion", ""),
+                "filas": d.get("filas", 0),
+                "columnas": d.get("columnas", 0),
+                "modificado": d.get("metadata_modified", ""),
+                "frecuencia_update": d.get("frequency", ""),
+                "comp_completitud_global_pct": scores.get("completeness", 0),
+                "acc_score_accuracy_pct": scores.get("accuracy", 0),
+                "cons_score_consistency_pct": scores.get("consistency", 0),
+                "uniq_score_uniqueness_pct": scores.get("uniqueness", 0),
+                "time_score_timeliness_pct": scores.get("timeliness", np.nan),
+                "doc_score_documentation_pct": scores.get("documentation", 0),
+                "open_score_openness_pct": scores.get("openness", 0),
+                "score_global": score_glob,
+            }
+        )
 
     return pd.DataFrame(rows)
 
@@ -899,6 +968,7 @@ def _load_from_bigquery() -> pd.DataFrame:
         return client.query(query).to_dataframe()
     except NotFound:
         return pd.DataFrame()
+
 
 def save_to_bigquery(df: pd.DataFrame) -> None:
     """Despacha (vía append) el DataFrame de resultados a BigQuery."""
@@ -923,15 +993,15 @@ def _deduplicate_by_slug(df: pd.DataFrame) -> pd.DataFrame:
     """
     if "dataset" not in df.columns or "score_global" not in df.columns:
         return df
-    
+
     # Asegurar que filas sea numérico para el sort
     if "filas" in df.columns:
         df["filas"] = pd.to_numeric(df["filas"], errors="coerce").fillna(0)
 
     deduped = (
         df.sort_values(by=["filas", "score_global"], ascending=[False, False])
-          .drop_duplicates(subset=["dataset"], keep="first")
-          .reset_index(drop=True)
+        .drop_duplicates(subset=["dataset"], keep="first")
+        .reset_index(drop=True)
     )
     return deduped
 
@@ -946,6 +1016,7 @@ def _validate_schema(df: pd.DataFrame) -> None:
 
 
 # ── 6. PIPELINE COVERAGE ─────────────────────────────────────
+
 
 def load_coverage_report() -> dict | None:
     """Carga el coverage report del snapshot de pipeline mas reciente.
@@ -1016,10 +1087,16 @@ def get_resource_vs_unique_count(path: str = "") -> dict[str, int]:
 # ── 7. CLASIFICACION Y MERGE AVANZADO ──────────────────────────
 
 _ADVANCED_JSON_PATH = os.path.join(
-    ".antigravity", "team", "shared", "advanced_quality_results.json",
+    ".antigravity",
+    "team",
+    "shared",
+    "advanced_quality_results.json",
 )
 _MAIN_JSON_PATH = os.path.join(
-    ".antigravity", "team", "shared", "quality_results.json",
+    ".antigravity",
+    "team",
+    "shared",
+    "quality_results.json",
 )
 
 
@@ -1145,3 +1222,50 @@ def load_advanced_catalog_stats() -> dict | None:
         "problemas_por_categoria": data.get("problemas_por_categoria", {}),
         "score_promedio_avanzado": float(data.get("score_promedio_catalogo", 0) or 0),
     }
+
+
+# ── Helpers de agregación reutilizables ───────────────────────
+
+
+def agg_dim_means_by(
+    df: pd.DataFrame,
+    group_col: str,
+    *,
+    rename: bool = False,
+) -> pd.DataFrame:
+    """Agrupa df por `group_col` y calcula la media de las columnas de dimensión ISO disponibles.
+
+    Con rename=True las columnas se renombran al label de visualización (DIM_LABEL_MAP).
+    Retorna DataFrame vacío si no hay columnas de dimensión en df o group_col no existe.
+    """
+    dim_map = {k: v for k, v in DIM_LABEL_MAP.items() if k != "score_global"}
+    available = {k: v for k, v in dim_map.items() if k in df.columns}
+    if not available or group_col not in df.columns:
+        return pd.DataFrame()
+
+    result = df.groupby(group_col)[list(available.keys())].mean()
+    if rename:
+        result = result.rename(columns=available)
+    return result
+
+
+def agg_org_stats(df: pd.DataFrame) -> pd.DataFrame:
+    """Agrega estadísticas de calidad por organización.
+
+    Retorna un DataFrame con columnas: organizacion, n_datasets, score_global
+    y todas las dimensiones ISO disponibles. Ordenado por score_global descendente,
+    redondeado a 1 decimal.
+    """
+    if "organizacion" not in df.columns:
+        return pd.DataFrame()
+
+    agg_dict: dict = {
+        "n_datasets"  : ("dataset",      "count"),
+        "score_global": ("score_global", "mean"),
+    }
+    for col in DIM_LABEL_MAP:
+        if col != "score_global" and col in df.columns:
+            agg_dict[col] = (col, "mean")
+
+    stats = df.groupby("organizacion", as_index=False).agg(**agg_dict)
+    return stats.sort_values("score_global", ascending=False).reset_index(drop=True).round(1)

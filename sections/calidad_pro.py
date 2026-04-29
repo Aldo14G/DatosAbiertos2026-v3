@@ -14,7 +14,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from data_layer import (
-    DIM_LABEL_MAP,
+    agg_dim_means_by,
     load_advanced_catalog_stats,
     load_coverage_report,
     merge_advanced_overlay,
@@ -39,11 +39,10 @@ def _render_pipeline_coverage(
 
     with col_bar:
         st.markdown("""
-        <div class="editorial-container mb-2" style="font-size: 0.95rem;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-            <span class="material-symbols-outlined" aria-hidden="true"
-                  style="color:var(--teal);font-size:20px">monitoring</span>
-            <span class="eyebrow" style="margin:0;">Cobertura del Pipeline</span>
+        <div class="editorial-container mb-2">
+        <div class="nl-panel-head">
+            <span class="material-symbols-outlined icon-teal-sm" aria-hidden="true">monitoring</span>
+            <span class="eyebrow">Cobertura del Pipeline</span>
         </div>
         """, unsafe_allow_html=True)
 
@@ -79,29 +78,25 @@ def _render_pipeline_coverage(
                 showgrid=False, showticklabels=False, range=[0, total],
             ),
             "yaxis": dict(showgrid=False, showticklabels=False),
+            "transition": dict(duration=600, easing="cubic-in-out"),
         }
         fig_cov.update_layout(**cov_layout)
         st.plotly_chart(fig_cov, use_container_width=True)
 
         st.markdown(f"""
         <div class="d-flex justify-between" style="margin-top:4px">
-            <span style="font-size:12px;color:var(--muted)">
-                {pct:.1f}% cobertura
-            </span>
-            <span style="font-size:12px;color:var(--muted)">
-                {elapsed:.0f}s total
-            </span>
+            <span class="text-muted-xs">{pct:.1f}% cobertura</span>
+            <span class="text-muted-xs">{elapsed:.0f}s total</span>
         </div>
         </div>
         """, unsafe_allow_html=True)
 
     with col_donut:
         st.markdown("""
-        <div class="editorial-container mb-2" style="font-size: 0.95rem;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:12px">
-            <span class="material-symbols-outlined" aria-hidden="true"
-                  style="color:var(--rose);font-size:20px">error_outline</span>
-            <span class="eyebrow" style="margin:0;">Distribucion de Fallos</span>
+        <div class="editorial-container mb-2">
+        <div class="nl-panel-head">
+            <span class="material-symbols-outlined icon-rose-sm" aria-hidden="true">error_outline</span>
+            <span class="eyebrow">Distribución de Fallos</span>
         </div>
         """, unsafe_allow_html=True)
 
@@ -134,19 +129,15 @@ def _render_pipeline_coverage(
                 "showlegend": False,
                 "xaxis": dict(showgrid=False, visible=False),
                 "yaxis": dict(autorange="reversed", tickfont=dict(size=11, color=t["font_color"])),
+                "transition": dict(duration=600, easing="cubic-in-out"),
             }
             fig_donut.update_layout(**donut_layout)
             st.plotly_chart(fig_donut, use_container_width=True)
         else:
             st.markdown("""
-            <div style="text-align:center;padding:24px;color:var(--teal-light)">
-                <span class="material-symbols-outlined"
-                      aria-hidden="true" style="font-size:36px">
-                    check_circle
-                </span>
-                <p style="margin:8px 0 0;font-size:13px;color:var(--muted)">
-                    Sin fallos de extraccion
-                </p>
+            <div class="nl-empty-state nl-empty-state--success">
+                <span class="material-symbols-outlined nl-empty-state-icon" aria-hidden="true">check_circle</span>
+                <p class="nl-empty-state-text">Sin fallos de extracción</p>
             </div>
             """, unsafe_allow_html=True)
         st.markdown("</div>", unsafe_allow_html=True)
@@ -159,17 +150,7 @@ def _render_dimension_heatmap(
     if df.empty:
         return
 
-    _dim_map = {k: v for k, v in DIM_LABEL_MAP.items() if k != "score_global"}
-    available = {k: v for k, v in _dim_map.items() if k in df.columns}
-    if not available:
-        return
-
-    grouped = (
-        df.groupby("categoria")[list(available.keys())]
-        .mean()
-        .rename(columns=available)
-        .sort_index()
-    )
+    grouped = agg_dim_means_by(df, "categoria", rename=True).sort_index()
     if grouped.empty:
         return
 
@@ -177,8 +158,8 @@ def _render_dimension_heatmap(
 
     st.markdown("""
     <div class="editorial-container mt-5">
-    <h2>Dimensiones por Categoria</h2>
-    <p>The following heatmap illustrates the density of compliance across standard ISO dimensions, grouped by semantic categories in the data catalog.</p>
+    <h2 class="section-title">Dimensiones por Categoría</h2>
+    <p>El mapa de calor muestra el nivel de cumplimiento por dimensión ISO en cada categoría del catálogo. Colores más brillantes indican mayor madurez.</p>
     </div>
     <div class="editorial-figure">
     """, unsafe_allow_html=True)
@@ -217,6 +198,7 @@ def _render_dimension_heatmap(
             tickfont=dict(size=11, color=t["font_color"]),
             autorange="reversed",
         ),
+        "transition": dict(duration=600, easing="cubic-in-out"),
     }
     fig_heat.update_layout(**heat_layout)
     st.plotly_chart(fig_heat, use_container_width=True)
@@ -236,64 +218,73 @@ def render_calidad_pro(df: pd.DataFrame, tokens: dict) -> None:
     adv_stats = load_advanced_catalog_stats()
     has_advanced = adv_stats is not None
 
-    # --- HEADER ---
-    st.markdown(f"""
-    <div class="editorial-header fade-up">
-        <div class="editorial-meta mb-4">
-            <span>Análisis Avanzado</span>
-            <span>Gobernanza Pro</span>
-        </div>
-        <h1 class="editorial-title">Diagnóstico Transversal de Calidad</h1>
-        <p class="editorial-subtitle">
-            Un análisis profundo sobre la madurez de los datos abiertos. Adoptamos el estándar <strong>ISO/IEC 25012:2008</strong> como motor de auditoría automatizada.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    # Header eliminado — se delega al wrapper render_dashboards (evita doble título).
 
     # --- 1. KPIs RESUMEN ---
     stats = {
         "total": len(df),
         "score": float(df["score_global"].mean()) if not df.empty else 0.0
     }
-    
-    col1, col2, col3 = st.columns(3)
-    with col1:
-        st.markdown(f"""
-        <div class="kpi-card kpi-card--left excellent">
-            <div class="kpi-value">{stats['score']:.1f}%</div>
-            <div class="kpi-label">Salud Global</div>
-        </div>
-        """, unsafe_allow_html=True)
-    with col2:
-        st.markdown(f"""
-        <div class="kpi-card kpi-card--left neutral">
-            <div class="kpi-value">{stats['total']}</div>
-            <div class="kpi-label">Datasets Auditados</div>
-        </div>
-        """, unsafe_allow_html=True)
-    with col3:
-        status_label = "Óptima" if stats['score'] >= 85 else "En Riesgo"
-        status_cls = "excellent" if stats['score'] >= 85 else "poor"
-        st.markdown(f"""
-        <div class="kpi-card kpi-card--left {status_cls}">
-            <div class="kpi-value">{status_label}</div>
-            <div class="kpi-label">Condición General</div>
-        </div>
-        """, unsafe_allow_html=True)
+
+    _total = stats["total"] or 1
+    _n_excellent = int((df["score_global"] >= 85).sum()) if "score_global" in df.columns else 0
+    _n_good = int(((df["score_global"] >= 60) & (df["score_global"] < 85)).sum()) if "score_global" in df.columns else 0
+    _n_critical = int((df["score_global"] < 60).sum()) if "score_global" in df.columns else 0
+    _pct_excellent = _n_excellent / _total * 100
+    _pct_good = _n_good / _total * 100
+    _pct_critical = _n_critical / _total * 100
+    _score_color = "teal" if stats["score"] >= 75 else "rose"
+
+    st.markdown(f"""
+<div class="nl-distband nl-reveal">
+  <div class="nl-distband-header">
+    <span class="nl-distband-score nl-distband-score--{_score_color}">{stats['score']:.1f}</span>
+    <div class="nl-distband-meta">
+      <span class="nl-distband-label">Salud promedio del catálogo</span>
+      <span class="nl-distband-sub">{stats['total']} datasets auditados</span>
+    </div>
+  </div>
+  <div class="nl-distband-track" role="group" aria-label="Distribución por niveles de calidad">
+    <div class="nl-distband-seg nl-distband-seg--excellent"
+         style="width:{_pct_excellent:.1f}%"
+         role="progressbar" aria-valuenow="{_n_excellent}" aria-valuemin="0" aria-valuemax="{_total}"
+         title="Excelentes: {_n_excellent}"></div>
+    <div class="nl-distband-seg nl-distband-seg--good"
+         style="width:{_pct_good:.1f}%"
+         role="progressbar" aria-valuenow="{_n_good}" aria-valuemin="0" aria-valuemax="{_total}"
+         title="En desarrollo: {_n_good}"></div>
+    <div class="nl-distband-seg nl-distband-seg--critical"
+         style="width:{_pct_critical:.1f}%"
+         role="progressbar" aria-valuenow="{_n_critical}" aria-valuemin="0" aria-valuemax="{_total}"
+         title="Críticos: {_n_critical}"></div>
+  </div>
+  <div class="nl-distband-legend">
+    <span class="nl-distband-legend-item">
+      <span class="nl-distband-dot nl-distband-dot--excellent" aria-hidden="true"></span>
+      {_n_excellent} excelentes ({_pct_excellent:.0f}%)
+    </span>
+    <span class="nl-distband-legend-item">
+      <span class="nl-distband-dot nl-distband-dot--good" aria-hidden="true"></span>
+      {_n_good} en desarrollo ({_pct_good:.0f}%)
+    </span>
+    <span class="nl-distband-legend-item">
+      <span class="nl-distband-dot nl-distband-dot--critical" aria-hidden="true"></span>
+      {_n_critical} críticos ({_pct_critical:.0f}%)
+    </span>
+  </div>
+</div>
+""", unsafe_allow_html=True)
 
     st.write("")
 
     # Expander para metodologia
     with st.expander("Metodologia Tecnica y Calculo", icon=":material/menu_book:"):
-        st.info(
-            "Los puntajes se calculan mediante un sistema de penalizacion "
-            "ponderada sobre cada recurso del catalogo CKAN. Se normalizan "
-            "en escala 0-100 con 7 dimensiones ISO 25012: Completitud (30%), "
-            "Exactitud (25%), Consistencia (15%), Documentacion (10%), "
-            "Unicidad (8%), Apertura (7%) y Puntualidad (5%).\n\n"
-            "Para actualizar los datos ejecuta el pipeline desde terminal: "
-            "`python pipeline/refresh_engine.py --force`"
-        )
+        st.markdown("""
+<div class="nl-insight-card nl-insight-neutral">
+<p>Los puntajes se calculan mediante un sistema de penalización ponderada sobre cada recurso del catálogo CKAN. Se normalizan en escala 0-100 con 7 dimensiones ISO 25012: Completitud (30%), Exactitud (25%), Consistencia (15%), Documentación (10%), Unicidad (8%), Apertura (7%) y Puntualidad (5%).</p>
+<p class="nl-weight-desc">Actualizar datos: <code class="nl-code-inline">python pipeline/refresh_engine.py --force</code></p>
+</div>
+""", unsafe_allow_html=True)
 
     st.write("")
 
@@ -302,61 +293,115 @@ def render_calidad_pro(df: pd.DataFrame, tokens: dict) -> None:
     if coverage is not None:
         _render_pipeline_coverage(coverage, plotly_layout, theme)
         st.markdown(
-            "<div class='divider' style='margin:2rem auto;width:100%'></div>",
+            "<div class='divider'></div>",
             unsafe_allow_html=True,
         )
 
     # --- 1c. HEATMAP DIMENSIONES POR CATEGORIA ---
     _render_dimension_heatmap(df, plotly_layout, theme)
     st.markdown(
-        "<div class='divider' style='margin:2rem auto;width:100%'></div>",
+        "<div class='divider'></div>",
         unsafe_allow_html=True,
     )
 
-    # --- 2. MAPA RADIAL DE DATASETS ---
+    # --- 2. TREEMAP DE DATASETS ---
     st.markdown("""
-    <div class="editorial-container mt-5">
-        <h2>Treemap de Datasets</h2>
-        <p>A hierarchical representation of dataset classifications by category.</p>
-    </div>
-    <div class="editorial-figure">
-    """, unsafe_allow_html=True)
+<div class="editorial-container mt-5">
+<h2 class="section-title">Treemap de Datasets</h2>
+<p>Cada bloque es un dataset. El <strong class="accent-teal">color verde</strong> indica calidad excelente; <strong class="accent-gold">dorado</strong>, aceptable; <strong class="accent-rose">rojo</strong>, crítico. El tamaño refleja cuántos datasets hay por categoría.</p>
+</div>
+<div class="editorial-figure">
+""", unsafe_allow_html=True)
+
+    if "clasificacion" not in df_enriched.columns and "score_global" in df_enriched.columns:
+        from config import UMBRAL_EXCELENTE
+        from config import UMBRAL_GOBERNANZA as _UMBRAL_GOB
+
+        def _classify(s: float) -> str:
+            if s >= UMBRAL_EXCELENTE:
+                return "Excelente"
+            if s >= _UMBRAL_GOB:
+                return "Aceptable"
+            return "Crítico"
+
+        df_enriched = df_enriched.copy()
+        df_enriched["clasificacion"] = df_enriched["score_global"].apply(_classify)
 
     if not df_enriched.empty and "clasificacion" in df_enriched.columns:
-        data_sunburst = (
-            df_enriched.groupby(["categoria", "clasificacion"])
-            .size()
-            .reset_index(name="Valor")
-        )
-        data_sunburst["Centro"] = "Nuevo Leon"
+        t = PLOTLY_THEMES.get(theme, PLOTLY_THEMES["dark"])
 
-        fig_sun = px.treemap(
-            data_sunburst,
-            path=["Centro", "categoria", "clasificacion"],
-            values="Valor",
-            color="Valor",
-            color_continuous_scale=[
-                [0, "rgba(56, 168, 149, 0.2)"],
-                [1, "rgba(56, 168, 149, 1)"],
-            ],
+        # Null-safe frame — expose gaps visually, never drop rows silently
+        df_tree = df_enriched.copy()
+        df_tree["categoria"] = (
+            df_tree["categoria"].fillna("Sin Categoría").replace("", "Sin Categoría")
+            if "categoria" in df_tree.columns
+            else pd.Series("Sin Categoría", index=df_tree.index)
+        )
+        df_tree["clasificacion"] = (
+            df_tree["clasificacion"].fillna("Sin Clasificar").replace("", "Sin Clasificar")
         )
 
-        _sun_layout = {
-            **plotly_layout,
-            "margin": dict(t=20, l=10, r=10, b=10),
-            "height": 480,
-        }
-        fig_sun.update_layout(**_sun_layout)
-        fig_sun.update_traces(
-            textinfo="label+value",
+        fig_tree = px.treemap(
+            df_tree,
+            path=[px.Constant("Nuevo León"), "categoria", "dataset"],
+            values="score_global",
+            color="clasificacion",
+            color_discrete_map={
+                "Excelente":    t["excellent"],
+                "Aceptable":    t["good"],
+                "Crítico":      t["poor"],
+                "Sin Clasificar": t["annotation_font"],
+            },
+            custom_data=["score_global", "organizacion"],
         )
-        st.plotly_chart(fig_sun, use_container_width=True)
+        fig_tree.update_traces(
+            textinfo="label",
+            textfont=dict(size=12, family="DM Sans, sans-serif"),
+            hovertemplate=(
+                "<b>%{label}</b><br>"
+                "Organización: %{customdata[1]}<br>"
+                "Score: %{customdata[0]:.1f}%"
+                "<extra></extra>"
+            ),
+            marker=dict(line=dict(width=0.5, color=t["paper_bgcolor"])),
+        )
+        fig_tree.update_layout(
+            **{
+                **plotly_layout,
+                "margin": dict(t=20, l=10, r=10, b=10),
+                "height": 600,
+                "showlegend": False,
+                "transition": dict(duration=600, easing="cubic-in-out"),
+            }
+        )
+        st.plotly_chart(fig_tree, use_container_width=True)
+
+        st.markdown("""
+<div class="nl-treemap-legend">
+<span class="nl-treemap-chip nl-treemap-chip--excellent">Excelente</span>
+<span class="nl-treemap-chip nl-treemap-chip--good">Aceptable</span>
+<span class="nl-treemap-chip nl-treemap-chip--poor">Crítico</span>
+</div>
+""", unsafe_allow_html=True)
+
+        n_criticos = int((df_tree["clasificacion"] == "Crítico").sum())
+        n_excelentes = int((df_tree["clasificacion"] == "Excelente").sum())
+        top_cat = _html.escape(str(df_tree["categoria"].value_counts().index[0]))
+        st.markdown(f"""
+<div class="nl-chart-insight nl-reveal">
+<span class="material-symbols-outlined nl-chart-insight-icon" aria-hidden="true">insights</span>
+<p class="nl-chart-insight-text">
+Categoría más representada: <strong>{top_cat}</strong>.
+Hay <strong>{n_excelentes}</strong> datasets de calidad excelente y <strong class="accent-rose">{n_criticos}</strong> críticos que requieren atención inmediata.
+</p>
+</div>
+""", unsafe_allow_html=True)
     else:
         st.markdown("""
-        <div style="text-align:center;padding:24px;color:var(--muted)">
-            <p style="font-size:13px">Sin datos para renderizar el treemap.</p>
-        </div>
-        """, unsafe_allow_html=True)
+<div class="nl-empty-state">
+<p class="nl-empty-state-text">Sin datos para renderizar el treemap.</p>
+</div>
+""", unsafe_allow_html=True)
     st.markdown("</div>", unsafe_allow_html=True)
 
     # --- 3. REPORTE COMPLETO ---

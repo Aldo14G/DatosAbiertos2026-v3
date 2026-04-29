@@ -33,7 +33,7 @@ _REFS_LINKS: list[tuple[str, str]] = [
 _CONTACT_LINKS: list[tuple[str, str]] = [
     ("LABNL",                       "https://labnl.mx"),
     ("Coordinación Ejecutiva NL",   "https://www.nl.gob.mx/coordinacion-ejecutiva"),
-    ("GitHub del Proyecto",         "https://github.com/aldogp/DatosAbiertos2026"),
+    ("GitHub del Proyecto",         "https://github.com/Aldo14G/DatosAbiertos2026-v3"),
 ]
 
 
@@ -41,7 +41,7 @@ _CONTACT_LINKS: list[tuple[str, str]] = [
 # Render principal
 # ══════════════════════════════════════════════════════════════
 
-def render_footer(tokens: dict | None = None) -> None:
+def render_footer(_tokens: dict | None = None) -> None:
     """Renderiza el footer con documentación, referencias, contacto y créditos."""
     year = datetime.date.today().year
 
@@ -53,39 +53,28 @@ def render_footer(tokens: dict | None = None) -> None:
         )
 
     st.markdown(f"""
-    <section id="footer" class="nl-footer" aria-labelledby="footer-title">
-        <div class="nl-footer-top">
-            <div class="nl-footer-brand">
-                <span class="nl-footer-logo" aria-hidden="true">NL 2026</span>
-                <p class="nl-footer-tagline">
-                    Sistema de Calidad de Datos del Estado de Nuevo León
-                    conforme a ISO/IEC 25012:2008.
-                </p>
-            </div>
-
-            <nav class="nl-footer-col" aria-label="Documentación">
-                <h3 class="nl-footer-col-title">Documentación</h3>
-                {_links_html(_DOCS_LINKS)}
-            </nav>
-
-            <nav class="nl-footer-col" aria-label="Referencias técnicas">
-                <h3 class="nl-footer-col-title">Referencias</h3>
-                {_links_html(_REFS_LINKS)}
-            </nav>
-
-            <nav class="nl-footer-col" aria-label="Contacto y créditos">
-                <h3 class="nl-footer-col-title">Contacto</h3>
-                {_links_html(_CONTACT_LINKS)}
-            </nav>
-        </div>
-
-        <div class="nl-footer-bottom">
-            <span class="nl-footer-copy">
-                © {year} Gobierno de Nuevo León — Datos Abiertos · {VERSION}
-            </span>
-            <span class="nl-footer-meta">
-                Construido con Streamlit · Plotly · Pandas
-            </span>
-        </div>
-    </section>
-    """, unsafe_allow_html=True)
+<section id="footer" class="nl-footer nl-reveal" aria-labelledby="footer-title">
+<div class="nl-footer-top">
+<div class="nl-footer-brand nl-reveal-d1">
+<span class="nl-footer-logo" aria-hidden="true">NL 2026</span>
+<p class="nl-footer-tagline">Sistema de Calidad de Datos del Estado de Nuevo León conforme a ISO/IEC 25012:2008.</p>
+</div>
+<nav class="nl-footer-col nl-reveal-d2" aria-label="Documentación">
+<h3 class="nl-footer-col-title">Documentación</h3>
+{_links_html(_DOCS_LINKS)}
+</nav>
+<nav class="nl-footer-col nl-reveal-d3" aria-label="Referencias técnicas">
+<h3 class="nl-footer-col-title">Referencias</h3>
+{_links_html(_REFS_LINKS)}
+</nav>
+<nav class="nl-footer-col nl-reveal-d4" aria-label="Contacto y créditos">
+<h3 class="nl-footer-col-title">Contacto</h3>
+{_links_html(_CONTACT_LINKS)}
+</nav>
+</div>
+<div class="nl-footer-bottom nl-reveal-d5">
+<span class="nl-footer-copy">© {year} Gobierno de Nuevo León — Datos Abiertos · {VERSION}</span>
+<span class="nl-footer-meta">Construido con Streamlit · Plotly · Pandas</span>
+</div>
+</section>
+""", unsafe_allow_html=True)

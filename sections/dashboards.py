@@ -8,8 +8,6 @@ sin datos simulados.
 
 from __future__ import annotations
 
-import html as _html
-
 import pandas as pd
 import streamlit as st
 
@@ -35,24 +33,21 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
 
     # Métricas derivadas para los insights
     has_score = "score_global" in df.columns and not df.empty
-    score_mean   = float(df["score_global"].mean()) if has_score else 0.0
-    n_total      = len(df)
     n_below      = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if has_score else 0
-    n_above      = n_total - n_below
 
     st.markdown("""
     <section id="dashboards" class="nl-section" aria-labelledby="dashboards-title">
         <span class="eyebrow">02 · Calidad en Tiempo Real</span>
-        <h2 id="dashboards-title" class="hero-title nl-section-title">
+        <h2 id="dashboards-title" class="section-title nl-section-title">
             Salud de los Datos Abiertos
         </h2>
     </section>
-    
+
     <div class="editorial-container fade-up">
         <p>
-            El <strong>Score de Calidad</strong> indica qué tan confiable es un dato. 
-            Buscamos el color <span style="color:var(--teal-light)">Verde (Óptimo)</span>. 
-            El <span style="color:var(--rose-light)">Rojo (Crítico)</span> avisa que el dato tiene fallas que impiden su uso.
+            El <strong>Score de Calidad</strong> indica qué tan confiable es un dato.
+            Buscamos el color <span class="accent-teal">Verde (Óptimo)</span>.
+            El <span class="accent-rose">Rojo (Crítico)</span> avisa que el dato tiene fallas que impiden su uso.
         </p>
     </div>
     """, unsafe_allow_html=True)
@@ -60,25 +55,21 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
     # ── Bloque 1 — Calidad Pro (cobertura + dimensiones + radial + tabla) ─
     render_calidad_pro(df, tokens)
 
-    _chart_insight(
-        "insights",
-        f"Promedio de salud estatal: <strong>{score_mean:.1f}%</strong>. "
-        f"Hay <strong>{n_above}</strong> datasets listos para usarse con total confianza.",
-    )
+    # [CLEANUP] Redundant insight removed as per user request
 
     # ── Bloque 2 — Organizaciones (heatmap + top orgs) ──────────────────
     st.markdown(
         '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
         unsafe_allow_html=True,
     )
-    
+
     st.markdown("""
     <header class="nl-subsection-header">
-        <span class="eyebrow">02.2</span>
+        <span class="eyebrow">02.2 · Organizaciones</span>
         <h3 class="section-title">¿Quiénes publican mejor?</h3>
     </header>
     """, unsafe_allow_html=True)
-    
+
     render_organizaciones(df, tokens)
 
     # ── Bloque 3 — Alertas críticas + fallos de extracción ─────────────
@@ -88,7 +79,7 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
     )
     st.markdown("""
     <header class="nl-subsection-header">
-        <span class="eyebrow">02.3</span>
+        <span class="eyebrow">02.3 · Alertas</span>
         <h3 class="section-title">Zonas de Riesgo y Alertas</h3>
     </header>
     <p class="section-subtitle mb-4">Identificamos automáticamente los conjuntos de datos que requieren atención inmediata por parte de las dependencias.</p>

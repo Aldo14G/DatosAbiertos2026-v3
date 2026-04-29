@@ -20,13 +20,14 @@ from __future__ import annotations
 
 PLOTLY_THEMES: dict[str, dict[str, str]] = {
     "dark": {
-        "paper_bgcolor": "#1a2d45",
-        "plot_bgcolor":  "#1a2d45",
-        "font_color":    "#8a9bb0",
+        "paper_bgcolor": "#0f1c2e",
+        "plot_bgcolor":  "#0f1c2e",
+        "font_color":    "#faf6ee",
         "font_family":   "DM Sans, sans-serif",
         "grid_color":    "#1a2d45",
         "primary_line":  "#2a7a6f",
         "excellent":     "#3aa895",
+        "excellent_dim": "rgba(58,168,149,0.15)",
         "good":          "#c8973a",
         "poor":          "#b85c6e",
         "text_on_bar":   "#faf6ee",
@@ -35,13 +36,14 @@ PLOTLY_THEMES: dict[str, dict[str, str]] = {
         "annotation_font":   "#8a9bb0",
     },
     "light": {
-        "paper_bgcolor": "#faf6ee",
-        "plot_bgcolor":  "#faf6ee",
-        "font_color":    "#1a2d45",
+        "paper_bgcolor": "#f9f8f5",
+        "plot_bgcolor":  "#f9f8f5",
+        "font_color":    "#0d1117",
         "font_family":   "DM Sans, sans-serif",
         "grid_color":    "#e8e2d8",
         "primary_line":  "#2a7a6f",
         "excellent":     "#2a7a6f",
+        "excellent_dim": "rgba(42,122,111,0.15)",
         "good":          "#c8973a",
         "poor":          "#b85c6e",
         "text_on_bar":   "#faf6ee",
@@ -68,13 +70,13 @@ def get_plotly_layout(theme: str = "dark") -> dict:
 # ══════════════════════════════════════════════════════════════
 
 _TOKENS_DARK = """
-    --midnight:    #0a0f1d;
-    --navy:        #12192b;
+    --midnight:    #0f1c2e;
+    --navy:        #1a2d45;
     --card-bg:     rgba(255,255,255,0.03);
-    --cream:       #f0f2f5;
-    --paper:       #e1e4e8;
+    --cream:       #faf6ee;
+    --paper:       #ffffff;
     --muted:       #9ba9b4;
-    --ink:         #050810;
+    --ink:         #0d1117;
     --teal:        #3aa895;
     --teal-light:  #4bcbb4;
     --gold:        #d4a24c;
@@ -88,12 +90,13 @@ _TOKENS_DARK = """
     --shadow-md:   0 4px 12px rgba(0,0,0,0.3);
     --shadow-lg:   0 12px 24px rgba(0,0,0,0.4);
     --shadow-xl:   0 24px 48px rgba(0,0,0,0.5);
-    --nav-bg:      rgba(10,15,29,0.92);
-    --sidebar-bg:  #0d1324;
-    --surface:     #12192b;
-    --surface-alt: #0a0f1d;
-    --surface-high: #1a233a;
-    --surface-lowest: #050810;
+    --nav-bg:      rgba(15,28,46,0.92);
+    --sidebar-bg:  #0f1c2e;
+    --surface:          #1a2d45;
+    --surface-alt:      #0f1c2e;
+    --surface-high:     #1e293b;
+    --surface-elevated: #243347;
+    --surface-lowest:   #0d1117;
     --gold-gradient: linear-gradient(135deg, #d4a24c, #f4d08b);
     --teal-gradient: linear-gradient(135deg, #3aa895, #4bcbb4);
     --teal-dim:    rgba(58,168,149,0.12);
@@ -104,7 +107,7 @@ _TOKENS_DARK = """
     /* Motion tokens */
     --ease-out:    cubic-bezier(0.2, 0.0, 0, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
-    --ease-spring: cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --dur-fast:    100ms;
     --dur-base:    200ms;
     --dur-slow:    400ms;
@@ -117,13 +120,13 @@ _TOKENS_DARK = """
     --radius-full: 9999px;"""
 
 _TOKENS_LIGHT = """
-    --midnight:    #faf6ee;
-    --navy:        #f0ebe3;
+    --midnight:    #f9f8f5;
+    --navy:        #f3f4f6;
     --card-bg:     rgba(15,28,46,0.04);
-    --cream:       #0f1c2e;
-    --paper:       #1a2d45;
+    --cream:       #0d1117;
+    --paper:       #1e293b;
     --muted:       #5a6a7e;
-    --ink:         #faf6ee;
+    --ink:         #f9f8f5;
     --teal:        #2a7a6f;
     --teal-light:  #1e6359;
     --gold:        #c8973a;
@@ -136,12 +139,13 @@ _TOKENS_LIGHT = """
     --shadow-md:   0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
     --shadow-lg:   0 10px 15px -3px rgba(0,0,0,0.08);
     --shadow-xl:   0 20px 25px -5px rgba(0,0,0,0.1);
-    --nav-bg:      rgba(250,246,238,0.85);
-    --sidebar-bg:  #f0ebe3;
-    --surface:     #f5f0e8;
-    --surface-alt: #ede8df;
-    --surface-high: #ffffff;
-    --surface-lowest: #e8e2d8;
+    --nav-bg:      rgba(249,248,245,0.85);
+    --sidebar-bg:  #f9f8f5;
+    --surface:          #ffffff;
+    --surface-alt:      #f3f4f6;
+    --surface-high:     #ffffff;
+    --surface-elevated: #f8f9fa;
+    --surface-lowest:   #e5e7eb;
     --ghost-border: rgba(15,28,46,0.06);
     --gold-gradient: linear-gradient(135deg, #c8973a, #e4b96a);
     --teal-gradient: linear-gradient(135deg, #2a7a6f, #3aa895);
@@ -153,7 +157,7 @@ _TOKENS_LIGHT = """
     /* Motion tokens */
     --ease-out:    cubic-bezier(0.0, 0.0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0.0, 0.2, 1);
-    --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
     --dur-fast:    150ms;
     --dur-base:    220ms;
     --dur-slow:    380ms;
@@ -173,20 +177,51 @@ _TOKENS_LIGHT = """
 _CSS_RESET = """
 /* ══ RESET & BASE ═════════════════════════════════════════ */
 * {{ margin: 0; padding: 0; box-sizing: border-box; }}
-.stApp {{ background: var(--midnight) !important; }}
-.stApp, .stApp * {{ font-family: 'DM Sans', system-ui, sans-serif !important; line-height: 1.65 !important; }}
-h1, h2, h3 {{ 
-    font-family: 'Playfair Display', serif !important; 
-    letter-spacing: -0.02em !important; 
-    line-height: 1.25 !important;
-    text-align: center;
+.stApp {{
+    background: var(--midnight) !important;
+    color: var(--cream) !important;
+    transition: background-color 0.4s ease, color 0.4s ease;
+}}
+.stApp, .stApp * {{
+    font-family: 'DM Sans', system-ui, sans-serif !important;
+    line-height: 1.75 !important;
+}}
+h1, h2, h3 {{
+    font-family: 'Playfair Display', serif !important;
+    letter-spacing: -0.02em !important;
+    line-height: 1.2 !important;
     margin-bottom: 1.5rem !important;
+    text-wrap: balance !important;
 }}
 
-.material-symbols-outlined {{
+/* ── Icon font protection: MUST come after the * override ─ */
+/* Protects custom HTML icon spans */
+.material-symbols-outlined,
+.stApp .material-symbols-outlined,
+.stApp * .material-symbols-outlined {{
     font-family: 'Material Symbols Outlined' !important;
-    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
-    font-size: 20px; vertical-align: middle;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24 !important;
+    font-size: 20px;
+    vertical-align: middle;
+    line-height: 1;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+    -webkit-font-feature-settings: 'liga';
+    font-feature-settings: 'liga';
+    -webkit-font-smoothing: antialiased;
+}}
+
+/* Protects Streamlit's native expander icon span (generated by icon=":material/...") */
+[data-testid="stExpander"] [data-testid="stExpanderToggleIcon"] span,
+[data-testid="stExpander"] summary span[class*="material"],
+[data-testid="stExpander"] summary [aria-hidden="true"],
+button[data-testid="stBaseButton-headerNoPadding"] span,
+.stExpander summary span {{
+    font-family: 'Material Symbols Outlined' !important;
+    font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24 !important;
+    font-feature-settings: 'liga' !important;
 }}
 """
 
@@ -212,25 +247,40 @@ _CSS_TOPBAR = """
 }
 .stitch-topbar-inner {
     width: 100%;
-    max-width: 1440px;
+    max-width: 1200px;     /* alineado con .block-container */
     margin: 0 auto;
     display: grid;
     grid-template-columns: auto 1fr auto;
     align-items: center;
     gap: 16px;
+    height: 100%;
 }
 .stitch-topbar-brand {
-    font-size: 20px; font-weight: 700; letter-spacing: -0.03em;
+    font-size: 18px; font-weight: 700; letter-spacing: -0.03em;
     font-family: 'Playfair Display', serif;
-    color: var(--gold-light); white-space: nowrap;
-    line-height: 1.2; padding-top: 2px;
+    color: var(--cream); white-space: nowrap;
+    line-height: 1.15;
     display: flex; align-items: center; gap: 10px;
+}
+.stitch-topbar-brand .stitch-topbar-brand-text {
+    display: flex;
+    flex-direction: column;
+    line-height: 1.1;
+}
+.stitch-topbar-brand .eyebrow-nav {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--gold);
+    margin-bottom: 2px;
 }
 .stitch-topbar-nav {
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: 4px;
+    gap: 20px;
     min-width: 0;
     overflow-x: auto;
     scrollbar-width: thin;
@@ -247,7 +297,7 @@ _CSS_TOPBAR = """
 }
 .stitch-topbar-nav a:hover {
     color: var(--cream);
-    background: rgba(255,255,255,0.05);
+    background: var(--overlay);
 }
 .stitch-topbar-nav a.active {
     color: var(--teal-light); font-weight: 600;
@@ -282,6 +332,14 @@ _CSS_TOPBAR = """
     border: 1px solid transparent;
     transition: all 200ms ease;
 }
+button.stitch-topbar-btn {
+    cursor: pointer;
+    background: var(--surface);
+}
+.stitch-topbar-btn-icon {
+    padding: 0;
+    width: 36px;
+}
 .stitch-topbar-btn .material-symbols-outlined {
     font-size: 16px;
 }
@@ -300,6 +358,14 @@ _CSS_TOPBAR = """
 .stitch-topbar-btn-secondary:hover {
     border-color: var(--gold);
     color: var(--gold-light);
+    background: var(--surface-alt);
+    transform: translateY(-1px);
+}
+.stitch-topbar-btn-theme {
+    border-radius: 50%;
+    width: 38px;
+    height: 38px;
+    padding: 0;
 }
 
 .stitch-mobile-shell {
@@ -399,7 +465,6 @@ _CSS_SIDEBAR = """
     min-width: 220px !important;
 }}
 [data-testid="stSidebar"] > div {{ padding-top: 0.25rem !important; }}
-[data-testid="collapsedControl"] {{ display: none !important; }}
 """
 
 _CSS_LAYOUT = """
@@ -410,17 +475,26 @@ _CSS_LAYOUT = """
     margin: 0 auto !important;
 }
 
+
 .editorial-container {
-    max-width: 850px;
+    max-width: 720px;
     margin: 0 auto 3rem;
     text-align: center;
 }
 
+.nl-center-measure {
+    max-width: 640px;
+    margin: 0 auto;
+}
+
+
 .editorial-container p {
-    font-size: 1.15rem;
-    line-height: 1.85;
+    font-size: 1.1rem;
+    line-height: 1.8;
     color: var(--muted);
-    margin-bottom: 1.75rem;
+    margin: 0 auto 1.5rem;
+    max-width: 65ch;
+    text-align: center;
 }
 
 /* ══ MAP COMPONENT (Responsive) ═══════════════════════════ */
@@ -516,25 +590,31 @@ _CSS_TYPOGRAPHY = """
     font-size: 0.65rem;
     text-transform: uppercase;
     letter-spacing: 0.15em;
-    color: var(--gold);
+    color: var(--gold) !important;
     display: block;
     text-align: center;
     margin-bottom: 1rem;
 }}
 .section-title {{
     font-family: 'Playfair Display', serif;
-    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
     font-weight: 700;
-    color: var(--cream);
-    line-height: 1.2;
+    color: var(--cream) !important;
+    line-height: 1.25;
     letter-spacing: -0.01em;
+    text-wrap: balance;
+    text-align: center;
 }}
 .section-subtitle {{
     font-family: 'DM Sans', sans-serif;
-    font-size: 1rem;
-    font-weight: 300;
-    line-height: 1.6;
-    color: var(--muted);
+    font-size: 1.0625rem;
+    font-weight: 400;
+    line-height: 1.65;
+    color: var(--muted) !important;
+    text-align: center;
+    max-width: 680px;
+    margin-left: auto;
+    margin-right: auto;
 }}
 
 /* ══ HERO TYPOGRAPHY ══════════════════════════════════════ */
@@ -575,9 +655,9 @@ _CSS_CARDS = """
 }}
 
 /* Accent variants */
-.stitch-card-accent {{ border-left: 3px solid var(--teal); }}
-.stitch-card-accent-gold {{ border-left: 3px solid var(--gold); }}
-.stitch-card-accent-rose {{ border-left: 3px solid var(--rose); }}
+.stitch-card-accent      {{ background: var(--teal-dim); border-color: rgba(58,168,149,0.25); }}
+.stitch-card-accent-gold {{ background: var(--gold-dim); border-color: rgba(200,151,58,0.25); }}
+.stitch-card-accent-rose {{ background: var(--rose-dim); border-color: rgba(184,92,110,0.25); }}
 
 /* ══ BENTO & HERO CARDS ═══════════════════════════════════ */
 .bento-card {{
@@ -603,29 +683,35 @@ _CSS_CARDS = """
 .stitch-btn-ghost {{
     display: inline-flex;
     align-items: center;
-    gap: 8px;
-    padding: 12px 22px;
+    gap: 10px;
+    padding: 14px 28px;
     border-radius: 9999px;
+    font-family: 'DM Sans', sans-serif;
     font-weight: 700;
-    font-size: 13px;
+    font-size: 15px;
     text-decoration: none;
-    transition: all 180ms ease;
+    cursor: pointer;
+    transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1),
+                filter 200ms,
+                box-shadow 200ms;
+    letter-spacing: 0.01em;
 }}
 
 .stitch-btn-primary {{
     background: var(--teal);
     color: #fff;
-    box-shadow: 0 8px 20px rgba(42,122,111,0.2);
+    box-shadow: 0 8px 28px rgba(42,122,111,0.28), 0 2px 8px rgba(0,0,0,0.12);
 }}
 
 .stitch-btn-primary:hover {{
-    transform: translateY(-1px);
-    filter: brightness(1.05);
+    transform: translateY(-2px);
+    filter: brightness(1.08);
+    box-shadow: 0 14px 36px rgba(42,122,111,0.38), 0 4px 12px rgba(0,0,0,0.16);
 }}
 
 .stitch-btn-ghost {{
     background: transparent;
-    border: 1px solid var(--card-border);
+    border: 1.5px solid var(--card-border);
     color: var(--cream);
 }}
 
@@ -633,6 +719,7 @@ _CSS_CARDS = """
     border-color: var(--gold);
     color: var(--gold-light);
     background: var(--overlay);
+    transform: translateY(-1px);
 }}
 """
 
@@ -644,15 +731,23 @@ _CSS_KPI = """
     border-radius: var(--radius-md);
     padding: 1.75rem 1.5rem;
     text-align: center;
-    transition: all var(--dur-base) ease;
+    transition: all 0.5s var(--ease-out-expo);
+    position: relative;
+    overflow: hidden;
+    cursor: default;
 }}
 .kpi-card:hover {{
-    border-color: var(--border);
-    transform: translateY(-2px);
+    border-color: var(--teal);
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.6);
+    background: var(--surface-higher);
 }}
 .kpi-card::before {{
-    content: ''; position: absolute;
-    top: 0; left: 0; right: 0; height: 4px;
+    content: '';
+    position: absolute;
+    top: 0; left: 0; bottom: 0;
+    width: 3px;
+    opacity: 0.8;
 }}
 .kpi-card.excellent::before {{ background: var(--teal); }}
 .kpi-card.good::before      {{ background: var(--gold); }}
@@ -689,6 +784,14 @@ _CSS_BADGE = """
     text-transform: uppercase;
     color: var(--teal-light);
     letter-spacing: 0.05em;
+}}
+.nl-code-inline {{
+    font-family: 'DM Mono', monospace;
+    font-size: 0.875em;
+    background: var(--card-bg);
+    padding: 2px 6px;
+    border-radius: 4px;
+    color: var(--teal-light);
 }}
 """
 
@@ -741,10 +844,10 @@ _CSS_STAT = """
 _CSS_QUOTE = """
 /* ══ QUOTE BLOCK ══════════════════════════════════════════ */
 .quote-block {{
-    border-left: 3px solid var(--gold);
+    border: 1px solid rgba(200,151,58,0.25);
     padding: 1rem 1.5rem;
-    background: rgba(200,151,58,0.05);
-    border-radius: 0 8px 8px 0;
+    background: var(--gold-dim);
+    border-radius: 8px;
     margin: 1.5rem 0;
 }}
 .quote-text {{
@@ -810,16 +913,19 @@ _CSS_ALERTS = """
 
 /* ══ ALERT CARD ═══════════════════════════════════════════ */
 .alert-card {
-    background: var(--card-bg);
-    border: 1px solid var(--card-border);
-    border-left: 3px solid var(--rose);
-    border-radius: 0 10px 10px 0;
+    background: var(--rose-dim);
+    border: 1px solid rgba(184,92,110,0.2);
+    border-radius: 10px;
     padding: 1.5rem;
-    transition: transform 0.2s ease, border-color 0.2s ease;
+    transition: transform 220ms cubic-bezier(0.4, 0, 0.2, 1),
+                box-shadow 220ms,
+                border-color 220ms;
 }
 .alert-card:hover {
-    transform: translateY(-2px);
-    border-color: var(--border);
+    transform: translateY(-3px);
+    border-color: rgba(184,92,110,0.4);
+    box-shadow: 0 22px 48px -22px rgba(0,0,0,0.55),
+                0 0 0 1px rgba(199,109,109,0.18);
 }
 .alert-score {
     font-size: 2.5rem;
@@ -916,6 +1022,463 @@ _CSS_GRIDS = """
 }}
 """
 
+_CSS_EDITORIAL = """
+/* ══ EDITORIAL LAYOUT ═════════════════════════════════════ */
+.editorial-header {{
+    text-align: center;
+    max-width: 850px;
+    margin: 0 auto 3rem;
+    padding: 0;
+}}
+.editorial-title {{
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.6rem, 5.5vw, 4rem);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: -0.025em;
+    line-height: 1.12;
+    text-align: center;
+    text-wrap: balance;
+    margin-bottom: 1.25rem !important;
+    text-shadow: 0 0 60px rgba(58, 168, 149, 0.12);
+}}
+.editorial-subtitle {{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 400;
+    line-height: 1.75;
+    color: var(--muted);
+    max-width: 680px;
+    margin: 0 auto 1.75rem;
+    text-align: center;
+    text-wrap: pretty;
+    hyphens: auto;
+}}
+.editorial-meta {{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin-bottom: 1rem;
+}}
+.editorial-meta span + span::before {{
+    content: '·';
+    margin-right: 16px;
+    color: var(--gold);
+}}
+.editorial-figure {{
+    max-width: 1100px;
+    margin: 0 auto 3rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+    background: var(--surface);
+}}
+
+/* ── Hero stat block (Score global prominente en Inicio) ─── */
+.nl-hero-stat-block {{
+    max-width: 640px;
+    margin: 0 0 2.5rem;
+    padding: 0;
+}}
+.nl-hero-stat-prose {{
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-weight: 400;
+    line-height: 1.35;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.75rem;
+}}
+.nl-hero-stat-score {{
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    font-size: 1.25em;
+    line-height: 1;
+    display: inline-block;
+    vertical-align: text-bottom;
+}}
+.nl-hero-stat-score--excellent {{ color: var(--teal-light); }}
+.nl-hero-stat-score--poor      {{ color: var(--rose-light); }}
+.nl-hero-stat-label {{
+    font-family: 'DM Mono', monospace;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    display: block;
+}}
+
+/* ── Organization summary bar ──────────────────────────────── */
+.nl-score-center {{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 24px;
+}}
+.nl-org-summary {{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+    padding: 24px 32px;
+    background: var(--surface-alt);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    margin: 0;
+    flex-wrap: wrap;
+    max-width: 520px;
+}}
+.nl-org-summary-primary {{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex-shrink: 0;
+    min-width: 100px;
+}}
+.nl-org-summary-score {{
+    font-family: 'Playfair Display', serif;
+    font-size: 2.75rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}}
+.nl-org-summary-score.excellent {{ color: var(--teal-light); }}
+.nl-org-summary-score.good      {{ color: var(--gold-light); }}
+.nl-org-summary-score.poor      {{ color: var(--rose-light); }}
+.nl-org-summary-caption {{
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+}}
+.nl-org-summary-sep {{
+    width: 1px;
+    height: 44px;
+    background: var(--card-border);
+    flex-shrink: 0;
+}}
+.nl-org-summary-stats {{
+    display: flex;
+    gap: 28px;
+    flex-wrap: wrap;
+    align-items: center;
+}}
+.nl-org-summary-stat {{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}}
+.nl-org-summary-stat-value {{
+    font-family: 'DM Mono', monospace;
+    font-size: 1.375rem;
+    font-weight: 600;
+    line-height: 1;
+}}
+.nl-org-summary-stat-value.teal {{ color: var(--teal-light); }}
+.nl-org-summary-stat-value.rose {{ color: var(--rose-light); }}
+.nl-org-summary-stat-label {{
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--muted);
+}}
+.nl-org-summary .score-ring {{ margin: 0; }}
+
+/* ── KPI card left-aligned variant ─────────────────────── */
+.kpi-card--left {{
+    text-align: left;
+    position: relative;
+}}
+.kpi-card--left .kpi-value {{
+    font-size: 2rem;
+}}
+.kpi-card--ring {{
+    text-align: center;
+    padding: 1.5rem 1rem;
+}}
+
+/* ── KPI inline value (inside running text) ─────────────── */
+.kpi-value--hero {{
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--teal-light);
+    vertical-align: middle;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    text-shadow: 0 0 24px rgba(58, 168, 149, 0.35);
+}}
+
+/* ── KPI delta indicator ─────────────────────────────────── */
+.kpi-delta {{
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.75rem;
+    font-family: 'DM Mono', monospace;
+    color: var(--muted);
+    margin-top: 8px;
+}}
+.kpi-delta.up   {{ color: var(--teal-light); }}
+.kpi-delta.down {{ color: var(--rose-light); }}
+
+/* ── Animation delay aliases (fade-up-dN) ────────────────── */
+.fade-up-d1 {{ animation: fadeUp 0.8s 0.10s var(--ease-out-expo) both; }}
+.fade-up-d2 {{ animation: fadeUp 0.8s 0.18s var(--ease-out-expo) both; }}
+.fade-up-d3 {{ animation: fadeUp 0.8s 0.26s var(--ease-out-expo) both; }}
+.fade-up-d4 {{ animation: fadeUp 0.8s 0.34s var(--ease-out-expo) both; }}
+
+/* ── Section divider ─────────────────────────────────────── */
+.divider {{
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--card-border) 40%, var(--card-border) 60%, transparent);
+    margin: 3rem auto;
+    max-width: 840px;
+}}
+
+/* ── Editorial footer strip ──────────────────────────────── */
+.editorial-footer {{
+    border-top: 1px solid var(--card-border);
+    padding-top: 2.5rem;
+    margin-top: 3.5rem;
+    color: var(--muted);
+    font-size: 0.8rem;
+    font-family: 'DM Mono', monospace;
+    text-align: center;
+    opacity: 0.75;
+    letter-spacing: 0.02em;
+}}
+
+/* ── Topbar landing CTA (gold outline variant) ───────────── */
+.stitch-topbar-btn-landing {{
+    border-color: var(--gold) !important;
+    color: var(--gold-light) !important;
+}}
+.stitch-topbar-btn-landing:hover {{
+    background: var(--gold-dim) !important;
+}}
+
+/* ── Spacing utilities (missing mt-5/mt-6) ───────────────── */
+.mt-5 {{ margin-top: 3rem; }}
+.mt-6 {{ margin-top: 4rem; }}
+
+/* ── Calidad Pro: distribution band ────────────────────────── */
+.nl-distband {{
+    max-width: 640px;
+    margin: 0 auto 24px;
+    padding: 28px 32px;
+    background: var(--surface-alt);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+}}
+.nl-distband-header {{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 20px;
+}}
+.nl-distband-score {{
+    font-family: 'Playfair Display', serif;
+    font-size: 3.25rem;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}}
+.nl-distband-score::after {{
+    content: '%';
+    font-size: 1.5rem;
+    font-weight: 400;
+    opacity: 0.55;
+    margin-left: 2px;
+}}
+.nl-distband-score--teal {{ color: var(--teal-light); }}
+.nl-distband-score--rose {{ color: var(--rose-light); }}
+.nl-distband-meta {{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}}
+.nl-distband-label {{
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--cream);
+}}
+.nl-distband-sub {{
+    font-family: 'DM Mono', monospace;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+}}
+.nl-distband-track {{
+    display: flex;
+    height: 10px;
+    border-radius: 5px;
+    overflow: hidden;
+    gap: 2px;
+    margin-bottom: 14px;
+    background: var(--surface-elevated);
+}}
+.nl-distband-seg {{
+    border-radius: 3px;
+    min-width: 3px;
+    transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}}
+.nl-distband-seg--excellent {{ background: var(--teal); }}
+.nl-distband-seg--good      {{ background: var(--gold); }}
+.nl-distband-seg--critical  {{ background: var(--rose); }}
+.nl-distband-legend {{
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}}
+.nl-distband-legend-item {{
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--muted);
+}}
+.nl-distband-dot {{
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}}
+.nl-distband-dot--excellent {{ background: var(--teal-light); }}
+.nl-distband-dot--good      {{ background: var(--gold-light); }}
+.nl-distband-dot--critical  {{ background: var(--rose-light); }}
+@media (max-width: 600px) {{
+    .nl-distband {{ padding: 20px 18px; }}
+    .nl-distband-score {{ font-size: 2.5rem; }}
+    .nl-distband-legend {{ gap: 12px; }}
+}}
+"""
+
+_CSS_SECTIONS = """
+/* ══ SECTION-LEVEL COMPONENTS ════════════════════════════ */
+
+/* Section separator icon (app.py section breaks) */
+.nl-section-icon-wrap {{ text-align: center; margin-bottom: 2rem; }}
+.nl-section-icon-xl {{ font-size: 48px; color: var(--gold); opacity: 0.4; }}
+
+/* Panel sub-heading row (calidad_pro coverage/failure panels) */
+.nl-panel-head {{ display: flex; align-items: center; gap: 8px; margin-bottom: 12px; }}
+.icon-teal-sm {{ color: var(--teal); font-size: 20px; vertical-align: middle; }}
+.icon-rose-sm {{ color: var(--rose); font-size: 20px; vertical-align: middle; }}
+
+/* Empty states */
+.nl-empty-state {{ text-align: center; padding: 24px; }}
+.nl-empty-state-icon {{ font-size: 36px; display: block; margin: 0 auto 4px; }}
+.nl-empty-state-text {{ margin: 8px 0 0; font-size: 13px; color: var(--muted); }}
+
+/* Micro typography */
+.text-muted-xs {{ font-size: 12px; color: var(--muted); }}
+
+/* Governance metadata alert block */
+.nl-stat-label {{ font-size: 17px; font-weight: 700; color: var(--cream); }}
+.nl-stat-pct {{
+    font-size: 36px; font-weight: 700;
+    font-family: 'Playfair Display', serif;
+    color: var(--gold); margin-left: 24px; flex-shrink: 0;
+}}
+.nl-stat-note {{
+    font-size: 13px; color: var(--cream);
+    background: var(--surface-alt); border-radius: 8px;
+}}
+
+/* Alert count badge (used in tab label) */
+.nl-count-badge {{
+    background: var(--rose); color: #fff;
+    font-size: 10px; font-weight: 700;
+    padding: 2px 8px; border-radius: 9999px;
+    vertical-align: middle;
+}}
+
+/* Results count bar */
+.nl-results-bar {{
+    display: flex; align-items: center;
+    justify-content: space-between; margin-bottom: 24px;
+}}
+.nl-results-left {{ display: flex; align-items: center; gap: 8px; }}
+.nl-results-count {{
+    font-size: 20px; font-weight: 700;
+    font-family: 'Playfair Display', serif; color: var(--cream);
+}}
+.nl-results-label {{ color: var(--muted); font-weight: 500; font-family: 'DM Sans', sans-serif; }}
+
+/* Load-more pagination hint */
+.nl-load-more {{
+    text-align: center; margin-top: 32px; padding: 24px;
+    background: var(--surface-alt); border-radius: 16px;
+    border: 1px dashed var(--card-border);
+}}
+.nl-load-more p {{ color: var(--muted); margin-bottom: 16px; }}
+.nl-load-more p + p {{ font-size: 13px; margin-bottom: 0; }}
+
+/* Alerts section intro paragraph */
+.nl-section-intro {{ color: var(--muted); max-width: 640px; margin: 8px 0 24px; }}
+
+/* Inline accent text spans — replaces style="color:var(--...)" */
+.accent-teal {{ color: var(--teal-light); font-weight: 600; }}
+.accent-gold {{ color: var(--gold-light); font-weight: 600; }}
+.accent-rose {{ color: var(--rose-light); font-weight: 600; }}
+
+/* Success variant for empty-state container */
+.nl-empty-state--success {{ color: var(--teal-light); }}
+
+/* Criteria card (Metodología — 4 criterios pedagógicos) */
+.nl-criteria-card {{
+    text-align: left;
+    max-width: 640px;
+    margin: 1.5rem auto 0;
+    padding: 1.75rem 2rem;
+    background: var(--card-bg);
+    border-radius: 16px;
+    border: 1px solid var(--card-border);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.02) inset, 0 14px 40px -20px rgba(0,0,0,0.45);
+    transition: transform 240ms cubic-bezier(0.4,0,0.2,1), box-shadow 240ms;
+}}
+.nl-criteria-card:hover {{
+    transform: translateY(-3px);
+    box-shadow: 0 1px 0 rgba(255,255,255,0.04) inset, 0 22px 50px -22px rgba(0,0,0,0.55);
+    border-color: var(--teal);
+}}
+.nl-criteria-list {{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.85rem;
+}}
+.nl-criteria-list li {{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 15px;
+    line-height: 1.55;
+    color: var(--cream);
+    padding-left: 0.25rem;
+}}
+
+/* Hover-lift utility for cards (KPI, alerts, insights) */
+.nl-hover-lift {{
+    transition: transform 220ms cubic-bezier(0.4,0,0.2,1),
+                box-shadow 220ms,
+                border-color 220ms;
+}}
+.nl-hover-lift:hover {{
+    transform: translateY(-3px);
+    box-shadow: 0 18px 36px -18px rgba(0,0,0,0.55);
+    border-color: var(--teal);
+}}
+"""
+
 _CSS_GAUGE = """
 /* ══ GAUGE SVG ════════════════════════════════════════════ */
 .gauge-container {{
@@ -996,22 +1559,46 @@ _CSS_STREAMLIT_OVERRIDES = """
 .stDownloadButton > button:hover {{
     opacity: 0.9;
 }}
+/* ── Theme-aware text: override Streamlit's hardcoded dark textColor ── */
+.stMarkdownContainer,
+[data-testid="stMarkdownContainer"],
+.stMarkdownContainer p,
+[data-testid="stMarkdownContainer"] p,
+.stMarkdownContainer li,
+[data-testid="stMarkdownContainer"] li {{
+    color: var(--cream) !important;
+}}
+.stMarkdownContainer a,
+[data-testid="stMarkdownContainer"] a {{
+    color: var(--teal) !important;
+    text-decoration: none !important;
+}}
+.stMarkdownContainer a:hover,
+[data-testid="stMarkdownContainer"] a:hover {{
+    color: var(--gold-light) !important;
+}}
 """
 
 _CSS_SIDEBAR_TOGGLE = """
-/* ══ THEME TOGGLE BUTTON ══════════════════════════════════ */
+/* ── THEME TOGGLE BUTTON ────────────────────────────────── */
 [data-testid="stSidebar"] .stButton[data-testid*="theme_toggle"] > button {{
     background: var(--surface) !important;
-    color: var(--paper) !important;
+    color: var(--cream) !important;
     border: 1px solid var(--card-border) !important;
-    border-radius: 9999px !important;
-    font-weight: 600 !important; font-size: 13px !important;
-    padding: 8px 16px !important;
-    transition: all 200ms ease;
+    border-radius: var(--radius-full) !important;
+    font-weight: 700 !important; font-size: 13px !important;
+    padding: 10px 20px !important;
+    transition: all 0.3s var(--ease-out-expo) !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.05em !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) !important;
 }}
 [data-testid="stSidebar"] .stButton[data-testid*="theme_toggle"] > button:hover {{
     background: var(--surface-alt) !important;
     border-color: var(--gold) !important;
+    color: var(--gold-light) !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2) !important;
 }}
 """
 
@@ -1028,7 +1615,7 @@ _CSS_ANIMATIONS = """
 @keyframes fadeUp {{
     from {{
         opacity: 0;
-        transform: translateY(20px);
+        transform: translateY(16px);
     }}
     to {{
         opacity: 1;
@@ -1036,17 +1623,20 @@ _CSS_ANIMATIONS = """
     }}
 }}
 .fade-up {{
-    animation: fadeUp 0.5s ease forwards;
+    animation: fadeUp 0.8s var(--ease-out-expo, cubic-bezier(0.16, 1, 0.3, 1)) forwards;
 }}
-.fade-up-1 {{ animation-delay: 0s; }}
-.fade-up-2 {{ animation-delay: 0.08s; }}
-.fade-up-3 {{ animation-delay: 0.16s; }}
-.fade-up-4 {{ animation-delay: 0.24s; }}
-.fade-up-5 {{ animation-delay: 0.32s; }}
+.fade-up-1 {{ animation-delay: 0.05s; }}
+.fade-up-2 {{ animation-delay: 0.12s; }}
+.fade-up-3 {{ animation-delay: 0.19s; }}
+.fade-up-4 {{ animation-delay: 0.26s; }}
+.fade-up-5 {{ animation-delay: 0.33s; }}
 
 @keyframes fadeInUp {{
     from {{ opacity: 0; transform: translateY(12px); }}
     to   {{ opacity: 1; transform: translateY(0); }}
+}}
+.fade-in-up {{
+    animation: fadeInUp 0.7s var(--ease-out-expo) forwards;
 }}
 
 @keyframes bounceY {{
@@ -1279,25 +1869,39 @@ _CSS_INICIO = """
     opacity: 0.6;
 }}
 
-/* Health bars */
-.inicio-health-label {{
+/* Health mini-cards (dimension bars) */
+.health-mini-card {{
+    background: var(--surface-high);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    padding: 0.875rem 1.125rem;
+    margin-bottom: 0.625rem;
+    transition: border-color 200ms;
+}}
+.health-mini-card:hover {{ border-color: rgba(255,255,255,0.1); }}
+.health-mini-card-header {{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 8px;
+    margin-bottom: 0.2rem;
 }}
-
-.inicio-health-name {{
-    font-size: 0.82rem;
+.health-mini-card-label {{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.875rem;
+    font-weight: 600;
     color: var(--cream);
-    font-weight: 500;
 }}
-
-.inicio-health-pct {{
-    font-size: 0.80rem;
-    color: var(--muted);
-    font-weight: 500;
+.health-mini-card-pct {{
     font-family: 'DM Mono', monospace;
+    font-size: 0.8125rem;
+    color: var(--muted);
+}}
+.health-mini-card-desc {{
+    font-size: 0.725rem;
+    color: var(--muted);
+    margin: 0 0 0.5rem;
+    line-height: 1.5;
+    opacity: 0.85;
 }}
 
 /* Empty state */
@@ -1411,10 +2015,9 @@ _CSS_PIPELINE = """
 
 /* ── Failure panel ──────────────────────────────────────── */
 .failure-panel {{
-    background: var(--surface);
-    border: 1px solid var(--card-border);
-    border-left: 3px solid var(--rose);
-    border-radius: 0 var(--radius-sm, 10px) var(--radius-sm, 10px) 0;
+    background: var(--rose-dim);
+    border: 1px solid rgba(184,92,110,0.2);
+    border-radius: var(--radius-sm, 10px);
     padding: 20px 24px;
     margin-bottom: 16px;
 }}
@@ -1591,12 +2194,16 @@ section[id="footer"] {{
 }}
 
 .nl-section-title {{
-    margin-bottom: 12px;
+    margin-bottom: 12px !important;
+    text-align: center;
 }}
 
 .nl-section-subtitle {{
     max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
     margin-bottom: 8px;
+    text-align: center;
 }}
 
 .nl-section-break {{
@@ -1721,6 +2328,7 @@ section[id="footer"] {{
 .nl-pipeline-title {{
     margin: 0;
     font-size: 18px;
+    text-align: left;
 }}
 .nl-pipeline-body {{
     margin: 0;
@@ -1821,19 +2429,18 @@ section[id="footer"] {{
     margin-top: 20px;
 }}
 .nl-insight-card {{
-    background: var(--card-bg);
+    background: var(--surface-alt);
     border: 1px solid var(--card-border);
-    border-left: 3px solid var(--muted);
     border-radius: 12px;
     padding: 22px;
     display: flex;
     gap: 14px;
     align-items: flex-start;
 }}
-.nl-insight-positive  {{ border-left-color: var(--teal); }}
-.nl-insight-warn      {{ border-left-color: var(--gold); }}
-.nl-insight-critical  {{ border-left-color: var(--rose); }}
-.nl-insight-neutral   {{ border-left-color: var(--muted); }}
+.nl-insight-positive {{ background: var(--teal-dim); border-color: rgba(58,168,149,0.25); }}
+.nl-insight-warn     {{ background: var(--gold-dim); border-color: rgba(200,151,58,0.25); }}
+.nl-insight-critical {{ background: var(--rose-dim); border-color: rgba(184,92,110,0.25); }}
+.nl-insight-neutral  {{ background: var(--surface-alt); }}
 .nl-insight-icon {{
     font-size: 26px;
     flex-shrink: 0;
@@ -1876,8 +2483,8 @@ section[id="footer"] {{
     gap: 16px;
     align-items: flex-start;
     padding: 18px 20px;
-    background: var(--surface-alt);
-    border-left: 3px solid var(--gold);
+    background: var(--gold-dim);
+    border: 1px solid rgba(200,151,58,0.2);
     border-radius: 10px;
 }}
 .nl-rec-item::before {{
@@ -1907,7 +2514,274 @@ section[id="footer"] {{
     margin: 0;
 }}
 
-/* ── Footer (extraído de dashboard_v3.py) ────────────────── */
+/* ── Conclusiones: editorial lead (governance stat) ─────── */
+.nl-conc-lead {{
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    padding: 32px 36px;
+    background: var(--teal-dim);
+    border: 1px solid rgba(58,168,149,0.2);
+    border-radius: 14px;
+    margin-bottom: 20px;
+}}
+.nl-conc-lead-stat {{
+    font-family: 'DM Mono', monospace;
+    font-size: 60px;
+    font-weight: 500;
+    color: var(--teal-light);
+    line-height: 1;
+    flex-shrink: 0;
+    letter-spacing: -0.03em;
+}}
+.nl-conc-lead-body {{ flex: 1; min-width: 0; }}
+.nl-conc-lead-title {{
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--cream);
+    margin: 0 0 8px;
+}}
+.nl-conc-lead-text {{
+    font-size: 14px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin: 0;
+}}
+.nl-conc-lead-text strong {{ color: var(--cream); }}
+
+/* ── Conclusiones: dimension comparison strip ────────────── */
+.nl-dim-pair {{
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    border: 1px solid var(--card-border);
+    border-radius: 12px;
+    overflow: hidden;
+    margin-bottom: 20px;
+}}
+.nl-dim-half {{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 24px 28px;
+}}
+.nl-dim-strong {{ background: var(--teal-dim); }}
+.nl-dim-weak   {{ background: var(--gold-dim); }}
+.nl-dim-sep    {{ background: var(--card-border); }}
+.nl-dim-tag {{
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}}
+.nl-dim-strong .nl-dim-tag {{ color: var(--teal-light); }}
+.nl-dim-weak   .nl-dim-tag {{ color: var(--gold-light); }}
+.nl-dim-name {{
+    font-size: 16px;
+    font-weight: 600;
+    color: var(--cream);
+}}
+.nl-dim-score {{
+    font-family: 'DM Mono', monospace;
+    font-size: 32px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}}
+.nl-dim-strong .nl-dim-score {{ color: var(--teal-light); }}
+.nl-dim-weak   .nl-dim-score {{ color: var(--gold-light); }}
+
+@media (max-width: 640px) {{
+    .nl-conc-lead {{
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+        padding: 24px;
+    }}
+    .nl-conc-lead-stat {{ font-size: 44px; }}
+    .nl-dim-pair {{ grid-template-columns: 1fr; }}
+    .nl-dim-sep  {{ height: 1px; width: 100%; }}
+}}
+
+/* ── Conclusiones: disclosure cards ────────────────────────── */
+.nl-flip-grid {{
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+    margin-bottom: 24px;
+}}
+.nl-flip-card--primary {{
+    grid-column: span 2;
+}}
+.nl-flip-card {{
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+}}
+.nl-flip-front {{
+    list-style: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 28px 22px;
+    text-align: center;
+    user-select: none;
+    min-height: 210px;
+    transition: opacity 150ms ease;
+}}
+.nl-flip-front::-webkit-details-marker {{ display: none; }}
+.nl-flip-card[open] > .nl-flip-front {{
+    border-bottom: 1px solid var(--card-border);
+    min-height: 0;
+}}
+.nl-flip-back {{
+    padding: 24px 22px;
+    background: var(--surface-elevated);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}}
+.nl-flip--teal {{ border-color: rgba(58,168,149,0.3); }}
+.nl-flip--gold {{ border-color: rgba(200,151,58,0.3); }}
+.nl-flip--rose {{ border-color: rgba(184,92,110,0.3); }}
+.nl-flip--teal > .nl-flip-front {{ background: var(--teal-dim); }}
+.nl-flip--gold > .nl-flip-front {{ background: var(--gold-dim); }}
+.nl-flip--rose > .nl-flip-front {{ background: var(--rose-dim); }}
+.nl-flip--neutral > .nl-flip-front {{ background: var(--surface-elevated); }}
+.nl-flip-icon {{ font-size: 42px; }}
+.nl-flip--teal .nl-flip-icon {{ color: var(--teal-light); }}
+.nl-flip--gold .nl-flip-icon {{ color: var(--gold-light); }}
+.nl-flip--rose .nl-flip-icon {{ color: var(--rose-light); }}
+.nl-flip--neutral .nl-flip-icon {{ color: var(--muted); }}
+.nl-flip-tag {{
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}}
+.nl-flip--teal .nl-flip-tag {{ color: var(--teal-light) !important; }}
+.nl-flip--gold .nl-flip-tag {{ color: var(--gold-light) !important; }}
+.nl-flip--rose .nl-flip-tag {{ color: var(--rose-light) !important; }}
+.nl-flip--neutral .nl-flip-tag {{ color: var(--muted) !important; }}
+.nl-flip-kpi {{
+    font-family: 'DM Mono', monospace;
+    font-size: 38px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}}
+.nl-flip--teal .nl-flip-kpi {{ color: var(--teal-light) !important; }}
+.nl-flip--gold .nl-flip-kpi {{ color: var(--gold-light) !important; }}
+.nl-flip--rose .nl-flip-kpi {{ color: var(--rose-light) !important; }}
+.nl-flip--neutral .nl-flip-kpi {{ color: var(--cream) !important; }}
+.nl-flip-hint {{ font-size: 10px; color: var(--muted) !important; opacity: 0.65; margin-top: 4px; }}
+.nl-flip-card[open] .nl-flip-hint {{ display: none; }}
+.nl-flip-back-title {{
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--cream) !important;
+    margin: 0;
+    line-height: 1.35;
+}}
+.nl-flip-back-text {{
+    font-size: 13px;
+    color: var(--muted) !important;
+    line-height: 1.65;
+    margin: 0;
+}}
+.nl-flip-back-text strong {{ color: var(--cream) !important; }}
+
+/* dimension comparison card front */
+.nl-flip-dim-row {{
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 100%;
+    text-align: left;
+}}
+.nl-flip-dim-label {{
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.09em;
+    color: var(--muted) !important;
+}}
+.nl-flip-dim-val {{
+    font-family: 'DM Mono', monospace;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1;
+    letter-spacing: -0.03em;
+}}
+.nl-dim-up-val {{ color: var(--teal-light) !important; }}
+.nl-dim-down-val {{ color: var(--gold-light) !important; }}
+.nl-flip-dim-sep {{ height: 1px; background: var(--card-border); margin: 4px 0; }}
+
+@media (max-width: 600px) {{
+    .nl-flip-card--primary {{ grid-column: span 1; }}
+}}
+
+/* ── Conclusiones: roadmap recommendations ─────────────────── */
+.nl-roadmap {{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+}}
+.nl-roadmap-step {{
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 20px;
+    position: relative;
+    padding-bottom: 32px;
+}}
+.nl-roadmap-step:last-child {{ padding-bottom: 0; }}
+.nl-roadmap-step::after {{
+    content: '';
+    position: absolute;
+    top: 52px;
+    left: 25px;
+    bottom: 0;
+    width: 2px;
+    background: var(--card-border);
+}}
+.nl-roadmap-step:last-child::after {{ display: none; }}
+.nl-roadmap-marker {{
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--surface-elevated);
+    border: 2px solid rgba(200,151,58,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 18px;
+    font-weight: 500;
+    color: var(--gold-light) !important;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 1;
+}}
+.nl-roadmap-body {{ padding: 10px 0 0; }}
+.nl-roadmap-title {{
+    font-size: 1.125rem;
+    font-weight: 700;
+    color: var(--cream) !important;
+    margin: 0 0 6px;
+}}
+.nl-roadmap-text {{
+    font-size: 13px;
+    color: var(--muted) !important;
+    line-height: 1.65;
+    margin: 0;
+}}
+
+/* ── Footer ──────────────────────────────────────────────── */
 .nl-footer {{
     margin-top: 80px;
     padding-top: 48px;
@@ -1915,77 +2789,99 @@ section[id="footer"] {{
 }}
 .nl-footer-top {{
     display: grid;
-    grid-template-columns: minmax(240px, 1.4fr) repeat(3, 1fr);
-    gap: 40px;
+    grid-template-columns: minmax(200px, 2fr) repeat(3, minmax(130px, 1fr));
+    gap: 32px;
     padding-bottom: 40px;
+    align-items: start;
 }}
 .nl-footer-brand {{
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 14px;
 }}
 .nl-footer-logo {{
     font-family: 'Playfair Display', serif;
-    font-size: 26px;
+    font-size: 24px;
     font-weight: 700;
-    color: var(--gold-light);
+    color: var(--gold-light) !important;
     letter-spacing: -0.01em;
 }}
 .nl-footer-tagline {{
     font-size: 13px;
-    color: var(--muted);
-    line-height: 1.6;
+    color: var(--muted) !important;
+    line-height: 1.65;
     margin: 0;
     max-width: 260px;
 }}
 .nl-footer-col {{
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 8px;
 }}
 .nl-footer-col-title {{
-    font-size: 12px;
+    font-size: 10px;
     font-weight: 700;
-    color: var(--cream);
+    color: var(--cream) !important;
     text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin: 0 0 6px;
+    letter-spacing: 0.12em;
+    margin: 0 0 8px !important;
+    white-space: nowrap;
     font-family: 'DM Mono', monospace;
 }}
 .nl-footer-link {{
-    color: var(--muted);
+    color: var(--muted) !important;
     font-size: 13px;
     font-weight: 500;
-    text-decoration: none;
+    text-decoration: none !important;
     font-family: 'DM Sans', sans-serif;
-    transition: color 180ms ease;
+    transition: all 0.25s var(--ease-out-expo);
+    display: block;
+    padding: 2px 0;
 }}
 .nl-footer-link:hover {{
-    color: var(--gold-light);
+    color: var(--gold-light) !important;
+    transform: translateX(4px);
 }}
 .nl-footer-bottom {{
     border-top: 1px solid var(--card-border);
     padding: 20px 0 30px;
     display: flex;
     justify-content: space-between;
+    align-items: center;
     flex-wrap: wrap;
     gap: 16px;
     font-family: 'DM Sans', sans-serif;
     font-size: 12px;
-    color: var(--muted);
+    color: var(--muted) !important;
 }}
-.nl-footer-bottom strong {{ color: var(--cream); }}
+.nl-footer-bottom strong {{ color: var(--cream) !important; }}
+.nl-footer-copy {{
+    font-family: 'DM Mono', monospace;
+    letter-spacing: 0.03em;
+}}
+.nl-footer-meta {{
+    opacity: 0.7;
+}}
 
 @media (max-width: 860px) {{
     .nl-footer-top {{
-        grid-template-columns: 1fr;
-        gap: 24px;
+        grid-template-columns: minmax(180px, 2fr) repeat(3, minmax(100px, 1fr));
+        gap: 20px;
     }}
     .nl-pipeline-grid,
     .nl-insights-grid,
     .nl-weights-grid,
     .nl-stats-grid {{
         grid-template-columns: 1fr;
+    }}
+}}
+@media (max-width: 580px) {{
+    .nl-footer-top {{
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+    }}
+    .nl-footer-brand {{
+        grid-column: span 2;
     }}
 }}
 """
@@ -2136,22 +3032,39 @@ _CSS_UX_ENHANCEMENTS = """
 
 /* ── Entrance Animations ── */
 @keyframes stFadeInUp {
-    from { opacity: 0; transform: translateY(22px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {{ opacity: 0; transform: translateY(20px); }}
+    to   {{ opacity: 1; transform: translateY(0); }}
 }
+/* Stagger delays via CSS custom property — works with both fallback and observer paths */
+.nl-reveal-d1 {{ --reveal-delay: 0.10s; }}
+.nl-reveal-d2 {{ --reveal-delay: 0.20s; }}
+.nl-reveal-d3 {{ --reveal-delay: 0.30s; }}
+.nl-reveal-d4 {{ --reveal-delay: 0.40s; }}
+.nl-reveal-d5 {{ --reveal-delay: 0.50s; }}
+
+/* No-JS fallback: animate immediately on load */
 .nl-reveal {{
     opacity: 0;
-    animation: stFadeInUp 0.6s var(--ease-out, cubic-bezier(0,0,0.2,1)) forwards;
+    will-change: transform, opacity;
+    animation: stFadeInUp 0.75s var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1)) var(--reveal-delay, 0s) forwards;
 }}
-.nl-reveal-d1 {{ animation-delay: 0.06s; }}
-.nl-reveal-d2 {{ animation-delay: 0.13s; }}
-.nl-reveal-d3 {{ animation-delay: 0.20s; }}
+/* JS path: hide until observer fires */
+.js-reveals .nl-reveal {{ animation: none; }}
+.js-reveals .nl-reveal.nl-revealed {{
+    animation: stFadeInUp 0.85s var(--ease-out-expo, cubic-bezier(0.16,1,0.3,1)) var(--reveal-delay, 0s) forwards;
+}}
+
+@media (prefers-reduced-motion: reduce) {{
+    .nl-reveal, .js-reveals .nl-reveal, .js-reveals .nl-reveal.nl-revealed {{
+        opacity: 1 !important; animation: none !important;
+    }}
+}}
 
 /* ── Chart insight panel ───────────────────────────────── */
 .nl-chart-insight {{
-    background: var(--surface-alt);
-    border-left: 3px solid var(--teal);
-    border-radius: 0 10px 10px 0;
+    background: var(--teal-dim);
+    border: 1px solid rgba(58,168,149,0.2);
+    border-radius: 10px;
     padding: 14px 20px;
     margin: 10px 0 28px;
     display: flex;
@@ -2171,6 +3084,40 @@ _CSS_UX_ENHANCEMENTS = """
     margin: 0;
 }}
 .nl-chart-insight-text strong {{ color: var(--cream); }}
+
+/* ── Treemap legend chips ──────────────────────────────── */
+.nl-treemap-legend {{
+    display: flex;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    padding: 0.5rem 0 1rem;
+    justify-content: center;
+}}
+.nl-treemap-chip {{
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.25rem 0.875rem;
+    border-radius: 999px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    font-weight: 500;
+    background: var(--surface-high);
+    border: 1px solid var(--card-border);
+    color: var(--muted);
+}}
+.nl-treemap-chip::before {{
+    content: '';
+    display: inline-block;
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    flex-shrink: 0;
+}}
+.nl-treemap-chip--excellent::before {{ background: var(--teal-light); }}
+.nl-treemap-chip--good::before {{ background: var(--gold-light); }}
+.nl-treemap-chip--poor::before {{ background: var(--rose-light); }}
 
 /* ── CSS Tooltips via data-tooltip ─────────────────────── */
 [data-tooltip] {{ position: relative; cursor: help; }}
@@ -2252,66 +3199,358 @@ _CSS_UX_ENHANCEMENTS = """
 .nl-failure-summary {{ color: var(--muted); font-size: 13px; cursor: pointer; }}
 .nl-failure-detail-list {{ margin-top: 8px; }}
 
-/* ── Alerta cards ─────────────────────────────────────── */
+/* ══ Alerta cards — sistema unificado v2 (Material 3 / Linear) ── */
 .nl-alerta-heading {{
     color: var(--rose);
     margin-bottom: 12px;
     display: flex;
     align-items: center;
     gap: 8px;
+    text-align: left;
 }}
-.nl-alerta-card-inner {{ flex: 1; min-width: 0; margin-right: 16px; }}
-.nl-alerta-card-score-col {{ flex-shrink: 0; }}
-.nl-alerta-card-actions {{
-    padding-top: 20px;
+
+/* Grid de tarjetas: filas auto-equalizan altura */
+.nl-alerta-grid {{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 20px;
+    margin-bottom: 8px;
+}}
+
+/* Tarjeta raíz: altura uniforme + columna + alineación forzada */
+.nl-alerta-card {{
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    padding: 0;
+    margin-bottom: 0;
+    height: 100%;
+    min-height: 460px;
+    text-align: left;
+}}
+.nl-alerta-card *,
+.nl-alerta-card *::before,
+.nl-alerta-card *::after {{ text-align: inherit; }}
+.nl-alerta-card .nl-alerta-card-score-col,
+.nl-alerta-card .nl-alerta-card-score-col * {{ text-align: right; }}
+.nl-alerta-card .nl-alerta-dim-val {{ text-align: right; }}
+
+.nl-alerta-card-body {{
+    padding: 20px 22px;
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    gap: 18px;
+}}
+
+/* Cabecera: título + score (alineación a baseline para evitar huecos) */
+.nl-alerta-card-head {{
+    display: grid;
+    grid-template-columns: 1fr auto;
+    align-items: start;
+    gap: 16px;
+    min-height: 88px;
+}}
+.nl-alerta-card-inner {{
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}}
+
+/* Eyebrow categoría */
+.nl-alerta-eyebrow {{
+    font-family: 'DM Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold-light);
+    line-height: 1;
+    margin-bottom: 2px;
+}}
+
+.nl-alerta-title {{
+    font-family: 'Playfair Display', serif;
+    font-size: 1.0625rem;
+    font-weight: 700;
+    line-height: 1.3;
+    letter-spacing: -0.005em;
+    color: var(--cream);
+    margin: 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    word-break: break-word;
+}}
+.nl-alerta-org {{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
+    color: var(--muted);
+    margin: 2px 0 0;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}}
+.nl-alerta-card-score-col {{
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 4px;
+    min-width: 96px;
+}}
+.nl-alerta-score-unit {{
+    font-size: 0.5em;
+    font-weight: 500;
+    color: var(--muted);
+    margin-left: 2px;
+    letter-spacing: 0;
+}}
+
+/* Severidad */
+.nl-alerta-sev {{
+    display: inline-flex;
+    align-items: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.5625rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 9999px;
+    border: 1px solid transparent;
+    line-height: 1.4;
+}}
+.nl-alerta-sev--ok       {{ color: var(--teal-light); background: rgba(42,122,111,0.12); border-color: rgba(42,122,111,0.35); }}
+.nl-alerta-sev--warn     {{ color: var(--gold-light); background: rgba(200,151,58,0.12); border-color: rgba(200,151,58,0.35); }}
+.nl-alerta-sev--critical {{ color: var(--rose-light); background: rgba(184,92,110,0.12); border-color: rgba(184,92,110,0.35); }}
+
+/* Lista de dimensiones — filas inline uniformes (no grid) */
+.nl-alerta-dim-list {{
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 14px 0;
     border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
 }}
+
+/* Acciones (recomendaciones) — flex 1 empuja footer abajo */
+.nl-alerta-card-actions {{
+    padding-top: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+}}
+.nl-alerta-card-actions .kpi-label {{
+    margin: 0 0 4px;
+    font-size: 0.625rem;
+    letter-spacing: 0.1em;
+}}
+
+/* Pie con CTA */
 .nl-alerta-card-footer {{
     background: var(--surface-alt);
     border-top: 1px solid var(--card-border);
+    padding: 12px 22px;
 }}
 .nl-alerta-card-link {{
     color: var(--gold-light);
+    font-family: 'DM Sans', sans-serif;
     font-weight: 600;
-    font-size: 14px;
+    font-size: 0.8125rem;
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
 }}
 .nl-alerta-card-link:hover {{ color: var(--gold); text-decoration: none; }}
 
-/* ── Dimension bars in alerta cards ──────────────────── */
-.nl-alerta-dim-row {{ margin-bottom: 12px; }}
-.nl-alerta-dim-head {{
-    display: flex;
-    justify-content: space-between;
-    font-size: 11px;
-    font-weight: 700;
-    color: var(--muted);
-    margin-bottom: 5px;
+/* Filas inline de dimensión: label · barra · valor */
+.nl-alerta-dim-row {{
+    display: grid;
+    grid-template-columns: 96px 1fr 40px;
+    align-items: center;
+    gap: 10px;
 }}
-.nl-bar-critical {{ background: var(--rose); }}
-.nl-bar-warn     {{ background: var(--gold); }}
-.nl-bar-ok       {{ background: var(--teal); }}
-
-/* ── Recommendation items in alerta cards ───────────── */
+.nl-alerta-dim-label {{
+    font-family: 'DM Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    color: var(--muted);
+    text-transform: uppercase;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}}
+.nl-alerta-dim-bar {{
+    height: 5px;
+    border-radius: 3px;
+}}
+.nl-alerta-dim-val {{
+    font-family: 'DM Mono', monospace;
+    font-variant-numeric: tabular-nums;
+    font-size: 0.6875rem;
+    font-weight: 700;
+    color: var(--cream);
+}}
+/* Items de recomendación */
+.nl-alerta-rec-list {{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}}
 .nl-alerta-rec-item {{
     display: flex;
-    gap: 12px;
-    font-size: 13px;
+    align-items: flex-start;
+    gap: 10px;
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.75rem;
     color: var(--cream);
-    line-height: 1.6;
-    margin-bottom: 8px;
+    line-height: 1.5;
+    margin: 0;
 }}
+.nl-alerta-rec-text {{ flex: 1; min-width: 0; }}
 .nl-alerta-rec-num {{
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
-    font-size: 10px;
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.625rem;
+    font-weight: 700;
     border-radius: 50%;
     background: var(--surface-alt);
+    color: var(--gold-light);
+    border: 1px solid var(--card-border);
     display: flex;
     align-items: center;
     justify-content: center;
     flex-shrink: 0;
+    margin-top: 1px;
+}}
+
+/* Banner icon (reemplaza style="font-size:..." inline) */
+.nl-alert-banner-icon {{ font-size: 28px; line-height: 1; }}
+.nl-alert-banner-icon--lg {{ font-size: 32px; line-height: 1; }}
+
+/* Score: tamaño moderado dentro del card (era 2.5rem por defecto) */
+.nl-alerta-card .alert-score {{
+    font-size: 1.75rem;
+    line-height: 1;
+    color: var(--rose-light);
+    letter-spacing: -0.02em;
+}}
+.nl-alerta-card .nl-alerta-card-score-col .kpi-label {{
+    font-size: 0.5625rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 1.2;
+}}
+
+@media (max-width: 600px) {{
+    .nl-alerta-card {{ min-height: 0; }}
+    .nl-alerta-card-body {{ padding: 18px; gap: 16px; }}
+    .nl-alerta-card-footer {{ padding: 12px 18px; }}
+    .nl-alerta-card .alert-score {{ font-size: 1.5rem; }}
+    .nl-alerta-card-score-col {{ min-width: 80px; }}
+    .nl-alerta-card-head {{ min-height: 0; }}
+    .nl-alerta-dim-row {{ grid-template-columns: 84px 1fr 36px; }}
+}}
+
+/* ── Accordion list wrapper ────────────────────────────────── */
+.nl-alerta-accordion-list {{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 24px;
+}}
+
+/* ── Accordion alerta cards (collapsible details/summary) ── */
+.nl-alerta-accordion {{
+    border: 1px solid rgba(184,92,110,0.25);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface-elevated);
+    transition: border-color 0.2s ease;
+    margin-bottom: 8px;
+}}
+.nl-alerta-accordion[open] {{
+    border-color: rgba(184,92,110,0.45);
+    box-shadow: 0 0 0 1px rgba(184,92,110,0.12);
+}}
+.nl-alerta-summary {{
+    list-style: none;
+    cursor: pointer;
+    padding: 18px 20px;
+    user-select: none;
+    -webkit-user-select: none;
+    transition: background 0.15s ease;
+}}
+.nl-alerta-summary::-webkit-details-marker {{ display: none; }}
+.nl-alerta-summary::marker {{ display: none; }}
+.nl-alerta-summary:hover {{ background: rgba(184,92,110,0.04); }}
+.nl-alerta-summary-inner {{
+    display: grid;
+    grid-template-columns: 1fr auto 28px;
+    align-items: center;
+    gap: 16px;
+}}
+.nl-alerta-summary-meta {{ min-width: 0; }}
+.nl-alerta-summary-score {{
+    text-align: right;
+    flex-shrink: 0;
+}}
+.nl-alerta-accordion .alert-score {{
+    font-size: 1.625rem;
+    line-height: 1;
+    color: var(--rose-light);
+    letter-spacing: -0.02em;
+}}
+.nl-alerta-accordion .kpi-label {{
+    font-size: 0.5625rem;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    line-height: 1.3;
+    margin: 3px 0 4px;
+}}
+.nl-alerta-chevron {{
+    font-size: 20px;
+    color: var(--muted);
+    transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}}
+.nl-alerta-accordion[open] .nl-alerta-chevron {{ transform: rotate(180deg); }}
+.nl-alerta-detail {{
+    border-top: 1px solid var(--card-border);
+    padding: 20px 20px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}}
+.nl-alerta-detail .nl-alerta-dim-list {{ margin-bottom: 16px; }}
+.nl-alerta-detail .nl-alerta-card-actions {{ flex: 1; padding-top: 0; margin-bottom: 16px; }}
+.nl-alerta-detail .nl-alerta-card-footer {{
+    margin: 0 -20px;
+    border-radius: 0;
+}}
+
+@media (max-width: 600px) {{
+    .nl-alerta-summary-inner {{ grid-template-columns: 1fr auto 24px; gap: 10px; }}
+    .nl-alerta-accordion .alert-score {{ font-size: 1.375rem; }}
+    .nl-alerta-summary {{ padding: 16px; }}
+    .nl-alerta-detail {{ padding: 16px 16px 0; }}
+    .nl-alerta-detail .nl-alerta-card-footer {{ margin: 0 -16px; }}
 }}
 """
 
@@ -2340,7 +3579,7 @@ _CSS_APP_STORE = """
     display: flex;
     flex-direction: column;
     gap: 16px;
-    transition: all 0.3s var(--ease-spring);
+    transition: all 0.3s var(--ease-out-expo);
     position: relative;
     overflow: hidden;
     height: 100%;
@@ -2472,6 +3711,7 @@ _CSS_UTILITIES = """
 /* ══ UTILITIES ════════════════════════════════════════════ */
 .d-flex { display: flex; }
 .align-center { align-items: center; }
+.align-start  { align-items: flex-start; }
 .justify-between { justify-content: space-between; }
 .gap-2 { gap: 8px; }
 .gap-3 { gap: 12px; }
@@ -2582,6 +3822,14 @@ _CSS_UTILITIES = """
     letter-spacing: 0.08em;
     margin-top: 4px;
 }}
+@keyframes ring-draw {{
+    from {{ stroke-dashoffset: 339.3; }}
+    to   {{ stroke-dashoffset: 0; }}
+}}
+.score-ring-arc {{
+    stroke-dashoffset: 339.3;
+    animation: ring-draw 1.2s var(--ease-out-expo) 0.3s both;
+}}
 """
 
 
@@ -2608,6 +3856,8 @@ def inject_design_system(theme: str = "dark") -> str:
         _CSS_TOPBAR,
         _CSS_SIDEBAR,
         _CSS_LAYOUT,
+        _CSS_EDITORIAL,
+        _CSS_SECTIONS,
         _CSS_TYPOGRAPHY,
         _CSS_CARDS,
         _CSS_KPI,
@@ -2646,10 +3896,14 @@ def inject_design_system(theme: str = "dark") -> str:
         resolved.append(b.replace("{{", "{").replace("}}", "}"))
     css_body = "\n".join(resolved)
 
-    return f"""<style>
+    return (
+        '<link rel="preconnect" href="https://fonts.googleapis.com">'
+        '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
+        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">'
+        f"""<style>
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200');
 :root {{ {tokens} }}
 {css_body}
 </style>"""
+    )
 
