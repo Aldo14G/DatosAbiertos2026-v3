@@ -1,15 +1,74 @@
-# Entorno virtual y temporales
+# ─── Python ──────────────────────────────────────────────
 venv/
 env/
-.env
+.venv/
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.pytest_cache/
 .ipynb_checkpoints/
+*.egg-info/
+.mypy_cache/
+.ruff_cache/
 
-# Configuración del IDE y OS
+# ─── Secrets & Credentials (NEVER commit) ────────────────
+.env
+.env.*
+!.env.example
+*-credentials*.json
+*service-account*.json
+*.pem
+*.key
+secrets/
+firebase-adminsdk-*.json
+
+# ─── IDE / OS ────────────────────────────────────────────
 .vscode/
 .idea/
 .DS_Store
+Thumbs.db
+*.swp
+*~
 
-# Streamlit
-.streamlit/
+# ─── Editor temp/swap files ──────────────────────────────
+*.tmp.*
+*.bak
+*.orig
+
+# ─── Streamlit ───────────────────────────────────────────
+.streamlit/secrets.toml
+
+# ─── AI agents / local caches (NOT for production) ───────
+.antigravity/
+.claude/
+.gemini/
+.agent/
+skills-lock.json
+
+# ─── Pipeline runtime artifacts (regenerable) ───────────
+data/parquet/
+snapshots/
+*.parquet.crc
+
+# ─── Node / Next.js (landing/) ───────────────────────────
+node_modules/
+.next/
+out/
+landing/.next/
+landing/out/
+landing/node_modules/
+*.tsbuildinfo
+.npm
+
+# ─── Logs ────────────────────────────────────────────────
+*.log
+logs/
+
+# ─── Docker (don't ignore Dockerfile itself) ─────────────
+.docker/
+
+# ─── Coverage ────────────────────────────────────────────
+.coverage
+htmlcov/
+coverage.xml
