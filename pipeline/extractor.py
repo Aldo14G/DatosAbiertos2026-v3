@@ -20,6 +20,7 @@ from pathlib import Path
 import time
 import chardet
 import re
+from pipeline.aesthetics import DataAesthetics
 
 # ============================================================
 # MODELOS DE DATOS
@@ -256,22 +257,20 @@ class ExtractorCKAN:
         offset = 0
         batch_limit = 100
 
-        self.logger.info("Obteniendo lista de datasets...")
+        DataAesthetics.print_log("Obteniendo lista de datasets...", "info")
         try:
             # Intentar obtener la lista completa de nombres primero
             lista_completa = self._llamar_api(
                 "package_list", {"limit": 100000}
             )
             total_disponible = len(lista_completa)
-            self.logger.info(
-                f"Total de datasets en catálogo: {total_disponible}"
-            )
+            DataAesthetics.print_log(f"Total de datasets en catálogo: {total_disponible}", "info")
             
             # Si hay límite, solo procesamos los primeros N nombres
             nombres_a_procesar = lista_completa
             if limite > 0:
                 nombres_a_procesar = lista_completa[:limite]
-                self.logger.info(f"Limitando descubrimiento a los primeros {limite} datasets.")
+                DataAesthetics.print_log(f"Limitando descubrimiento a los primeros {limite} datasets.", "warning")
 
             for i, nombre_dataset in enumerate(nombres_a_procesar):
                 try:
@@ -282,9 +281,7 @@ class ExtractorCKAN:
                     datasets.append(dataset)
 
                     if (i + 1) % 50 == 0:
-                        self.logger.info(
-                            f"Descubiertos {i+1}/{len(nombres_a_procesar)} datasets"
-                        )
+                        DataAesthetics.print_log(f"Descubiertos {i+1}/{len(nombres_a_procesar)} datasets", "info")
                     time.sleep(0.1)
                 except Exception as e:
                     self.logger.warning(
@@ -293,7 +290,7 @@ class ExtractorCKAN:
                     continue
         except Exception:
             # Fallback a package_search si package_list falla
-            self.logger.info("Fallback a package_search...")
+            DataAesthetics.print_log("Fallback a package_search...", "info")
             count_resp = self._llamar_api(
                 "package_search", {"rows": 0}
             )
@@ -322,9 +319,7 @@ class ExtractorCKAN:
                             break
 
                     offset += batch_limit
-                    self.logger.info(
-                        f"Descubiertos {len(datasets)}/{a_descubrir}"
-                    )
+                    DataAesthetics.print_log(f"Descubiertos {len(datasets)}/{a_descubrir}", "info")
                     time.sleep(0.3)
 
                 except Exception as e:
@@ -332,6 +327,270 @@ class ExtractorCKAN:
                     break
 
         return datasets
+
+    def _parsear_dataset_ckan(self, raw: Dict) -> DatasetDescubierto:
+        """Convierte respuesta CKAN cruda a modelo DatasetDescubierto."""
+        recursos = []
+        for r in raw.get("resources", []):
+            formato_str = (r.get("format", "") or "").upper().strip()
+            formato = self._mapear_formato(formato_str)
+
+            recurso = RecursoDescubierto(
+                recurso_id=r.get("id", ""),
+                nombre=r.get("name", r.get("description", "Sin nombre")),
+                url_descarga=r.get("url", ""),
+                formato=formato,
+                tamano_bytes=r.get("size"),
+                ultima_modificacion=r.get("last_modified") or r.get("created"),
+                descripcion=r.get("description", ""),
+                mimetype=r.get("mimetype", ""),
+            )
+            recursos.append(recurso)
+
+        org = raw.get("organization", {})
+        org_nombre = org.get("title", org.get("name", "")) if org else ""
+
+        etiquetas = [
+            t.get("display_name", t.get("name", ""))
+            for t in raw.get("tags", [])
+        ]
+
+        grupos = raw.get("groups", [])
+        categoria = (
+            grupos[0].get("display_name", grupos[0].get("title", ""))
+            if grupos else None
+        )
+
+        return DatasetDescubierto(
+            dataset_id=raw.get("id", ""),
+            nombre=raw.get("name", ""),
+            titulo=raw.get("title", ""),
+            descripcion=raw.get("notes", ""),
+            organizacion=org_nombre,
+            categoria=categoria,
+            etiquetas=etiquetas,
+            licencia=raw.get("license_title", ""),
+            frecuencia_actualizacion=raw.get("frequency", raw.get("extras", {})),
+            fecha_creacion=raw.get("metadata_created", ""),
+            fecha_modificacion=raw.get("metadata_modified", ""),
+            recursos=recursos,
+            metadatos_extra={
+                k: v for k, v in raw.items()
+                if k not in [
+                    "resources", "organization", "tags",
+                    "groups", "id", "name", "title", "notes"
+                ]
+            },
+            url_origen=raw.get("url", ""),
+        )
+
+    @staticmethod
+    def _mapear_formato(formato_str: str) -> FormatoDataset:
+        """Mapea string de formato a enum."""
+        mapa = {
+            "CSV": FormatoDataset.CSV,
+            "JSON": FormatoDataset.JSON,
+            "XML": FormatoDataset.XML,
+            "XLSX": FormatoDataset.XLSX,
+            "XLS": FormatoDataset.XLS,
+            "PDF": FormatoDataset.PDF,
+            "GEOJSON": FormatoDataset.GEOJSON,
+            "KML": FormatoDataset.KML,
+            "SHP": FormatoDataset.SHP,
+            "SHAPEFILE": FormatoDataset.SHP,
+            "API": FormatoDataset.API,
+            ".CSV": FormatoDataset.CSV,
+        }
+        return mapa.get(formato_str, FormatoDataset.DESCONOCIDO)
+# ============================================================
+# ORQUESTADOR PRINCIPAL DE SKILL 1
+# ============================================================
+
+class SkillExtractorDatasets:
+    """
+    Skill principal de extracción de datasets.
+    Punto de entrada para el framework multi-agente.
+    """
+
+    def __init__(self, config: Dict = None):
+        self.config = config or {}
+        self.logger = logging.getLogger("SkillExtractor")
+
+    def ejecutar(self, url: str, limite_datasets: int = 0) -> Dict[str, Any]:
+        """Punto de entrada principal."""
+        DataAesthetics.print_log(f"═══ INICIANDO EXTRACCIÓN: {url} ═══", "primary")
+
+        manifiesto = ManifiestoExtraccion(
+            url_origen=url,
+            plataforma_detectada=TipoPlataforma.DESCONOCIDO,
+            timestamp_inicio=datetime.now(timezone.utc).isoformat(),
+        )
+
+        DataAesthetics.print_log("FASE 1: Detectando plataforma...", "info")
+        tipo_plataforma, info_plataforma = DetectorPlataforma.detectar(url)
+        manifiesto.plataforma_detectada = tipo_plataforma
+        DataAesthetics.print_log(f"Plataforma detectada: {tipo_plataforma.value}", "success")
+
+        DataAesthetics.print_log("FASE 2: Descubriendo datasets...", "info")
+        datasets_descubiertos = self._descubrir(tipo_plataforma, info_plataforma, url, limite=limite_datasets)
+        
+        # Aplicar límite si se especifica
+        if limite_datasets > 0:
+            datasets_descubiertos = datasets_descubiertos[:limite_datasets]
+            DataAesthetics.print_log(f"Límite aplicado: {limite_datasets} datasets.", "warning")
+
+        manifiesto.total_datasets_descubiertos = len(datasets_descubiertos)
+        manifiesto.total_recursos_descubiertos = sum(len(d.recursos) for d in datasets_descubiertos)
+        DataAesthetics.print_log(
+            f"Procesando: {manifiesto.total_datasets_descubiertos} datasets, "
+            f"{manifiesto.total_recursos_descubiertos} recursos", "info"
+        )
+
+        DataAesthetics.print_log("FASE 3: Extrayendo recursos...", "info")
+        motor = MotorDescarga()
+        resultados = []
+
+        for i, dataset in enumerate(datasets_descubiertos):
+            DataAesthetics.print_log(f"Procesando dataset {i+1}/{len(datasets_descubiertos)}: {dataset.titulo}", "info")
+
+            # SELECCIÓN DE RECURSO: Priorizar datos reales sobre diccionarios
+            mejor_recurso = self._seleccionar_mejor_recurso(dataset.recursos)
+            
+            if mejor_recurso:
+                DataAesthetics.print_log(f"  -> Extrayendo mejor recurso: {mejor_recurso.nombre} ({mejor_recurso.formato.value})", "success")
+                resultado = motor.extraer_recurso(mejor_recurso, dataset.dataset_id)
+                resultados.append(resultado)
+
+                if resultado.estado == EstadoExtraccion.EXITOSO:
+                    manifiesto.datasets_exitosos += 1
+                elif resultado.estado == EstadoExtraccion.PARCIAL:
+                    manifiesto.datasets_parciales += 1
+                else:
+                    manifiesto.datasets_fallidos += 1
+            else:
+                DataAesthetics.print_log(f"  x No se encontró recurso apto para extracción en {dataset.titulo}", "warning")
+
+            time.sleep(0.3)
+
+        manifiesto.resultados = resultados
+        manifiesto.total_datasets_extraidos = len({r.dataset_id for r in resultados})
+        manifiesto.total_recursos_extraidos = len(resultados)
+        manifiesto.total_registros_extraidos = sum(r.registros_extraidos for r in resultados)
+        manifiesto.total_bytes_descargados = sum(r.tamano_bytes_descargado for r in resultados)
+
+        DataAesthetics.print_log("FASE 4: Validando completitud...", "info")
+        reporte_validacion = ValidadorCompletitud.validar(
+            datasets_descubiertos, resultados, manifiesto
+        )
+
+        manifiesto.timestamp_fin = datetime.now(timezone.utc).isoformat()
+
+        output = {
+            "manifiesto": asdict(manifiesto),
+            "datasets_descubiertos": [asdict(d) for d in datasets_descubiertos],
+            "resultados_extraccion": self._serializar_resultados(resultados),
+            "validacion_completitud": reporte_validacion,
+            "datos_extraidos": self._empaquetar_datos(resultados, datasets_descubiertos),
+        }
+
+        DataAesthetics.print_log(f"═══ EXTRACCIÓN COMPLETADA: {manifiesto.total_datasets_extraidos} datasets ═══", "success")
+        return output
+
+    def _seleccionar_mejor_recurso(self, recursos: List[RecursoDescubierto]) -> Optional[RecursoDescubierto]:
+        """
+        Selecciona el recurso con más probabilidad de ser el dataset principal.
+        Evita PDFs, diccionarios y metadatos.
+        """
+        if not recursos:
+            return None
+
+        # 1. Filtrar formatos soportados y no PDF
+        candidatos = [
+            r for r in recursos 
+            if r.formato not in [FormatoDataset.PDF, FormatoDataset.DESCONOCIDO]
+        ]
+        
+        if not candidatos:
+            return None
+
+        # 2. Puntuación de candidatos
+        def puntuar(r: RecursoDescubierto) -> float:
+            score = 0.0
+            nombre_desc = (r.nombre + " " + (r.descripcion or "")).lower()
+            
+            # Formatos preferidos
+            if r.formato == FormatoDataset.CSV: score += 50
+            elif r.formato == FormatoDataset.XLSX: score += 40
+            elif r.formato == FormatoDataset.JSON: score += 30
+            
+            # Penalizar diccionarios/metadatos
+            keywords_ruido = ["diccionario", "glosario", "metadatos", "estructura", "catalogo", "catalogos"]
+            if any(k in nombre_desc for k in keywords_ruido):
+                score -= 100
+                
+            # Bonus por tamaño (si está disponible)
+            if r.tamano_bytes:
+                score += min(20, r.tamano_bytes / 1024 / 1024) # Max 20 pts por MB
+                
+            return score
+
+        candidatos.sort(key=puntuar, reverse=True)
+        return candidatos[0]
+
+    def _descubrir(self, plataforma: TipoPlataforma, info: Dict, url: str, limite: int = 0) -> List[DatasetDescubierto]:
+        if plataforma == TipoPlataforma.CKAN:
+            extractor = ExtractorCKAN(info["api_base"])
+            return extractor.descubrir_datasets(limite=limite)
+        else:
+            parsed = urlparse(url)
+            base = f"{parsed.scheme}://{parsed.netloc}/api/3/action"
+            extractor = ExtractorCKAN(base)
+            try:
+                return extractor.descubrir_datasets(limite=limite)
+            except Exception as e:
+                self.logger.error(f"Fallback CKAN falló: {e}")
+                return []
+
+    def _serializar_resultados(self, resultados: List[ResultadoExtraccionRecurso]) -> List[Dict]:
+        return [{
+            "recurso_id": r.recurso_id, "dataset_id": r.dataset_id,
+            "estado": r.estado.value, "formato_detectado": r.formato_detectado.value,
+            "registros_extraidos": r.registros_extraidos, "columnas": r.columnas,
+            "tamano_bytes_descargado": r.tamano_bytes_descargado, "hash_contenido": r.hash_contenido,
+            "encoding_detectado": r.encoding_detectado, "errores": r.errores,
+            "advertencias": r.advertencias, "timestamp_extraccion": r.timestamp_extraccion,
+            "tiempo_extraccion_seg": r.tiempo_extraccion_seg,
+        } for r in resultados]
+
+    def _empaquetar_datos(
+        self, resultados: List[ResultadoExtraccionRecurso], datasets: List[DatasetDescubierto]
+    ) -> Dict[str, Any]:
+        dataset_map = {d.dataset_id: d for d in datasets}
+        paquete = {}
+
+        for resultado in resultados:
+            if resultado.datos is None:
+                continue
+
+            dataset_info = dataset_map.get(resultado.dataset_id)
+            clave = f"{resultado.dataset_id}__{resultado.recurso_id}"
+
+            paquete[clave] = {
+                "dataframe": resultado.datos,
+                "metadata": {
+                    "dataset_id": resultado.dataset_id, "recurso_id": resultado.recurso_id,
+                    "titulo_dataset": dataset_info.titulo if dataset_info else "",
+                    "descripcion": dataset_info.descripcion if dataset_info else "",
+                    "organizacion": dataset_info.organizacion if dataset_info else "",
+                    "categoria": dataset_info.categoria if dataset_info else "",
+                    "formato": resultado.formato_detectado.value,
+                    "registros": resultado.registros_extraidos, "columnas": resultado.columnas,
+                    "hash": resultado.hash_contenido, "encoding": resultado.encoding_detectado,
+                    "timestamp_extraccion": resultado.timestamp_extraccion,
+                },
+            }
+
+        return paquete
 
     def _parsear_dataset_ckan(self, raw: Dict) -> DatasetDescubierto:
         """Convierte respuesta CKAN cruda a modelo DatasetDescubierto."""
@@ -826,198 +1085,3 @@ class ValidadorCompletitud:
         reporte["completitud_global"]["total_bytes_legible"] = f"{total_bytes / 1024 / 1024:.2f} MB"
 
         return reporte
-
-# ============================================================
-# ORQUESTADOR PRINCIPAL DE SKILL 1
-# ============================================================
-
-class SkillExtractorDatasets:
-    """
-    Skill principal de extracción de datasets.
-    Punto de entrada para el framework multi-agente.
-    """
-
-    def __init__(self, config: Dict = None):
-        self.config = config or {}
-        self.logger = logging.getLogger("SkillExtractor")
-        logging.basicConfig(
-            level=logging.INFO,
-            format="%(asctime)s [%(name)s] %(levelname)s: %(message)s"
-        )
-
-    def ejecutar(self, url: str, limite_datasets: int = 0) -> Dict[str, Any]:
-        """Punto de entrada principal."""
-        self.logger.info(f"═══ INICIANDO EXTRACCIÓN: {url} ═══")
-
-        manifiesto = ManifiestoExtraccion(
-            url_origen=url,
-            plataforma_detectada=TipoPlataforma.DESCONOCIDO,
-            timestamp_inicio=datetime.now(timezone.utc).isoformat(),
-        )
-
-        self.logger.info("FASE 1: Detectando plataforma...")
-        tipo_plataforma, info_plataforma = DetectorPlataforma.detectar(url)
-        manifiesto.plataforma_detectada = tipo_plataforma
-        self.logger.info(f"Plataforma detectada: {tipo_plataforma.value}")
-
-        self.logger.info("FASE 2: Descubriendo datasets...")
-        datasets_descubiertos = self._descubrir(tipo_plataforma, info_plataforma, url, limite=limite_datasets)
-        
-        # Aplicar límite si se especifica
-        if limite_datasets > 0:
-            datasets_descubiertos = datasets_descubiertos[:limite_datasets]
-            self.logger.info(f"Límite aplicado: {limite_datasets} datasets.")
-
-        manifiesto.total_datasets_descubiertos = len(datasets_descubiertos)
-        manifiesto.total_recursos_descubiertos = sum(len(d.recursos) for d in datasets_descubiertos)
-        self.logger.info(
-            f"Procesando: {manifiesto.total_datasets_descubiertos} datasets, "
-            f"{manifiesto.total_recursos_descubiertos} recursos"
-        )
-
-        self.logger.info("FASE 3: Extrayendo recursos...")
-        motor = MotorDescarga()
-        resultados = []
-
-        for i, dataset in enumerate(datasets_descubiertos):
-            self.logger.info(f"Procesando dataset {i+1}/{len(datasets_descubiertos)}: {dataset.titulo}")
-
-            # SELECCIÓN DE RECURSO: Priorizar datos reales sobre diccionarios
-            mejor_recurso = self._seleccionar_mejor_recurso(dataset.recursos)
-            
-            if mejor_recurso:
-                self.logger.info(f"  -> Extrayendo mejor recurso: {mejor_recurso.nombre} ({mejor_recurso.formato.value})")
-                resultado = motor.extraer_recurso(mejor_recurso, dataset.dataset_id)
-                resultados.append(resultado)
-
-                if resultado.estado == EstadoExtraccion.EXITOSO:
-                    manifiesto.datasets_exitosos += 1
-                elif resultado.estado == EstadoExtraccion.PARCIAL:
-                    manifiesto.datasets_parciales += 1
-                else:
-                    manifiesto.datasets_fallidos += 1
-            else:
-                self.logger.warning(f"  x No se encontró recurso apto para extraction en {dataset.titulo}")
-
-            time.sleep(0.3)
-
-        manifiesto.resultados = resultados
-        manifiesto.total_datasets_extraidos = len({r.dataset_id for r in resultados})
-        manifiesto.total_recursos_extraidos = len(resultados)
-        manifiesto.total_registros_extraidos = sum(r.registros_extraidos for r in resultados)
-        manifiesto.total_bytes_descargados = sum(r.tamano_bytes_descargado for r in resultados)
-
-        self.logger.info("FASE 4: Validando completitud...")
-        reporte_validacion = ValidadorCompletitud.validar(
-            datasets_descubiertos, resultados, manifiesto
-        )
-
-        manifiesto.timestamp_fin = datetime.now(timezone.utc).isoformat()
-
-        output = {
-            "manifiesto": asdict(manifiesto),
-            "datasets_descubiertos": [asdict(d) for d in datasets_descubiertos],
-            "resultados_extraccion": self._serializar_resultados(resultados),
-            "validacion_completitud": reporte_validacion,
-            "datos_extraidos": self._empaquetar_datos(resultados, datasets_descubiertos),
-        }
-
-        self.logger.info("═══ EXTRACCIÓN COMPLETADA ═══")
-        self.logger.info(f"  Datasets: {manifiesto.total_datasets_extraidos}")
-        return output
-
-    def _seleccionar_mejor_recurso(self, recursos: List[RecursoDescubierto]) -> Optional[RecursoDescubierto]:
-        """
-        Selecciona el recurso con más probabilidad de ser el dataset principal.
-        Evita PDFs, diccionarios y metadatos.
-        """
-        if not recursos:
-            return None
-
-        # 1. Filtrar formatos soportados y no PDF
-        candidatos = [
-            r for r in recursos 
-            if r.formato not in [FormatoDataset.PDF, FormatoDataset.DESCONOCIDO]
-        ]
-        
-        if not candidatos:
-            return None
-
-        # 2. Puntuación de candidatos
-        def puntuar(r: RecursoDescubierto) -> float:
-            score = 0.0
-            nombre_desc = (r.nombre + " " + (r.descripcion or "")).lower()
-            
-            # Formatos preferidos
-            if r.formato == FormatoDataset.CSV: score += 50
-            elif r.formato == FormatoDataset.XLSX: score += 40
-            elif r.formato == FormatoDataset.JSON: score += 30
-            
-            # Penalizar diccionarios/metadatos
-            keywords_ruido = ["diccionario", "glosario", "metadatos", "estructura", "catalogo", "catalogos"]
-            if any(k in nombre_desc for k in keywords_ruido):
-                score -= 100
-                
-            # Bonus por tamaño (si está disponible)
-            if r.tamano_bytes:
-                score += min(20, r.tamano_bytes / 1024 / 1024) # Max 20 pts por MB
-                
-            return score
-
-        candidatos.sort(key=puntuar, reverse=True)
-        return candidatos[0]
-
-    def _descubrir(self, plataforma: TipoPlataforma, info: Dict, url: str, limite: int = 0) -> List[DatasetDescubierto]:
-        if plataforma == TipoPlataforma.CKAN:
-            extractor = ExtractorCKAN(info["api_base"])
-            return extractor.descubrir_datasets(limite=limite)
-        else:
-            parsed = urlparse(url)
-            base = f"{parsed.scheme}://{parsed.netloc}/api/3/action"
-            extractor = ExtractorCKAN(base)
-            try:
-                return extractor.descubrir_datasets(limite=limite)
-            except Exception as e:
-                self.logger.error(f"Fallback CKAN falló: {e}")
-                return []
-
-    def _serializar_resultados(self, resultados: List[ResultadoExtraccionRecurso]) -> List[Dict]:
-        return [{
-            "recurso_id": r.recurso_id, "dataset_id": r.dataset_id,
-            "estado": r.estado.value, "formato_detectado": r.formato_detectado.value,
-            "registros_extraidos": r.registros_extraidos, "columnas": r.columnas,
-            "tamano_bytes_descargado": r.tamano_bytes_descargado, "hash_contenido": r.hash_contenido,
-            "encoding_detectado": r.encoding_detectado, "errores": r.errores,
-            "advertencias": r.advertencias, "timestamp_extraccion": r.timestamp_extraccion,
-            "tiempo_extraccion_seg": r.tiempo_extraccion_seg,
-        } for r in resultados]
-
-    def _empaquetar_datos(
-        self, resultados: List[ResultadoExtraccionRecurso], datasets: List[DatasetDescubierto]
-    ) -> Dict[str, Any]:
-        dataset_map = {d.dataset_id: d for d in datasets}
-        paquete = {}
-
-        for resultado in resultados:
-            if resultado.datos is None:
-                continue
-
-            dataset_info = dataset_map.get(resultado.dataset_id)
-            clave = f"{resultado.dataset_id}__{resultado.recurso_id}"
-
-            paquete[clave] = {
-                "dataframe": resultado.datos,
-                "metadata": {
-                    "dataset_id": resultado.dataset_id, "recurso_id": resultado.recurso_id,
-                    "titulo_dataset": dataset_info.titulo if dataset_info else "",
-                    "descripcion": dataset_info.descripcion if dataset_info else "",
-                    "organizacion": dataset_info.organizacion if dataset_info else "",
-                    "categoria": dataset_info.categoria if dataset_info else "",
-                    "formato": resultado.formato_detectado.value,
-                    "registros": resultado.registros_extraidos, "columnas": resultado.columnas,
-                    "hash": resultado.hash_contenido, "encoding": resultado.encoding_detectado,
-                    "timestamp_extraccion": resultado.timestamp_extraccion,
-                },
-            }
-
-        return paquete

@@ -17,6 +17,8 @@ import json
 import hashlib
 import logging
 import os
+from pipeline.aesthetics import DataAesthetics
+from config import CLASIFICACION_DEFAULT, CLASIFICACION_THRESHOLDS
 
 # Intento de importar Vertex AI para análisis semántico
 try:
@@ -144,7 +146,7 @@ class AnalizadorSemanticoIA:
             self.initialized = True
             return True
         except Exception as e:
-            self.logger.warning(f"No se pudo inicializar Vertex AI: {e}")
+            # Silencioso en aesthetics, ruidoso en logger si es necesario
             return False
 
     def analizar_discrepancia(
@@ -231,7 +233,7 @@ class AnalizadorSemanticoIA:
                 
             return metrica, problemas
         except Exception as e:
-            self.logger.error(f"Error en análisis semántico IA: {e}")
+            self.logger.error("Error en análisis semántico IA: %s", e)
             return None, []
 
 class AnalizadorISO25012:
@@ -722,16 +724,21 @@ class SkillEvaluadorDatos:
 
     def evaluar_catalogo(self, datos_extraidos: Dict, manifiesto: Dict, nivel: NivelAnalisis = NivelAnalisis.ESTANDAR) -> ReporteGlobal:
         """Evalúa todos los datos proporcionados desde la Skill 1."""
-        self.logger.info("Iniciando Evaluación de Calidad de Datos Completa")
+        DataAesthetics.print_log("Iniciando Evaluación de Calidad de Datos Completa", "info")
         reporte_global = ReporteGlobal(
             timestamp_evaluacion=datetime.now(timezone.utc).isoformat(),
             url_catalogo=manifiesto.get("url_origen", "Desconocida")
         )
 
+        # Verificar disponibilidad de IA una sola vez para evitar timeouts repetitivos
+        ia_activa = self.ia_semantica._init_ai()
+        if not ia_activa:
+            DataAesthetics.print_log("Análisis Semántico IA desactivado (falta de credenciales). Proceso optimizado.", "warning")
+
         for llave, payload in datos_extraidos.items():
             df = payload.get("dataframe")
             metadata = payload.get("metadata", {})
-            self.logger.info(f"Evaluando: {metadata.get('titulo_dataset')}")
+            DataAesthetics.print_log(f"Evaluando: {metadata.get('titulo_dataset')[:50]}...", "info")
             
             # Análisis ISO 25012
             m1, p1 = self.iso25012.analizar(df, metadata, nivel)
@@ -739,8 +746,11 @@ class SkillEvaluadorDatos:
             m2, p2 = self.iso8000.analizar(df, metadata, datos_extraidos)
             # Análisis DAMA
             m3, p3 = self.dama.analizar(df, metadata, manifiesto, datos_extraidos)
-            # Análisis Semántico IA (Opcional si hay credenciales)
-            m4, p4 = self.ia_semantica.analizar_discrepancia(df, metadata)
+            
+            # Análisis Semántico IA (Solo si está activa)
+            m4, p4 = None, []
+            if ia_activa:
+                m4, p4 = self.ia_semantica.analizar_discrepancia(df, metadata)
 
             metricas_totales = m1 + m2 + m3 + ([m4] if m4 else [])
             problemas_totales = p1 + p2 + p3 + p4
@@ -758,11 +768,9 @@ class SkillEvaluadorDatos:
                 
             score_global = np.mean(scores_para_global)
 
-            clasificacion = (
-                "Excelente" if score_global >= 90 else
-                "Bueno" if score_global >= 80 else
-                "Aceptable" if score_global >= 70 else
-                "Deficiente" if score_global >= 50 else "Crítico"
+            clasificacion = next(
+                (label for threshold, label in CLASIFICACION_THRESHOLDS if score_global >= threshold),
+                CLASIFICACION_DEFAULT,
             )
 
             rep_ds = ReporteDataset(
@@ -808,5 +816,5 @@ class SkillEvaluadorDatos:
             for org, scores in org_scores.items():
                 reporte_global.promedio_por_organizacion[org] = round(np.mean(scores), 2)
 
-        self.logger.info("Evaluación de Calidad Completada.")
+        DataAesthetics.print_log("Evaluación de Calidad Completada.", "success")
         return reporte_global

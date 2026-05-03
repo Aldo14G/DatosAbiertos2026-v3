@@ -1,278 +1,289 @@
 ﻿dataset,categoria,organizacion,formato,filas,columnas,modificado,frecuencia_update,descripcion_ciudadana,tags_sugeridos,comp_completitud_global_pct,acc_score_accuracy_pct,cons_score_consistency_pct,uniq_score_uniqueness_pct,time_score_timeliness_pct,doc_score_documentation_pct,open_score_openness_pct,score_global
-listado-cendis,Sin categoría,Fideicomiso BP3417 CENDIS,.CSV,13,11,2026-04-17T17:25:58.512403,,,[],100.0,94.55,100.0,100.0,100.0,80.0,60.0,93.84
-listado-de-escuelas,Sin categoría,Secretaría de Educación del Estado de Nuevo León,.CSV,1344,11,2026-04-15T22:25:48.551360,,,[],100.0,100.0,100.0,100.0,99.89,80.0,60.0,95.19
-prepa-abierta,Sin categoría,Secretaría de Educación del Estado de Nuevo León,.CSV,125,6,2026-04-15T22:25:03.942204,,,[],99.2,92.5,99.5,100.0,99.89,80.0,60.0,93.0
-prepa-abierta,Sin categoría,Secretaría de Educación del Estado de Nuevo León,.CSV,16366,6,2026-04-15T22:25:03.942204,,,[],0.03,94.17,100.0,0.0,99.89,80.0,60.0,55.75
-solicitudes-de-informacion-fid-2284-tren-suburbano,Atención Ciudadana,"Fideicomiso No. 2284 ""Tren Suburbano Villa García-Aeropuerto de Monterrey, Primera fase, Etapa 1""",CSV,16,14,2026-04-15T22:18:23.504616,,,[],14.29,91.79,100.0,0.0,99.89,60.0,100.0,60.23
-solicitudes-de-informacion-fid-2284-tren-suburbano,Atención Ciudadana,"Fideicomiso No. 2284 ""Tren Suburbano Villa García-Aeropuerto de Monterrey, Primera fase, Etapa 1""",CSV,13,6,2026-04-15T22:18:23.504616,,,[],100.0,95.0,100.0,100.0,99.89,60.0,100.0,94.74
-solicitudes-de-informacion-linea3,Sin categoría,"Fideicomiso No. 2209 ""Línea 3 del Sistema de Transporte Colectivo Metrorrey""",.CSV,69,14,2026-04-13T19:15:39.337485,,,[],13.25,90.36,100.0,0.0,99.78,60.0,60.0,56.75
-solicitudes-de-informacion-linea3,Sin categoría,"Fideicomiso No. 2209 ""Línea 3 del Sistema de Transporte Colectivo Metrorrey""",.CSV,13,6,2026-04-13T19:15:39.337485,,,[],100.0,95.0,100.0,100.0,99.78,60.0,60.0,91.94
-contrataciones-abiertas-direccion-general-de-adquisiciones-y-servicios,Administración y Finanzas,Secretaría de Administración,JSON,8148,26,2026-04-13T17:09:33.804362,,,[],96.48,95.38,77.92,100.0,99.78,80.0,100.0,92.47
-solicitudes-de-acceso-a-la-informacion-recibidas-en-la-administracion-publica-estatal,Administración y Finanzas,Contraloría y Transparencia Gubernamental,CSV,21,2,2026-04-13T15:25:02.284885,,,[],95.24,100.0,100.0,100.0,99.78,70.0,100.0,95.56
-solicitudes-de-acceso-a-la-informacion-recibidas-en-la-administracion-publica-estatal,Administración y Finanzas,Contraloría y Transparencia Gubernamental,CSV,28107,21,2026-04-13T15:25:02.284885,,,[],71.13,97.38,98.0,63.98,99.78,70.0,100.0,84.49
-estadistica-de-quejas-peticiones-sugerencias-y-o-reconocimientos-del-sistema-opinared,Asistencia Social,Contraloría y Transparencia Gubernamental,CSV,21,2,2026-04-07T16:14:24.159421,,,[],78.57,92.5,100.0,100.0,99.45,80.0,100.0,89.67
-estadistica-de-quejas-peticiones-sugerencias-y-o-reconocimientos-del-sistema-opinared,Asistencia Social,Contraloría y Transparencia Gubernamental,CSV,3218,14,2026-04-07T16:14:24.159421,,,[],99.71,100.0,88.5,68.92,99.45,80.0,100.0,93.67
-capacitaciones-fidecitrus-enero-agosto-2025,Sin categoría,Fideicomiso Para el Desarrollo de la Zona Citrícola,CSV,28,7,2026-03-30T19:35:53.309990,,,[],100.0,82.86,100.0,0.0,99.01,80.0,100.0,85.67
-capacitaciones-fidecitrus-enero-agosto-2025,Sin categoría,Fideicomiso Para el Desarrollo de la Zona Citrícola,CSV,7,2,2026-03-30T19:35:53.309990,,,[],50.0,100.0,100.0,100.0,99.01,80.0,100.0,82.95
-2025_diccionario_prestamos_ejercidos_fovileonedu,Sin categoría,Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON),.CSV,10,7,2026-03-30T16:45:50.859442,,,[],100.0,88.57,100.0,100.0,99.01,70.0,60.0,91.29
-2025_diccionario_prestamos_ejercidos_fovileonedu,Sin categoría,Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON),.CSV,7,6,2026-03-30T16:45:50.859442,,,[],83.33,94.17,100.0,100.0,99.01,70.0,60.0,87.69
-2025_prestamos_ejercidos_fovileonedo,Sin categoría,Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON),.CSV,10,7,2026-03-27T17:29:19.088177,,,[],100.0,88.57,100.0,100.0,98.85,70.0,60.0,91.28
-2025_prestamos_ejercidos_fovileonedo,Sin categoría,Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON),.CSV,7,6,2026-03-27T17:29:19.088177,,,[],83.33,94.17,100.0,100.0,98.85,70.0,60.0,87.68
-centro-estatal-de-becas,Sin categoría,Centro Estatal de Becas,.CSV,30,12,2026-03-27T17:01:56.937810,,,[],92.22,80.42,100.0,100.0,98.85,80.0,60.0,87.91
-centro-estatal-de-becas,Sin categoría,Centro Estatal de Becas,.CSV,11,6,2026-03-27T17:01:56.937810,,,[],83.33,94.17,99.5,100.0,98.85,80.0,60.0,88.61
-registros-programa-impulso-nuevo-leon,Sin categoría,Fideicomiso Fondo de Apoyo para la Creación y Consolidación del Empleo Productivo en el Estado de Nuevo León (FOCRECE),CSV,1444,10,2026-03-26T22:16:33.673346,,,[],92.31,95.0,100.0,97.78,98.79,50.0,65.0,88.75
-registros-programa-impulso-nuevo-leon,Sin categoría,Fideicomiso Fondo de Apoyo para la Creación y Consolidación del Empleo Productivo en el Estado de Nuevo León (FOCRECE),CSV,8,6,2026-03-26T22:16:33.673346,,,[],83.33,96.67,100.0,100.0,98.79,50.0,65.0,86.66
-matricula-de-alumnos,Educación,Universidad Tecnológica Linares,CSV,12,17,2026-03-26T19:59:13.095235,,,[],100.0,100.0,100.0,100.0,98.79,70.0,100.0,96.94
-matricula-de-alumnos,Educación,Universidad Tecnológica Linares,CSV,17,6,2026-03-26T19:59:13.095235,,,[],77.45,88.33,99.5,100.0,98.79,70.0,100.0,87.18
-nuevo-leon-al-dia,Transparencia y Combate a la Corrupción,Oficina de Comunicación del Ejecutivo del Estado,CSV,175,7,2026-03-26T15:32:02.685061,,,[],99.02,100.0,100.0,100.0,98.79,70.0,100.0,96.65
-nuevo-leon-al-dia,Transparencia y Combate a la Corrupción,Oficina de Comunicación del Ejecutivo del Estado,CSV,7,6,2026-03-26T15:32:02.685061,,,[],100.0,96.67,100.0,100.0,98.79,70.0,100.0,96.11
-programacion-infantil-en-canal-28-1-y-28-2-marzo,Arte y Cultura,Sistema de Radio y Televisión de Nuevo León,CSV,8,6,2026-03-26T15:31:00.574137,,,[],100.0,84.17,99.5,100.0,98.79,70.0,100.0,92.91
-programacion-infantil-en-canal-28-1-y-28-2-marzo,Arte y Cultura,Sistema de Radio y Televisión de Nuevo León,CSV,11,6,2026-03-26T15:31:00.574137,,,[],81.82,87.5,99.5,81.82,98.79,70.0,100.0,86.83
-cursos-y-talleres,Sin categoría,Instituto Estatal de las Personas Adultas Mayores (IEPAM),CSV,16,7,2026-03-26T14:31:47.568419,,,[],100.0,97.14,100.0,100.0,98.74,70.0,100.0,96.22
-cursos-y-talleres,Sin categoría,Instituto Estatal de las Personas Adultas Mayores (IEPAM),CSV,7,7,2026-03-26T14:31:47.568419,,,[],85.71,94.29,100.0,100.0,98.74,70.0,100.0,91.22
-inventario-de-bienes-inmuebles,Sin categoría,Fideicomiso de Proyectos Estratégicos (FIDEPROES),CSV,81,14,2026-03-25T17:34:29.688406,,,[],100.0,90.36,100.0,100.0,98.74,70.0,100.0,94.53
-inventario-de-bienes-inmuebles,Sin categoría,Fideicomiso de Proyectos Estratégicos (FIDEPROES),CSV,14,6,2026-03-25T17:34:29.688406,,,[],66.67,91.67,100.0,100.0,98.74,70.0,100.0,84.86
-conjunto-de-datos-de-los-cursos-de-capacitacion-impartidos-en-el-icet-durante-2025,Sin categoría,Instituto de Capacitación y Educación para el Trabajo (ICET),CSV,8609,17,2026-03-20T22:32:08.315303,,,[],100.0,98.82,87.28,98.38,98.47,75.0,100.0,95.09
-conjunto-de-datos-de-los-cursos-de-capacitacion-impartidos-en-el-icet-durante-2025,Sin categoría,Instituto de Capacitación y Educación para el Trabajo (ICET),CSV,17,8,2026-03-20T22:32:08.315303,,,[],87.5,92.5,100.0,100.0,98.47,75.0,100.0,91.8
-saldos-de-rendimientos-de-aportacion-del-fideicomiso,Sin categoría,Fideicomiso de Inversión y Administración (FIDEMEJORA),CSV,4,4,2026-03-20T18:07:28.797643,,,[],50.0,100.0,100.0,100.0,98.47,70.0,100.0,81.92
-saldos-de-rendimientos-de-aportacion-del-fideicomiso,Sin categoría,Fideicomiso de Inversión y Administración (FIDEMEJORA),CSV,4,6,2026-03-20T18:07:28.797643,,,[],91.67,93.33,100.0,100.0,98.47,70.0,100.0,92.76
-presupuesto-fitur-2026,Administración y Finanzas,Fideicomiso Turismo Nuevo León,CSV,49,28,2026-03-20T01:11:59.753543,,,[],82.14,94.29,71.74,100.0,98.41,70.0,100.0,85.9
-presupuesto-fitur-2026,Administración y Finanzas,Fideicomiso Turismo Nuevo León,CSV,23,6,2026-03-20T01:11:59.753543,,,[],100.0,89.17,100.0,100.0,98.41,70.0,100.0,94.21
-unidades-de-transporte-publico,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,2186,12,2026-03-19T17:54:07.786151,,,[],93.93,95.42,100.0,99.9,98.41,80.0,100.0,94.95
-unidades-de-transporte-publico,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,12,6,2026-03-19T17:54:07.786151,,,[],100.0,94.17,100.0,100.0,98.41,80.0,100.0,96.46
-licitaciones,Sin categoría,Instituto Constructor de Infraestructura Física Educativa y Deportiva,CSV,294,8,2026-03-19T00:19:07.385740,,,[],100.0,91.88,77.74,100.0,98.36,70.0,100.0,91.55
-licitaciones,Sin categoría,Instituto Constructor de Infraestructura Física Educativa y Deportiva,CSV,8,6,2026-03-19T00:19:07.385740,,,[],87.5,94.17,100.0,100.0,98.36,70.0,100.0,91.71
-solicitudes-de-informacion,Sin categoría,Instituto del Agua del Estado de Nuevo León,CSV,301,11,2026-03-18T21:56:13.814730,,,[],91.03,90.91,90.7,100.0,98.36,70.0,100.0,90.56
-solicitudes-de-informacion,Sin categoría,Instituto del Agua del Estado de Nuevo León,CSV,11,6,2026-03-18T21:56:13.814730,,,[],83.33,96.67,100.0,100.0,98.36,70.0,100.0,91.08
-insumos_politicas_publicas,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,6,3,2026-03-18T19:36:08.081967,,,[],100.0,90.0,100.0,100.0,98.36,80.0,100.0,95.42
-insumos_politicas_publicas,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,3,6,2026-03-18T19:36:08.081967,,,[],83.33,85.83,100.0,100.0,98.36,80.0,100.0,89.37
-tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,.CSV,4,7,2026-03-18T16:41:34.142366,,,[],100.0,97.14,100.0,100.0,98.36,70.0,100.0,96.2
-tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,CSV,8,4,2026-03-18T16:41:34.142366,,,[],93.75,100.0,100.0,100.0,98.36,70.0,100.0,95.04
-tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,.CSV,7,2,2026-03-18T16:41:34.142366,,,[],92.86,100.0,100.0,100.0,98.36,70.0,100.0,94.78
-tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,.CSV,8,4,2026-03-18T16:41:34.142366,,,[],93.75,100.0,100.0,100.0,98.36,70.0,100.0,95.04
-tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,CSV,7,2,2026-03-18T16:41:34.142366,,,[],92.86,100.0,100.0,100.0,98.36,70.0,100.0,94.78
-tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,CSV,4,7,2026-03-18T16:41:34.142366,,,[],100.0,97.14,100.0,100.0,98.36,70.0,100.0,96.2
-sesiones_comite_coordinador_seanl,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,8,7,2026-03-18T00:03:28.724596,,,[],100.0,95.71,99.0,100.0,98.3,70.0,100.0,95.69
-sesiones_comite_coordinador_seanl,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,7,6,2026-03-18T00:03:28.724596,,,[],83.33,91.67,100.0,100.0,98.3,70.0,100.0,89.83
-2022_2026_solicitudes_fofae,Sin categoría,Fideicomiso Fondo de Fomento Agropecuario del Estado de Nuevo León,CSV,42,11,2026-03-18T00:02:55.990709,,,[],90.69,94.55,100.0,100.0,98.3,70.0,100.0,92.76
-2022_2026_solicitudes_fofae,Sin categoría,Fideicomiso Fondo de Fomento Agropecuario del Estado de Nuevo León,CSV,11,6,2026-03-18T00:02:55.990709,,,[],84.85,90.83,100.0,100.0,98.3,70.0,100.0,90.08
-sesiones_organo_gobierno_seseanl,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,12,7,2026-03-18T00:01:01.610307,,,[],100.0,95.71,99.5,100.0,98.3,70.0,100.0,95.77
-sesiones_organo_gobierno_seseanl,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,7,6,2026-03-18T00:01:01.610307,,,[],97.62,85.83,99.0,100.0,98.3,70.0,100.0,92.51
-nacimientos-registrados-en-unidades-hospitalarias-de-los-servicios-de-salud-de-nuevo-leon,Sin categoría,"Servicios de salud de Nuevo León, O.P.D.",.CSV,12641,14,2026-03-13T17:36:16.435655,,,[],100.0,100.0,91.46,100.0,98.08,70.0,60.0,92.82
-nacimientos-registrados-en-unidades-hospitalarias-de-los-servicios-de-salud-de-nuevo-leon,Sin categoría,"Servicios de salud de Nuevo León, O.P.D.",.CSV,14,6,2026-03-13T17:36:16.435655,,,[],91.67,96.67,99.5,100.0,98.08,70.0,60.0,90.7
-pueblos_magicos_nuevo_leon,Turismo,Secretaría de Turismo,CSV,5,4,2026-03-12T15:32:31.702822,,,[],100.0,100.0,100.0,100.0,98.03,70.0,100.0,96.9
-pueblos_magicos_nuevo_leon,Turismo,Secretaría de Turismo,CSV,7,6,2026-03-12T15:32:31.702822,,,[],52.38,90.83,100.0,42.86,98.03,70.0,100.0,75.75
-conciliacioneslaborales,Administración y Finanzas,Centro de Conciliación Laboral,CSV,59964,16,2026-03-11T15:39:26.235394,,,[],75.0,98.12,75.34,71.42,97.97,70.0,100.0,82.94
-conciliacioneslaborales,Administración y Finanzas,Centro de Conciliación Laboral,CSV,15,6,2026-03-11T15:39:26.235394,,,[],90.0,91.67,99.0,100.0,97.97,70.0,100.0,91.67
-2025_iniciacion_deportiva,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,22,14,2026-03-10T17:51:37.860018,,,[],100.0,91.79,99.5,100.0,97.92,80.0,60.0,92.97
-2025_iniciacion_deportiva,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,14,7,2026-03-10T17:51:37.860018,,,[],73.47,92.14,99.5,100.0,97.92,80.0,60.0,85.1
-2025_campamento_verano,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,5,16,2026-03-10T17:47:44.428216,,,[],98.75,93.12,100.0,100.0,97.92,70.0,60.0,92.0
-2025_campamento_verano,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,15,6,2026-03-10T17:47:44.428216,,,[],85.56,90.83,99.5,100.0,97.92,70.0,60.0,87.4
-2025_clinica_adultos,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,9,13,2026-03-10T17:41:30.146605,,,[],100.0,92.31,100.0,100.0,97.92,80.0,60.0,93.17
-2025_clinica_adultos,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,13,7,2026-03-10T17:41:30.146605,,,[],73.63,92.14,99.5,100.0,97.92,80.0,60.0,85.14
-matricula-total-de-la-universidad,Sin categoría,Universidad Tecnológica Gral. Mariano Escobedo,CSV,23,6,2026-03-09T22:42:17.766155,,,[],100.0,95.0,99.5,100.0,97.86,60.0,100.0,94.57
-matricula-total-de-la-universidad,Sin categoría,Universidad Tecnológica Gral. Mariano Escobedo,CSV,6,6,2026-03-09T22:42:17.766155,,,[],94.44,80.83,100.0,100.0,97.86,60.0,100.0,89.43
-2025-proyectos-estrategicos,Sin categoría,Fideicomiso FIDEURB (BP6823),CSV,233,7,2026-03-09T22:21:52.307058,,,[],100.0,90.71,100.0,100.0,97.86,70.0,100.0,94.57
-2025-proyectos-estrategicos,Sin categoría,Fideicomiso FIDEURB (BP6823),CSV,7,6,2026-03-09T22:21:52.307058,,,[],80.95,91.67,100.0,100.0,97.86,70.0,100.0,89.1
-planteles-colegio-militarizado-general-mariano-escobedo-del-estado-de-nuevo-leon,Educación,"Colegio Militarizado ""General Mariano Escobedo""",CSV,11,12,2026-03-09T16:16:00.551439,,,[],100.0,97.5,100.0,100.0,97.86,70.0,100.0,96.27
-planteles-colegio-militarizado-general-mariano-escobedo-del-estado-de-nuevo-leon,Educación,"Colegio Militarizado ""General Mariano Escobedo""",CSV,13,6,2026-03-09T16:16:00.551439,,,[],83.33,91.67,100.0,38.46,97.86,70.0,100.0,84.89
-conjunto-de-datos-idpnl,Sin categoría,Instituto de Defensoría Pública de Nuevo León,CSV,111,35,2026-03-09T16:10:19.313342,,,[],73.64,99.43,75.62,100.0,97.86,70.0,100.0,85.19
-conjunto-de-datos-idpnl,Sin categoría,Instituto de Defensoría Pública de Nuevo León,CSV,35,6,2026-03-09T16:10:19.313342,,,[],83.33,85.83,100.0,100.0,97.86,70.0,100.0,88.35
-solicitudes-de-acceso-a-la-informacion-recibidas-por-codetur,Sin categoría,Corporación para el Desarrollo Turístico de Nuevo León,CSV,11,21,2026-03-06T23:14:31.222090,,,[],64.94,89.52,100.0,100.0,97.7,70.0,100.0,83.75
-solicitudes-de-acceso-a-la-informacion-recibidas-por-codetur,Sin categoría,Corporación para el Desarrollo Turístico de Nuevo León,CSV,21,2,2026-03-06T23:14:31.222090,,,[],95.24,100.0,100.0,100.0,97.7,70.0,100.0,95.46
-residuos-solidos-urbanos,Sin categoría,Sistema Integral para el Manejo Ecológico y Procesamiento de Desechos (SIMEPRODE),CSV,195,5,2026-03-05T23:00:37.816439,,,[],97.33,89.0,100.0,100.0,97.64,80.0,100.0,94.33
-residuos-solidos-urbanos,Sin categoría,Sistema Integral para el Manejo Ecológico y Procesamiento de Desechos (SIMEPRODE),CSV,4,6,2026-03-05T23:00:37.816439,,,[],87.5,93.33,100.0,100.0,97.64,80.0,100.0,92.46
-frecuencia-servicios-prestados-parque-fundidora,Sin categoría,"Parque Fundidora, O.P.D",.CSV,12,9,2026-03-05T21:46:19.685477,,,[],100.0,97.78,100.0,100.0,97.64,70.0,60.0,93.53
-frecuencia-servicios-prestados-parque-fundidora,Sin categoría,"Parque Fundidora, O.P.D",.CSV,9,6,2026-03-05T21:46:19.685477,,,[],96.3,94.17,100.0,100.0,97.64,70.0,60.0,91.51
-base-de-datos-de-entrega-de-acciones-de-vivienda,Sin categoría,Instituto de la Vivienda,CSV,374,10,2026-03-03T18:34:21.134543,,,[],99.84,96.5,81.12,100.0,97.53,70.0,100.0,93.12
-base-de-datos-de-entrega-de-acciones-de-vivienda,Sin categoría,Instituto de la Vivienda,CSV,9,6,2026-03-03T18:34:21.134543,,,[],98.15,96.67,100.0,100.0,97.53,70.0,100.0,95.49
-conferencias-cursos-y-foros-2025,Sin categoría,Universidad de Ciencias de la Seguridad,CSV,12,8,2026-03-02T18:34:00.992032,,,[],98.96,98.12,100.0,100.0,97.48,80.0,100.0,97.09
-conferencias-cursos-y-foros-2025,Sin categoría,Universidad de Ciencias de la Seguridad,CSV,8,6,2026-03-02T18:34:00.992032,,,[],100.0,91.67,100.0,100.0,97.48,80.0,100.0,95.79
-solicitudes-de-acceso-a-la-informacion-enero-2025-enero2026,Sin categoría,Oficina de Representación del Estado en la Ciudad de Mexico,CSV,5,21,2026-03-02T18:12:29.525493,,,[],76.19,92.38,100.0,100.0,97.48,70.0,100.0,87.83
-solicitudes-de-acceso-a-la-informacion-enero-2025-enero2026,Sin categoría,Oficina de Representación del Estado en la Ciudad de Mexico,CSV,20,6,2026-03-02T18:12:29.525493,,,[],84.17,93.33,100.0,100.0,97.48,70.0,100.0,90.46
-maltrato-animal-t4-2025,Sin categoría,Secretaría de Medio Ambiente,CSV,122,10,2026-03-02T16:46:24.178561,,,[],90.0,90.5,100.0,100.0,97.48,70.0,100.0,91.5
-maltrato-animal-t4-2025,Sin categoría,Secretaría de Medio Ambiente,CSV,9,6,2026-03-02T16:46:24.178561,,,[],85.19,96.67,100.0,100.0,97.48,70.0,100.0,91.6
-labnl-lab-cultural-ciudadano-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,1799,89,2026-02-27T19:13:04.386237,,,[],58.26,98.31,66.66,50.76,97.32,70.0,100.0,74.98
-labnl-lab-cultural-ciudadano-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,900,89,2026-02-27T19:13:04.386237,,,[],64.87,98.31,69.62,100.0,97.32,70.0,100.0,81.35
-labnl-lab-cultural-ciudadano-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,45,6,2026-02-27T19:13:04.386237,,,[],86.3,94.17,100.0,100.0,97.32,70.0,100.0,91.3
-personas-beneficiarias-del-programa-jefas-de-familia,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,51,14,2026-02-27T00:25:50.382617,,,[],100.0,100.0,79.08,100.0,97.26,70.0,100.0,93.72
-personas-beneficiarias-del-programa-jefas-de-familia,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,13,6,2026-02-27T00:25:50.382617,,,[],83.33,96.67,100.0,100.0,97.26,70.0,100.0,91.03
-directorio-de-centros-comunitarios,Arte y Cultura,Secretaría de Igualdad e Inclusión,CSV,47,9,2026-02-27T00:25:09.674200,,,[],95.98,93.89,100.0,100.0,97.26,70.0,100.0,94.13
-directorio-de-centros-comunitarios,Arte y Cultura,Secretaría de Igualdad e Inclusión,CSV,8,6,2026-02-27T00:25:09.674200,,,[],83.33,91.67,100.0,100.0,97.26,70.0,100.0,89.78
-directorio-de-centros-de-atencion-integral-para-adolescentes,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,22,8,2026-02-27T00:24:37.316932,,,[],94.32,91.25,100.0,100.0,97.26,70.0,100.0,92.97
-directorio-de-centros-de-atencion-integral-para-adolescentes,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,7,6,2026-02-27T00:24:37.316932,,,[],83.33,94.17,100.0,100.0,97.26,70.0,100.0,90.4
-personas-beneficiarias-de-del-programa-personas-con-discapacidad,Sin categoría,Secretaría de Igualdad e Inclusión,CSV,51,14,2026-02-27T00:24:20.034304,,,[],100.0,100.0,72.54,100.0,97.26,70.0,100.0,92.74
-personas-beneficiarias-de-del-programa-personas-con-discapacidad,Sin categoría,Secretaría de Igualdad e Inclusión,CSV,13,6,2026-02-27T00:24:20.034304,,,[],83.33,96.67,100.0,100.0,97.26,70.0,100.0,91.03
-talleres-realizados-en-los-centros-comunitarios-de-desarrollo-social,Arte y Cultura,Secretaría de Igualdad e Inclusión,CSV,47,8,2026-02-26T23:14:43.217177,,,[],99.73,100.0,86.38,100.0,97.26,70.0,100.0,94.74
-talleres-realizados-en-los-centros-comunitarios-de-desarrollo-social,Arte y Cultura,Secretaría de Igualdad e Inclusión,CSV,7,6,2026-02-26T23:14:43.217177,,,[],83.33,96.67,100.0,100.0,97.26,70.0,100.0,91.03
-organos-colegiados,Participación,Secretaría de Participación Ciudadana,CSV,77,26,2026-02-26T22:28:17.812030,,,[],86.76,87.12,74.3,100.0,97.26,70.0,100.0,85.82
-organos-colegiados,Participación,Secretaría de Participación Ciudadana,CSV,99,42,2026-02-26T22:28:17.812030,,,[],37.93,91.31,83.5,33.34,97.26,70.0,100.0,68.26
-organos-colegiados,Participación,Secretaría de Participación Ciudadana,CSV,26,7,2026-02-26T22:28:17.812030,,,[],74.73,90.0,100.0,100.0,97.26,70.0,100.0,86.78
-organos-colegiados,Participación,Secretaría de Participación Ciudadana,CSV,26,8,2026-02-26T22:28:17.812030,,,[],65.38,91.25,100.0,100.0,97.26,70.0,100.0,84.29
-tramites_y_servicios,Sin categoría, Secretaría de Economía,CSV,16,12,2026-02-26T22:18:33.932516,,,[],100.0,94.17,99.5,100.0,97.26,70.0,100.0,95.33
-tramites_y_servicios,Sin categoría, Secretaría de Economía,CSV,7,6,2026-02-26T22:18:33.932516,,,[],83.33,87.5,100.0,100.0,97.26,70.0,100.0,88.74
-personas-beneficiarias-del-programa-impulso-a-cuidadoras,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,51,14,2026-02-26T22:02:08.346462,,,[],100.0,100.0,82.36,100.0,97.26,70.0,100.0,94.22
-personas-beneficiarias-del-programa-impulso-a-cuidadoras,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,13,6,2026-02-26T22:02:08.346462,,,[],83.33,96.67,100.0,100.0,97.26,70.0,100.0,91.03
-personas-beneficiarias-del-programa-hambre-cero,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,51,5,2026-02-26T21:28:49.306710,,,[],100.0,100.0,71.24,100.0,97.26,70.0,100.0,92.55
-personas-beneficiarias-del-programa-hambre-cero,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,4,6,2026-02-26T21:28:49.306710,,,[],83.33,96.67,100.0,100.0,97.26,70.0,100.0,91.03
-servicios-para-el-campo,Sin categoría,Promotora de Desarrollo Rural de Nuevo León – PRODERLEON,.CSV,515,13,2026-02-26T18:14:05.054664,,,[],82.91,95.0,85.84,93.0,97.26,80.0,60.0,86.0
-servicios-para-el-campo,Sin categoría,Promotora de Desarrollo Rural de Nuevo León – PRODERLEON,.CSV,13,6,2026-02-26T18:14:05.054664,,,[],100.0,87.5,100.0,100.0,97.26,80.0,60.0,91.94
-capacitaciones-portafolio-2025-2026,Sin categoría,Instituto Estatal de las Mujeres,.CSV,56,7,2026-02-26T16:31:40.263584,,,[],100.0,91.43,77.58,100.0,97.26,80.0,60.0,89.56
-capacitaciones-portafolio-2025-2026,Sin categoría,Instituto Estatal de las Mujeres,.CSV,7,6,2026-02-26T16:31:40.263584,,,[],83.33,96.67,99.5,100.0,97.26,80.0,60.0,89.15
-datos-de-fidecultural-2019-2024,Sin categoría,Fideicomiso para la Conservación del Patrimonio Cultural de Nuevo León (FIDECULTURAL),CSV,981,6,2026-02-25T23:57:46.475038,,,[],5.69,100.0,100.0,0.0,97.21,80.0,100.0,61.57
-datos-de-fidecultural-2019-2024,Sin categoría,Fideicomiso para la Conservación del Patrimonio Cultural de Nuevo León (FIDECULTURAL),CSV,5,6,2026-02-25T23:57:46.475038,,,[],83.33,96.67,100.0,100.0,97.21,80.0,100.0,92.03
-solicitudes-de-acceso-a-la-informacion-sistema-de-caminos,Transparencia y Combate a la Corrupción,Sistema de Caminos de Nuevo León,CSV,69,14,2026-02-25T22:06:42.503552,,,[],57.04,94.29,100.0,100.0,97.21,70.0,100.0,82.54
-solicitudes-de-acceso-a-la-informacion-sistema-de-caminos,Transparencia y Combate a la Corrupción,Sistema de Caminos de Nuevo León,CSV,13,6,2026-02-25T22:06:42.503552,,,[],100.0,94.17,100.0,100.0,97.21,70.0,100.0,95.4
-directorio-iiiepe,Sin categoría,"Instituto de Investigación, Innovación y Estudios de Posgrado para la Educación del Estado de Nuevo León",CSV,4,9,2026-02-25T22:04:21.574067,,,[],100.0,98.33,99.5,100.0,97.21,70.0,100.0,96.37
-directorio-iiiepe,Sin categoría,"Instituto de Investigación, Innovación y Estudios de Posgrado para la Educación del Estado de Nuevo León",CSV,9,6,2026-02-25T22:04:21.574067,,,[],87.04,96.67,100.0,100.0,97.21,70.0,100.0,92.14
-solicitudes-de-acceso-a-la-informacion-recibidas-por-el-sistema-estatal-de-informacion,Transparencia y Combate a la Corrupción,Sistema Estatal de Información,CSV,65,16,2026-02-24T16:09:20.078027,,,[],41.83,90.0,100.0,0.0,97.15,70.0,100.0,68.91
-solicitudes-de-acceso-a-la-informacion-recibidas-por-el-sistema-estatal-de-informacion,Transparencia y Combate a la Corrupción,Sistema Estatal de Información,CSV,17,6,2026-02-24T16:09:20.078027,,,[],79.41,90.83,100.0,100.0,97.15,70.0,100.0,88.39
-proyectos-apoyados-por-el-i2t2,Sin categoría,Instituto de Innovación y Transferencia Tecnológica de Nuevo León,CSV,9,8,2026-02-23T18:32:37.963161,,,[],73.61,87.5,100.0,100.0,97.1,70.0,100.0,85.81
-proyectos-apoyados-por-el-i2t2,Sin categoría,Instituto de Innovación y Transferencia Tecnológica de Nuevo León,CSV,8,6,2026-02-23T18:32:37.963161,,,[],93.75,86.67,99.5,100.0,97.1,70.0,100.0,91.57
-lista-de-libros-del-fonedi,Sin categoría,Fondo Editorial de Nuevo León,CSV,981,7,2026-02-23T18:27:53.675704,,,[],61.28,89.29,86.0,40.46,97.1,70.0,100.0,75.7
-lista-de-libros-del-fonedi,Sin categoría,Fondo Editorial de Nuevo León,CSV,8,1,2026-02-23T18:27:53.675704,,,[],12.5,80.0,100.0,0.0,97.1,70.0,100.0,57.6
-asistencia-de-personas-a-actividades-de-conarte,Sin categoría,Consejo para la Cultura y las Artes de Nuevo León,CSV,530,7,2026-02-23T16:39:10.716286,,,[],100.0,97.14,65.42,100.0,97.1,80.0,100.0,91.95
-asistencia-de-personas-a-actividades-de-conarte,Sin categoría,Consejo para la Cultura y las Artes de Nuevo León,CSV,7,6,2026-02-23T16:39:10.716286,,,[],83.33,96.67,100.0,100.0,97.1,80.0,100.0,92.02
-solicitud-de-informacion-instituto-registral-y-catastral,Administración y Finanzas,Instituto Registral y Catastral del Estado de Nuevo León,CSV,31,4,2026-02-23T16:22:43.896864,,,[],100.0,100.0,100.0,100.0,97.1,70.0,100.0,96.86
-solicitud-de-informacion-instituto-registral-y-catastral,Administración y Finanzas,Instituto Registral y Catastral del Estado de Nuevo León,CSV,4,7,2026-02-23T16:22:43.896864,,,[],85.71,91.43,100.0,100.0,97.1,70.0,100.0,90.43
-2025_directorio_colaboradores_junta-local-de-conciliacion-y-arbitraje,Sin categoría,Junta Local de Conciliación y Arbitraje,CSV,235,9,2026-02-21T02:07:21.086239,,,[],100.0,95.56,95.74,100.0,96.93,80.0,100.0,96.1
-2025_directorio_colaboradores_junta-local-de-conciliacion-y-arbitraje,Sin categoría,Junta Local de Conciliación y Arbitraje,CSV,9,5,2026-02-21T02:07:21.086239,,,[],100.0,92.0,100.0,100.0,96.93,80.0,100.0,95.85
-indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon,Sin categoría,Secretaría Técnica de Gobierno,CSV,86,11,2026-02-21T01:53:35.002526,,,[],95.77,94.55,67.44,100.0,96.93,90.0,100.0,91.33
-indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon,Sin categoría,Secretaría Técnica de Gobierno,CSV,4,6,2026-02-21T01:53:35.002526,,,[],83.33,96.67,100.0,100.0,96.93,90.0,100.0,93.01
-indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon,Sin categoría,Secretaría Técnica de Gobierno,CSV,86,11,2026-02-21T01:53:35.002526,,,[],95.77,94.55,67.44,100.0,96.93,90.0,100.0,91.33
-pib-agroindustrial-por-entidad-federativa-2022-2024,Agricultura,Secretaría de Desarrollo Regional y Agropecuario,CSV,99,5,2026-02-20T20:44:28.489021,,,[],100.0,100.0,82.82,100.0,96.93,70.0,100.0,94.27
-pib-agroindustrial-por-entidad-federativa-2022-2024,Agricultura,Secretaría de Desarrollo Regional y Agropecuario,CSV,5,6,2026-02-20T20:44:28.489021,,,[],100.0,96.67,100.0,100.0,96.93,70.0,100.0,96.01
-produccion-agricola-2022-2024,Agroalimentario,Secretaría de Desarrollo Regional y Agropecuario,CSV,1134,13,2026-02-20T20:43:48.913053,,,[],100.0,100.0,74.0,100.0,96.93,70.0,100.0,92.95
-produccion-agricola-2022-2024,Agroalimentario,Secretaría de Desarrollo Regional y Agropecuario,CSV,12,6,2026-02-20T20:43:48.913053,,,[],94.44,94.17,100.0,100.0,96.93,70.0,100.0,93.72
-declaraciones-oficiales-de-la-oficina-ejecutiva,Sin categoría,Oficina Ejecutiva del Titular del Poder Ejecutivo del Estado de Nuevo León,CSV,1000,6,2026-02-19T20:13:38.667711,,,[],1.25,95.0,100.0,0.0,96.88,80.0,100.0,58.97
-declaraciones-oficiales-de-la-oficina-ejecutiva,Sin categoría,Oficina Ejecutiva del Titular del Poder Ejecutivo del Estado de Nuevo León,CSV,5,6,2026-02-19T20:13:38.667711,,,[],66.67,91.67,100.0,100.0,96.88,80.0,100.0,85.76
-directorio-de-planteles-cecytenl,Educación,Colegio de Estudios Científicos y Tecnológicos del Estado de Nuevo León (CECyTENL),CSV,34,12,2026-02-19T17:29:55.016686,,,[],98.53,95.0,98.52,100.0,96.88,70.0,100.0,94.93
-directorio-de-planteles-cecytenl,Educación,Colegio de Estudios Científicos y Tecnológicos del Estado de Nuevo León (CECyTENL),CSV,11,6,2026-02-19T17:29:55.016686,,,[],83.33,96.67,100.0,100.0,96.88,70.0,100.0,91.01
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,209,51,2026-02-18T16:12:48.490404,,,[],88.62,98.53,84.38,100.0,96.82,70.0,100.0,90.72
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,188,51,2026-02-18T16:12:48.490404,,,[],87.61,99.41,85.44,100.0,96.82,70.0,100.0,90.79
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,152,51,2026-02-18T16:12:48.490404,,,[],84.84,99.41,85.02,100.0,96.82,70.0,100.0,89.9
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,125,30,2026-02-18T16:12:48.490404,,,[],68.72,99.5,83.64,100.0,96.82,70.0,100.0,84.88
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,93,13,2026-02-18T16:12:48.490404,,,[],92.31,98.85,81.8,100.0,96.82,70.0,100.0,91.52
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,29,13,2026-02-18T16:12:48.490404,,,[],96.82,97.31,99.0,100.0,96.82,70.0,100.0,95.06
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,50,6,2026-02-18T16:12:48.490404,,,[],100.0,85.83,100.0,100.0,96.82,70.0,100.0,93.3
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,30,6,2026-02-18T16:12:48.490404,,,[],96.67,85.83,100.0,100.0,96.82,70.0,100.0,92.3
-asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,12,6,2026-02-18T16:12:48.490404,,,[],97.22,85.83,100.0,100.0,96.82,70.0,100.0,92.46
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,1297,35,2026-02-18T15:45:03.172156,,,[],96.81,96.14,100.0,100.0,96.82,85.0,100.0,96.42
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,34,33,2026-02-18T15:45:03.172156,,,[],12.12,99.09,100.0,100.0,96.82,85.0,100.0,71.75
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,XLSX,156,27,2026-02-18T15:45:03.172156,,,[],2.04,97.22,100.0,7.7,96.82,85.0,100.0,60.87
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,999,34,2026-02-18T15:45:03.172156,,,[],30.95,98.82,100.0,0.0,96.82,85.0,100.0,69.33
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,998,32,2026-02-18T15:45:03.172156,,,[],0.41,99.06,100.0,0.0,96.82,85.0,100.0,60.23
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,XLSX,321,5,2026-02-18T15:45:03.172156,,,[],100.0,100.0,99.38,100.0,96.82,85.0,100.0,98.25
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,106,24,2026-02-18T15:45:03.172156,,,[],95.36,95.42,100.0,100.0,96.82,85.0,100.0,95.8
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,23,32,2026-02-18T15:45:03.172156,,,[],12.5,99.06,100.0,100.0,96.82,85.0,100.0,71.86
-espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,132,26,2026-02-18T15:45:03.172156,,,[],2.1,97.31,100.0,7.58,96.82,85.0,100.0,60.9
-hecho-por-tipo-de-violencia,Sin categoría,Secretaría de las Mujeres,CSV,54701,13,2026-02-17T22:55:17.781017,,,[],100.0,98.46,100.0,100.0,96.77,70.0,100.0,96.45
-hecho-por-tipo-de-violencia,Sin categoría,Secretaría de las Mujeres,CSV,22,7,2026-02-17T22:55:17.781017,,,[],82.47,92.14,100.0,100.0,96.77,70.0,100.0,89.61
-cursos-de-capacitacion-de-genl,Educación,Secretaría de Administración,CSV,181,6,2026-02-05T00:04:59.722043,,,[],100.0,100.0,92.82,100.0,96.05,70.0,100.0,95.73
-cursos-de-capacitacion-de-genl,Educación,Secretaría de Administración,CSV,140,6,2026-02-05T00:04:59.722043,,,[],100.0,95.0,90.92,100.0,96.05,70.0,100.0,94.19
-cursos-de-capacitacion-de-genl,Educación,Secretaría de Administración,CSV,999,26,2026-02-05T00:04:59.722043,,,[],0.16,97.69,100.0,0.0,96.05,70.0,100.0,58.27
-cultura-para-la-primera-infancia-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,182,44,2026-02-05T00:04:09.610368,,,[],52.68,94.77,85.78,98.9,96.05,70.0,100.0,79.08
-cultura-para-la-primera-infancia-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,985,20,2026-02-05T00:04:09.610368,,,[],1.06,100.0,100.0,0.0,96.05,70.0,100.0,59.12
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,92,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,98.56,100.0,96.05,70.0,100.0,96.59
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,92,4,2026-02-04T23:04:06.541250,,,[],99.73,100.0,100.0,100.0,96.05,70.0,100.0,96.72
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,487,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,97.54,100.0,96.05,70.0,100.0,96.43
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,396,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,97.64,100.0,96.05,70.0,100.0,96.45
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,396,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,97.64,100.0,96.05,70.0,100.0,96.45
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,306,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,98.7,100.0,96.05,70.0,100.0,96.61
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,61,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,98.9,100.0,96.05,70.0,100.0,96.64
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,153,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,100.0,100.0,96.05,70.0,100.0,96.8
-atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,4,7,2026-02-04T23:04:06.541250,,,[],71.43,94.29,100.0,100.0,96.05,70.0,100.0,86.8
-contratos-smpu,Infraestructura,Secretaría de Movilidad y Planeación Urbana,CSV,179,8,2026-02-04T22:27:37.808250,,,[],94.2,92.5,89.66,100.0,96.05,70.0,100.0,91.64
-contratos-smpu,Infraestructura,Secretaría de Movilidad y Planeación Urbana,CSV,8,8,2026-02-04T22:27:37.808250,,,[],87.5,87.5,100.0,100.0,96.05,70.0,100.0,89.93
-estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,8575,15,2026-01-14T20:12:35.188886,,,[],96.16,100.0,100.0,39.36,94.9,50.0,65.0,86.29
-estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,998,26,2026-01-14T20:12:35.188886,,,[],0.27,97.31,100.0,0.0,94.9,50.0,65.0,53.7
-estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,841,15,2026-01-14T20:12:35.188886,,,[],95.47,94.67,100.0,30.8,94.9,50.0,65.0,84.07
-estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,625,15,2026-01-14T20:12:35.188886,,,[],95.58,94.67,100.0,34.4,94.9,50.0,65.0,84.39
-estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,644,15,2026-01-14T20:12:35.188886,,,[],94.81,94.67,100.0,36.96,94.9,50.0,65.0,84.36
-estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,7469,16,2026-01-14T20:10:53.235525,,,[],96.62,99.06,99.5,73.86,94.9,80.0,100.0,94.33
-estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,15,6,2026-01-14T20:10:53.235525,,,[],85.56,94.17,100.0,100.0,94.9,80.0,100.0,91.96
-estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,818,16,2026-01-14T20:10:53.235525,,,[],96.73,94.06,99.5,64.06,94.9,80.0,100.0,92.33
-estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,818,16,2026-01-14T20:10:53.235525,,,[],96.42,94.06,99.5,64.54,94.9,80.0,100.0,92.27
-estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,726,16,2026-01-14T20:10:53.235525,,,[],95.67,95.0,100.0,73.56,94.9,80.0,100.0,93.08
-estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,63693,15,2026-01-14T20:07:44.795534,,,[],97.55,97.0,93.48,70.4,94.9,70.0,100.0,91.91
-estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,67343,15,2026-01-14T20:07:44.795534,,,[],97.53,95.67,77.28,69.64,94.9,70.0,100.0,89.08
-estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,14,6,2026-01-14T20:07:44.795534,,,[],84.52,88.33,100.0,100.0,94.9,70.0,100.0,89.18
-estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,11401,15,2026-01-14T20:07:44.795534,,,[],97.53,94.33,89.22,71.06,94.9,70.0,100.0,90.65
-estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,11296,15,2026-01-14T20:07:44.795534,,,[],97.51,94.33,89.2,71.46,94.9,70.0,100.0,90.68
-estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,11214,15,2026-01-14T20:07:44.795534,,,[],97.51,94.33,89.7,71.2,94.9,70.0,100.0,90.73
-rutas-por-empresa-stc-metrorrey,Sin categoría,Sistema de Transporte Colectivo Metrorrey,CSV,36,15,2025-11-13T01:19:32.083103,,,[],67.78,94.67,94.44,100.0,91.45,70.0,100.0,84.74
-rutas-por-empresa-stc-metrorrey,Sin categoría,Sistema de Transporte Colectivo Metrorrey,CSV,6,6,2025-11-13T01:19:32.083103,,,[],100.0,96.67,100.0,100.0,91.45,70.0,100.0,95.74
-unidades-del-stcm,Sin categoría,Sistema de Transporte Colectivo Metrorrey,CSV,564,13,2025-11-13T01:02:30.464163,,,[],97.24,93.85,82.04,100.0,91.45,80.0,100.0,92.51
-unidades-del-stcm,Sin categoría,Sistema de Transporte Colectivo Metrorrey,CSV,13,6,2025-11-13T01:02:30.464163,,,[],100.0,96.67,100.0,100.0,91.45,80.0,100.0,96.74
-rutas-empresas,Movilidad y Transporte,Instituto de Movilidad y Accesibilidad,CSV,14,6,2025-11-13T00:06:18.786576,,,[],100.0,94.17,100.0,100.0,91.45,85.0,100.0,96.62
-rutas-empresas,Movilidad y Transporte,Instituto de Movilidad y Accesibilidad,CSV,142,14,2025-11-13T00:06:18.786576,,,[],99.85,86.07,91.54,100.0,91.45,85.0,100.0,93.28
-paradas-oficiales-stc-metrorrey,Movilidad y Transporte,Sistema de Transporte Colectivo Metrorrey,CSV,72,8,2025-11-12T23:57:20.266890,,,[],69.1,95.0,100.0,100.0,91.45,60.0,65.0,82.6
-paradas-oficiales-stc-metrorrey,Movilidad y Transporte,Sistema de Transporte Colectivo Metrorrey,CSV,8,6,2025-11-12T23:57:20.266890,,,[],100.0,96.67,100.0,100.0,91.45,60.0,65.0,92.29
-paradas,Movilidad y Transporte,Instituto de Movilidad y Accesibilidad,CSV,166,5,2025-11-12T23:56:30.543883,,,[],100.0,89.0,100.0,97.6,91.45,70.0,100.0,93.63
-paradas,Movilidad y Transporte,Instituto de Movilidad y Accesibilidad,CSV,5,6,2025-11-12T23:56:30.543883,,,[],100.0,94.17,100.0,100.0,91.45,70.0,100.0,95.12
-2024_2025_tpe_publico_setme,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,166,5,2025-11-12T17:34:18.700799,,,[],100.0,89.0,100.0,97.6,91.45,80.0,100.0,94.63
-2024_2025_tpe_publico_setme,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,142,14,2025-11-12T17:34:18.700799,,,[],99.85,86.07,91.54,100.0,91.45,80.0,100.0,92.78
-2024_2025_tpe_publico_setme,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,2186,12,2025-11-12T17:34:18.700799,,,[],93.93,95.42,100.0,99.9,91.45,80.0,100.0,94.6
-2024_2025_tpe_publico_setme,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,31,6,2025-11-12T17:34:18.700799,,,[],100.0,97.5,100.0,100.0,91.45,80.0,100.0,96.95
-denuncias-de-maltrato-animal,Medio Ambiente,Secretaría de Medio Ambiente,CSV,488,10,2025-11-07T23:52:09.311325,,,[],89.75,90.5,100.0,90.58,91.18,80.0,100.0,91.36
-denuncias-de-maltrato-animal,Medio Ambiente,Secretaría de Medio Ambiente,CSV,9,6,2025-11-07T23:52:09.311325,,,[],85.19,96.67,100.0,100.0,91.18,80.0,100.0,92.28
-fuentes-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,49,4,2025-11-07T23:51:12.700151,,,[],100.0,96.25,83.18,100.0,91.18,75.0,100.0,93.6
-fuentes-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,3,6,2025-11-07T23:51:12.700151,,,[],94.44,96.67,100.0,100.0,91.18,75.0,100.0,94.56
-uso-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,12,5,2025-11-07T23:50:41.936734,,,[],100.0,96.0,100.0,100.0,91.18,80.0,100.0,96.56
-uso-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,5,6,2025-11-07T23:50:41.936734,,,[],93.33,96.67,100.0,100.0,91.18,80.0,100.0,94.73
-agua-reutilizada,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,12,4,2025-11-07T23:50:04.594133,,,[],100.0,100.0,100.0,100.0,91.18,70.0,100.0,96.56
-agua-reutilizada,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,4,6,2025-11-07T23:50:04.594133,,,[],91.67,93.33,100.0,100.0,91.18,70.0,100.0,92.39
-infraestructura-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,20,4,2025-11-07T23:49:27.773184,,,[],93.75,96.25,99.5,100.0,91.18,70.0,100.0,93.67
-infraestructura-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,4,6,2025-11-07T23:49:27.773184,,,[],91.67,94.17,100.0,100.0,91.18,70.0,100.0,92.6
-convenios,Administración,Secretaría de Administración,CSV,29,5,2025-10-27T23:22:00.779487,,,[],98.62,100.0,100.0,100.0,90.58,70.0,100.0,96.12
-convenios,Administración,Secretaría de Administración,CSV,5,9,2025-10-27T23:22:00.779487,,,[],77.78,91.67,100.0,100.0,90.58,70.0,100.0,87.78
-sitios-de-internet-gratuitos-conectatenl,Administración,Secretaría de Administración,CSV,565,15,2025-10-27T23:06:02.602619,,,[],99.36,89.33,82.3,100.0,90.58,85.0,100.0,92.51
-sitios-de-internet-gratuitos-conectatenl,Administración,Secretaría de Administración,CSV,300,15,2025-10-27T23:06:02.602619,,,[],99.62,91.0,82.28,100.0,90.58,85.0,100.0,93.01
-sitios-de-internet-gratuitos-conectatenl,Administración,Secretaría de Administración,CSV,14,9,2025-10-27T23:06:02.602619,,,[],78.57,91.11,100.0,100.0,90.58,85.0,100.0,89.38
-resultados-clima-laboral,Administración,Secretaría de Administración,CSV,38,6,2025-10-13T18:12:59.718433,,,[],89.47,97.5,100.0,100.0,89.81,80.0,100.0,93.71
-resultados-clima-laboral,Administración,Secretaría de Administración,CSV,36,5,2025-10-13T18:12:59.718433,,,[],87.78,100.0,94.44,100.0,89.81,80.0,100.0,92.99
-resultados-clima-laboral,Administración,Secretaría de Administración,CSV,5,9,2025-10-13T18:12:59.718433,,,[],77.78,93.33,100.0,100.0,89.81,80.0,100.0,89.16
-directorio-de-servicios-ofrecidos-en-pabellon-ciudadano,Administración,Secretaría de Administración,CSV,171,10,2025-10-13T17:07:59.449070,,,[],100.0,92.5,53.38,100.0,89.81,70.0,100.0,87.62
-directorio-de-servicios-ofrecidos-en-pabellon-ciudadano,Administración,Secretaría de Administración,CSV,10,9,2025-10-13T17:07:59.449070,,,[],77.78,95.56,100.0,100.0,89.81,70.0,100.0,88.71
-personal-de-las-dependencias-por-rango-de-edad,Administración,Secretaría de Administración,CSV,114,22,2025-10-13T16:54:31.512067,,,[],97.49,98.18,77.2,100.0,89.81,70.0,100.0,91.86
-personal-de-las-dependencias-por-rango-de-edad,Administración,Secretaría de Administración,CSV,998,26,2025-10-13T16:54:31.512067,,,[],0.59,97.69,100.0,0.0,89.81,70.0,100.0,58.09
-personal-de-las-dependencias-gubernamentales-por-sexo,Administración y Finanzas,Secretaría de Administración,CSV,51356,6,2025-10-13T16:54:25.874037,,,[],100.0,95.0,99.0,0.0,89.81,70.0,100.0,87.09
-personal-de-las-dependencias-gubernamentales-por-sexo,Administración y Finanzas,Secretaría de Administración,CSV,6,9,2025-10-13T16:54:25.874037,,,[],77.78,95.56,100.0,100.0,89.81,70.0,100.0,88.71
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.61,97.33,90.44,100.0,89.64,70.0,100.0,94.26
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.87,97.33,89.3,100.0,89.64,70.0,100.0,93.87
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,49998,15,2025-10-10T22:53:40.763016,,,[],99.64,100.0,94.6,100.0,89.64,70.0,100.0,95.56
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.18,97.33,90.0,100.0,89.64,70.0,100.0,94.07
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.7,100.0,91.66,100.0,89.64,70.0,100.0,95.14
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.27,100.0,87.68,100.0,89.64,70.0,100.0,94.42
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.68,97.33,85.94,100.0,89.64,70.0,100.0,93.61
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.79,100.0,97.58,100.0,89.64,70.0,100.0,95.76
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.69,97.33,90.8,100.0,89.64,70.0,100.0,94.34
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.15,100.0,96.24,100.0,89.64,70.0,100.0,95.66
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.62,97.33,89.96,100.0,89.64,70.0,100.0,94.19
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.77,100.0,96.9,100.0,89.64,70.0,100.0,95.65
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.67,97.33,88.8,100.0,89.64,70.0,100.0,94.04
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.91,100.0,92.16,100.0,89.64,70.0,100.0,94.98
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.66,97.33,88.16,100.0,89.64,70.0,100.0,93.94
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.75,100.0,95.54,100.0,89.64,70.0,100.0,95.44
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,49999,15,2025-10-10T22:53:40.763016,,,[],99.62,97.33,88.86,100.0,89.64,70.0,100.0,94.03
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.72,100.0,92.26,100.0,89.64,70.0,100.0,94.94
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.59,97.33,87.1,100.0,89.64,70.0,100.0,93.76
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.59,100.0,87.5,100.0,89.64,70.0,100.0,94.48
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,33925,15,2025-10-10T22:53:40.763016,,,[],99.43,100.0,85.78,100.0,89.64,70.0,100.0,94.18
-consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,14,6,2025-10-10T22:53:40.763016,,,[],89.29,91.67,100.0,100.0,89.64,70.0,100.0,91.19
-planificacion-familiar,Perspectiva de Género e Interseccionalidad,Secretaría de Salud,CSV,27742,15,2025-10-10T22:53:16.139251,,,[],99.75,97.33,95.82,100.0,89.64,70.0,100.0,95.11
-planificacion-familiar,Perspectiva de Género e Interseccionalidad,Secretaría de Salud,CSV,14,6,2025-10-10T22:53:16.139251,,,[],89.29,91.67,100.0,100.0,89.64,70.0,100.0,91.19
-salud-bucal,Salud,Secretaría de Salud,CSV,49999,15,2025-10-10T22:52:55.678799,,,[],97.75,98.67,95.38,100.0,89.64,70.0,100.0,94.78
-salud-bucal,Salud,Secretaría de Salud,CSV,67896,15,2025-10-10T22:52:55.678799,,,[],99.91,98.67,97.76,100.0,89.64,70.0,100.0,95.79
-salud-bucal,Salud,Secretaría de Salud,CSV,14,6,2025-10-10T22:52:55.678799,,,[],89.29,91.67,100.0,100.0,89.64,70.0,100.0,91.19
-salud-mental,Salud,Secretaría de Salud,CSV,48224,15,2025-10-10T22:52:30.019188,,,[],100.0,98.67,99.74,100.0,89.64,70.0,100.0,96.11
-salud-mental,Salud,Secretaría de Salud,CSV,14,6,2025-10-10T22:52:30.019188,,,[],89.29,91.67,100.0,100.0,89.64,70.0,100.0,91.19
-diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,52,92,2025-09-18T18:36:44.840881,,,[],99.87,98.91,88.48,100.0,88.44,70.0,100.0,94.38
-diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,50,92,2025-09-18T18:36:44.840881,,,[],99.87,98.91,89.2,100.0,88.44,70.0,100.0,94.49
-diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,48,92,2025-09-18T18:36:44.840881,,,[],99.77,98.91,88.54,100.0,88.44,70.0,100.0,94.36
-diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,44,92,2025-09-18T18:36:44.840881,,,[],99.98,98.7,87.72,100.0,88.44,70.0,100.0,94.25
-diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,91,7,2025-09-18T18:36:44.840881,,,[],85.87,85.71,100.0,100.0,88.44,70.0,100.0,88.61
-audiencias-publicas,Participación,Secretaría de Participación Ciudadana,CSV,8,35,2025-09-17T16:41:27.326474,,,[],68.93,93.86,100.0,100.0,88.38,70.0,100.0,85.56
-audiencias-publicas,Participación,Secretaría de Participación Ciudadana,CSV,4,35,2025-09-17T16:41:27.326474,,,[],70.0,93.57,100.0,100.0,88.38,70.0,100.0,85.81
-audiencias-publicas,Participación,Secretaría de Participación Ciudadana,CSV,35,9,2025-09-17T16:41:27.326474,,,[],56.83,93.33,100.0,100.0,88.38,70.0,100.0,81.8
-audiencias-publicas,Participación,Secretaría de Participación Ciudadana,CSV,35,9,2025-09-17T16:41:27.326474,,,[],56.83,93.33,100.0,100.0,88.38,70.0,100.0,81.8
+listado-de-escuelas,Sin categoría,Secretaría de Educación del Estado de Nuevo León,.CSV,1344,11,2026-04-22T22:27:58.474582,,,[],100.0,100.0,100.0,100.0,100.0,80.0,100.0,98.0
+listado-de-escuelas,Sin categoría,Secretaría de Educación del Estado de Nuevo León,CSV,16371,6,2026-04-22T22:27:58.474582,,,[],0.05,78.33,100.0,0.0,100.0,80.0,100.0,54.6
+solicitudes-de-acceso-a-la-informacion-recibidas-en-la-administracion-publica-estatal,Administración y Finanzas,Contraloría y Transparencia Gubernamental,CSV,28107,21,2026-04-22T18:50:41.608922,,,[],71.13,88.81,98.0,63.98,100.0,70.0,100.0,82.36
+solicitudes-de-acceso-a-la-informacion-recibidas-en-la-administracion-publica-estatal,Administración y Finanzas,Contraloría y Transparencia Gubernamental,CSV,21,2,2026-04-22T18:50:41.608922,,,[],95.24,85.0,100.0,100.0,100.0,70.0,100.0,91.82
+estadistica-de-quejas-peticiones-sugerencias-y-o-reconocimientos-del-sistema-opinared,Asistencia Social,Contraloría y Transparencia Gubernamental,CSV,3218,14,2026-04-22T18:42:16.445168,,,[],99.71,98.93,88.5,68.92,100.0,80.0,100.0,93.43
+estadistica-de-quejas-peticiones-sugerencias-y-o-reconocimientos-del-sistema-opinared,Asistencia Social,Contraloría y Transparencia Gubernamental,CSV,21,2,2026-04-22T18:42:16.445168,,,[],78.57,85.0,100.0,100.0,100.0,80.0,100.0,87.82
+solicitudes-de-informacion-linea3,Sin categoría,"Fideicomiso No. 2209 ""Línea 3 del Sistema de Transporte Colectivo Metrorrey""",CSV,69,14,2026-04-20T22:57:33.086410,,,[],13.25,78.57,100.0,0.0,99.89,60.0,100.0,56.61
+solicitudes-de-informacion-linea3,Sin categoría,"Fideicomiso No. 2209 ""Línea 3 del Sistema de Transporte Colectivo Metrorrey""",CSV,13,6,2026-04-20T22:57:33.086410,,,[],100.0,95.0,100.0,100.0,99.89,60.0,100.0,94.74
+listado-de-telebachillerato,Sin categoría,Secretaría de Educación del Estado de Nuevo León,CSV,76,8,2026-04-20T22:55:11.968855,,,[],100.0,100.0,68.42,100.0,99.89,80.0,100.0,93.26
+listado-de-telebachillerato,Sin categoría,Secretaría de Educación del Estado de Nuevo León,CSV,16366,6,2026-04-20T22:55:11.968855,,,[],0.04,81.67,100.0,0.0,99.89,80.0,100.0,55.42
+planteles-educativos,Sin categoría,Secretaría de Educación del Estado de Nuevo León,CSV,59,4,2026-04-20T22:54:45.127219,,,[],100.0,96.25,100.0,100.0,99.89,80.0,100.0,97.06
+planteles-educativos,Sin categoría,Secretaría de Educación del Estado de Nuevo León,CSV,16366,6,2026-04-20T22:54:45.127219,,,[],0.02,81.67,100.0,0.0,99.89,80.0,100.0,55.42
+directoriofirecom,Sin categoría,Fideicomiso para el Reordenamiento Comercial (FIRECOM),CSV,5,9,2026-04-20T22:27:26.545826,,,[],100.0,85.0,100.0,100.0,99.89,70.0,100.0,93.24
+directoriofirecom,Sin categoría,Fideicomiso para el Reordenamiento Comercial (FIRECOM),CSV,9,15,2026-04-20T22:27:26.545826,,,[],34.81,91.33,100.0,100.0,99.89,70.0,100.0,75.27
+listado-cendis,Asistencia Social,Fideicomiso BP3417 CENDIS,.CSV,13,11,2026-04-20T22:08:43.687163,,,[],100.0,94.55,100.0,100.0,99.89,80.0,100.0,96.63
+listado-cendis,Asistencia Social,Fideicomiso BP3417 CENDIS,CSV,9,6,2026-04-20T22:08:43.687163,,,[],83.33,88.33,100.0,100.0,99.89,80.0,100.0,90.08
+contrataciones-abiertas-direccion-general-de-adquisiciones-y-servicios,Administración y Finanzas,Secretaría de Administración,JSON,8148,26,2026-04-20T21:57:11.082872,,,[],96.48,92.5,77.92,100.0,99.89,80.0,100.0,91.75
+prepa-abierta,Sin categoría,Secretaría de Educación del Estado de Nuevo León,.CSV,125,6,2026-04-15T22:25:03.942204,,,[],99.2,85.0,99.5,100.0,99.62,80.0,60.0,91.12
+prepa-abierta,Sin categoría,Secretaría de Educación del Estado de Nuevo León,.CSV,16366,6,2026-04-15T22:25:03.942204,,,[],0.03,81.67,100.0,0.0,99.62,80.0,60.0,52.61
+solicitudes-de-informacion-fid-2284-tren-suburbano,Atención Ciudadana,"Fideicomiso No. 2284 ""Tren Suburbano Villa García-Aeropuerto de Monterrey, Primera fase, Etapa 1""",CSV,16,14,2026-04-15T22:18:23.504616,,,[],14.29,80.0,100.0,0.0,99.62,60.0,100.0,57.27
+solicitudes-de-informacion-fid-2284-tren-suburbano,Atención Ciudadana,"Fideicomiso No. 2284 ""Tren Suburbano Villa García-Aeropuerto de Monterrey, Primera fase, Etapa 1""",CSV,13,6,2026-04-15T22:18:23.504616,,,[],100.0,95.0,100.0,100.0,99.62,60.0,100.0,94.73
+capacitaciones-fidecitrus-enero-agosto-2025,Sin categoría,Fideicomiso Para el Desarrollo de la Zona Citrícola,CSV,28,7,2026-03-30T19:35:53.309990,,,[],100.0,82.86,100.0,0.0,98.74,80.0,100.0,85.65
+capacitaciones-fidecitrus-enero-agosto-2025,Sin categoría,Fideicomiso Para el Desarrollo de la Zona Citrícola,CSV,7,2,2026-03-30T19:35:53.309990,,,[],50.0,92.5,100.0,100.0,98.74,80.0,100.0,81.06
+2025_diccionario_prestamos_ejercidos_fovileonedu,Sin categoría,Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON),.CSV,10,7,2026-03-30T16:45:50.859442,,,[],100.0,88.57,100.0,100.0,98.74,70.0,60.0,91.28
+2025_diccionario_prestamos_ejercidos_fovileonedu,Sin categoría,Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON),.CSV,7,6,2026-03-30T16:45:50.859442,,,[],83.33,91.67,100.0,100.0,98.74,70.0,60.0,87.05
+2025_prestamos_ejercidos_fovileonedo,Sin categoría,Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON),.CSV,10,7,2026-03-27T17:29:19.088177,,,[],100.0,88.57,100.0,100.0,98.58,70.0,60.0,91.27
+2025_prestamos_ejercidos_fovileonedo,Sin categoría,Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON),.CSV,7,6,2026-03-27T17:29:19.088177,,,[],83.33,91.67,100.0,100.0,98.58,70.0,60.0,87.05
+centro-estatal-de-becas,Sin categoría,Centro Estatal de Becas,.CSV,30,12,2026-03-27T17:01:56.937810,,,[],92.22,79.17,100.0,100.0,98.58,80.0,60.0,87.59
+centro-estatal-de-becas,Sin categoría,Centro Estatal de Becas,.CSV,11,6,2026-03-27T17:01:56.937810,,,[],83.33,91.67,99.5,100.0,98.58,80.0,60.0,87.97
+registros-programa-impulso-nuevo-leon,Sin categoría,Fideicomiso Fondo de Apoyo para la Creación y Consolidación del Empleo Productivo en el Estado de Nuevo León (FOCRECE),CSV,1444,10,2026-03-26T22:16:33.673346,,,[],92.31,92.0,100.0,97.78,98.52,50.0,65.0,87.99
+registros-programa-impulso-nuevo-leon,Sin categoría,Fideicomiso Fondo de Apoyo para la Creación y Consolidación del Empleo Productivo en el Estado de Nuevo León (FOCRECE),CSV,8,6,2026-03-26T22:16:33.673346,,,[],83.33,94.17,100.0,100.0,98.52,50.0,65.0,86.02
+matricula-de-alumnos,Educación,Universidad Tecnológica Linares,CSV,12,17,2026-03-26T19:59:13.095235,,,[],100.0,100.0,100.0,100.0,98.52,70.0,100.0,96.93
+matricula-de-alumnos,Educación,Universidad Tecnológica Linares,CSV,17,6,2026-03-26T19:59:13.095235,,,[],77.45,83.33,99.5,100.0,98.52,70.0,100.0,85.92
+nuevo-leon-al-dia,Transparencia y Combate a la Corrupción,Oficina de Comunicación del Ejecutivo del Estado,CSV,175,7,2026-03-26T15:32:02.685061,,,[],99.02,95.71,100.0,100.0,98.47,70.0,100.0,95.56
+nuevo-leon-al-dia,Transparencia y Combate a la Corrupción,Oficina de Comunicación del Ejecutivo del Estado,CSV,7,6,2026-03-26T15:32:02.685061,,,[],100.0,96.67,100.0,100.0,98.47,70.0,100.0,96.09
+programacion-infantil-en-canal-28-1-y-28-2-marzo,Arte y Cultura,Sistema de Radio y Televisión de Nuevo León,CSV,8,6,2026-03-26T15:31:00.574137,,,[],100.0,84.17,99.5,100.0,98.47,70.0,100.0,92.89
+programacion-infantil-en-canal-28-1-y-28-2-marzo,Arte y Cultura,Sistema de Radio y Televisión de Nuevo León,CSV,11,6,2026-03-26T15:31:00.574137,,,[],81.82,85.0,99.5,81.82,98.47,70.0,100.0,86.19
+cursos-y-talleres,Sin categoría,Instituto Estatal de las Personas Adultas Mayores (IEPAM),CSV,16,7,2026-03-26T14:31:47.568419,,,[],100.0,97.14,100.0,100.0,98.47,70.0,100.0,96.21
+cursos-y-talleres,Sin categoría,Instituto Estatal de las Personas Adultas Mayores (IEPAM),CSV,7,7,2026-03-26T14:31:47.568419,,,[],85.71,92.14,100.0,100.0,98.47,70.0,100.0,90.67
+inventario-de-bienes-inmuebles,Sin categoría,Fideicomiso de Proyectos Estratégicos (FIDEPROES),CSV,81,14,2026-03-25T17:34:29.688406,,,[],100.0,90.36,100.0,100.0,98.47,70.0,100.0,94.51
+inventario-de-bienes-inmuebles,Sin categoría,Fideicomiso de Proyectos Estratégicos (FIDEPROES),CSV,14,6,2026-03-25T17:34:29.688406,,,[],66.67,86.67,100.0,100.0,98.47,70.0,100.0,83.59
+conjunto-de-datos-de-los-cursos-de-capacitacion-impartidos-en-el-icet-durante-2025,Sin categoría,Instituto de Capacitación y Educación para el Trabajo (ICET),CSV,8609,17,2026-03-20T22:32:08.315303,,,[],100.0,98.82,87.28,98.38,98.19,75.0,100.0,95.08
+conjunto-de-datos-de-los-cursos-de-capacitacion-impartidos-en-el-icet-durante-2025,Sin categoría,Instituto de Capacitación y Educación para el Trabajo (ICET),CSV,17,8,2026-03-20T22:32:08.315303,,,[],87.5,90.62,100.0,100.0,98.19,75.0,100.0,91.31
+saldos-de-rendimientos-de-aportacion-del-fideicomiso,Sin categoría,Fideicomiso de Inversión y Administración (FIDEMEJORA),CSV,4,4,2026-03-20T18:07:28.797643,,,[],50.0,92.5,100.0,100.0,98.19,70.0,100.0,80.03
+saldos-de-rendimientos-de-aportacion-del-fideicomiso,Sin categoría,Fideicomiso de Inversión y Administración (FIDEMEJORA),CSV,4,6,2026-03-20T18:07:28.797643,,,[],91.67,90.83,100.0,100.0,98.19,70.0,100.0,92.12
+presupuesto-fitur-2026,Administración y Finanzas,Fideicomiso Turismo Nuevo León,CSV,49,28,2026-03-20T01:11:59.753543,,,[],82.14,93.75,71.74,100.0,98.14,70.0,100.0,85.75
+presupuesto-fitur-2026,Administración y Finanzas,Fideicomiso Turismo Nuevo León,CSV,23,6,2026-03-20T01:11:59.753543,,,[],100.0,89.17,100.0,100.0,98.14,70.0,100.0,94.2
+unidades-de-transporte-publico,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,2186,12,2026-03-19T17:54:07.786151,,,[],93.93,89.17,100.0,99.9,98.14,80.0,100.0,93.37
+unidades-de-transporte-publico,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,12,6,2026-03-19T17:54:07.786151,,,[],100.0,94.17,100.0,100.0,98.14,80.0,100.0,96.45
+licitaciones,Sin categoría,Instituto Constructor de Infraestructura Física Educativa y Deportiva,CSV,294,8,2026-03-19T00:19:07.385740,,,[],100.0,91.88,77.74,100.0,98.08,70.0,100.0,91.54
+licitaciones,Sin categoría,Instituto Constructor de Infraestructura Física Educativa y Deportiva,CSV,8,6,2026-03-19T00:19:07.385740,,,[],87.5,91.67,100.0,100.0,98.08,70.0,100.0,91.07
+solicitudes-de-informacion,Sin categoría,Instituto del Agua del Estado de Nuevo León,CSV,301,11,2026-03-18T21:56:13.814730,,,[],91.03,89.55,90.7,100.0,98.08,70.0,100.0,90.21
+solicitudes-de-informacion,Sin categoría,Instituto del Agua del Estado de Nuevo León,CSV,11,6,2026-03-18T21:56:13.814730,,,[],83.33,94.17,100.0,100.0,98.08,70.0,100.0,90.45
+insumos_politicas_publicas,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,6,3,2026-03-18T19:36:08.081967,,,[],100.0,90.0,100.0,100.0,98.08,80.0,100.0,95.4
+insumos_politicas_publicas,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,3,6,2026-03-18T19:36:08.081967,,,[],83.33,83.33,100.0,100.0,98.08,80.0,100.0,88.74
+tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,.CSV,4,7,2026-03-18T16:41:34.142366,,,[],100.0,97.14,100.0,100.0,98.08,70.0,100.0,96.19
+tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,CSV,8,4,2026-03-18T16:41:34.142366,,,[],93.75,92.5,100.0,100.0,98.08,70.0,100.0,93.15
+tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,.CSV,7,2,2026-03-18T16:41:34.142366,,,[],92.86,92.5,100.0,100.0,98.08,70.0,100.0,92.89
+tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,.CSV,8,4,2026-03-18T16:41:34.142366,,,[],93.75,92.5,100.0,100.0,98.08,70.0,100.0,93.15
+tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,CSV,7,2,2026-03-18T16:41:34.142366,,,[],92.86,92.5,100.0,100.0,98.08,70.0,100.0,92.89
+tecnoparques-fidesur-2025,Sin categoría,Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León,CSV,4,7,2026-03-18T16:41:34.142366,,,[],100.0,97.14,100.0,100.0,98.08,70.0,100.0,96.19
+sesiones_comite_coordinador_seanl,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,8,7,2026-03-18T00:03:28.724596,,,[],100.0,95.71,99.0,100.0,98.03,70.0,100.0,95.68
+sesiones_comite_coordinador_seanl,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,7,6,2026-03-18T00:03:28.724596,,,[],83.33,89.17,100.0,100.0,98.03,70.0,100.0,89.19
+2022_2026_solicitudes_fofae,Sin categoría,Fideicomiso Fondo de Fomento Agropecuario del Estado de Nuevo León,CSV,42,11,2026-03-18T00:02:55.990709,,,[],90.69,93.18,100.0,100.0,98.03,70.0,100.0,92.4
+2022_2026_solicitudes_fofae,Sin categoría,Fideicomiso Fondo de Fomento Agropecuario del Estado de Nuevo León,CSV,11,6,2026-03-18T00:02:55.990709,,,[],84.85,88.33,100.0,100.0,98.03,70.0,100.0,89.44
+sesiones_organo_gobierno_seseanl,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,12,7,2026-03-18T00:01:01.610307,,,[],100.0,95.71,99.5,100.0,98.03,70.0,100.0,95.75
+sesiones_organo_gobierno_seseanl,Sin categoría,Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL),CSV,7,6,2026-03-18T00:01:01.610307,,,[],97.62,85.83,99.0,100.0,98.03,70.0,100.0,92.49
+nacimientos-registrados-en-unidades-hospitalarias-de-los-servicios-de-salud-de-nuevo-leon,Sin categoría,"Servicios de salud de Nuevo León, O.P.D.",.CSV,12641,14,2026-03-13T17:36:16.435655,,,[],100.0,100.0,91.46,100.0,97.81,70.0,60.0,92.81
+nacimientos-registrados-en-unidades-hospitalarias-de-los-servicios-de-salud-de-nuevo-leon,Sin categoría,"Servicios de salud de Nuevo León, O.P.D.",.CSV,14,6,2026-03-13T17:36:16.435655,,,[],91.67,81.67,99.5,100.0,97.81,70.0,60.0,86.93
+directorio-de-parques-osetur-nuevo-leon,Turismo,Secretaría de Turismo,.CSV,5,9,2026-03-12T17:17:45.807048,,,[],100.0,96.11,100.0,100.0,97.75,80.0,60.0,94.12
+directorio-de-parques-osetur-nuevo-leon,Turismo,Secretaría de Turismo,.CSV,8,7,2026-03-12T17:17:45.807048,,,[],75.0,90.0,100.0,100.0,97.75,80.0,60.0,85.09
+visitantes-a-parques-nuevo-leon,Turismo,Secretaría de Turismo,.CSV,5,17,2026-03-12T17:15:13.241867,,,[],88.24,98.24,100.0,100.0,97.75,80.0,60.0,91.12
+pueblos_magicos_nuevo_leon,Turismo,Secretaría de Turismo,CSV,5,4,2026-03-12T15:32:31.702822,,,[],100.0,100.0,100.0,100.0,97.7,70.0,100.0,96.88
+pueblos_magicos_nuevo_leon,Turismo,Secretaría de Turismo,CSV,7,6,2026-03-12T15:32:31.702822,,,[],52.38,78.33,100.0,42.86,97.7,70.0,100.0,72.61
+conciliacioneslaborales,Administración y Finanzas,Centro de Conciliación Laboral,CSV,59964,16,2026-03-11T15:39:26.235394,,,[],75.0,94.38,75.34,71.42,97.64,70.0,100.0,81.99
+conciliacioneslaborales,Administración y Finanzas,Centro de Conciliación Laboral,CSV,15,6,2026-03-11T15:39:26.235394,,,[],90.0,91.67,99.0,100.0,97.64,70.0,100.0,91.65
+2025_iniciacion_deportiva,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,22,14,2026-03-10T17:51:37.860018,,,[],100.0,91.79,99.5,100.0,97.64,80.0,60.0,92.95
+2025_iniciacion_deportiva,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,14,7,2026-03-10T17:51:37.860018,,,[],73.47,87.86,99.5,100.0,97.64,80.0,60.0,84.01
+2025_campamento_verano,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,5,16,2026-03-10T17:47:44.428216,,,[],98.75,92.19,100.0,100.0,97.64,70.0,60.0,91.75
+2025_campamento_verano,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,15,6,2026-03-10T17:47:44.428216,,,[],85.56,88.33,99.5,100.0,97.64,70.0,60.0,86.76
+2025_clinica_adultos,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,9,13,2026-03-10T17:41:30.146605,,,[],100.0,92.31,100.0,100.0,97.64,80.0,60.0,93.16
+2025_clinica_adultos,Deportes,Instituto Estatal de Cultura Física y Deporte (INDE),.CSV,13,7,2026-03-10T17:41:30.146605,,,[],73.63,87.86,99.5,100.0,97.64,80.0,60.0,84.06
+matricula-total-de-la-universidad,Sin categoría,Universidad Tecnológica Gral. Mariano Escobedo,CSV,23,6,2026-03-09T22:42:17.766155,,,[],100.0,95.0,99.5,100.0,97.59,60.0,100.0,94.55
+matricula-total-de-la-universidad,Sin categoría,Universidad Tecnológica Gral. Mariano Escobedo,CSV,6,6,2026-03-09T22:42:17.766155,,,[],94.44,78.33,100.0,100.0,97.59,60.0,100.0,88.79
+2025-proyectos-estrategicos,Sin categoría,Fideicomiso FIDEURB (BP6823),CSV,233,7,2026-03-09T22:21:52.307058,,,[],100.0,90.71,100.0,100.0,97.59,70.0,100.0,94.56
+2025-proyectos-estrategicos,Sin categoría,Fideicomiso FIDEURB (BP6823),CSV,7,6,2026-03-09T22:21:52.307058,,,[],80.95,91.67,100.0,100.0,97.59,70.0,100.0,89.08
+planteles-colegio-militarizado-general-mariano-escobedo-del-estado-de-nuevo-leon,Educación,"Colegio Militarizado ""General Mariano Escobedo""",CSV,11,12,2026-03-09T16:16:00.551439,,,[],100.0,97.5,100.0,100.0,97.53,70.0,100.0,96.25
+planteles-colegio-militarizado-general-mariano-escobedo-del-estado-de-nuevo-leon,Educación,"Colegio Militarizado ""General Mariano Escobedo""",CSV,13,6,2026-03-09T16:16:00.551439,,,[],83.33,89.17,100.0,38.46,97.53,70.0,100.0,84.24
+conjunto-de-datos-idpnl,Sin categoría,Instituto de Defensoría Pública de Nuevo León,CSV,111,35,2026-03-09T16:10:19.313342,,,[],73.64,99.0,75.62,100.0,97.53,70.0,100.0,85.06
+conjunto-de-datos-idpnl,Sin categoría,Instituto de Defensoría Pública de Nuevo León,CSV,35,6,2026-03-09T16:10:19.313342,,,[],83.33,83.33,100.0,100.0,97.53,70.0,100.0,87.71
+solicitudes-de-acceso-a-la-informacion-recibidas-por-codetur,Sin categoría,Corporación para el Desarrollo Turístico de Nuevo León,CSV,11,21,2026-03-06T23:14:31.222090,,,[],64.94,75.24,100.0,100.0,97.42,70.0,100.0,80.16
+solicitudes-de-acceso-a-la-informacion-recibidas-por-codetur,Sin categoría,Corporación para el Desarrollo Turístico de Nuevo León,CSV,21,2,2026-03-06T23:14:31.222090,,,[],95.24,85.0,100.0,100.0,97.42,70.0,100.0,91.69
+residuos-solidos-urbanos,Sin categoría,Sistema Integral para el Manejo Ecológico y Procesamiento de Desechos (SIMEPRODE),CSV,195,5,2026-03-05T23:00:37.816439,,,[],97.33,86.0,100.0,100.0,97.37,80.0,100.0,93.57
+residuos-solidos-urbanos,Sin categoría,Sistema Integral para el Manejo Ecológico y Procesamiento de Desechos (SIMEPRODE),CSV,4,6,2026-03-05T23:00:37.816439,,,[],87.5,90.83,100.0,100.0,97.37,80.0,100.0,91.83
+frecuencia-servicios-prestados-parque-fundidora,Sin categoría,"Parque Fundidora, O.P.D",.CSV,12,9,2026-03-05T21:46:19.685477,,,[],100.0,97.78,100.0,100.0,97.37,70.0,60.0,93.51
+frecuencia-servicios-prestados-parque-fundidora,Sin categoría,"Parque Fundidora, O.P.D",.CSV,9,6,2026-03-05T21:46:19.685477,,,[],96.3,91.67,100.0,100.0,97.37,70.0,60.0,90.88
+base-de-datos-de-entrega-de-acciones-de-vivienda,Sin categoría,Instituto de la Vivienda,CSV,374,10,2026-03-03T18:34:21.134543,,,[],99.84,93.5,81.12,100.0,97.26,70.0,100.0,92.36
+base-de-datos-de-entrega-de-acciones-de-vivienda,Sin categoría,Instituto de la Vivienda,CSV,9,6,2026-03-03T18:34:21.134543,,,[],98.15,94.17,100.0,100.0,97.26,70.0,100.0,94.85
+conferencias-cursos-y-foros-2025,Sin categoría,Universidad de Ciencias de la Seguridad,CSV,12,8,2026-03-02T18:34:00.992032,,,[],98.96,96.25,100.0,100.0,97.21,80.0,100.0,96.61
+conferencias-cursos-y-foros-2025,Sin categoría,Universidad de Ciencias de la Seguridad,CSV,8,6,2026-03-02T18:34:00.992032,,,[],100.0,91.67,100.0,100.0,97.21,80.0,100.0,95.78
+solicitudes-de-acceso-a-la-informacion-enero-2025-enero2026,Sin categoría,Oficina de Representación del Estado en la Ciudad de Mexico,CSV,5,21,2026-03-02T18:12:29.525493,,,[],76.19,88.81,100.0,100.0,97.21,70.0,100.0,86.92
+solicitudes-de-acceso-a-la-informacion-enero-2025-enero2026,Sin categoría,Oficina de Representación del Estado en la Ciudad de Mexico,CSV,20,6,2026-03-02T18:12:29.525493,,,[],84.17,90.83,100.0,100.0,97.21,70.0,100.0,89.82
+maltrato-animal-t4-2025,Sin categoría,Secretaría de Medio Ambiente,CSV,122,10,2026-03-02T16:46:24.178561,,,[],90.0,87.5,100.0,100.0,97.21,70.0,100.0,90.74
+maltrato-animal-t4-2025,Sin categoría,Secretaría de Medio Ambiente,CSV,9,6,2026-03-02T16:46:24.178561,,,[],85.19,91.67,100.0,100.0,97.21,70.0,100.0,90.34
+labnl-lab-cultural-ciudadano-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,1799,89,2026-02-27T19:13:04.386237,,,[],58.26,89.89,66.66,50.76,97.04,70.0,100.0,72.86
+labnl-lab-cultural-ciudadano-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,900,89,2026-02-27T19:13:04.386237,,,[],64.87,90.06,69.62,100.0,97.04,70.0,100.0,79.27
+labnl-lab-cultural-ciudadano-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,45,6,2026-02-27T19:13:04.386237,,,[],86.3,91.67,100.0,100.0,97.04,70.0,100.0,90.66
+personas-beneficiarias-del-programa-jefas-de-familia,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,51,14,2026-02-27T00:25:50.382617,,,[],100.0,100.0,79.08,100.0,96.99,70.0,100.0,93.71
+personas-beneficiarias-del-programa-jefas-de-familia,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,13,6,2026-02-27T00:25:50.382617,,,[],83.33,94.17,100.0,100.0,96.99,70.0,100.0,90.39
+directorio-de-centros-comunitarios,Arte y Cultura,Secretaría de Igualdad e Inclusión,CSV,47,9,2026-02-27T00:25:09.674200,,,[],95.98,90.56,100.0,100.0,96.99,70.0,100.0,93.28
+directorio-de-centros-comunitarios,Arte y Cultura,Secretaría de Igualdad e Inclusión,CSV,8,6,2026-02-27T00:25:09.674200,,,[],83.33,86.67,100.0,100.0,96.99,70.0,100.0,88.52
+directorio-de-centros-de-atencion-integral-para-adolescentes,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,22,8,2026-02-27T00:24:37.316932,,,[],94.32,89.38,100.0,100.0,96.99,70.0,100.0,92.49
+directorio-de-centros-de-atencion-integral-para-adolescentes,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,7,6,2026-02-27T00:24:37.316932,,,[],83.33,91.67,100.0,100.0,96.99,70.0,100.0,89.77
+personas-beneficiarias-de-del-programa-personas-con-discapacidad,Sin categoría,Secretaría de Igualdad e Inclusión,CSV,51,14,2026-02-27T00:24:20.034304,,,[],100.0,100.0,72.54,100.0,96.99,70.0,100.0,92.73
+personas-beneficiarias-de-del-programa-personas-con-discapacidad,Sin categoría,Secretaría de Igualdad e Inclusión,CSV,13,6,2026-02-27T00:24:20.034304,,,[],83.33,94.17,100.0,100.0,96.99,70.0,100.0,90.39
+talleres-realizados-en-los-centros-comunitarios-de-desarrollo-social,Arte y Cultura,Secretaría de Igualdad e Inclusión,CSV,47,8,2026-02-26T23:14:43.217177,,,[],99.73,98.12,86.38,100.0,96.99,70.0,100.0,94.26
+talleres-realizados-en-los-centros-comunitarios-de-desarrollo-social,Arte y Cultura,Secretaría de Igualdad e Inclusión,CSV,7,6,2026-02-26T23:14:43.217177,,,[],83.33,94.17,100.0,100.0,96.99,70.0,100.0,90.39
+organos-colegiados,Participación,Secretaría de Participación Ciudadana,CSV,77,26,2026-02-26T22:28:17.812030,,,[],86.76,85.38,74.3,100.0,96.99,70.0,100.0,85.37
+organos-colegiados,Participación,Secretaría de Participación Ciudadana,CSV,99,42,2026-02-26T22:28:17.812030,,,[],37.93,89.17,83.5,33.34,96.99,70.0,100.0,67.71
+organos-colegiados,Participación,Secretaría de Participación Ciudadana,CSV,26,7,2026-02-26T22:28:17.812030,,,[],74.73,87.86,100.0,100.0,96.99,70.0,100.0,86.23
+organos-colegiados,Participación,Secretaría de Participación Ciudadana,CSV,26,8,2026-02-26T22:28:17.812030,,,[],65.38,89.38,100.0,100.0,96.99,70.0,100.0,83.81
+tramites_y_servicios,Sin categoría, Secretaría de Economía,CSV,16,12,2026-02-26T22:18:33.932516,,,[],100.0,94.17,99.5,100.0,96.99,70.0,100.0,95.32
+tramites_y_servicios,Sin categoría, Secretaría de Economía,CSV,7,6,2026-02-26T22:18:33.932516,,,[],83.33,85.0,100.0,100.0,96.99,70.0,100.0,88.1
+personas-beneficiarias-del-programa-impulso-a-cuidadoras,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,51,14,2026-02-26T22:02:08.346462,,,[],100.0,100.0,82.36,100.0,96.99,70.0,100.0,94.2
+personas-beneficiarias-del-programa-impulso-a-cuidadoras,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,13,6,2026-02-26T22:02:08.346462,,,[],83.33,94.17,100.0,100.0,96.99,70.0,100.0,90.39
+personas-beneficiarias-del-programa-hambre-cero,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,51,5,2026-02-26T21:28:49.306710,,,[],100.0,100.0,71.24,100.0,96.99,70.0,100.0,92.54
+personas-beneficiarias-del-programa-hambre-cero,Asistencia Social,Secretaría de Igualdad e Inclusión,CSV,4,6,2026-02-26T21:28:49.306710,,,[],83.33,94.17,100.0,100.0,96.99,70.0,100.0,90.39
+servicios-para-el-campo,Sin categoría,Promotora de Desarrollo Rural de Nuevo León – PRODERLEON,.CSV,515,13,2026-02-26T18:14:05.054664,,,[],82.91,90.38,85.84,93.0,96.99,80.0,60.0,84.83
+servicios-para-el-campo,Sin categoría,Promotora de Desarrollo Rural de Nuevo León – PRODERLEON,.CSV,13,6,2026-02-26T18:14:05.054664,,,[],100.0,87.5,100.0,100.0,96.99,80.0,60.0,91.92
+capacitaciones-portafolio-2025-2026,Sin categoría,Instituto Estatal de las Mujeres,.CSV,56,7,2026-02-26T16:31:40.263584,,,[],100.0,91.43,77.58,100.0,96.93,80.0,60.0,89.54
+capacitaciones-portafolio-2025-2026,Sin categoría,Instituto Estatal de las Mujeres,.CSV,7,6,2026-02-26T16:31:40.263584,,,[],83.33,94.17,99.5,100.0,96.93,80.0,60.0,88.51
+datos-de-fidecultural-2019-2024,Sin categoría,Fideicomiso para la Conservación del Patrimonio Cultural de Nuevo León (FIDECULTURAL),CSV,981,6,2026-02-25T23:57:46.475038,,,[],5.69,87.5,100.0,0.0,96.93,80.0,100.0,58.43
+datos-de-fidecultural-2019-2024,Sin categoría,Fideicomiso para la Conservación del Patrimonio Cultural de Nuevo León (FIDECULTURAL),CSV,5,6,2026-02-25T23:57:46.475038,,,[],83.33,96.67,100.0,100.0,96.93,80.0,100.0,92.01
+solicitudes-de-acceso-a-la-informacion-sistema-de-caminos,Transparencia y Combate a la Corrupción,Sistema de Caminos de Nuevo León,CSV,69,14,2026-02-25T22:06:42.503552,,,[],57.04,86.79,100.0,100.0,96.93,70.0,100.0,80.66
+solicitudes-de-acceso-a-la-informacion-sistema-de-caminos,Transparencia y Combate a la Corrupción,Sistema de Caminos de Nuevo León,CSV,13,6,2026-02-25T22:06:42.503552,,,[],100.0,94.17,100.0,100.0,96.93,70.0,100.0,95.39
+directorio-iiiepe,Sin categoría,"Instituto de Investigación, Innovación y Estudios de Posgrado para la Educación del Estado de Nuevo León",CSV,4,9,2026-02-25T22:04:21.574067,,,[],100.0,98.33,99.5,100.0,96.93,70.0,100.0,96.35
+directorio-iiiepe,Sin categoría,"Instituto de Investigación, Innovación y Estudios de Posgrado para la Educación del Estado de Nuevo León",CSV,9,6,2026-02-25T22:04:21.574067,,,[],87.04,94.17,100.0,100.0,96.93,70.0,100.0,91.5
+solicitudes-de-acceso-a-la-informacion-recibidas-por-el-sistema-estatal-de-informacion,Transparencia y Combate a la Corrupción,Sistema Estatal de Información,CSV,65,16,2026-02-24T16:09:20.078027,,,[],41.83,75.94,100.0,0.0,96.82,70.0,100.0,65.38
+solicitudes-de-acceso-a-la-informacion-recibidas-por-el-sistema-estatal-de-informacion,Transparencia y Combate a la Corrupción,Sistema Estatal de Información,CSV,17,6,2026-02-24T16:09:20.078027,,,[],79.41,78.33,100.0,100.0,96.82,70.0,100.0,85.25
+proyectos-apoyados-por-el-i2t2,Sin categoría,Instituto de Innovación y Transferencia Tecnológica de Nuevo León,CSV,9,8,2026-02-23T18:32:37.963161,,,[],73.61,81.88,100.0,100.0,96.82,70.0,100.0,84.39
+proyectos-apoyados-por-el-i2t2,Sin categoría,Instituto de Innovación y Transferencia Tecnológica de Nuevo León,CSV,8,6,2026-02-23T18:32:37.963161,,,[],93.75,86.67,99.5,100.0,96.82,70.0,100.0,91.56
+lista-de-libros-del-fonedi,Sin categoría,Fondo Editorial de Nuevo León,CSV,981,7,2026-02-23T18:27:53.675704,,,[],61.28,85.0,86.0,40.46,96.82,70.0,100.0,74.61
+lista-de-libros-del-fonedi,Sin categoría,Fondo Editorial de Nuevo León,CSV,8,1,2026-02-23T18:27:53.675704,,,[],12.5,65.0,100.0,0.0,96.82,70.0,100.0,53.84
+asistencia-de-personas-a-actividades-de-conarte,Sin categoría,Consejo para la Cultura y las Artes de Nuevo León,CSV,530,7,2026-02-23T16:39:10.716286,,,[],100.0,97.14,65.42,100.0,96.82,80.0,100.0,91.94
+asistencia-de-personas-a-actividades-de-conarte,Sin categoría,Consejo para la Cultura y las Artes de Nuevo León,CSV,7,6,2026-02-23T16:39:10.716286,,,[],83.33,94.17,100.0,100.0,96.82,80.0,100.0,91.38
+solicitud-de-informacion-instituto-registral-y-catastral,Administración y Finanzas,Instituto Registral y Catastral del Estado de Nuevo León,CSV,31,4,2026-02-23T16:22:43.896864,,,[],100.0,100.0,100.0,100.0,96.77,70.0,100.0,96.84
+solicitud-de-informacion-instituto-registral-y-catastral,Administración y Finanzas,Instituto Registral y Catastral del Estado de Nuevo León,CSV,4,7,2026-02-23T16:22:43.896864,,,[],85.71,91.43,100.0,100.0,96.77,70.0,100.0,90.41
+2025_directorio_colaboradores_junta-local-de-conciliacion-y-arbitraje,Sin categoría,Junta Local de Conciliación y Arbitraje,CSV,235,9,2026-02-21T02:07:21.086239,,,[],100.0,95.56,95.74,100.0,96.66,80.0,100.0,96.08
+2025_directorio_colaboradores_junta-local-de-conciliacion-y-arbitraje,Sin categoría,Junta Local de Conciliación y Arbitraje,CSV,9,5,2026-02-21T02:07:21.086239,,,[],100.0,92.0,100.0,100.0,96.66,80.0,100.0,95.83
+indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon,Sin categoría,Secretaría Técnica de Gobierno,CSV,86,11,2026-02-21T01:53:35.002526,,,[],95.77,93.18,67.44,100.0,96.66,90.0,100.0,90.98
+indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon,Sin categoría,Secretaría Técnica de Gobierno,CSV,4,6,2026-02-21T01:53:35.002526,,,[],83.33,96.67,100.0,100.0,96.66,90.0,100.0,93.0
+indicadores-de-desempeno-del-gobierno-del-estado-de-nuevo-leon,Sin categoría,Secretaría Técnica de Gobierno,CSV,86,11,2026-02-21T01:53:35.002526,,,[],95.77,93.18,67.44,100.0,96.66,90.0,100.0,90.98
+pib-agroindustrial-por-entidad-federativa-2022-2024,Agricultura,Secretaría de Desarrollo Regional y Agropecuario,CSV,99,5,2026-02-20T20:44:28.489021,,,[],100.0,100.0,82.82,100.0,96.66,70.0,100.0,94.26
+pib-agroindustrial-por-entidad-federativa-2022-2024,Agricultura,Secretaría de Desarrollo Regional y Agropecuario,CSV,5,6,2026-02-20T20:44:28.489021,,,[],100.0,96.67,100.0,100.0,96.66,70.0,100.0,96.0
+produccion-agricola-2022-2024,Agroalimentario,Secretaría de Desarrollo Regional y Agropecuario,CSV,1134,13,2026-02-20T20:43:48.913053,,,[],100.0,100.0,74.0,100.0,96.66,70.0,100.0,92.93
+produccion-agricola-2022-2024,Agroalimentario,Secretaría de Desarrollo Regional y Agropecuario,CSV,12,6,2026-02-20T20:43:48.913053,,,[],94.44,91.67,100.0,100.0,96.66,70.0,100.0,93.08
+declaraciones-oficiales-de-la-oficina-ejecutiva,Sin categoría,Oficina Ejecutiva del Titular del Poder Ejecutivo del Estado de Nuevo León,CSV,1000,6,2026-02-19T20:13:38.667711,,,[],1.25,87.5,100.0,0.0,96.6,80.0,100.0,57.08
+declaraciones-oficiales-de-la-oficina-ejecutiva,Sin categoría,Oficina Ejecutiva del Titular del Poder Ejecutivo del Estado de Nuevo León,CSV,5,6,2026-02-19T20:13:38.667711,,,[],66.67,91.67,100.0,100.0,96.6,80.0,100.0,85.75
+directorio-de-planteles-cecytenl,Educación,Colegio de Estudios Científicos y Tecnológicos del Estado de Nuevo León (CECyTENL),CSV,34,12,2026-02-19T17:29:55.016686,,,[],98.53,93.75,98.52,100.0,96.6,70.0,100.0,94.6
+directorio-de-planteles-cecytenl,Educación,Colegio de Estudios Científicos y Tecnológicos del Estado de Nuevo León (CECyTENL),CSV,11,6,2026-02-19T17:29:55.016686,,,[],83.33,94.17,100.0,100.0,96.6,70.0,100.0,90.37
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,209,51,2026-02-18T16:12:48.490404,,,[],88.62,93.24,84.38,100.0,96.49,70.0,100.0,89.38
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,188,51,2026-02-18T16:12:48.490404,,,[],87.61,93.53,85.44,100.0,96.49,70.0,100.0,89.31
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,152,51,2026-02-18T16:12:48.490404,,,[],84.84,86.47,85.02,100.0,96.49,70.0,100.0,86.65
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,125,30,2026-02-18T16:12:48.490404,,,[],68.72,92.0,83.64,100.0,96.49,70.0,100.0,82.99
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,93,13,2026-02-18T16:12:48.490404,,,[],92.31,98.85,81.8,100.0,96.49,70.0,100.0,91.5
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,29,13,2026-02-18T16:12:48.490404,,,[],96.82,89.23,99.0,100.0,96.49,70.0,100.0,93.03
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,50,6,2026-02-18T16:12:48.490404,,,[],100.0,85.83,100.0,100.0,96.49,70.0,100.0,93.28
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,30,6,2026-02-18T16:12:48.490404,,,[],96.67,78.33,100.0,100.0,96.49,70.0,100.0,90.41
+asambleas-juntas-de-mejora,Participación,Secretaría de Participación Ciudadana,CSV,12,6,2026-02-18T16:12:48.490404,,,[],97.22,85.83,100.0,100.0,96.49,70.0,100.0,92.45
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,1297,35,2026-02-18T15:45:03.172156,,,[],96.81,95.29,100.0,100.0,96.49,85.0,100.0,96.19
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,34,33,2026-02-18T15:45:03.172156,,,[],12.12,99.09,100.0,100.0,96.49,85.0,100.0,71.73
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,XLSX,156,27,2026-02-18T15:45:03.172156,,,[],2.04,96.48,100.0,7.7,96.49,85.0,100.0,60.67
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,999,34,2026-02-18T15:45:03.172156,,,[],30.95,94.85,100.0,0.0,96.49,85.0,100.0,68.32
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,998,32,2026-02-18T15:45:03.172156,,,[],0.41,98.12,100.0,0.0,96.49,85.0,100.0,59.98
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,XLSX,321,5,2026-02-18T15:45:03.172156,,,[],100.0,100.0,99.38,100.0,96.49,85.0,100.0,98.23
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,106,24,2026-02-18T15:45:03.172156,,,[],95.36,94.17,100.0,100.0,96.49,85.0,100.0,95.48
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,23,32,2026-02-18T15:45:03.172156,,,[],12.5,99.06,100.0,100.0,96.49,85.0,100.0,71.84
+espacios-participativos-en-el-gobierno-del-estado-de-nuevo-leon,Participación,Secretaría de Participación Ciudadana,CSV,132,26,2026-02-18T15:45:03.172156,,,[],2.1,95.58,100.0,7.58,96.49,85.0,100.0,60.46
+hecho-por-tipo-de-violencia,Sin categoría,Secretaría de las Mujeres,CSV,54701,13,2026-02-17T22:55:17.781017,,,[],100.0,98.46,100.0,100.0,96.49,70.0,100.0,96.44
+hecho-por-tipo-de-violencia,Sin categoría,Secretaría de las Mujeres,CSV,22,7,2026-02-17T22:55:17.781017,,,[],82.47,92.14,100.0,100.0,96.49,70.0,100.0,89.6
+cursos-de-capacitacion-de-genl,Educación,Secretaría de Administración,CSV,181,6,2026-02-05T00:04:59.722043,,,[],100.0,100.0,92.82,100.0,95.78,70.0,100.0,95.71
+cursos-de-capacitacion-de-genl,Educación,Secretaría de Administración,CSV,140,6,2026-02-05T00:04:59.722043,,,[],100.0,95.0,90.92,100.0,95.78,70.0,100.0,94.18
+cursos-de-capacitacion-de-genl,Educación,Secretaría de Administración,CSV,999,26,2026-02-05T00:04:59.722043,,,[],0.16,93.08,100.0,0.0,95.78,70.0,100.0,57.11
+cultura-para-la-primera-infancia-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,182,44,2026-02-05T00:04:09.610368,,,[],52.68,93.64,85.78,98.9,95.78,70.0,100.0,78.78
+cultura-para-la-primera-infancia-2022-2023,Arte y Cultura,Secretaría de Cultura,CSV,985,20,2026-02-05T00:04:09.610368,,,[],1.06,95.5,100.0,0.0,95.78,70.0,100.0,57.98
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,92,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,98.56,100.0,95.78,70.0,100.0,96.57
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,92,4,2026-02-04T23:04:06.541250,,,[],99.73,100.0,100.0,100.0,95.78,70.0,100.0,96.71
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,487,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,97.54,100.0,95.78,70.0,100.0,96.42
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,396,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,97.64,100.0,95.78,70.0,100.0,96.44
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,396,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,97.64,100.0,95.78,70.0,100.0,96.44
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,306,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,98.7,100.0,95.78,70.0,100.0,96.59
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,61,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,98.9,100.0,95.78,70.0,100.0,96.62
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,153,4,2026-02-04T23:04:06.541250,,,[],100.0,100.0,100.0,100.0,95.78,70.0,100.0,96.79
+atenciones070,Asistencia Social,Secretaría de Participación Ciudadana,CSV,4,7,2026-02-04T23:04:06.541250,,,[],71.43,94.29,100.0,100.0,95.78,70.0,100.0,86.79
+contratos-smpu,Infraestructura,Secretaría de Movilidad y Planeación Urbana,CSV,179,8,2026-02-04T22:27:37.808250,,,[],94.2,90.62,89.66,100.0,95.78,70.0,100.0,91.15
+contratos-smpu,Infraestructura,Secretaría de Movilidad y Planeación Urbana,CSV,8,8,2026-02-04T22:27:37.808250,,,[],87.5,85.62,100.0,100.0,95.78,70.0,100.0,89.44
+estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,8575,15,2026-01-14T20:12:35.188886,,,[],96.16,95.0,100.0,39.36,94.63,50.0,65.0,85.03
+estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,998,26,2026-01-14T20:12:35.188886,,,[],0.27,95.0,100.0,0.0,94.63,50.0,65.0,53.11
+estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,841,15,2026-01-14T20:12:35.188886,,,[],95.47,89.67,100.0,30.8,94.63,50.0,65.0,82.8
+estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,625,15,2026-01-14T20:12:35.188886,,,[],95.58,89.67,100.0,34.4,94.63,50.0,65.0,83.12
+estadistica-penitenciaria-de-ingresos,Seguridad,Secretaría de Seguridad,CSV,644,15,2026-01-14T20:12:35.188886,,,[],94.81,89.67,100.0,36.96,94.63,50.0,65.0,83.1
+estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,7469,16,2026-01-14T20:10:53.235525,,,[],96.62,94.38,99.5,73.86,94.63,80.0,100.0,93.15
+estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,15,6,2026-01-14T20:10:53.235525,,,[],85.56,91.67,100.0,100.0,94.63,80.0,100.0,91.32
+estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,818,16,2026-01-14T20:10:53.235525,,,[],96.73,89.38,99.5,64.06,94.63,80.0,100.0,91.15
+estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,818,16,2026-01-14T20:10:53.235525,,,[],96.42,89.38,99.5,64.54,94.63,80.0,100.0,91.09
+estadistica-penitenciaria-egresos,Seguridad,Secretaría de Seguridad,CSV,726,16,2026-01-14T20:10:53.235525,,,[],95.67,90.31,100.0,73.56,94.63,80.0,100.0,91.89
+estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,63693,15,2026-01-14T20:07:44.795534,,,[],97.55,94.0,93.48,70.4,94.63,70.0,100.0,91.15
+estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,67343,15,2026-01-14T20:07:44.795534,,,[],97.53,92.67,77.28,69.64,94.63,70.0,100.0,88.32
+estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,14,6,2026-01-14T20:07:44.795534,,,[],84.52,85.83,100.0,100.0,94.63,70.0,100.0,88.54
+estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,11401,15,2026-01-14T20:07:44.795534,,,[],97.53,92.33,89.22,71.06,94.63,70.0,100.0,90.14
+estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,11296,15,2026-01-14T20:07:44.795534,,,[],97.51,92.33,89.2,71.46,94.63,70.0,100.0,90.16
+estadistica-penitenciaria,Seguridad,Secretaría de Seguridad,CSV,11214,15,2026-01-14T20:07:44.795534,,,[],97.51,92.33,89.7,71.2,94.63,70.0,100.0,90.22
+rutas-por-empresa-stc-metrorrey,Sin categoría,Sistema de Transporte Colectivo Metrorrey,CSV,36,15,2025-11-13T01:19:32.083103,,,[],67.78,92.67,94.44,100.0,91.18,70.0,100.0,84.23
+rutas-por-empresa-stc-metrorrey,Sin categoría,Sistema de Transporte Colectivo Metrorrey,CSV,6,6,2025-11-13T01:19:32.083103,,,[],100.0,96.67,100.0,100.0,91.18,70.0,100.0,95.73
+unidades-del-stcm,Sin categoría,Sistema de Transporte Colectivo Metrorrey,CSV,564,13,2025-11-13T01:02:30.464163,,,[],97.24,92.69,82.04,100.0,91.18,80.0,100.0,92.21
+unidades-del-stcm,Sin categoría,Sistema de Transporte Colectivo Metrorrey,CSV,13,6,2025-11-13T01:02:30.464163,,,[],100.0,96.67,100.0,100.0,91.18,80.0,100.0,96.73
+rutas-empresas,Movilidad y Transporte,Instituto de Movilidad y Accesibilidad,CSV,14,6,2025-11-13T00:06:18.786576,,,[],100.0,94.17,100.0,100.0,91.18,85.0,100.0,96.6
+rutas-empresas,Movilidad y Transporte,Instituto de Movilidad y Accesibilidad,CSV,142,14,2025-11-13T00:06:18.786576,,,[],99.85,82.86,91.54,100.0,91.18,85.0,100.0,92.46
+paradas-oficiales-stc-metrorrey,Movilidad y Transporte,Sistema de Transporte Colectivo Metrorrey,CSV,72,8,2025-11-12T23:57:20.266890,,,[],69.1,93.12,100.0,100.0,91.18,60.0,65.0,82.12
+paradas-oficiales-stc-metrorrey,Movilidad y Transporte,Sistema de Transporte Colectivo Metrorrey,CSV,8,6,2025-11-12T23:57:20.266890,,,[],100.0,96.67,100.0,100.0,91.18,60.0,65.0,92.28
+paradas,Movilidad y Transporte,Instituto de Movilidad y Accesibilidad,CSV,166,5,2025-11-12T23:56:30.543883,,,[],100.0,89.0,100.0,97.6,91.18,70.0,100.0,93.62
+paradas,Movilidad y Transporte,Instituto de Movilidad y Accesibilidad,CSV,5,6,2025-11-12T23:56:30.543883,,,[],100.0,94.17,100.0,100.0,91.18,70.0,100.0,95.1
+2024_2025_tpe_publico_setme,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,166,5,2025-11-12T17:34:18.700799,,,[],100.0,89.0,100.0,97.6,91.18,80.0,100.0,94.62
+2024_2025_tpe_publico_setme,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,142,14,2025-11-12T17:34:18.700799,,,[],99.85,82.86,91.54,100.0,91.18,80.0,100.0,91.96
+2024_2025_tpe_publico_setme,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,2186,12,2025-11-12T17:34:18.700799,,,[],93.93,89.17,100.0,99.9,91.18,80.0,100.0,93.02
+2024_2025_tpe_publico_setme,Sin categoría,Instituto de Movilidad y Accesibilidad,CSV,31,6,2025-11-12T17:34:18.700799,,,[],100.0,97.5,100.0,100.0,91.18,80.0,100.0,96.93
+denuncias-de-maltrato-animal,Medio Ambiente,Secretaría de Medio Ambiente,CSV,488,10,2025-11-07T23:52:09.311325,,,[],89.75,87.5,100.0,90.58,90.9,80.0,100.0,90.59
+denuncias-de-maltrato-animal,Medio Ambiente,Secretaría de Medio Ambiente,CSV,9,6,2025-11-07T23:52:09.311325,,,[],85.19,91.67,100.0,100.0,90.9,80.0,100.0,91.02
+fuentes-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,49,4,2025-11-07T23:51:12.700151,,,[],100.0,96.25,83.18,100.0,90.9,75.0,100.0,93.58
+fuentes-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,3,6,2025-11-07T23:51:12.700151,,,[],94.44,94.17,100.0,100.0,90.9,75.0,100.0,93.92
+uso-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,12,5,2025-11-07T23:50:41.936734,,,[],100.0,96.0,100.0,100.0,90.9,80.0,100.0,96.54
+uso-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,5,6,2025-11-07T23:50:41.936734,,,[],93.33,94.17,100.0,100.0,90.9,80.0,100.0,94.09
+agua-reutilizada,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,12,4,2025-11-07T23:50:04.594133,,,[],100.0,100.0,100.0,100.0,90.9,70.0,100.0,96.54
+agua-reutilizada,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,4,6,2025-11-07T23:50:04.594133,,,[],91.67,90.83,100.0,100.0,90.9,70.0,100.0,91.75
+infraestructura-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,20,4,2025-11-07T23:49:27.773184,,,[],93.75,96.25,99.5,100.0,90.9,70.0,100.0,93.66
+infraestructura-de-agua,Infraestructura,"Servicios de Agua y Drenaje de Monterrey, I.P.D.",CSV,4,6,2025-11-07T23:49:27.773184,,,[],91.67,91.67,100.0,100.0,90.9,70.0,100.0,91.96
+convenios,Administración,Secretaría de Administración,CSV,29,5,2025-10-27T23:22:00.779487,,,[],98.62,94.0,100.0,100.0,90.3,70.0,100.0,94.6
+convenios,Administración,Secretaría de Administración,CSV,5,9,2025-10-27T23:22:00.779487,,,[],77.78,88.33,100.0,100.0,90.3,70.0,100.0,86.93
+sitios-de-internet-gratuitos-conectatenl,Administración,Secretaría de Administración,CSV,565,15,2025-10-27T23:06:02.602619,,,[],99.36,87.33,82.3,100.0,90.3,85.0,100.0,92.0
+sitios-de-internet-gratuitos-conectatenl,Administración,Secretaría de Administración,CSV,300,15,2025-10-27T23:06:02.602619,,,[],99.62,90.0,82.28,100.0,90.3,85.0,100.0,92.74
+sitios-de-internet-gratuitos-conectatenl,Administración,Secretaría de Administración,CSV,14,9,2025-10-27T23:06:02.602619,,,[],78.57,87.78,100.0,100.0,90.3,85.0,100.0,88.53
+resultados-clima-laboral,Administración,Secretaría de Administración,CSV,38,6,2025-10-13T18:12:59.718433,,,[],89.47,87.5,100.0,100.0,89.53,80.0,100.0,91.19
+resultados-clima-laboral,Administración,Secretaría de Administración,CSV,36,5,2025-10-13T18:12:59.718433,,,[],87.78,94.0,94.44,100.0,89.53,80.0,100.0,91.48
+resultados-clima-laboral,Administración,Secretaría de Administración,CSV,5,9,2025-10-13T18:12:59.718433,,,[],77.78,90.0,100.0,100.0,89.53,80.0,100.0,88.31
+directorio-de-servicios-ofrecidos-en-pabellon-ciudadano,Administración,Secretaría de Administración,CSV,171,10,2025-10-13T17:07:59.449070,,,[],100.0,92.5,53.38,100.0,89.53,70.0,100.0,87.61
+directorio-de-servicios-ofrecidos-en-pabellon-ciudadano,Administración,Secretaría de Administración,CSV,10,9,2025-10-13T17:07:59.449070,,,[],77.78,92.22,100.0,100.0,89.53,70.0,100.0,87.87
+personal-de-las-dependencias-por-rango-de-edad,Administración,Secretaría de Administración,CSV,114,22,2025-10-13T16:54:31.512067,,,[],97.49,97.5,77.2,100.0,89.53,70.0,100.0,91.68
+personal-de-las-dependencias-por-rango-de-edad,Administración,Secretaría de Administración,CSV,998,26,2025-10-13T16:54:31.512067,,,[],0.59,93.08,100.0,0.0,89.53,70.0,100.0,56.92
+personal-de-las-dependencias-gubernamentales-por-sexo,Administración y Finanzas,Secretaría de Administración,CSV,51356,6,2025-10-13T16:54:25.874037,,,[],100.0,95.0,99.0,0.0,89.53,70.0,100.0,87.08
+personal-de-las-dependencias-gubernamentales-por-sexo,Administración y Finanzas,Secretaría de Administración,CSV,6,9,2025-10-13T16:54:25.874037,,,[],77.78,92.22,100.0,100.0,89.53,70.0,100.0,87.87
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.61,97.33,90.44,100.0,89.37,70.0,100.0,94.25
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.87,97.33,89.3,100.0,89.37,70.0,100.0,93.86
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,49998,15,2025-10-10T22:53:40.763016,,,[],99.64,100.0,94.6,100.0,89.37,70.0,100.0,95.55
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.18,97.33,90.0,100.0,89.37,70.0,100.0,94.06
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.7,100.0,91.66,100.0,89.37,70.0,100.0,95.13
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.27,100.0,87.68,100.0,89.37,70.0,100.0,94.4
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.68,97.33,85.94,100.0,89.37,70.0,100.0,93.6
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.79,100.0,97.58,100.0,89.37,70.0,100.0,95.74
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.69,97.33,90.8,100.0,89.37,70.0,100.0,94.33
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.15,100.0,96.24,100.0,89.37,70.0,100.0,95.65
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.62,97.33,89.96,100.0,89.37,70.0,100.0,94.18
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.77,100.0,96.9,100.0,89.37,70.0,100.0,95.63
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.67,97.33,88.8,100.0,89.37,70.0,100.0,94.02
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.91,100.0,92.16,100.0,89.37,70.0,100.0,94.97
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.66,97.33,88.16,100.0,89.37,70.0,100.0,93.92
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.75,100.0,95.54,100.0,89.37,70.0,100.0,95.42
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,49999,15,2025-10-10T22:53:40.763016,,,[],99.62,97.33,88.86,100.0,89.37,70.0,100.0,94.02
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],98.72,100.0,92.26,100.0,89.37,70.0,100.0,94.92
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.59,97.33,87.1,100.0,89.37,70.0,100.0,93.74
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,50000,15,2025-10-10T22:53:40.763016,,,[],99.59,100.0,87.5,100.0,89.37,70.0,100.0,94.47
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,33925,15,2025-10-10T22:53:40.763016,,,[],99.43,100.0,85.78,100.0,89.37,70.0,100.0,94.16
+consulta-general-y-especialidades,Salud,Secretaría de Salud,CSV,14,6,2025-10-10T22:53:40.763016,,,[],89.29,89.17,100.0,100.0,89.37,70.0,100.0,90.55
+planificacion-familiar,Perspectiva de Género e Interseccionalidad,Secretaría de Salud,CSV,27742,15,2025-10-10T22:53:16.139251,,,[],99.75,97.33,95.82,100.0,89.37,70.0,100.0,95.1
+planificacion-familiar,Perspectiva de Género e Interseccionalidad,Secretaría de Salud,CSV,14,6,2025-10-10T22:53:16.139251,,,[],89.29,89.17,100.0,100.0,89.37,70.0,100.0,90.55
+salud-bucal,Salud,Secretaría de Salud,CSV,49999,15,2025-10-10T22:52:55.678799,,,[],97.75,98.67,95.38,100.0,89.37,70.0,100.0,94.77
+salud-bucal,Salud,Secretaría de Salud,CSV,67896,15,2025-10-10T22:52:55.678799,,,[],99.91,98.67,97.76,100.0,89.37,70.0,100.0,95.77
+salud-bucal,Salud,Secretaría de Salud,CSV,14,6,2025-10-10T22:52:55.678799,,,[],89.29,89.17,100.0,100.0,89.37,70.0,100.0,90.55
+salud-mental,Salud,Secretaría de Salud,CSV,48224,15,2025-10-10T22:52:30.019188,,,[],100.0,98.67,99.74,100.0,89.37,70.0,100.0,96.1
+salud-mental,Salud,Secretaría de Salud,CSV,14,6,2025-10-10T22:52:30.019188,,,[],89.29,89.17,100.0,100.0,89.37,70.0,100.0,90.55
+diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,52,92,2025-09-18T18:36:44.840881,,,[],99.87,98.42,88.48,100.0,88.16,70.0,100.0,94.25
+diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,50,92,2025-09-18T18:36:44.840881,,,[],99.87,98.42,89.2,100.0,88.16,70.0,100.0,94.35
+diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,48,92,2025-09-18T18:36:44.840881,,,[],99.77,98.42,88.54,100.0,88.16,70.0,100.0,94.22
+diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,44,92,2025-09-18T18:36:44.840881,,,[],99.98,98.53,87.72,100.0,88.16,70.0,100.0,94.19
+diagnosticos-comunitarios-2024,Participación,Secretaría de Participación Ciudadana,CSV,91,7,2025-09-18T18:36:44.840881,,,[],85.87,83.57,100.0,100.0,88.16,70.0,100.0,88.06
+audiencias-publicas,Participación,Secretaría de Participación Ciudadana,CSV,8,35,2025-09-17T16:41:27.326474,,,[],68.93,90.43,100.0,100.0,88.05,70.0,100.0,84.69
+audiencias-publicas,Participación,Secretaría de Participación Ciudadana,CSV,4,35,2025-09-17T16:41:27.326474,,,[],70.0,93.14,100.0,100.0,88.05,70.0,100.0,85.69
+audiencias-publicas,Participación,Secretaría de Participación Ciudadana,CSV,35,9,2025-09-17T16:41:27.326474,,,[],56.83,90.0,100.0,100.0,88.05,70.0,100.0,80.95
+audiencias-publicas,Participación,Secretaría de Participación Ciudadana,CSV,35,9,2025-09-17T16:41:27.326474,,,[],56.83,90.0,100.0,100.0,88.05,70.0,100.0,80.95

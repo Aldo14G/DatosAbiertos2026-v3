@@ -20,12 +20,21 @@ PAGE_SIZE: int = 100
 INTER_REQUEST_DELAY: float = 0.8  # seconds between paginated requests
 
 # Formatos que el pipeline puede intentar extraer (Fase 2)
-EXTRACTABLE_FORMATS: frozenset[str] = frozenset({
-    "CSV", ".CSV", "JSON", "XLSX", "XLS", "GEOJSON", "XML",
-})
+EXTRACTABLE_FORMATS: frozenset[str] = frozenset(
+    {
+        "CSV",
+        ".CSV",
+        "JSON",
+        "XLSX",
+        "XLS",
+        "GEOJSON",
+        "XML",
+    }
+)
 
 
 # ── HTTP helpers ───────────────────────────────────────────────
+
 
 def _get(action: str, params: dict | None = None) -> Optional[dict]:
     """GET /api/3/action/{action} vía fetcher (SSRF-protegido, retry, backoff).
@@ -60,6 +69,7 @@ def _validate(data: dict | None, action: str) -> Optional[dict]:
 
 # ── Resource / dataset parsing ─────────────────────────────────
 
+
 def _get_frequency(ds: dict) -> str:
     """Extract update frequency from top-level field or extras list."""
     freq = ds.get("frequency") or ""
@@ -87,27 +97,23 @@ def _parse_resource(r: dict, ds: dict, org_name: str, categoria: str) -> dict | 
         return None
 
     return {
-        "slug"            : ds.get("name", ""),
-        "recurso_id"      : r.get("id", ""),
-        "dataset"         : ds.get("title", "Sin nombre"),
-        "organizacion"    : org_name,
-        "categoria"       : categoria,
-        "formato"         : fmt,
-        "url"             : r.get("url", ""),
-        "modificado"      : ds.get("metadata_modified", ""),
+        "slug": ds.get("name", ""),
+        "recurso_id": r.get("id", ""),
+        "dataset": ds.get("title", "Sin nombre"),
+        "organizacion": org_name,
+        "categoria": categoria,
+        "formato": fmt,
+        "url": r.get("url", ""),
+        "modificado": ds.get("metadata_modified", ""),
         "frecuencia_update": _get_frequency(ds),
-        "descripcion"     : ds.get("notes", "") or "",
-        "licencia"        : ds.get("license_title", "") or "",
-        "licencia_id"     : ds.get("license_id", "") or "",
-        "num_resources"   : len(ds.get("resources", [])),
+        "descripcion": ds.get("notes", "") or "",
+        "licencia": ds.get("license_title", "") or "",
+        "licencia_id": ds.get("license_id", "") or "",
+        "num_resources": len(ds.get("resources", [])),
         "resource_formats": [
-            (rx.get("format") or "").upper().strip()
-            for rx in (ds.get("resources") or [])
+            (rx.get("format") or "").upper().strip() for rx in (ds.get("resources") or [])
         ],
-        "resource_descs"  : [
-            (rx.get("description") or "")
-            for rx in (ds.get("resources") or [])
-        ],
+        "resource_descs": [(rx.get("description") or "") for rx in (ds.get("resources") or [])],
     }
 
 
@@ -123,7 +129,7 @@ def _extract_resources(ds: dict) -> list[dict]:
         categoria = "Sin categoría"
 
     records: list[dict] = []
-    for r in (ds.get("resources") or []):
+    for r in ds.get("resources") or []:
         rec = _parse_resource(r, ds, org_name, categoria)
         if rec is not None:
             records.append(rec)
@@ -131,6 +137,7 @@ def _extract_resources(ds: dict) -> list[dict]:
 
 
 # ── Discovery strategies ───────────────────────────────────────
+
 
 def discover_via_search() -> list[dict]:
     """Strategy 1: package_search with full pagination.
@@ -166,7 +173,9 @@ def discover_via_search() -> list[dict]:
         start += len(page_datasets)
         logger.info(
             "[ckan] Offset %d/%d — %d extractable resources so far",
-            start, total, len(records),
+            start,
+            total,
+            len(records),
         )
         time.sleep(INTER_REQUEST_DELAY)
 
@@ -197,7 +206,9 @@ def discover_via_list() -> list[dict]:
         if i % 50 == 0:
             logger.info(
                 "[ckan] Processed %d/%d datasets (%d resources)",
-                i, len(all_slugs), len(records),
+                i,
+                len(all_slugs),
+                len(records),
             )
         time.sleep(INTER_REQUEST_DELAY)
 
@@ -205,6 +216,7 @@ def discover_via_list() -> list[dict]:
 
 
 # ── Public API ─────────────────────────────────────────────────
+
 
 def discover_catalog(use_fallback: bool = True) -> list[dict]:
     """Discover all extractable resources from the CKAN portal.

@@ -10,13 +10,15 @@ import numpy as np
 
 # Se asume que sys.path ya incluye la raíz en un entorno real de pytest.
 from data_layer import (
+    is_safe_url,
+    load_coverage_report,
+    get_resource_vs_unique_count,
+)
+from quality_scorer import (
     compute_completeness,
     compute_accuracy,
     compute_consistency,
     compute_uniqueness,
-    is_safe_url,
-    load_coverage_report,
-    get_resource_vs_unique_count,
 )
 
 def test_is_safe_url():

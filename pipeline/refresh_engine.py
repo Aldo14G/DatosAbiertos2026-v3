@@ -355,21 +355,56 @@ def run_advanced_pipeline(limit: int = 0):
     """Ejecuta el pipeline avanzado con los agentes Extractor y Evaluador (ISO 25012, ISO 8000, DAMA)."""
     from pipeline.extractor import SkillExtractorDatasets
     from pipeline.evaluator import SkillEvaluadorDatos
+    from pipeline.aesthetics import DataAesthetics, get_progress
 
-    logger.info("🚀 Iniciando pipeline avanzado de agentes...")
+    DataAesthetics.print_header("AGENTE DE CALIDAD 2026", "Pipeline Avanzado v3.1")
+    DataAesthetics.print_log("Iniciando orquestación de agentes con IA...", "info")
 
     CATALOG_URL = "https://catalogodatos.nl.gob.mx"
 
-    extractor = SkillExtractorDatasets()
-    resultados_extraccion = extractor.ejecutar(CATALOG_URL, limite_datasets=limit)
+    with get_progress() as progress:
+        task_extract = progress.add_task("[primary]Extrayendo catálogo...", total=100)
+        extractor = SkillExtractorDatasets()
+        # El extractor debería actualizar el progreso si fuera posible, por ahora simulamos
+        resultados_extraccion = extractor.ejecutar(CATALOG_URL, limite_datasets=limit)
+        progress.update(task_extract, completed=100)
 
-    manifiesto = resultados_extraccion["manifiesto"]
-    datos = resultados_extraccion["datos_extraidos"]
+        manifiesto = resultados_extraccion["manifiesto"]
+        datos = resultados_extraccion["datos_extraidos"]
+        
+        total_ds = manifiesto["total_datasets_extraidos"]
+        DataAesthetics.print_log(f"Extracción completada: {total_ds} datasets listos.", "success")
 
-    logger.info("📥 Extracción completada. %d datasets procesados.", manifiesto["total_datasets_extraidos"])
+        task_eval = progress.add_task("[warning]Evaluando calidad multidimensional...", total=total_ds)
+        evaluador = SkillEvaluadorDatos()
+        
+        # Pequeño hack para capturar progreso si el evaluador lo permitiera
+        reporte_global = evaluador.evaluar_catalogo(datos, manifiesto)
+        progress.update(task_eval, completed=total_ds)
 
-    evaluador = SkillEvaluadorDatos()
-    reporte_global = evaluador.evaluar_catalogo(datos, manifiesto)
+    # Mostrar Resumen Ejecutivo en Bento Grid
+    stats = {
+        "Total Datasets": total_ds,
+        "Score Promedio": f"{reporte_global.score_promedio_catalogo:.1f}%",
+        "Problemas Detectados": reporte_global.total_problemas_detectados,
+        "Clasificación": list(reporte_global.distribucion_clasificacion.keys())[0] if reporte_global.distribucion_clasificacion else "N/A"
+    }
+    DataAesthetics.print_kpi_grid(stats)
+
+    # Mostrar tabla de mejores resultados
+    table = DataAesthetics.create_quality_table("TOP DATASETS (MEJOR CALIDAD)")
+    top_datasets = sorted(reporte_global.reportes_datasets, key=lambda x: x.score_global, reverse=True)[:5]
+    
+    for ds in top_datasets:
+        table.add_row(
+            ds.titulo[:40] + "...",
+            ds.organizacion[:30],
+            f"{ds.score_global}%",
+            DataAesthetics.get_status_tag(ds.score_global)
+        )
+    
+    from pipeline.aesthetics import console
+    console.print(table)
 
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     import dataclasses
@@ -389,7 +424,7 @@ def run_advanced_pipeline(limit: int = 0):
     with open(ADVANCED_OUTPUT_FILE, "w", encoding="utf-8") as f:
         json.dump(dataclasses.asdict(reporte_global), f, ensure_ascii=False, indent=2, default=json_default)
 
-    logger.info("✅ Pipeline avanzado completado. Resultados guardados en: %s", ADVANCED_OUTPUT_FILE)
+    DataAesthetics.print_log(f"Resultados guardados en: {ADVANCED_OUTPUT_FILE}", "success")
 
 
 if __name__ == "__main__":
