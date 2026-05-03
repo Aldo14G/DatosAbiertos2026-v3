@@ -8,48 +8,84 @@ Architecture:
     get_plotly_layout(theme)    → returns Plotly layout dict with resolved hex
     PLOTLY_THEMES              → raw theme dicts for Plotly (CSS vars not supported)
 
-Fonts: Playfair Display (titles), DM Sans (body), DM Mono (data/labels).
+Fonts: Chronicle Display (titles), IBM Plex Sans (body), IBM Plex Mono (data/labels).
 Palette: midnight/navy base, teal (positive), gold (structure), rose (alert).
 """
 
 from __future__ import annotations
 
 # ══════════════════════════════════════════════════════════════
-# PLOTLY THEMES (resolved hex — CSS vars don't work in Plotly)
+# RAW TOKEN DICTS  (single source of truth for Python consumers)
+# Keys mirror CSS custom-property names; PLOTLY_THEMES derives from these.
+# ══════════════════════════════════════════════════════════════
+
+_RAW_DARK: dict[str, str] = {
+    "midnight"         : "#0f1c2e",
+    "navy"             : "#1a2d45",
+    "cream"            : "#faf6ee",
+    "teal"             : "#3aa895",
+    "teal_dim"         : "rgba(58,168,149,0.12)",
+    "gold"             : "#d4a24c",
+    "rose"             : "#c66b7d",
+    "font_family"      : "'IBM Plex Sans', sans-serif",
+    "annotation_border": "#3b466c",
+    "annotation_font"  : "#8a9bb0",
+}
+
+_RAW_LIGHT: dict[str, str] = {
+    "midnight"         : "#f9f8f5",
+    "navy"             : "#f3f4f6",
+    "cream"            : "#0d1117",
+    "teal"             : "#2a7a6f",
+    "teal_dim"         : "rgba(42,122,111,0.10)",
+    "gold"             : "#c8973a",
+    "rose"             : "#b85c6e",
+    "font_family"      : "'IBM Plex Sans', sans-serif",
+    "grid_color"       : "#e8e2d8",
+    "text_on_bar"      : "#faf6ee",
+    "annotation_bg"    : "#faf6ee",
+    "annotation_border": "#d4cfc5",
+    "annotation_font"  : "#1a2d45",
+}
+
+
+# ══════════════════════════════════════════════════════════════
+# PLOTLY THEMES (derived from _RAW_DARK / _RAW_LIGHT)
+# CSS vars don't work in Plotly — resolved hex required.
 # ══════════════════════════════════════════════════════════════
 
 PLOTLY_THEMES: dict[str, dict[str, str]] = {
     "dark": {
-        "paper_bgcolor": "#0f1c2e",
-        "plot_bgcolor":  "#0f1c2e",
-        "font_color":    "#faf6ee",
-        "font_family":   "DM Sans, sans-serif",
-        "grid_color":    "#1a2d45",
-        "primary_line":  "#2a7a6f",
-        "excellent":     "#3aa895",
-        "excellent_dim": "rgba(58,168,149,0.15)",
-        "good":          "#c8973a",
-        "poor":          "#b85c6e",
-        "text_on_bar":   "#faf6ee",
-        "annotation_bg": "#1a2d45",
-        "annotation_border": "#3b466c",
-        "annotation_font":   "#8a9bb0",
+        "paper_bgcolor"    : _RAW_DARK["midnight"],
+        "plot_bgcolor"     : _RAW_DARK["midnight"],
+        "font_color"       : _RAW_DARK["cream"],
+        "font_family"      : _RAW_DARK["font_family"],
+        "grid_color"       : _RAW_DARK["navy"],
+        "primary_line"     : _RAW_DARK["teal"],
+        "excellent"        : _RAW_DARK["teal"],
+        "excellent_dim"    : _RAW_DARK["teal_dim"],
+        "good"             : _RAW_DARK["gold"],
+        "poor"             : _RAW_DARK["rose"],
+        "text_on_bar"      : _RAW_DARK["cream"],
+        "annotation_bg"    : _RAW_DARK["navy"],
+        "annotation_border": _RAW_DARK["annotation_border"],
+        "annotation_font"  : _RAW_DARK["annotation_font"],
     },
     "light": {
-        "paper_bgcolor": "#f9f8f5",
-        "plot_bgcolor":  "#f9f8f5",
-        "font_color":    "#0d1117",
-        "font_family":   "DM Sans, sans-serif",
-        "grid_color":    "#e8e2d8",
-        "primary_line":  "#2a7a6f",
-        "excellent":     "#2a7a6f",
-        "excellent_dim": "rgba(42,122,111,0.15)",
-        "good":          "#c8973a",
-        "poor":          "#b85c6e",
-        "text_on_bar":   "#faf6ee",
-        "annotation_bg": "#faf6ee",
-        "annotation_border": "#d4cfc5",
-        "annotation_font":   "#1a2d45",
+        "paper_bgcolor"    : _RAW_LIGHT["midnight"],
+        "plot_bgcolor"     : _RAW_LIGHT["midnight"],
+        "font_color"       : _RAW_LIGHT["cream"],
+        "font_family"      : _RAW_LIGHT["font_family"],
+        "grid_color"       : _RAW_LIGHT["grid_color"],
+        "primary_line"     : _RAW_LIGHT["teal"],
+        "excellent"        : _RAW_LIGHT["teal"],
+        "excellent_dim"    : _RAW_LIGHT["teal_dim"],
+        "good"             : _RAW_LIGHT["gold"],
+        "poor"             : _RAW_LIGHT["rose"],
+        "text_on_bar"      : _RAW_LIGHT["text_on_bar"],
+        "annotation_bg"    : _RAW_LIGHT["annotation_bg"],
+        "annotation_border": _RAW_LIGHT["annotation_border"],
+        "annotation_font"  : _RAW_LIGHT["annotation_font"],
     },
 }
 
@@ -182,17 +218,24 @@ _CSS_RESET = """
     color: var(--cream) !important;
     transition: background-color 0.4s ease, color 0.4s ease;
 }}
+.stApp {{
+    font-size: var(--fs-body) !important;
+}}
 .stApp, .stApp * {{
-    font-family: 'DM Sans', system-ui, sans-serif !important;
-    line-height: 1.75 !important;
+    font-family: 'IBM Plex Sans', system-ui, sans-serif !important;
+    line-height: var(--lh-body) !important;
 }}
 h1, h2, h3 {{
-    font-family: 'Playfair Display', serif !important;
+    font-family: 'Chronicle Display', serif !important;
     letter-spacing: -0.02em !important;
-    line-height: 1.2 !important;
-    margin-bottom: 1.5rem !important;
+    line-height: var(--lh-heading) !important;
+    font-weight: var(--fw-bold) !important;
+    margin-bottom: var(--margin-after-header) !important;
     text-wrap: balance !important;
 }}
+h1 {{ font-size: var(--fs-h1) !important; }}
+h2 {{ font-size: var(--fs-h2) !important; }}
+h3 {{ font-size: var(--fs-h3) !important; }}
 
 /* ── Icon font protection: MUST come after the * override ─ */
 /* Protects custom HTML icon spans */
@@ -223,6 +266,74 @@ button[data-testid="stBaseButton-headerNoPadding"] span,
     font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24 !important;
     font-feature-settings: 'liga' !important;
 }}
+"""
+
+_CSS_TYPO_SCALE = """
+/* ══ TYPOGRAPHY & SPACING SCALE (responsive tokens) ═══════ */
+/* Desktop baseline: open & breathing                       */
+/* Tablet ≤1024px : moderate compression                    */
+/* Mobile ≤640px  : compact                                  */
+:root {
+    /* Type sizes */
+    --fs-body: 16px;
+    --fs-small: 13px;
+    --fs-h3: 1.375rem;       /* 22px */
+    --fs-h2: 1.75rem;        /* 28px */
+    --fs-h1: 2.25rem;        /* 36px */
+    --fs-hero: 3.5rem;       /* 56px */
+    /* Line heights */
+    --lh-body: 1.6;
+    --lh-heading: 1.3;
+    --lh-card: 1.5;
+    /* Weights */
+    --fw-normal: 400;
+    --fw-medium: 500;
+    --fw-semibold: 600;
+    --fw-bold: 700;
+    /* Vertical rhythm */
+    --gap-section: 3.5rem;
+    --gap-subsection: 2rem;
+    --gap-section-break: 3rem;
+    --pad-card: 2rem;
+    --pad-card-tight: 1.5rem;
+    --margin-after-header: 1.5rem;
+}
+
+@media (max-width: 1024px) {
+    :root {
+        --fs-body: 15px;
+        --fs-small: 12px;
+        --fs-h3: 1.25rem;
+        --fs-h2: 1.5625rem;
+        --fs-h1: 2rem;
+        --fs-hero: 2.75rem;
+        --lh-body: 1.55;
+        --gap-section: 2.5rem;
+        --gap-subsection: 1.5rem;
+        --gap-section-break: 2rem;
+        --pad-card: 1.5rem;
+        --pad-card-tight: 1.25rem;
+        --margin-after-header: 1.25rem;
+    }
+}
+
+@media (max-width: 640px) {
+    :root {
+        --fs-body: 14px;
+        --fs-small: 11px;
+        --fs-h3: 1.125rem;
+        --fs-h2: 1.375rem;
+        --fs-h1: 1.75rem;
+        --fs-hero: 2.25rem;
+        --lh-body: 1.5;
+        --gap-section: 1.5rem;
+        --gap-subsection: 1.25rem;
+        --gap-section-break: 1.5rem;
+        --pad-card: 1.25rem;
+        --pad-card-tight: 1rem;
+        --margin-after-header: 1rem;
+    }
+}
 """
 
 _CSS_HIDE_CHROME = """
@@ -257,7 +368,7 @@ _CSS_TOPBAR = """
 }
 .stitch-topbar-brand {
     font-size: 18px; font-weight: 700; letter-spacing: -0.03em;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     color: var(--cream); white-space: nowrap;
     line-height: 1.15;
     display: flex; align-items: center; gap: 10px;
@@ -421,6 +532,13 @@ button.stitch-topbar-btn {
     gap: 8px;
     padding-top: 6px;
 }
+.stitch-topbar-btn-mobile {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 12px;
+    margin-top: 6px;
+    border-radius: 12px;
+}
 
 @media (max-width: 1200px) {
     .stitch-topbar-inner { gap: 10px; }
@@ -489,10 +607,10 @@ _CSS_LAYOUT = """
 
 
 .editorial-container p {
-    font-size: 1.1rem;
-    line-height: 1.8;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
     color: var(--muted);
-    margin: 0 auto 1.5rem;
+    margin: 0 auto var(--margin-after-header);
     max-width: 65ch;
     text-align: center;
 }
@@ -596,20 +714,20 @@ _CSS_TYPOGRAPHY = """
     margin-bottom: 1rem;
 }}
 .section-title {{
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(1.5rem, 2.8vw, 2.1rem);
-    font-weight: 700;
+    font-family: 'Chronicle Display', serif;
+    font-size: var(--fs-h2);
+    font-weight: var(--fw-bold);
     color: var(--cream) !important;
-    line-height: 1.25;
+    line-height: var(--lh-heading);
     letter-spacing: -0.01em;
     text-wrap: balance;
     text-align: center;
 }}
 .section-subtitle {{
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.0625rem;
-    font-weight: 400;
-    line-height: 1.65;
+    font-size: var(--fs-body);
+    font-weight: var(--fw-normal);
+    line-height: var(--lh-body);
     color: var(--muted) !important;
     text-align: center;
     max-width: 680px;
@@ -619,9 +737,9 @@ _CSS_TYPOGRAPHY = """
 
 /* ══ HERO TYPOGRAPHY ══════════════════════════════════════ */
 .hero-title {{
-    font-family: 'Playfair Display', serif;
-    font-size: clamp(2.2rem, 5vw, 3.5rem) !important;
-    font-weight: 700;
+    font-family: 'Chronicle Display', serif;
+    font-size: var(--fs-hero) !important;
+    font-weight: var(--fw-bold);
     letter-spacing: -0.03em;
     line-height: 1.1;
     color: var(--cream);
@@ -631,8 +749,8 @@ _CSS_TYPOGRAPHY = """
 }}
 .hero-subtitle {{
     font-family: 'DM Sans', sans-serif;
-    font-size: 1.2rem;
-    line-height: 1.75;
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
     color: var(--muted);
     margin: 0 auto 28px;
     max-width: 700px;
@@ -724,36 +842,93 @@ _CSS_CARDS = """
 """
 
 _CSS_KPI = """
-/* ══ KPI CARD ═════════════════════════════════════════════ */
-.kpi-card {{
-    background: var(--surface-high);
+/* ══ STAT CARD (nl-* primitive) ═══════════════════════════ */
+.nl-stat-card {{
+    background: var(--card-bg);
     border: 1px solid var(--card-border);
-    border-radius: var(--radius-md);
-    padding: 1.75rem 1.5rem;
-    text-align: center;
-    transition: all 0.5s var(--ease-out-expo);
-    position: relative;
-    overflow: hidden;
-    cursor: default;
+    border-radius: var(--radius-sm);
+    padding: var(--pad-card);
+    box-shadow: var(--shadow-sm);
+    transition: box-shadow var(--dur-base) var(--ease-out),
+                border-color var(--dur-base) var(--ease-out),
+                transform var(--dur-base) var(--ease-out);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
 }}
-.kpi-card:hover {{
-    border-color: var(--teal);
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px -20px rgba(0,0,0,0.6);
-    background: var(--surface-higher);
+.nl-stat-card:hover {{
+    box-shadow: var(--shadow-md);
+    border-color: var(--border);
+    transform: translateY(-2px);
 }}
-.kpi-card::before {{
-    content: '';
-    position: absolute;
-    top: 0; left: 0; bottom: 0;
-    width: 3px;
-    opacity: 0.8;
+.nl-stat-card--focus {{
+    border-top: 3px solid var(--gold);
+    padding-top: calc(var(--pad-card) - 2px);
 }}
-.kpi-card.excellent::before {{ background: var(--teal); }}
-.kpi-card.good::before      {{ background: var(--gold); }}
-.kpi-card.poor::before       {{ background: var(--rose); }}
-.kpi-card.neutral::before    {{ background: var(--muted); }}
+.nl-stat-card-header {{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.75rem;
+}}
+.nl-stat-card-label {{
+    font-family: 'DM Mono', monospace;
+    font-size: 0.6875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--muted);
+    margin: 0;
+}}
+.nl-stat-card-icon {{
+    font-size: 1.125rem;
+    color: var(--muted);
+}}
+.nl-stat-card-value {{
+    font-family: 'Chronicle Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+    margin: 0;
+}}
+.nl-stat-card-meta {{
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8125rem;
+    color: var(--muted);
+    margin: 0;
+}}
+.nl-stat-card-grid {{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+    margin: 1rem 0 1.5rem;
+}}
+@media (max-width: 600px) {{
+    .nl-stat-card-grid {{ grid-template-columns: 1fr; }}
+}}
 
+/* ══ CHART CARD (chrome wrapper for plotly) ═══════════════ */
+.nl-chart-card {{
+    background: var(--card-bg);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-sm);
+    padding: var(--pad-card);
+    box-shadow: var(--shadow-sm);
+    margin: 1rem 0 var(--margin-after-header);
+    transition: box-shadow var(--dur-base) var(--ease-out),
+                border-color var(--dur-base) var(--ease-out);
+}}
+.nl-chart-card:hover {{
+    box-shadow: var(--shadow-md);
+    border-color: var(--border);
+}}
+.nl-chart-card-header {{
+    margin-bottom: 1rem;
+}}
+
+/* Legacy: .kpi-label retained — used by datasets.py as a
+   generic label primitive. Migrate to .nl-stat-card-label
+   in a follow-up if datasets.py is touched. */
 .kpi-label {{
     font-size: 0.75rem;
     font-family: 'DM Mono', monospace;
@@ -761,13 +936,6 @@ _CSS_KPI = """
     text-transform: uppercase;
     letter-spacing: 0.1em;
     margin-bottom: 0.5rem;
-}}
-.kpi-value {{
-    font-size: 2.5rem;
-    font-weight: 700;
-    font-family: 'Playfair Display', serif;
-    color: var(--cream);
-    line-height: 1;
 }}
 """
 
@@ -808,7 +976,7 @@ _CSS_BARS = """
     height: 100%;
     background: linear-gradient(90deg, var(--teal), var(--teal-light));
     border-radius: 4px;
-    transition: width 1s ease;
+    transition: width 0.6s ease-out;
 }}
 .bar-fill-gold {{
     background: linear-gradient(90deg, var(--gold), var(--gold-light));
@@ -825,7 +993,7 @@ _CSS_STAT = """
     padding: 2rem 1.5rem;
 }}
 .stat-number {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: clamp(2rem, 4vw, 3rem);
     font-weight: 700;
     color: var(--gold-light);
@@ -851,7 +1019,7 @@ _CSS_QUOTE = """
     margin: 1.5rem 0;
 }}
 .quote-text {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-style: italic;
     font-size: 1.1rem;
     color: var(--paper);
@@ -930,7 +1098,7 @@ _CSS_ALERTS = """
 .alert-score {
     font-size: 2.5rem;
     font-weight: 700;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     color: var(--rose-light);
     line-height: 1;
 }
@@ -1002,25 +1170,6 @@ _CSS_TABLE = """
 }}
 """
 
-_CSS_GRIDS = """
-/* ══ CARD GRIDS ═══════════════════════════════════════════ */
-.card-grid {{
-    display: grid;
-    gap: 1.25rem;
-}}
-.card-grid-2 {{ grid-template-columns: repeat(2, 1fr); }}
-.card-grid-3 {{ grid-template-columns: repeat(3, 1fr); }}
-.card-grid-4 {{ grid-template-columns: repeat(4, 1fr); }}
-
-@media (max-width: 900px) {{
-    .card-grid-3, .card-grid-4 {{ grid-template-columns: 1fr 1fr; }}
-}}
-@media (max-width: 600px) {{
-    .card-grid-2, .card-grid-3, .card-grid-4 {{
-        grid-template-columns: 1fr;
-    }}
-}}
-"""
 
 _CSS_EDITORIAL = """
 /* ══ EDITORIAL LAYOUT ═════════════════════════════════════ */
@@ -1031,7 +1180,7 @@ _CSS_EDITORIAL = """
     padding: 0;
 }}
 .editorial-title {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: clamp(2.6rem, 5.5vw, 4rem);
     font-weight: 700;
     color: var(--cream);
@@ -1080,14 +1229,33 @@ _CSS_EDITORIAL = """
     background: var(--surface);
 }}
 
+/* ── Contextual section image ───────────────────────────── */
+.nl-ctx-img-wrap {{
+    max-width: 720px;
+    margin: 0 auto 2.5rem;
+    border-radius: var(--radius-lg);
+    overflow: hidden;
+    border: 1px solid var(--card-border);
+}}
+.nl-ctx-img {{
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+    display: block;
+    opacity: 0.85;
+    transition: opacity 300ms;
+}}
+.nl-ctx-img:hover {{ opacity: 1; }}
+
 /* ── Hero stat block (Score global prominente en Inicio) ─── */
 .nl-hero-stat-block {{
     max-width: 640px;
-    margin: 0 0 2.5rem;
+    margin: 0 auto 2.5rem;
     padding: 0;
+    text-align: center;
 }}
 .nl-hero-stat-prose {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: 400;
     line-height: 1.35;
@@ -1128,7 +1296,7 @@ _CSS_EDITORIAL = """
     background: var(--surface-alt);
     border: 1px solid var(--card-border);
     border-radius: var(--radius-md);
-    margin: 0;
+    margin: 0 auto 24px;
     flex-wrap: wrap;
     max-width: 520px;
 }}
@@ -1140,7 +1308,7 @@ _CSS_EDITORIAL = """
     min-width: 100px;
 }}
 .nl-org-summary-score {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 2.75rem;
     font-weight: 700;
     line-height: 1;
@@ -1204,7 +1372,7 @@ _CSS_EDITORIAL = """
 
 /* ── KPI inline value (inside running text) ─────────────── */
 .kpi-value--hero {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 2rem;
     font-weight: 700;
     color: var(--teal-light);
@@ -1283,7 +1451,7 @@ _CSS_EDITORIAL = """
     margin-bottom: 20px;
 }}
 .nl-distband-score {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 3.25rem;
     font-weight: 700;
     line-height: 1;
@@ -1385,7 +1553,7 @@ _CSS_SECTIONS = """
 .nl-stat-label {{ font-size: 17px; font-weight: 700; color: var(--cream); }}
 .nl-stat-pct {{
     font-size: 36px; font-weight: 700;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     color: var(--gold); margin-left: 24px; flex-shrink: 0;
 }}
 .nl-stat-note {{
@@ -1409,7 +1577,7 @@ _CSS_SECTIONS = """
 .nl-results-left {{ display: flex; align-items: center; gap: 8px; }}
 .nl-results-count {{
     font-size: 20px; font-weight: 700;
-    font-family: 'Playfair Display', serif; color: var(--cream);
+    font-family: 'Chronicle Display', serif; color: var(--cream);
 }}
 .nl-results-label {{ color: var(--muted); font-weight: 500; font-family: 'DM Sans', sans-serif; }}
 
@@ -1636,8 +1804,16 @@ _CSS_ANIMATIONS = """
     to   {{ opacity: 1; transform: translateY(0); }}
 }}
 .fade-in-up {{
-    animation: fadeInUp 0.7s var(--ease-out-expo) forwards;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }}
+.fade-in-up.show {{
+    opacity: 1;
+    transform: translateY(0);
+}}
+
+/* Update any remaining Playfair Display references to Chronicle Display */
 
 @keyframes bounceY {{
     0%, 100% {{ transform: translateY(0); }}
@@ -2028,7 +2204,7 @@ _CSS_PIPELINE = """
     margin-bottom: 16px;
 }}
 .failure-panel-title {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 18px;
     font-weight: 700;
     color: var(--cream);
@@ -2105,7 +2281,7 @@ _CSS_PIPELINE = """
     margin-bottom: 12px;
 }}
 .resource-clarity-number {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 28px;
     font-weight: 700;
     color: var(--cream);
@@ -2190,7 +2366,7 @@ section[id="footer"] {{
 }}
 
 .nl-section {{
-    padding: 72px 0 40px;
+    padding: var(--gap-section) 0 var(--gap-subsection);
 }}
 
 .nl-section-title {{
@@ -2209,7 +2385,7 @@ section[id="footer"] {{
 .nl-section-break {{
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--card-border) 40%, var(--card-border) 60%, transparent);
-    margin: 56px 0 24px;
+    margin: var(--gap-section-break) 0 var(--gap-subsection);
 }}
 
 .nl-section-error {{
@@ -2220,7 +2396,7 @@ section[id="footer"] {{
     margin: 24px 0;
 }}
 .nl-section-error-title {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 18px;
     color: var(--rose-light);
     margin: 0 0 8px;
@@ -2237,7 +2413,7 @@ section[id="footer"] {{
     display: flex;
     align-items: baseline;
     gap: 16px;
-    margin: 32px 0 20px;
+    margin: var(--gap-subsection) 0 var(--margin-after-header);
 }}
 
 .nl-section-closure {{
@@ -2251,7 +2427,7 @@ section[id="footer"] {{
     padding: 0 0 18px;
 }}
 .nl-sb-title {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 20px;
     font-weight: 700;
     color: var(--gold-light);
@@ -2407,7 +2583,7 @@ section[id="footer"] {{
     font-size: 22px;
 }}
 .nl-stat-value {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 28px;
     font-weight: 700;
     color: var(--cream);
@@ -2453,7 +2629,7 @@ section[id="footer"] {{
     flex: 1;
 }}
 .nl-insight-title {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     color: var(--cream);
     font-size: 17px;
     margin: 0 0 6px;
@@ -2489,8 +2665,8 @@ section[id="footer"] {{
 }}
 .nl-rec-item::before {{
     content: counter(rec);
-    font-family: 'Playfair Display', serif;
-    font-weight: 700;
+font-family: 'Chronicle Display', serif;
+font-weight: 700;
     font-size: 22px;
     color: var(--gold-light);
     min-width: 32px;
@@ -2536,7 +2712,7 @@ section[id="footer"] {{
 }}
 .nl-conc-lead-body {{ flex: 1; min-width: 0; }}
 .nl-conc-lead-title {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 18px;
     font-weight: 700;
     color: var(--cream);
@@ -2607,8 +2783,8 @@ section[id="footer"] {{
 .nl-flip-grid {{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 16px;
-    margin-bottom: 24px;
+    gap: 20px;
+    margin-bottom: 32px;
 }}
 .nl-flip-card--primary {{
     grid-column: span 2;
@@ -2625,8 +2801,8 @@ section[id="footer"] {{
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 8px;
-    padding: 28px 22px;
+    gap: 10px;
+    padding: 32px 24px;
     text-align: center;
     user-select: none;
     min-height: 210px;
@@ -2789,8 +2965,8 @@ section[id="footer"] {{
 }}
 .nl-footer-top {{
     display: grid;
-    grid-template-columns: minmax(200px, 2fr) repeat(3, minmax(130px, 1fr));
-    gap: 32px;
+    grid-template-columns: minmax(200px, 2fr) repeat(3, minmax(160px, 1fr));
+    gap: 48px;
     padding-bottom: 40px;
     align-items: start;
 }}
@@ -2800,7 +2976,7 @@ section[id="footer"] {{
     gap: 14px;
 }}
 .nl-footer-logo {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 24px;
     font-weight: 700;
     color: var(--gold-light) !important;
@@ -2825,7 +3001,10 @@ section[id="footer"] {{
     text-transform: uppercase;
     letter-spacing: 0.12em;
     margin: 0 0 8px !important;
-    white-space: nowrap;
+    white-space: nowrap !important;
+    text-wrap: nowrap !important;
+    overflow-wrap: normal !important;
+    word-break: normal !important;
     font-family: 'DM Mono', monospace;
 }}
 .nl-footer-link {{
@@ -2865,8 +3044,11 @@ section[id="footer"] {{
 
 @media (max-width: 860px) {{
     .nl-footer-top {{
-        grid-template-columns: minmax(180px, 2fr) repeat(3, minmax(100px, 1fr));
-        gap: 20px;
+        grid-template-columns: 1fr 1fr;
+        gap: 28px;
+    }}
+    .nl-footer-brand {{
+        grid-column: span 2;
     }}
     .nl-pipeline-grid,
     .nl-insights-grid,
@@ -2877,11 +3059,11 @@ section[id="footer"] {{
 }}
 @media (max-width: 580px) {{
     .nl-footer-top {{
-        grid-template-columns: 1fr 1fr;
-        gap: 24px;
+        grid-template-columns: 1fr;
+        gap: 20px;
     }}
     .nl-footer-brand {{
-        grid-column: span 2;
+        grid-column: span 1;
     }}
 }}
 """
@@ -3271,7 +3453,7 @@ _CSS_UX_ENHANCEMENTS = """
 }}
 
 .nl-alerta-title {{
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 1.0625rem;
     font-weight: 700;
     line-height: 1.3;
@@ -3630,7 +3812,7 @@ _CSS_APP_STORE = """
 }
 
 .app-card-title {
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 1.25rem;
     font-weight: 700;
     color: var(--cream);
@@ -3808,7 +3990,7 @@ _CSS_UTILITIES = """
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    font-family: 'Playfair Display', serif;
+    font-family: 'Chronicle Display', serif;
     font-size: 2.8rem;
     font-weight: 700;
     color: var(--cream);
@@ -3833,10 +4015,10 @@ _CSS_UTILITIES = """
 """
 
 
-
 # ══════════════════════════════════════════════════════════════
 # MAIN INJECTION FUNCTION
 # ══════════════════════════════════════════════════════════════
+
 
 def inject_design_system(theme: str = "dark") -> str:
     """Inject the full NL 2026 design system CSS.
@@ -3846,12 +4028,13 @@ def inject_design_system(theme: str = "dark") -> str:
     Args:
         theme: 'dark' (default) or 'light'.
 
-    Call with: st.markdown(inject_design_system(theme), unsafe_allow_html=True)
+    Call with: st.html(inject_design_system(theme))
     """
     tokens = _TOKENS_DARK if theme == "dark" else _TOKENS_LIGHT
 
     blocks = [
         _CSS_RESET,
+        _CSS_TYPO_SCALE,
         _CSS_HIDE_CHROME,
         _CSS_TOPBAR,
         _CSS_SIDEBAR,
@@ -3869,7 +4052,6 @@ def inject_design_system(theme: str = "dark") -> str:
         _CSS_ALERTS,
         _CSS_ICON_LIST,
         _CSS_TABLE,
-        _CSS_GRIDS,
         _CSS_GAUGE,
         _CSS_TABS,
         _CSS_DATA_TABLE,
@@ -3899,11 +4081,10 @@ def inject_design_system(theme: str = "dark") -> str:
     return (
         '<link rel="preconnect" href="https://fonts.googleapis.com">'
         '<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>'
-        '<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block">'
         f"""<style>
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap');
-:root {{ {tokens} }}
-{css_body}
-</style>"""
+        @import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&display=block');
+        @import url('https://fonts.googleapis.com/css2?family=Chronicle+Display:ital,wght@0,400;0,600;0,700;1,400&family=IBM+Plex+Sans:wght@300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap');
+        :root {{ {tokens} }}
+        {css_body}
+        </style>"""
     )
-

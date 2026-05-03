@@ -1,11 +1,12 @@
 import { LangProvider } from "@/components/LangProvider";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { Illustration } from "@/components/ui/Illustration";
+import { SaludInstitucionalSection } from "@/components/SaludInstitucionalSection";
 import { DimensionsSection } from "@/components/DimensionsSection";
 import { RankingsSection } from "@/components/RankingsSection";
 import { MethodologySection } from "@/components/MethodologySection";
 import { CreditsSection } from "@/components/CreditsSection";
+
 export default function Home() {
   return (
     <LangProvider>
@@ -18,22 +19,7 @@ export default function Home() {
       <Navbar />
       <main id="main-content">
         <Hero />
-        
-        <section className="py-20 bg-background overflow-hidden">
-          <div className="editorial-container flex flex-col md:flex-row items-center gap-12 px-6">
-            <div className="flex-1 text-left">
-              <span className="eyebrow">Diagnóstico</span>
-              <h2 className="text-4xl font-serif font-bold mb-6">Salud Institucional</h2>
-              <p className="text-muted-foreground text-lg">
-                Visualizamos la madurez de los datos en toda la administración pública, identificando líderes en transparencia y áreas que requieren remediación técnica.
-              </p>
-            </div>
-            <div className="flex-1 w-full max-w-[300px]">
-              <Illustration type="organizaciones" className="w-full h-auto animate-float" />
-            </div>
-          </div>
-        </section>
-
+        <SaludInstitucionalSection />
         <DimensionsSection />
         <RankingsSection />
         <MethodologySection />

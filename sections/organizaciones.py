@@ -10,7 +10,7 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from config import UMBRAL_EXCELENTE, UMBRAL_GOBERNANZA
-from data_layer import agg_org_stats
+from section_data import SectionData
 from styles.global_css import PLOTLY_THEMES, get_plotly_layout
 
 
@@ -68,11 +68,11 @@ def _render_org_kpis(stats: pd.DataFrame) -> None:
 """, unsafe_allow_html=True)
 
 
-def render_organizaciones(df: pd.DataFrame, tokens: dict) -> None:
+def render_organizaciones(data: SectionData, tokens: dict) -> None:
     theme = tokens.get("theme", "dark")
-    if "organizacion" not in df.columns:
+    stats = data.org_stats
+    if stats.empty:
         return
-    stats = agg_org_stats(df)
 
     st.markdown('<div class="editorial-header fade-up"><div class="eyebrow">Instituciones Públicas</div><h2 class="editorial-title">Ranking Organizacional</h2></div>', unsafe_allow_html=True)
 

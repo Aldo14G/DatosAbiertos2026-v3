@@ -1,10 +1,11 @@
 "use client";
 
+import { motion, useReducedMotion } from "framer-motion";
 import { Check, ExternalLink } from "lucide-react";
 import { useLang } from "./LangProvider";
 import { GRADE_CRITERIA, PORTAL_STATS } from "@/lib/data";
 
-const REPO_URL = "https://github.com/ricalanis/comovamoslabnle1";
+const REPO_URL = "https://github.com/Aldo14G/DatosAbiertos2026-v3";
 
 const TIERS = [
   {
@@ -46,8 +47,21 @@ const TIERS = [
   },
 ];
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export function MethodologySection() {
   const { t } = useLang();
+  const reduced = useReducedMotion();
+
+  const fadeUp = (delay = 0) =>
+    reduced
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.15 },
+          transition: { duration: 0.5, ease, delay },
+        };
 
   return (
     <section
@@ -57,7 +71,7 @@ export function MethodologySection() {
     >
       <div className="mx-auto max-w-7xl relative z-10">
         {/* Header */}
-        <div className="mb-16">
+        <motion.div className="mb-16" {...fadeUp(0)}>
           <span className="text-[10px] font-mono tracking-[0.2em] text-gold uppercase opacity-80 mb-4 block">
             {t("Sistema de calificación", "Grading system")} · Pipeline v3.0
           </span>
@@ -76,25 +90,31 @@ export function MethodologySection() {
               "Each dataset receives a grade based on defined thresholds over its weighted score. Criteria are public, reproducible, and auditable from the repository."
             )}
           </p>
-        </div>
+        </motion.div>
 
         {/* Grade cards */}
         <div className="grid gap-6 sm:grid-cols-3 mb-12">
-          {TIERS.map((tier) => {
+          {TIERS.map((tier, idx) => {
             const criteria = GRADE_CRITERIA[tier.key];
             return (
-              <article
+              <motion.article
                 key={tier.key}
+                {...(reduced
+                  ? {}
+                  : {
+                      initial: { opacity: 0, y: 24 },
+                      whileInView: { opacity: 1, y: 0 },
+                      viewport: { once: true, amount: 0.1 },
+                      transition: { duration: 0.35, ease, delay: idx * 0.08 + 0.15 },
+                    })}
                 className={`relative overflow-hidden rounded-2xl border ${tier.cardClass} backdrop-blur-sm transition-all duration-500 hover:-translate-y-1 hover:shadow-xl group ${
                   tier.featured ? "ring-1 ring-gold/30" : ""
                 }`}
               >
-                {/* Glow effect on hover */}
                 {tier.featured && (
                   <div className="absolute -inset-1 bg-gradient-to-r from-gold/0 via-gold/10 to-gold/0 blur-lg opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
                 )}
 
-                {/* Card header */}
                 <div className={`border-b px-6 py-5 relative z-10 ${tier.headerClass}`}>
                   <div className="flex items-center justify-between mb-2">
                     <span
@@ -115,7 +135,6 @@ export function MethodologySection() {
                   </p>
                 </div>
 
-                {/* Criteria list */}
                 <div className="px-6 py-5 relative z-10">
                   <ul className="flex flex-col gap-3" role="list">
                     {criteria.criteria.map((c, i) => (
@@ -131,19 +150,28 @@ export function MethodologySection() {
                     ))}
                   </ul>
                 </div>
-              </article>
+              </motion.article>
             );
           })}
         </div>
 
         {/* Score bar visualization */}
-        <div className="rounded-2xl border border-border/40 bg-midnight/5 backdrop-blur-md px-8 py-6 mb-8 relative overflow-hidden">
+        <motion.div
+          className="rounded-2xl border border-border/40 bg-midnight/5 backdrop-blur-md px-8 py-6 mb-8 relative overflow-hidden"
+          {...fadeUp(0.25)}
+        >
           <div className="absolute inset-0 bg-gradient-to-r from-transparent via-gold/5 to-transparent opacity-50" />
-          
+
           <p className="font-mono text-[10px] font-medium text-muted-foreground uppercase tracking-[0.2em] mb-4 relative z-10">
             {t("Escala de puntuación (0–100)", "Score scale (0–100)")}
           </p>
-          <div className="relative h-4 rounded-full overflow-hidden flex shadow-inner relative z-10">
+          <div
+            className="relative h-4 rounded-full overflow-hidden flex shadow-inner relative z-10"
+            role="progressbar"
+            aria-valuemin={0}
+            aria-valuemax={100}
+            aria-valuenow={100}
+          >
             <div
               className="h-full bg-rose-500/20 flex items-center justify-center border-r border-background/20 relative"
               style={{ width: "70%" }}
@@ -172,10 +200,13 @@ export function MethodologySection() {
             <span className="text-amber-600 dark:text-gold absolute" style={{ left: "90%", transform: "translateX(-50%)" }}>90 (Gold)</span>
             <span className="text-foreground">100</span>
           </div>
-        </div>
+        </motion.div>
 
         {/* Repo link */}
-        <div className="inline-flex items-center rounded-full border border-border/50 bg-background/50 px-4 py-2 backdrop-blur-sm">
+        <motion.div
+          className="inline-flex items-center rounded-full border border-border/50 bg-background/50 px-4 py-2 backdrop-blur-sm"
+          {...fadeUp(0.3)}
+        >
           <p className="text-[13px] text-muted-foreground">
             {t(
               "La ficha técnica completa con definiciones formales y código fuente está disponible en",
@@ -191,7 +222,7 @@ export function MethodologySection() {
               <ExternalLink className="size-3" aria-hidden="true" />
             </a>
           </p>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

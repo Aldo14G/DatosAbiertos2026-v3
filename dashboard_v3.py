@@ -11,7 +11,7 @@ import datetime
 import pandas as pd
 import streamlit as st
 
-from config import CACHE_TTL_SECONDS, UMBRAL_GOBERNANZA, VERSION
+from config import CACHE_TTL_SECONDS, VERSION
 
 st.set_page_config(
     page_title="NL 2026 — Gobernanza de Datos",
@@ -29,7 +29,7 @@ st.query_params["theme"] = st.session_state.theme
 # ── Inyectar sistema de diseño NL 2026 ───────────────────────
 from styles.global_css import inject_design_system  # noqa: E402
 
-st.markdown(inject_design_system(st.session_state.theme), unsafe_allow_html=True)
+st.html(inject_design_system(st.session_state.theme))
 
 
 # ── Carga de datos ────────────────────────────────────────────
@@ -56,14 +56,14 @@ if df.empty:
     st.stop()
 
 
+# ── Agregaciones compartidas ─────────────────────────────────
+from section_data import build_section_data  # noqa: E402
+
+_data = build_section_data(df)
+
 # ── Métricas para la Status Bar ──────────────────────────────
-if "score_global" in df.columns:
-    _n_alertas  = int((df["score_global"] < UMBRAL_GOBERNANZA).sum())
-    _mean       = df["score_global"].mean()
-    _score_prom = float(_mean) if pd.notna(_mean) else 0.0
-else:
-    _n_alertas  = 0
-    _score_prom = 0.0
+_n_alertas  = _data.n_critical
+_score_prom = _data.mean_score
 
 _csv_bytes = df.to_csv(index=False).encode("utf-8")
 _csv_b64 = base64.b64encode(_csv_bytes).decode("ascii")
@@ -143,13 +143,12 @@ st.markdown(f"""
             {_nav_links}
         </nav>
         <div class="stitch-topbar-actions" aria-label="Acciones globales">
-            <button type="button"
-                    class="stitch-topbar-btn stitch-topbar-btn-secondary stitch-topbar-btn-theme stitch-topbar-btn-icon"
-                    onclick="window.location.href=window.location.pathname+'?theme={_theme_next}'"
-                    title="Cambiar a modo {_theme_label}"
-                    aria-label="Cambiar a modo {_theme_label}">
+            <a class="stitch-topbar-btn stitch-topbar-btn-secondary stitch-topbar-btn-theme stitch-topbar-btn-icon"
+               href="?theme={_theme_next}"
+               title="Cambiar a modo {_theme_label}"
+               aria-label="Cambiar a modo {_theme_label}">
                 <span class="material-symbols-outlined" aria-hidden="true">{_theme_icon}</span>
-            </button>
+            </a>
             <a class="stitch-topbar-btn stitch-topbar-btn-secondary stitch-topbar-btn-landing"
                href="http://localhost:3000">
                 <span class="material-symbols-outlined" aria-hidden="true">home</span>
@@ -175,13 +174,11 @@ st.markdown(f"""
                 {_nav_links}
             </nav>
             <div class="stitch-mobile-actions">
-                <button type="button"
-                        class="stitch-topbar-btn stitch-topbar-btn-secondary stitch-topbar-btn-theme"
-                        onclick="window.location.href=window.location.pathname+'?theme={_theme_next}'"
-                        style="width: 100%; justify-content: flex-start; gap: 12px; margin-top: 12px; border-radius: 12px;">
+                <a class="stitch-topbar-btn stitch-topbar-btn-secondary stitch-topbar-btn-theme stitch-topbar-btn-mobile"
+                   href="?theme={_theme_next}">
                     <span class="material-symbols-outlined" aria-hidden="true">{_theme_icon}</span>
                     Cambiar a modo {_theme_label}
-                </button>
+                </a>
             </div>
         </div>
     </details>
@@ -215,7 +212,7 @@ _tokens = {"theme": st.session_state.theme}
 
 from sections.app import render as render_app  # noqa: E402
 
-render_app(df, _tokens)
+render_app(_data, df, _tokens)
 
 # ── Scroll-reveal IntersectionObserver ───────────────────
 st.markdown("""

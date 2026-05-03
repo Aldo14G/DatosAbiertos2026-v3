@@ -11,7 +11,7 @@ from __future__ import annotations
 import pandas as pd
 import streamlit as st
 
-from config import UMBRAL_GOBERNANZA
+from section_data import SectionData
 
 
 def _chart_insight(icon: str, text: str) -> None:
@@ -25,15 +25,13 @@ def _chart_insight(icon: str, text: str) -> None:
     )
 
 
-def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
+def render_dashboards(data: SectionData, df: pd.DataFrame, tokens: dict) -> None:
     """Sección Dashboards — compone métricas live del pipeline con narrativa ciudadana."""
     from sections.calidad_pro import render_calidad_pro
     from sections.datasets import render_alertas
     from sections.organizaciones import render_organizaciones
 
-    # Métricas derivadas para los insights
-    has_score = "score_global" in df.columns and not df.empty
-    n_below      = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if has_score else 0
+    n_below = data.n_critical
 
     st.markdown("""
     <section id="dashboards" class="nl-section" aria-labelledby="dashboards-title">
@@ -53,7 +51,7 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
     """, unsafe_allow_html=True)
 
     # ── Bloque 1 — Calidad Pro (cobertura + dimensiones + radial + tabla) ─
-    render_calidad_pro(df, tokens)
+    render_calidad_pro(data, df, tokens)
 
     # [CLEANUP] Redundant insight removed as per user request
 
@@ -70,7 +68,7 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
     </header>
     """, unsafe_allow_html=True)
 
-    render_organizaciones(df, tokens)
+    render_organizaciones(data, tokens)
 
     # ── Bloque 3 — Alertas críticas + fallos de extracción ─────────────
     st.markdown(
@@ -91,4 +89,4 @@ def render_dashboards(df: pd.DataFrame, tokens: dict) -> None:
             f"Existen <strong>{n_below}</strong> datasets que presentan inconsistencias críticas. Abajo encontrarás las tarjetas con las acciones recomendadas para cada uno.",
         )
 
-    render_alertas(df, tokens)
+    render_alertas(data, df, tokens)

@@ -17,6 +17,7 @@ import streamlit as st
 
 from config import DIM_ALERT_DEFAULTS, DIM_REC_DEFAULTS, UMBRAL_GOBERNANZA
 from data_layer import apply_filters, load_coverage_report
+from section_data import SectionData
 from sections.dimensions import DIM_COLS as _DIM_COLS
 
 _log = logging.getLogger(__name__)
@@ -514,11 +515,11 @@ def _render_app_card(row: dict, _tokens: dict) -> str:
 
 # ── Render principal ──────────────────────────────────────────
 
-def render_datasets(df: pd.DataFrame, tokens: dict) -> None:
+def render_datasets(data: SectionData, df: pd.DataFrame, tokens: dict) -> None:
     """Sección Datasets — Explorador App Store + Monitor de Alertas (tabs)."""
 
     # ── Encabezado ────────────────────────────────────────────
-    n_alertas = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
+    n_alertas = data.n_critical
     alert_badge = f' <span class="nl-count-badge">{n_alertas}</span>' if n_alertas > 0 else ""
 
     st.markdown("""
@@ -646,7 +647,7 @@ def render_datasets(df: pd.DataFrame, tokens: dict) -> None:
         render_alertas(df, tokens)
 
 
-def render_alertas(df: pd.DataFrame, _tokens: dict) -> None:
+def render_alertas(_data: SectionData, df: pd.DataFrame, _tokens: dict) -> None:
     """Monitor de Alertas Críticas (función pública).
 
     Reúne el panel de fallos de extracción del pipeline + banner de datasets

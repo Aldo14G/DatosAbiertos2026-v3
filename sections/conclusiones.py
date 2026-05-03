@@ -14,54 +14,18 @@ import streamlit as st
 
 from config import UMBRAL_EXCELENTE, UMBRAL_GOBERNANZA
 from data_layer import load_coverage_report
+from sections.dimensions import DIM_COLS as _DIM_COLS
 
 # ══════════════════════════════════════════════════════════════
 # Helpers
 # ══════════════════════════════════════════════════════════════
-
-def _divider(label: str) -> None:
-    st.markdown(f"""
-    <div class="inicio-divider">
-        <span class="inicio-divider-label">{_html.escape(label)}</span>
-        <div class="inicio-divider-line"></div>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-def _insight_card(icon: str, tier: str, title: str, body: str) -> str:
-    return (
-        f'<article class="nl-insight-card nl-insight-{_html.escape(tier)}">'
-        f'<span class="material-symbols-outlined nl-insight-icon" aria-hidden="true">{icon}</span>'
-        f'<div class="nl-insight-body">'
-        f'<h3 class="nl-insight-title">{_html.escape(title)}</h3>'
-        f'<p class="nl-insight-text">{body}</p>'
-        f'</div>'
-        f'</article>'
-    )
-
-
-# ══════════════════════════════════════════════════════════════
-# Derivación de métricas clave
-# ══════════════════════════════════════════════════════════════
-
-_DIM_COLS: list[tuple[str, str]] = [
-    ("comp_completitud_global_pct", "Completitud"),
-    ("acc_score_accuracy_pct",      "Exactitud"),
-    ("cons_score_consistency_pct",  "Consistencia"),
-    ("uniq_score_uniqueness_pct",   "Unicidad"),
-    ("time_score_timeliness_pct",   "Puntualidad"),
-    ("doc_score_documentation_pct", "Documentación"),
-    ("open_score_openness_pct",     "Apertura"),
-]
-
 
 def _strongest_weakest_dim(df: pd.DataFrame) -> tuple[str, float, str, float]:
     """Devuelve (dim_mejor, score_mejor, dim_peor, score_peor)."""
     scores: list[tuple[str, float]] = []
     for col, label in _DIM_COLS:
         if col in df.columns:
-            mean = float(df[col].mean())
-            scores.append((label, mean))
+            scores.append((label, float(df[col].mean())))
     if not scores:
         return ("N/A", 0.0, "N/A", 0.0)
     scores.sort(key=lambda x: x[1], reverse=True)
@@ -80,20 +44,52 @@ def _top_organization(df: pd.DataFrame) -> tuple[str, float, int]:
     return (str(qualified.index[0]), float(top["mean"]), int(top["count"]))
 
 
+def _flip_card(
+    color: str,
+    icon: str,
+    tag: str,
+    kpi: str | None,
+    back_title: str,
+    back_body: str,
+    delay: str = "",
+    extra_class: str = "",
+) -> str:
+    """Genera una disclosure card con summary (icon+kpi) y body expandible.
+
+    back_body puede contener <strong> — no se escapa aquí; el llamador es responsable.
+    """
+    kpi_html = f'<span class="nl-flip-kpi">{_html.escape(kpi)}</span>' if kpi else ""
+    cls = f"nl-flip-card nl-flip--{color} nl-reveal {delay} {extra_class}".strip()
+    return (
+        f'<details class="{cls}">'
+        f'<summary class="nl-flip-front">'
+        f'<span class="material-symbols-outlined nl-flip-icon" aria-hidden="true">{icon}</span>'
+        f'<span class="nl-flip-tag">{_html.escape(tag)}</span>'
+        f'{kpi_html}'
+        f'<span class="nl-flip-hint">Clic para ver detalle</span>'
+        f'</summary>'
+        f'<div class="nl-flip-back">'
+        f'<h3 class="nl-flip-back-title">{_html.escape(back_title)}</h3>'
+        f'<p class="nl-flip-back-text">{back_body}</p>'
+        f'</div>'
+        f'</details>'
+    )
+
+
 # ══════════════════════════════════════════════════════════════
 # Render principal
 # ══════════════════════════════════════════════════════════════
 
-def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
+def render_conclusiones(df: pd.DataFrame, _tokens: dict) -> None:
     """Sección Conclusiones — hallazgos e insights derivados del estado actual."""
-    coverage = load_coverage_report() or {}
+    coverage = load_coverage_report()
 
-    total       = len(df)
-    score_mean  = float(df["score_global"].mean()) if "score_global" in df.columns else 0.0
-    excelentes  = int((df["score_global"] >= UMBRAL_EXCELENTE).sum()) if "score_global" in df.columns else 0
-    gobernables = int((df["score_global"] >= UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
-    criticos    = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
-    cobertura_pct = float(coverage.get("cobertura_pct", 0))
+    total        = len(df)
+    score_mean   = float(df["score_global"].mean()) if "score_global" in df.columns else 0.0
+    excelentes   = int((df["score_global"] >= UMBRAL_EXCELENTE).sum()) if "score_global" in df.columns else 0
+    gobernables  = int((df["score_global"] >= UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
+    criticos     = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
+    cobertura_pct = float(coverage.get("cobertura_pct", 0)) if coverage is not None else 0.0
 
     strong_label, strong_val, weak_label, weak_val = _strongest_weakest_dim(df)
     top_org_name, top_org_score, top_org_n = _top_organization(df)
@@ -109,142 +105,152 @@ def render_conclusiones(df: pd.DataFrame, tokens: dict) -> None:
 
     # ── Encabezado ────────────────────────────────────────────
     st.markdown("""
-    <section id="conclusiones" class="nl-section" aria-labelledby="conclusiones-title">
-        <span class="eyebrow">03 · Conclusiones</span>
-        <h2 id="conclusiones-title" class="hero-title nl-section-title">
-            Hallazgos clave y recomendaciones
-        </h2>
-        <p class="hero-subtitle nl-section-subtitle">
-            Síntesis derivada del análisis completo del catálogo — actualizada
-            automáticamente con cada ejecución del pipeline.
-        </p>
-    </section>
-    """, unsafe_allow_html=True)
+<section id="conclusiones" class="nl-section nl-reveal" aria-labelledby="conclusiones-title">
+<span class="eyebrow">03 · Conclusiones</span>
+<h2 id="conclusiones-title" class="section-title nl-section-title">Hallazgos clave y recomendaciones</h2>
+<p class="section-subtitle nl-section-subtitle">El estado actual del catálogo en un vistazo. Se actualiza solo con cada corrida del pipeline.</p>
+</section>
+""", unsafe_allow_html=True)
 
-    # ── 1. Hallazgos ─────────────────────────────────────────
-    _divider("Hallazgos clave")
+    # ── 1. HALLAZGOS (3 flip cards) ───────────────────────────
+    st.markdown('<div class="eyebrow mt-5 mb-3">Hallazgos clave</div>', unsafe_allow_html=True)
 
-    hallazgos = [
-        _insight_card(
-            "insights", "positive",
-            "Catálogo mayoritariamente gobernable",
-            f"<strong>{pct_gobernables:.0f}%</strong> de los datasets "
-            f"({gobernables} de {total}) superan el umbral ISO/IEC 25012 de "
-            f"{UMBRAL_GOBERNANZA:.0f}%. El score promedio del catálogo se sitúa en "
-            f"<strong>{score_mean:.1f}%</strong>.",
-        ),
-        _insight_card(
-            "auto_awesome", "positive",
-            f"Dimensión más sólida: {_html.escape(strong_label)}",
-            f"El catálogo muestra mayor fortaleza en <strong>{_html.escape(strong_label)}</strong> "
-            f"con <strong>{strong_val:.1f}%</strong> promedio.",
-        ),
-        _insight_card(
-            "warning", "warn",
-            f"Dimensión con mayor oportunidad: {_html.escape(weak_label)}",
-            f"<strong>{_html.escape(weak_label)}</strong> promedia "
-            f"<strong>{weak_val:.1f}%</strong> — priorizar correcciones en esta dimensión "
-            f"ofrecería el mayor impacto marginal sobre el score global.",
-        ),
-        _insight_card(
-            "error", "critical",
-            "Datasets bajo umbral de gobernanza",
-            f"<strong>{criticos}</strong> datasets ({pct_criticos:.0f}%) están "
-            f"por debajo de {UMBRAL_GOBERNANZA:.0f}% y requieren intervención.",
-        ),
-    ]
-    _hcols = st.columns(2, gap="small")
-    for _i, _card in enumerate(hallazgos):
-        with _hcols[_i % 2]:
-            st.markdown(_card, unsafe_allow_html=True)
+    dim_card = (
+        f'<details class="nl-flip-card nl-flip--neutral nl-reveal nl-reveal-d2">'
+        f'<summary class="nl-flip-front">'
+        f'<div class="nl-flip-dim-row">'
+        f'<span class="nl-flip-dim-label">{_html.escape(strong_label)}</span>'
+        f'<span class="nl-flip-dim-val nl-dim-up-val">{strong_val:.1f}%</span>'
+        f'<span class="nl-flip-dim-sep" aria-hidden="true"></span>'
+        f'<span class="nl-flip-dim-label">{_html.escape(weak_label)}</span>'
+        f'<span class="nl-flip-dim-val nl-dim-down-val">{weak_val:.1f}%</span>'
+        f'</div>'
+        f'<span class="nl-flip-tag">Dimensiones</span>'
+        f'<span class="nl-flip-hint">Clic para ver detalle</span>'
+        f'</summary>'
+        f'<div class="nl-flip-back">'
+        f'<h3 class="nl-flip-back-title">{_html.escape(strong_label)} lidera; {_html.escape(weak_label)} tiene margen</h3>'
+        f'<p class="nl-flip-back-text">'
+        f'<strong>{strong_val:.1f}%</strong> en promedio para el catálogo completo. '
+        f'La que más puede crecer es <strong>{_html.escape(weak_label)}</strong>, con <strong>{weak_val:.1f}%</strong>. '
+        f'Mejorarla mueve el indicador global más que cualquier otra dimensión.'
+        f'</p>'
+        f'</div>'
+        f'</details>'
+    )
 
-    # ── 2. Insights adicionales ──────────────────────────────
-    _divider("Insights adicionales")
+    hallazgos_html = "".join([
+        _flip_card(
+            "teal", "query_stats", "Catálogo gobernable",
+            f"{pct_gobernables:.0f}%",
+            "La mayoría del catálogo cumple",
+            f"<strong>{gobernables} de {total}</strong> datasets cumplen el umbral de calidad ({UMBRAL_GOBERNANZA:.0f}%). "
+            f"Promedio general: <strong>{score_mean:.1f}%</strong>.",
+            "nl-reveal-d1",
+            "nl-flip-card--primary",
+        ),
+        dim_card,
+        _flip_card(
+            "rose", "error", "Datasets críticos",
+            str(criticos),
+            f"{criticos} datasets no alcanzan el umbral",
+            f"El <strong>{pct_criticos:.0f}%</strong> del catálogo no llega al umbral de {UMBRAL_GOBERNANZA:.0f}%. "
+            f"Cada uno tiene recomendaciones concretas en la sección de alertas.",
+            "nl-reveal-d3",
+        ),
+    ])
 
-    insights = []
+    st.markdown(
+        f'<div class="nl-flip-grid">{hallazgos_html}</div>',
+        unsafe_allow_html=True,
+    )
+
+    # ── 2. INSIGHTS ADICIONALES (4 flip cards) ────────────────
+    st.markdown('<div class="eyebrow mt-6 mb-3">Más sobre el catálogo</div>', unsafe_allow_html=True)
+
+    insight_cards: list[str] = []
+
     if top_org_name != "N/A":
-        insights.append(_insight_card(
-            "star", "positive",
-            f"Referente de calidad: {_html.escape(top_org_name)[:45]}",
-            f"Mantiene <strong>{top_org_score:.1f}%</strong> de calidad promedio "
-            f"a lo largo de <strong>{top_org_n}</strong> datasets publicados. "
-            f"Patrón replicable para el resto del gobierno estatal.",
+        insight_cards.append(_flip_card(
+            "teal", "star", "Referente de calidad",
+            f"{top_org_score:.1f}%",
+            f"Referente: {top_org_name[:45]}",
+            f"<strong>{top_org_n}</strong> datasets con un promedio de <strong>{top_org_score:.1f}%</strong>. "
+            f"Algo están haciendo bien: documentarlo y compartirlo con otras dependencias vale la pena.",
+            "nl-reveal-d1",
         ))
 
     if sin_cat_n > 0:
-        insights.append(_insight_card(
-            "category", "warn",
-            "Gobernanza de metadatos",
-            f"<strong>{sin_cat_n}</strong> datasets ({sin_cat_pct:.0f}%) carecen de "
-            f"categoría temática en CKAN. Esto degrada navegabilidad y analítica "
-            f"cross-sector.",
+        insight_cards.append(_flip_card(
+            "gold", "category", "Gobernanza de metadatos",
+            str(sin_cat_n),
+            "Sin categoría temática",
+            f"<strong>{sin_cat_n}</strong> datasets ({sin_cat_pct:.0f}%) no tienen categoría asignada en CKAN. "
+            f"Sin eso, son difíciles de encontrar y comparar con otros temas.",
+            "nl-reveal-d2",
         ))
 
-    insights.append(_insight_card(
-        "trending_up", "neutral",
-        "Cobertura del pipeline",
-        f"La evaluación procesó el <strong>{cobertura_pct:.1f}%</strong> del catálogo "
-        f"en la última ejecución. La trazabilidad completa de fallos está disponible "
-        f"en la sección anterior.",
+    insight_cards.append(_flip_card(
+        "neutral", "trending_up", "Cobertura del pipeline",
+        f"{cobertura_pct:.1f}%",
+        "Cobertura de la última ejecución",
+        f"El pipeline cubrió <strong>{cobertura_pct:.1f}%</strong> del catálogo en esta ejecución. "
+        f"Los errores y registros omitidos están detallados en la sección anterior.",
+        "nl-reveal-d3",
     ))
 
-    insights.append(_insight_card(
-        "workspace_premium", "positive",
-        "Datasets de excelencia",
-        f"<strong>{excelentes}</strong> datasets ({pct_excelentes:.0f}%) superan el "
-        f"umbral de excelencia ({UMBRAL_EXCELENTE:.0f}%). Constituyen la cohorte "
-        f"de oro del portal — candidatos a mostrar como ejemplo de buenas prácticas.",
+    insight_cards.append(_flip_card(
+        "teal", "workspace_premium", "Datasets de excelencia",
+        str(excelentes),
+        "Superan el umbral de excelencia",
+        f"<strong>{excelentes}</strong> datasets ({pct_excelentes:.0f}%) superan el {UMBRAL_EXCELENTE:.0f}%. "
+        f"Buenos candidatos para mostrar qué tan alto puede llegar la calidad.",
+        "nl-reveal-d4",
     ))
 
-    _icols = st.columns(2, gap="small")
-    for _i, _card in enumerate(insights):
-        with _icols[_i % 2]:
-            st.markdown(_card, unsafe_allow_html=True)
+    st.markdown(
+        f'<div class="nl-flip-grid nl-reveal">{"".join(insight_cards)}</div>',
+        unsafe_allow_html=True,
+    )
 
-    # ── 3. Recomendaciones ───────────────────────────────────
-    _divider("Recomendaciones")
+    # ── 3. RECOMENDACIONES (roadmap numerado) ─────────────────
+    st.markdown('<div class="eyebrow mt-6 mb-3">Recomendaciones</div>', unsafe_allow_html=True)
 
-    recomendaciones = [
+    recomendaciones: list[tuple[str, str]] = [
         (
-            "flag",
-            f"Atender primero los {criticos} datasets bajo umbral.",
-            "Concentrar el esfuerzo remedial en los datasets ya marcados como "
-            "críticos en la sección de alertas — cada uno incluye recomendaciones "
-            "específicas por dimensión.",
+            f"Empezar por los {criticos} datasets bajo umbral",
+            "Tienen recomendaciones concretas por dimensión en la sección de alertas. "
+            "Ahí está el impacto más rápido.",
         ),
         (
-            "trending_up",
-            f"Priorizar dimensión {_html.escape(weak_label)}.",
-            "El incremento marginal en la dimensión más débil mejora el score global "
-            "de forma desproporcionada por el esquema de pesos ISO 25012.",
+            f"Mejorar {weak_label}",
+            f"{weak_label} es donde cada punto de mejora tiene mayor efecto en el indicador global. "
+            "El esquema de pesos ISO 25012 la convierte en la palanca más eficiente.",
         ),
         (
-            "handshake",
-            f"Replicar el modelo de {_html.escape(top_org_name)[:40]}.",
-            "Documentar y difundir las prácticas de catalogación, periodicidad y "
-            "esquemas de la organización referente para el resto de dependencias.",
+            f"Aprender de {top_org_name[:40]}",
+            "Sus prácticas de catalogación, periodicidad y esquemas de datos son concretas "
+            "y replicables. Compartirlas con otras dependencias no cuesta mucho.",
         ),
         (
-            "schema",
-            "Estandarizar metadatos CKAN.",
-            "Campos groups, license, maintainer_email y update_frequency deben ser "
-            "obligatorios en el flujo de publicación — hoy su ausencia es el driver "
-            "principal del deterioro en Documentación y Puntualidad.",
+            "Completar los metadatos CKAN faltantes",
+            "Los campos groups, license, maintainer_email y update_frequency son los que más faltan. "
+            "Hacerlos obligatorios en el proceso de publicación atacaría directamente "
+            "el deterioro en Documentación y Puntualidad.",
         ),
     ]
 
-    rec_html = "".join(
-        f'<li class="nl-rec-item">'
-        f'<span class="material-symbols-outlined nl-rec-icon" aria-hidden="true">{icon}</span>'
-        f'<div class="nl-rec-body">'
-        f'<h4 class="nl-rec-title">{_html.escape(title)}</h4>'
-        f'<p class="nl-rec-text">{_html.escape(body)}</p>'
+    steps_html = "".join(
+        f'<li class="nl-roadmap-step">'
+        f'<div class="nl-roadmap-marker" aria-hidden="true">{i}</div>'
+        f'<div class="nl-roadmap-body">'
+        f'<h4 class="nl-roadmap-title">{_html.escape(title)}</h4>'
+        f'<p class="nl-roadmap-text">{_html.escape(body)}</p>'
         f'</div>'
         f'</li>'
-        for icon, title, body in recomendaciones
+        for i, (title, body) in enumerate(recomendaciones, 1)
     )
-
     st.markdown(
-        f'<ol class="nl-rec-list nl-reveal nl-reveal-d2" aria-label="Recomendaciones priorizadas">{rec_html}</ol>',
+        f'<ol class="nl-roadmap nl-reveal nl-reveal-d2" aria-label="Recomendaciones priorizadas">{steps_html}</ol>',
         unsafe_allow_html=True,
     )

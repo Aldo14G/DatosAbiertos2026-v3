@@ -12,9 +12,6 @@ import html as _html
 import pandas as pd
 import streamlit as st
 
-from config import QUALITY_WEIGHTS, UMBRAL_GOBERNANZA
-from data_layer import DIM_LABEL_MAP, load_coverage_report
-
 # ══════════════════════════════════════════════════════════════
 # Contenido estático pedagógico (metodología)
 # ══════════════════════════════════════════════════════════════
@@ -92,7 +89,7 @@ def _weight_row(dim_label: str, weight: float, description: str) -> str:
         f'<div class="bar-track" role="progressbar"'
         f' aria-label="Peso de {_html.escape(dim_label)}"'
         f' aria-valuenow="{pct}" aria-valuemin="0" aria-valuemax="40">'
-        f'<div class="bar-fill nl-weight-fill" data-width="{width}"></div>'
+        f'<div class="bar-fill nl-weight-fill" style="width:{width}%"></div>'
         f'</div>'
         f'<p class="nl-weight-desc">{_html.escape(description)}</p>'
         f'</div>'
@@ -103,33 +100,29 @@ def _weight_row(dim_label: str, weight: float, description: str) -> str:
 # Render principal
 # ══════════════════════════════════════════════════════════════
 
-def render_desarrollo(df: pd.DataFrame, tokens: dict) -> None:
+def render_desarrollo(df: pd.DataFrame, _tokens: dict) -> None:
     """Sección Desarrollo — Metodología simplificada."""
-    
-    st.markdown("""
-    <section id="desarrollo" class="nl-section">
-        <span class="eyebrow">01 · Metodología</span>
-        <h2 class="hero-title">¿Cómo analizamos los datos?</h2>
-    </section>
-    
-    <div class="editorial-container fade-up">
-        <p>
-            Usamos un "analista robot" que entra al portal oficial y revisa cada dataset bajo 4 criterios clave:
-        </p>
-        <div style="text-align:left; max-width:600px; margin:0 auto; padding:2rem; background:var(--card-bg); border-radius:16px; border:1px solid var(--card-border);">
-            <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:1rem;">
-                <li><strong style="color:var(--teal-light)">1. Existencia:</strong> ¿El archivo se puede descargar o está roto?</li>
-                <li><strong style="color:var(--gold-light)">2. Orden:</strong> ¿La estructura es clara o es un caos de celdas?</li>
-                <li><strong style="color:var(--rose-light)">3. Verdad:</strong> ¿Los datos tienen sentido (ej. fechas válidas)?</li>
-                <li><strong style="color:var(--teal-light)">4. Actualidad:</strong> ¿La información es de hoy o de hace años?</li>
-            </ul>
-        </div>
-    </div>
+    n_datasets = len(df)
+    n_orgs = df["organizacion"].nunique() if "organizacion" in df.columns else 0
 
-    <div class="editorial-container mt-5 fade-up-2">
-        <h2>Universo Analizado</h2>
-        <p>
-            Procesamos automáticamente <strong>{len(df)}</strong> conjuntos de datos de <strong>{df['organizacion'].nunique()}</strong> dependencias gubernamentales para generar los reportes de salud que ves en este sitio.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+    st.markdown(f"""
+<section id="desarrollo" class="nl-section nl-reveal">
+<span class="eyebrow">01 · Metodología</span>
+<h2 class="section-title nl-section-title">¿Cómo analizamos los datos?</h2>
+</section>
+<div class="editorial-container fade-up nl-reveal nl-reveal-d1">
+<p>Usamos un "analista robot" que entra al portal oficial y revisa cada dataset bajo 4 criterios clave:</p>
+<div class="nl-criteria-card">
+<ul class="nl-criteria-list">
+<li><strong class="accent-teal">1. Existencia:</strong> ¿El archivo se puede descargar o está roto?</li>
+<li><strong class="accent-gold">2. Orden:</strong> ¿La estructura es clara o es un caos de celdas?</li>
+<li><strong class="accent-rose">3. Verdad:</strong> ¿Los datos tienen sentido (ej. fechas válidas)?</li>
+<li><strong class="accent-teal">4. Actualidad:</strong> ¿La información es de hoy o de hace años?</li>
+</ul>
+</div>
+</div>
+<div class="editorial-container mt-5 fade-up-2 nl-reveal nl-reveal-d2">
+<h2 class="section-title">Universo Analizado</h2>
+<p>Procesamos automáticamente <strong class="accent-teal">{n_datasets}</strong> conjuntos de datos de <strong class="accent-teal">{n_orgs}</strong> dependencias gubernamentales para generar los reportes de salud que ves en este sitio.</p>
+</div>
+""", unsafe_allow_html=True)

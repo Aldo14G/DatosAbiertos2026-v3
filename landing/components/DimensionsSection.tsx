@@ -1,10 +1,14 @@
 "use client";
 
+import { CSSProperties } from "react";
+import { motion, useReducedMotion } from "framer-motion";
 import {
   CheckSquare,
   Clock,
-  Globe,
+  Crosshair,
   FileText,
+  Fingerprint,
+  Layers,
   Unlock,
 } from "lucide-react";
 import { useLang } from "./LangProvider";
@@ -13,13 +17,38 @@ import { ISO_DIMENSIONS } from "@/lib/data";
 const ICON_MAP: Record<string, React.ElementType> = {
   CheckSquare,
   Clock,
-  Globe,
+  Crosshair,
   FileText,
+  Fingerprint,
+  Layers,
   Unlock,
 };
 
+const ease = [0.16, 1, 0.3, 1] as const;
+
 export function DimensionsSection() {
   const { t } = useLang();
+  const reduced = useReducedMotion();
+
+  const fadeUp = (delay = 0) =>
+    reduced
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.15 },
+          transition: { duration: 0.5, ease, delay },
+        };
+
+  const cardAnim = (idx: number) =>
+    reduced
+      ? {}
+      : {
+          initial: { opacity: 0, y: 24 },
+          whileInView: { opacity: 1, y: 0 },
+          viewport: { once: true, amount: 0.1 },
+          transition: { duration: 0.35, ease, delay: idx * 0.05 + 0.15 },
+        };
 
   return (
     <section
@@ -33,9 +62,9 @@ export function DimensionsSection() {
         <div className="absolute -bottom-[10%] -left-[10%] w-[400px] h-[400px] rounded-full bg-gold/5 blur-[100px]" />
       </div>
 
-      <div className="mx-auto max-w-7xl relative z-10">
+      <div className="@container mx-auto max-w-7xl relative z-10">
         {/* Header */}
-        <div className="mb-16">
+        <motion.div className="mb-16" {...fadeUp(0)}>
           <span className="text-[10px] font-mono tracking-[0.2em] text-gold uppercase opacity-80 mb-4 block">
             {t("Marco normativo", "Normative framework")} · ISO/IEC 25012:2008
           </span>
@@ -54,21 +83,21 @@ export function DimensionsSection() {
               "Each portal dataset is evaluated across five dimensions derived from the international standard. Weights reflect the operational criticality of each attribute for government open data."
             )}
           </p>
-        </div>
+        </motion.div>
 
         {/* Cards grid */}
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
-          {ISO_DIMENSIONS.map((dim) => {
+        <div className="grid gap-6 @sm:grid-cols-2 @lg:grid-cols-3">
+          {ISO_DIMENSIONS.map((dim, idx) => {
             const Icon = ICON_MAP[dim.icon] ?? CheckSquare;
             return (
-              <article
+              <motion.article
                 key={dim.id}
+                style={{ "--i": idx } as CSSProperties}
+                {...cardAnim(idx)}
                 className="relative overflow-hidden rounded-2xl border border-border/40 bg-background/40 backdrop-blur-md p-6 transition-all duration-500 hover:shadow-2xl hover:shadow-teal/5 hover:-translate-y-1 group"
               >
-                {/* Subtle gradient hover effect */}
                 <div className="absolute inset-0 bg-gradient-to-br from-teal/5 via-transparent to-transparent opacity-0 transition-opacity duration-500 group-hover:opacity-100" />
-                
-                {/* Icon + title row */}
+
                 <div className="flex items-start justify-between mb-4 relative z-10">
                   <div className="flex items-center gap-3">
                     <div className="flex size-10 shrink-0 items-center justify-center rounded-xl bg-midnight/5 border border-border/50 text-teal transition-transform duration-500 group-hover:scale-110">
@@ -78,42 +107,45 @@ export function DimensionsSection() {
                       {t(dim.nameEs, dim.nameEn)}
                     </h3>
                   </div>
-                  {/* Weight badge */}
-                  <span className="shrink-0 ml-2 inline-flex items-center justify-center rounded-full border border-gold/20 bg-gold/10 px-3 py-1 font-mono text-xs font-bold text-gold">
+                  <span className="shrink-0 ml-2 inline-flex items-center justify-center rounded-full border border-gold/20 bg-gold/10 px-3 py-1 font-mono text-xs font-bold text-amber-800 dark:text-gold-light">
                     {dim.weight}%
                   </span>
                 </div>
 
-                {/* Description */}
                 <p className="text-sm text-muted-foreground mb-5 leading-relaxed relative z-10">
                   {t(dim.descriptionEs, dim.descriptionEn)}
                 </p>
 
-                {/* Formula */}
                 <div className="mb-4 rounded-xl bg-midnight/5 border border-border/30 px-4 py-3 relative z-10">
                   <p className="font-mono text-[11px] text-foreground/80 leading-relaxed">
-                    <span className="text-teal font-semibold">∑</span> {t(dim.formulaEs, dim.formulaEn)}
+                    <span className="text-teal font-semibold">∑</span>{" "}
+                    {t(dim.formulaEs, dim.formulaEn)}
                   </p>
                 </div>
 
-                {/* Example */}
                 <p className="text-xs text-muted-foreground/80 italic relative z-10">
-                  <span className="text-foreground/60 font-semibold not-italic">{t("Ejemplo:", "Example:")}</span> {t(dim.exampleEs, dim.exampleEn)}
+                  <span className="text-foreground/60 font-semibold not-italic">
+                    {t("Ejemplo:", "Example:")}
+                  </span>{" "}
+                  {t(dim.exampleEs, dim.exampleEn)}
                 </p>
 
-                {/* ISO ref */}
                 <p className="mt-4 font-mono text-[10px] tracking-widest uppercase text-muted-foreground/40 relative z-10">
                   {dim.isoRef}
                 </p>
-              </article>
+              </motion.article>
             );
           })}
 
           {/* Weight total card */}
-          <div className="relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br from-midnight/5 to-transparent backdrop-blur-md p-8 flex flex-col justify-center items-center text-center sm:col-span-2 lg:col-span-1 group">
+          <motion.div
+            style={{ "--i": ISO_DIMENSIONS.length } as CSSProperties}
+            {...cardAnim(ISO_DIMENSIONS.length)}
+            className="relative overflow-hidden rounded-2xl border border-border/40 bg-gradient-to-br from-midnight/5 to-transparent backdrop-blur-md p-8 flex flex-col justify-center items-center text-center @sm:col-span-2 @lg:col-span-1 group"
+          >
             <div className="absolute inset-0 bg-gradient-to-tr from-gold/5 via-transparent to-teal/5 opacity-50" />
-            
-            <p className="font-serif text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-br from-foreground to-foreground/50 mb-3 relative z-10">
+
+            <p className="font-serif text-6xl font-bold text-foreground mb-3 relative z-10">
               100%
             </p>
             <p className="text-sm text-muted-foreground max-w-xs relative z-10">
@@ -134,13 +166,18 @@ export function DimensionsSection() {
             </div>
             <div className="mt-4 flex flex-wrap justify-center gap-x-4 gap-y-2 relative z-10">
               {ISO_DIMENSIONS.map((dim) => (
-                <span key={dim.id} className="flex items-center gap-1.5 text-[10px] font-mono tracking-wider text-muted-foreground uppercase">
-                  <span className={`inline-block size-1.5 rounded-full ${getWeightColor(dim.id)}`} />
+                <span
+                  key={dim.id}
+                  className="flex items-center gap-1.5 text-[10px] font-mono tracking-wider text-muted-foreground uppercase"
+                >
+                  <span
+                    className={`inline-block size-1.5 rounded-full ${getWeightColor(dim.id)}`}
+                  />
                   {t(dim.nameEs, dim.nameEn)}
                 </span>
               ))}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>

@@ -25,14 +25,14 @@ export const metadata: Metadata = {
     alternateLocale: "en_US",
     title: "DatosAbiertos NL 2026 — Calidad de Datos Abiertos",
     description:
-      "272 datasets evaluados bajo ISO/IEC 25012. 90% alcanzan Gold. Proyecto de LABNL — Laboratorio para la Ciudad de Nuevo León.",
+      "290 datasets evaluados bajo ISO/IEC 25012. 65% alcanzan Gold. Proyecto de LABNL — Laboratorio para la Ciudad de Nuevo León.",
     siteName: "DatosAbiertos NL 2026",
   },
   twitter: {
     card: "summary_large_image",
     title: "DatosAbiertos NL 2026 — Calidad de Datos Abiertos",
     description:
-      "272 datasets del gobierno de Nuevo León evaluados bajo estándares ISO/IEC 25012. Un proyecto de LABNL.",
+      "290 datasets del gobierno de Nuevo León evaluados bajo estándares ISO/IEC 25012. Un proyecto de LABNL.",
   },
   robots: {
     index: true,

@@ -3,13 +3,14 @@
 import { ExternalLink, GitFork } from "lucide-react";
 import { useLang } from "./LangProvider";
 
+const DASHBOARD_URL = process.env.NEXT_PUBLIC_DASHBOARD_URL ?? null;
+
 const LINKS = {
   labnl: "https://labnuevoleon.mx",
   wiki: "https://wiki.labnuevoleon.mx",
   repo1: "https://github.com/ricalanis/comovamoslabnle1",
-  repo2: "https://github.com/olivergomezrs/comovamoslabnlv3",
+  repo2: "https://github.com/Aldo14G/DatosAbiertos2026-v3",
   portal: "https://catalogodatos.nl.gob.mx",
-  dashboard: "https://catalogodatos.nl.gob.mx",
 };
 
 export function CreditsSection() {
@@ -35,7 +36,7 @@ export function CreditsSection() {
               href={LINKS.wiki}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring rounded"
+              className="inline-flex items-center gap-1.5 text-sm text-primary hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-1 rounded"
             >
               wiki.labnuevoleon.mx
               <ExternalLink className="size-3" aria-hidden="true" />
@@ -55,7 +56,7 @@ export function CreditsSection() {
               />
               <RepoLink
                 href={LINKS.repo2}
-                label="olivergomezrs/comovamoslabnlv3"
+                label="Aldo14G/DatosAbiertos2026-v3"
                 desc={t("Pipeline v3 — motor de evaluación", "Pipeline v3 — evaluation engine")}
               />
             </ul>
@@ -116,19 +117,21 @@ export function CreditsSection() {
               target="_blank"
               rel="noopener noreferrer"
               aria-label="GitHub"
-              className="text-muted-foreground hover:text-foreground transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring rounded"
+              className="text-muted-foreground hover:text-foreground transition select-none active:scale-[0.97] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-1 rounded"
             >
               <GitFork className="size-5" />
             </a>
-            <a
-              href={LINKS.dashboard}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 rounded border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition-colors hover:bg-muted focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring"
-            >
-              {t("Ver dashboard", "Open dashboard")}
-              <ExternalLink className="size-3" aria-hidden="true" />
-            </a>
+            {DASHBOARD_URL && (
+              <a
+                href={DASHBOARD_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-1.5 rounded border border-border bg-background px-3 py-1.5 text-xs font-medium text-foreground transition select-none active:scale-[0.97] hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-1"
+              >
+                {t("Ver análisis completo", "View full analysis")}
+                <ExternalLink className="size-3" aria-hidden="true" />
+              </a>
+            )}
           </div>
         </div>
       </div>
@@ -151,7 +154,7 @@ function RepoLink({
         href={href}
         target="_blank"
         rel="noopener noreferrer"
-        className="group flex items-start gap-2 focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring rounded"
+        className="group flex items-start gap-2 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/60 focus-visible:ring-offset-1 rounded"
       >
         <GitFork
           className="mt-0.5 size-4 shrink-0 text-muted-foreground group-hover:text-foreground transition-colors"

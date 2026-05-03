@@ -3,13 +3,11 @@ Sección Inicio · Hero central + scroll narrativo.
 NL 2026 Design System — Midnight/Teal/Gold/Rose tokens.
 Zero inline styles — all visuals via global_css.py classes.
 """
-from datetime import datetime
-
-import pandas as pd
-import plotly.graph_objects as go
 import streamlit as st
 
 from data_layer import load_coverage_report
+from section_data import SectionData
+from sections.dimensions import CITIZEN_LABELS as _CITIZEN_LABELS
 
 # ══════════════════════════════════════════════════════════════════════════════
 # HELPERS DE RENDERIZADO (CSS-only, no inline styles)
@@ -21,23 +19,6 @@ def _divider(label: str) -> None:
     <div class="inicio-divider">
         <span class="inicio-divider-label">{label}</span>
         <div class="inicio-divider-line"></div>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-def _kpi_block(value: str, label: str, delta: str = "", tier: str = "neutral") -> None:
-    """Card KPI individual usando tokens del design system."""
-    delta_html = (
-        f'<div class="kpi-delta up">'
-        f'<span class="material-symbols-outlined" aria-hidden="true" style="font-size:14px">trending_up</span>'
-        f' {delta}</div>'
-        if delta else ""
-    )
-    st.markdown(f"""
-    <div class="kpi-card kpi-card--left {tier} fade-up">
-        <div class="kpi-value">{value}</div>
-        <div class="kpi-label">{label}</div>
-        {delta_html}
     </div>
     """, unsafe_allow_html=True)
 
@@ -62,8 +43,8 @@ def _activity_row(name: str, org: str, date: str, fmt: str = "") -> None:
     """, unsafe_allow_html=True)
 
 
-def _health_bar(label: str, pct: float, tier: str = "teal") -> None:
-    """Barra de progreso de salud usando bar tokens del design system."""
+def _health_bar(label: str, pct: float, tier: str = "teal", desc: str = "") -> None:
+    """Mini-card con barra de progreso de salud y descripción ciudadana."""
     pct_clean = max(0, min(100, round(pct, 1)))
 
     fill_class = {
@@ -72,12 +53,15 @@ def _health_bar(label: str, pct: float, tier: str = "teal") -> None:
         "rose": "bar-fill bar-fill-rose",
     }.get(tier, "bar-fill")
 
+    desc_html = f'<p class="health-mini-card-desc">{desc}</p>' if desc else ""
+
     st.markdown(f"""
-    <div class="mb-4">
-        <div class="inicio-health-label">
-            <span class="inicio-health-name">{label}</span>
-            <span class="inicio-health-pct">{pct_clean}%</span>
+    <div class="health-mini-card">
+        <div class="health-mini-card-header">
+            <span class="health-mini-card-label">{label}</span>
+            <span class="health-mini-card-pct">{pct_clean}%</span>
         </div>
+        {desc_html}
         <div class="bar-track" role="progressbar" aria-label="{label}" aria-valuenow="{pct_clean}" aria-valuemin="0" aria-valuemax="100">
             <div class="{fill_class}" style="width:{pct_clean}%"></div>
         </div>
@@ -97,6 +81,15 @@ def _render_bienvenida() -> None:
         <h1 class="editorial-title">¿Qué tan confiables son los datos del Estado?</h1>
     </header>
 
+    <div class="nl-ctx-img-wrap fade-up-d1">
+        <img
+            src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=1400"
+            alt="Panel de analítica de datos gubernamentales con métricas de calidad en tiempo real"
+            class="nl-ctx-img"
+            loading="eager"
+        >
+    </div>
+
     <div class="editorial-container fade-up-d1">
         <p>
             Los datos públicos solo sirven si son exactos y actuales. <strong>Gobernanza Pro</strong> es un motor automático que revisa diariamente el portal oficial para medir qué tan bien se está publicando la información.
@@ -105,7 +98,7 @@ def _render_bienvenida() -> None:
             Evaluamos la <strong>salud de los datos</strong> basándonos en reglas internacionales de calidad. Aquí puedes ver quién publica mejor y qué conjuntos de datos necesitan corrección inmediata.
         </p>
         <div class="mt-4">
-            <a href="#datasets" class="stitch-btn-primary">
+            <a href="#dashboards" class="stitch-btn-primary">
                 <span class="material-symbols-outlined">explore</span>
                 Ver Catálogo de Salud
             </a>
@@ -115,32 +108,22 @@ def _render_bienvenida() -> None:
 
 
 def _render_hero(stats: dict) -> None:
-    """Bloque 1 · Summary health score with minimal noise."""
-    health_metrics = stats.get("health_metrics", {})
-    vals = [v for v in health_metrics.values() if not pd.isna(v)]
-    total_score = sum(vals) / len(vals) if len(vals) > 0 else 0
+    """Bloque 1 · Score como enunciado editorial, no tarjeta aislada."""
+    total_score = stats.get("score_global_mean", 0.0)
+    n_datasets = stats.get("total_datasets", "—")
+    n_orgs = stats.get("total_orgs", "—")
+    status_label = "Óptimo" if total_score >= 80 else "En Revisión"
+    status_color = "excellent" if total_score >= 80 else "poor"
 
     st.markdown(f"""
-    <div class="editorial-container fade-up-d2">
-        <h2 class="section-title">Estado General: {'Óptimo' if total_score >= 80 else 'En Revisión'}</h2>
-        <p>
-            Actualmente, la salud del catálogo completo es de 
-            <span class="kpi-value" style="font-size: 1.5rem; color: var(--teal-light); vertical-align: baseline;">{total_score:.1f}%</span>.
-            Analizamos {stats.get('total_datasets', '—')} conjuntos de datos de {stats.get('total_orgs', '—')} dependencias gubernamentales.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
+<div class="nl-hero-stat-block nl-reveal nl-reveal-d1">
+<p class="nl-hero-stat-prose">El catálogo obtiene
+  <span class="nl-hero-stat-score nl-hero-stat-score--{status_color}">{total_score:.1f}%</span>
+  en ISO/IEC 25012.</p>
+<span class="nl-hero-stat-label">{status_label} · {n_datasets} datasets · {n_orgs} dependencias</span>
+</div>
+""", unsafe_allow_html=True)
 
-
-
-def _render_kpis(stats: dict) -> None:
-    """Omitted in editorial layout. KPIs are now inline text."""
-    pass
-
-
-def _render_actividad_y_orgs(stats: dict) -> None:
-    """Omitted to speed up initial load. Data is in 'Organizaciones' tab."""
-    pass
 
 
 def _render_salud_catalogo(stats: dict) -> None:
@@ -151,195 +134,71 @@ def _render_salud_catalogo(stats: dict) -> None:
             "Datos Completos": 0.0, "Información Exacta": 0.0, "Consistencia": 0.0, "Registros Únicos": 0.0,
         }
 
-    # Map technical names to citizen-friendly names
-    mapping = {
-        "Completitud": "Datos Completos",
-        "Exactitud": "Información Exacta",
-        "Consistencia": "Datos Congruentes",
-        "Unicidad": "Sin Duplicados"
-    }
-
     st.markdown("""
-    <div class="editorial-container fade-up-4">
-        <h2>¿Cómo medimos la calidad?</h2>
-        <p>
-            No solo revisamos que el archivo exista. Analizamos el contenido registro por registro para asegurar:
-        </p>
-        <div class="mt-4">
-    """, unsafe_allow_html=True)
+<div class="editorial-container fade-up-4 nl-reveal nl-reveal-d1">
+<h2 class="section-title">¿Cómo medimos la calidad?</h2>
+<p>No solo revisamos que el archivo exista. Analizamos el contenido registro por registro para asegurar:</p>
+</div>
+
+<div class="nl-ctx-img-wrap nl-reveal nl-reveal-d1">
+    <img
+        src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=1400"
+        alt="Analista revisando métricas de calidad de datos en múltiples pantallas"
+        class="nl-ctx-img"
+        loading="lazy"
+    >
+</div>
+
+<div class="editorial-container nl-reveal">
+<div class="mt-4 nl-center-measure">
+""", unsafe_allow_html=True)
 
     for tech_label, pct in health_metrics.items():
-        label = mapping.get(tech_label, tech_label)
+        entry = _CITIZEN_LABELS.get(tech_label, (tech_label, ""))
+        label, desc = entry if isinstance(entry, tuple) else (entry, "")
         tier = "teal" if pct >= 80 else "gold" if pct >= 60 else "rose"
-        _health_bar(label, pct, tier=tier)
+        _health_bar(label, pct, tier=tier, desc=desc)
 
     st.markdown("</div></div>", unsafe_allow_html=True)
 
 
-def _render_antes_vs_ahora(
-    coverage: dict | None, df: pd.DataFrame,
-) -> None:
-    """Bloque comparativo Antes vs Ahora inline narrative."""
-    if coverage is None:
-        return
-
-    ahora_datasets = coverage.get("procesados_exitosos", 0)
-    ahora_cobertura = coverage.get("cobertura_pct", 0)
-    ahora_tiempo = coverage.get("elapsed_total_s")
-
-    st.markdown(f"""
-    <div class="editorial-container mt-5">
-        <h2>Evolución del Pipeline</h2>
-        <p>
-            El nuevo pipeline de auditoría automatizado ha expandido significativamente el área de evaluación. Ahora cubre el <strong>{ahora_cobertura:.1f}%</strong> del catálogo público (evaluando {ahora_datasets} datasets), ejecutando el análisis completo en solo <strong>{ahora_tiempo:.0f}s</strong>.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-def _render_resource_clarity() -> None:
-    """Bloque que aclara la diferencia recursos evaluados vs datasets unicos."""
-    pass
-
-
-def _render_inicio_footer() -> None:
+def _render_inicio_footer(coverage: dict | None) -> None:
     """Cierre visual de la sección con data breadcrumbs."""
+    run_id = coverage.get("run_id", "") if coverage is not None else ""
+    if len(run_id) == 15:  # "20260423_163006"
+        pipeline_ts = f"{run_id[:4]}-{run_id[4:6]}-{run_id[6:8]} {run_id[9:11]}:{run_id[11:13]}"
+    else:
+        pipeline_ts = "desconocida"
     st.markdown(f"""
-    <div class="editorial-container mt-5 mb-5" style="border-top: 1px solid var(--card-border); padding-top: 2rem; color: var(--muted); font-size: 0.85rem; font-family: 'DM Mono', monospace;">
-      <p>Data sourced from catalogodatos.nl.gob.mx. Rendered at {datetime.now().strftime('%Y-%m-%d %H:%M')}. Processed with PyArrow.</p>
-    </div>
-    """, unsafe_allow_html=True)
+<div class="editorial-footer mb-5">
+<p>Datos provenientes de <strong>catalogodatos.nl.gob.mx</strong> · Pipeline ejecutado: {pipeline_ts} · Procesado con PyArrow.</p>
+</div>
+""", unsafe_allow_html=True)
 
-
-# ══════════════════════════════════════════════════════════════════════════════
-# PREPARACIÓN DE DATOS LOCALES
-# ══════════════════════════════════════════════════════════════════════════════
-
-def _build_stats_from_df(df: pd.DataFrame) -> dict:
-    """Extrae las estadísticas del df real para inyectar a la vista."""
-    if df.empty:
-        return _demo_stats()
-
-    total_datasets = str(len(df))
-    total_orgs = str(df["organizacion"].nunique()) if "organizacion" in df.columns else "0"
-
-    calidad_media = "0.0%"
-    if "score_global" in df.columns:
-        calidad_media = f"{df['score_global'].mean():.1f}%"
-
-    # Total de filas evaluadas, formateado con comas
-    filas_eval = "0"
-    if "filas" in df.columns:
-        filas_eval_sum = int(df["filas"].sum())
-        filas_eval = f"{filas_eval_sum:,}"
-
-    # Recent datasets (Top 6)
-    if "dataset" in df.columns:
-        if "modificado" in df.columns:
-            df_recent = df.sort_values(by="modificado", ascending=False).head(6)
-        else:
-            df_recent = df.head(6)
-
-        recent_df = df_recent.rename(columns={
-            "dataset": "title",
-            "organizacion": "organization"
-        })[["title", "organization"]].copy()
-
-        if "modificado" in df_recent.columns:
-            recent_df["metadata_modified"] = df_recent["modificado"]
-        else:
-            recent_df["metadata_modified"] = "N/A"
-
-        # Use real format from data if available
-        if "formato" in df_recent.columns:
-            recent_df["format"] = df_recent["formato"].values
-        else:
-            recent_df["format"] = "CSV"
-    else:
-        recent_df = pd.DataFrame()
-
-    # Top orgs
-    if "organizacion" in df.columns:
-        top_orgs = df["organizacion"].value_counts().head(7)
-    else:
-        top_orgs = pd.Series()
-
-    # Formatos cubiertos (Fase 5)
-    total_formatos = "1"
-    if "formato" in df.columns:
-        total_formatos = str(df["formato"].nunique())
-
-    # Health metrics (ISO 25012 — 7 dimensiones)
-    health = {}
-    mapping = {
-        "Completitud"   : "comp_completitud_global_pct",
-        "Exactitud"     : "acc_score_accuracy_pct",
-        "Consistencia"  : "cons_score_consistency_pct",
-        "Unicidad"      : "uniq_score_uniqueness_pct",
-        "Puntualidad"   : "time_score_timeliness_pct",
-        "Documentación" : "doc_score_documentation_pct",
-        "Apertura"      : "open_score_openness_pct",
-    }
-
-    for lbl, col in mapping.items():
-        if col in df.columns:
-            val = df[col].dropna()
-            if not val.empty:
-                health[lbl] = float(val.mean())
-
-    if not health:
-        health = {"Evaluación Global": 0.0}
-
-    return {
-        "total_datasets" : total_datasets,
-        "delta_datasets" : "",
-        "total_orgs"     : total_orgs,
-        "delta_orgs"     : "",
-        "total_formatos" : total_formatos,
-        "calidad_media"  : calidad_media,
-        "actualizados"   : filas_eval,
-        "delta_act"      : "",
-        "recent_datasets": recent_df,
-        "top_orgs"       : top_orgs,
-        "health_metrics" : health,
-    }
-
-def _demo_stats() -> dict:
-    """Fallback por si falla o viene vacío."""
-    return {
-        "total_datasets" : "0",
-        "total_orgs"     : "0",
-        "total_formatos" : "0",
-        "calidad_media"  : "0.0%",
-        "actualizados"   : "0",
-        "recent_datasets": None,
-        "top_orgs"       : None,
-        "health_metrics" : {
-            "Completitud" : 0.0,
-            "Exactitud"   : 0.0,
-            "Consistencia": 0.0,
-            "Unicidad"    : 0.0,
-        },
-    }
 
 # ══════════════════════════════════════════════════════════════════════════════
 # ENTRY POINT PRINCIPAL
 # ══════════════════════════════════════════════════════════════════════════════
 
-def render_inicio(df: pd.DataFrame, tokens: dict) -> None:
-    """
-    Orquestador de la sección Inicio para DatosAbiertos2026.
-    Usa tokens semánticos del design system NL 2026.
-    """
-    with st.spinner(""):
-        stats = _build_stats_from_df(df)
+def render_inicio(data: SectionData, _tokens: dict) -> None:
+    """Orquestador de la sección Inicio para DatosAbiertos2026."""
+    stats = {
+        "total_datasets"   : str(data.n_datasets),
+        "delta_datasets"   : "",
+        "total_orgs"       : str(data.n_orgs),
+        "delta_orgs"       : "",
+        "total_formatos"   : str(data.n_formats),
+        "calidad_media"    : f"{data.mean_score:.1f}%",
+        "score_global_mean": data.mean_score,
+        "actualizados"     : f"{data.total_rows:,}",
+        "delta_act"        : "",
+        "recent_datasets"  : data.recent_datasets,
+        "top_orgs"         : data.top_orgs_by_count,
+        "health_metrics"   : data.dim_means if data.dim_means else {"Evaluación Global": 0.0},
+    }
     coverage = load_coverage_report()
 
     _render_bienvenida()
     _render_hero(stats)
-    _render_kpis(stats)
-    _render_antes_vs_ahora(coverage, df)
-    _render_resource_clarity()
-    _render_actividad_y_orgs(stats)
     _render_salud_catalogo(stats)
-    _render_inicio_footer()
+    _render_inicio_footer(coverage)

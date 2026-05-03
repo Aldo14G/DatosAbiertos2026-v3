@@ -1,11 +1,13 @@
 "use client";
 
+import { useRef } from "react";
 import { useLang } from "./LangProvider";
+import { useInView } from "@/lib/use-in-view";
 import { PORTAL_STATS } from "@/lib/data";
 import { PremiumFeatureTabs } from "@/components/blocks/premium-feature-tabs";
 import { Database, Award, ShieldCheck } from "lucide-react";
 
-const DASHBOARD_URL = "http://localhost:8503/#gobernanza-pro";
+const DASHBOARD_URL = "http://localhost:8501/#dashboards";
 
 const goldPct = Math.round(
   (PORTAL_STATS.goldDatasets / PORTAL_STATS.totalDatasets) * 100
@@ -13,6 +15,8 @@ const goldPct = Math.round(
 
 export function Hero() {
   const { t } = useLang();
+  const statsRef = useRef<HTMLDivElement>(null);
+  const statsVisible = useInView(statsRef, 0.2);
 
   const heroTabs = [
     {
@@ -72,14 +76,11 @@ export function Hero() {
     <div id="hero" className="min-h-screen bg-background">
       <PremiumFeatureTabs
         badge={`NL 2026 · ${t(`Evaluación ${PORTAL_STATS.snapshotDate}`, `Assessment ${PORTAL_STATS.snapshotDate}`)}`}
-        heading={
-          <>
-            {t("Gobernanza Pro", "Gobernanza Pro")}
-            <span className="block text-3xl sm:text-4xl lg:text-5xl text-foreground/70 mt-3 font-medium tracking-normal font-sans">
-              {t("La salud de los datos abiertos en Nuevo León", "The health of open data in Nuevo León")}
-            </span>
-          </>
-        }
+        heading={t("Gobernanza Pro", "Gobernanza Pro")}
+        subtitle={t(
+          "La salud de los datos abiertos en Nuevo León",
+          "The health of open data in Nuevo León"
+        )}
         description={t(
           "Auditoría automatizada bajo norma ISO/IEC 25012. Una ventana transparente al desempeño técnico de las dependencias estatales.",
           "Automated audit under ISO/IEC 25012. A transparent window into the technical performance of state agencies."
@@ -87,28 +88,15 @@ export function Hero() {
         tabs={heroTabs}
       >
         {/* Stat bar injected into the Feature Tabs header */}
-        <div className="grid grid-cols-2 gap-4 sm:grid-cols-4 max-w-5xl mx-auto">
-          <StatCard
-            value={PORTAL_STATS.totalDatasets.toString()}
-            label={t("Datasets", "Datasets")}
-            mono
-          />
-          <StatCard
-            value={`${goldPct}%`}
-            label={t("Calidad Oro", "Gold Quality")}
-            mono
-            highlight
-          />
-          <StatCard
-            value={PORTAL_STATS.totalOrgs.toString()}
-            label={t("Organizaciones", "Organizations")}
-            mono
-          />
-          <StatCard
-            value={PORTAL_STATS.avgScore.toFixed(1)}
-            label={t("Score Promedio", "Average Score")}
-            mono
-          />
+        <div
+          ref={statsRef}
+          data-visible={statsVisible}
+          className="grid grid-cols-2 gap-4 sm:grid-cols-4 max-w-5xl mx-auto"
+        >
+          <StatCard value={PORTAL_STATS.totalDatasets.toString()} label={t("Datasets", "Datasets")} mono index={0} />
+          <StatCard value={`${goldPct}%`} label={t("Calidad Oro", "Gold Quality")} mono highlight index={1} />
+          <StatCard value={PORTAL_STATS.totalOrgs.toString()} label={t("Organizaciones", "Organizations")} mono index={2} />
+          <StatCard value={PORTAL_STATS.avgScore.toFixed(1)} label={t("Score Promedio", "Average Score")} mono index={3} />
         </div>
       </PremiumFeatureTabs>
     </div>
@@ -120,17 +108,20 @@ function StatCard({
   label,
   mono,
   highlight,
+  index = 0,
 }: {
   value: string;
   label: string;
   mono?: boolean;
   highlight?: boolean;
+  index?: number;
 }) {
   return (
     <div
-      className={`flex flex-col gap-1 px-4 py-5 sm:px-6 sm:py-6 rounded-2xl border bg-black/5 dark:bg-white/5 backdrop-blur-md shadow-sm transition-transform hover:-translate-y-1 ${
+      className={`card-entrance flex flex-col gap-1 px-4 py-5 sm:px-6 sm:py-6 rounded-2xl border bg-black/5 dark:bg-white/5 backdrop-blur-md shadow-sm transition-transform hover:-translate-y-1 ${
         highlight ? "border-amber-500/30 ring-1 ring-amber-500/20 bg-amber-500/5" : "border-border/50"
       }`}
+      style={{ "--i": index } as React.CSSProperties}
     >
       <span
         className={`text-3xl sm:text-4xl font-bold leading-none ${

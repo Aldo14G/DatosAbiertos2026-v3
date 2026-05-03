@@ -23,6 +23,7 @@ export interface Tab {
 export interface PremiumFeatureTabsProps {
   badge?: string;
   heading?: React.ReactNode | string;
+  subtitle?: React.ReactNode | string;
   description?: string;
   tabs?: Tab[];
   children?: React.ReactNode;
@@ -31,6 +32,7 @@ export interface PremiumFeatureTabsProps {
 export const PremiumFeatureTabs = ({
   badge = "NL 2026",
   heading = "Gobernanza Pro",
+  subtitle,
   description = "Plataforma de evaluación automática",
   tabs = [],
   children,
@@ -44,7 +46,7 @@ export const PremiumFeatureTabs = ({
         <div className="absolute inset-0 bg-gradient-to-r from-teal-500/30 to-rose-500/30 blur-3xl mix-blend-screen" />
       </div>
 
-      <div className="container relative z-10 mx-auto px-4 md:px-8">
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="flex flex-col items-center gap-6 text-center mb-12">
           {badge && (
             <Badge variant="outline" className="border-teal-500/30 bg-teal-500/10 text-teal-400 uppercase tracking-widest px-4 py-1">
@@ -52,11 +54,17 @@ export const PremiumFeatureTabs = ({
             </Badge>
           )}
           
-          <h1 className="max-w-3xl text-4xl font-serif font-bold md:text-6xl text-foreground">
+          <h1 className="max-w-3xl mx-auto text-4xl font-serif font-bold md:text-6xl text-foreground text-balance">
             {heading}
           </h1>
-          
-          <p className="text-xl text-muted-foreground max-w-2xl font-light">
+
+          {subtitle && (
+            <p className="max-w-3xl mx-auto text-3xl sm:text-4xl lg:text-5xl text-foreground/70 font-medium tracking-normal font-sans text-balance text-center">
+              {subtitle}
+            </p>
+          )}
+
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto font-light text-balance text-center">
             {description}
           </p>
           
@@ -95,10 +103,10 @@ export const PremiumFeatureTabs = ({
                 className="outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-xl"
               >
                 <div className="grid place-items-center gap-12 lg:grid-cols-2 lg:gap-16">
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
+                    transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }}
                     className="flex flex-col gap-6 w-full"
                   >
                     <Badge variant="outline" className="w-fit bg-background/50 backdrop-blur-md border-border/50 text-xs">
@@ -112,8 +120,8 @@ export const PremiumFeatureTabs = ({
                     </p>
                     
                     {tab.content.buttonText && (
-                      <Button 
-                        className="mt-4 w-fit rounded-full px-8 bg-gradient-to-r from-primary to-primary/80 hover:to-primary text-primary-foreground shadow-lg shadow-primary/25 border-none transition-transform hover:scale-105" 
+                      <Button
+                        className="mt-4 w-fit rounded-full px-8 bg-primary hover:bg-primary/90 text-primary-foreground shadow-lg shadow-primary/20 border-none transition-transform hover:-translate-y-0.5"
                         size="lg"
                         asChild={!!tab.content.buttonLink}
                       >
@@ -129,7 +137,7 @@ export const PremiumFeatureTabs = ({
                   <motion.div
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
-                    transition={{ duration: 0.5, delay: 0.1 }}
+                    transition={{ duration: 0.6, delay: 0.08, ease: [0.16, 1, 0.3, 1] }}
                     className="w-full relative aspect-square lg:aspect-auto lg:h-[500px] rounded-3xl overflow-hidden shadow-2xl border border-white/10 group"
                   >
                     <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

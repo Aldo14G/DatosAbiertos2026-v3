@@ -14,145 +14,135 @@ import plotly.graph_objects as go
 import streamlit as st
 
 from data_layer import (
-    agg_dim_means_by,
     load_advanced_catalog_stats,
     load_coverage_report,
     merge_advanced_overlay,
 )
+from section_data import SectionData
 from styles.global_css import PLOTLY_THEMES, get_plotly_layout
 
 # ── Helpers internos ─────────────────────────────────────────────
 
 
-def _render_pipeline_coverage(
+def _render_failure_causes(
     coverage: dict, plotly_layout: dict, theme: str,
 ) -> None:
-    """Barra de cobertura del pipeline + donut de fallos."""
-    total = coverage.get("total_catalogo", 0)
-    exitosos = coverage.get("procesados_exitosos", 0)
+    """Distribución de causas de fallo del pipeline.
+
+    Render exclusivo del donut/bar horizontal con causas de extracción
+    fallida. La cobertura agregada se promueve a la KPI strip superior;
+    aquí solo persiste el detalle por causa.
+    """
     fallidos = coverage.get("fallidos", 0)
-    elapsed = coverage.get("elapsed_total_s", 0)
-    pct = coverage.get("cobertura_pct", 0)
     t = PLOTLY_THEMES.get(theme, PLOTLY_THEMES["dark"])
 
-    col_bar, col_donut = st.columns([1.1, 1])
-
-    with col_bar:
-        st.markdown("""
-        <div class="editorial-container mb-2">
-        <div class="nl-panel-head">
-            <span class="material-symbols-outlined icon-teal-sm" aria-hidden="true">monitoring</span>
-            <span class="eyebrow">Cobertura del Pipeline</span>
-        </div>
-        """, unsafe_allow_html=True)
-
-        fig_cov = go.Figure()
-        fig_cov.add_trace(go.Bar(
-            x=[exitosos], y=["Pipeline"], orientation="h",
-            name=f"Exitosos ({exitosos})",
-            marker_color=t["excellent"],
-            text=[f"{exitosos}"], textposition="inside",
-            textfont=dict(color=t["text_on_bar"], size=13),
-        ))
-        if fallidos > 0:
-            fig_cov.add_trace(go.Bar(
-                x=[fallidos], y=["Pipeline"], orientation="h",
-                name=f"Fallidos ({fallidos})",
-                marker_color=t["poor"],
-                text=[f"{fallidos}"], textposition="inside",
-                textfont=dict(color=t["text_on_bar"], size=13),
-            ))
-
-        cov_layout = {
-            **plotly_layout,
-            "barmode": "stack",
-            "height": 120,
-            "margin": dict(t=10, l=0, r=20, b=10),
-            "showlegend": True,
-            "legend": dict(
-                orientation="h", yanchor="bottom", y=1.02,
-                xanchor="left", x=0,
-                font=dict(size=11, color=t["font_color"]),
-            ),
-            "xaxis": dict(
-                showgrid=False, showticklabels=False, range=[0, total],
-            ),
-            "yaxis": dict(showgrid=False, showticklabels=False),
-            "transition": dict(duration=600, easing="cubic-in-out"),
-        }
-        fig_cov.update_layout(**cov_layout)
-        st.plotly_chart(fig_cov, use_container_width=True)
-
-        st.markdown(f"""
-        <div class="d-flex justify-between" style="margin-top:4px">
-            <span class="text-muted-xs">{pct:.1f}% cobertura</span>
-            <span class="text-muted-xs">{elapsed:.0f}s total</span>
-        </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-    with col_donut:
-        st.markdown("""
-        <div class="editorial-container mb-2">
-        <div class="nl-panel-head">
+    st.markdown("""
+    <div class="nl-chart-card nl-reveal">
+        <div class="nl-chart-card-header nl-panel-head">
             <span class="material-symbols-outlined icon-rose-sm" aria-hidden="true">error_outline</span>
             <span class="eyebrow">Distribución de Fallos</span>
         </div>
+    """, unsafe_allow_html=True)
+
+    if fallidos > 0:
+        failed_details = coverage.get("failed_details", [])
+        cause_counts: dict[str, int] = {}
+        for item in failed_details:
+            reason = item.get("reason", "")
+            if reason.startswith("Download failed"):
+                key = "Mismatch formato"
+            elif reason == "No URL":
+                key = "Sin URL"
+            else:
+                key = "Otro"
+            cause_counts[key] = cause_counts.get(key, 0) + 1
+
+        fig_donut = go.Figure(go.Bar(
+            x=list(cause_counts.values()),
+            y=list(cause_counts.keys()),
+            orientation="h",
+            marker_color=t["poor"],
+            text=list(cause_counts.values()),
+            textposition="auto",
+            textfont=dict(size=12, color=t["font_color"]),
+        ))
+        donut_layout = {
+            **plotly_layout,
+            "height": 180,
+            "margin": dict(t=10, l=10, r=20, b=10),
+            "showlegend": False,
+            "xaxis": dict(showgrid=False, visible=False),
+            "yaxis": dict(
+                autorange="reversed",
+                tickfont=dict(size=11, color=t["font_color"]),
+            ),
+            "transition": dict(duration=600, easing="cubic-in-out"),
+        }
+        fig_donut.update_layout(**donut_layout)
+        st.plotly_chart(fig_donut, use_container_width=True)
+    else:
+        st.markdown("""
+        <div class="nl-empty-state nl-empty-state--success">
+            <span class="material-symbols-outlined nl-empty-state-icon" aria-hidden="true">check_circle</span>
+            <p class="nl-empty-state-text">Sin fallos de extracción</p>
+        </div>
         """, unsafe_allow_html=True)
+    st.markdown("</div>", unsafe_allow_html=True)
 
-        if fallidos > 0:
-            failed_details = coverage.get("failed_details", [])
-            cause_counts: dict[str, int] = {}
-            for item in failed_details:
-                reason = item.get("reason", "")
-                if reason.startswith("Download failed"):
-                    key = "Mismatch formato"
-                elif reason == "No URL":
-                    key = "Sin URL"
-                else:
-                    key = "Otro"
-                cause_counts[key] = cause_counts.get(key, 0) + 1
 
-            fig_donut = go.Figure(go.Bar(
-                x=list(cause_counts.values()),
-                y=list(cause_counts.keys()),
-                orientation="h",
-                marker_color=t["poor"],
-                text=list(cause_counts.values()),
-                textposition="auto",
-                textfont=dict(size=12, color=t["font_color"]),
-            ))
-            donut_layout = {
-                **plotly_layout,
-                "height": 160,
-                "margin": dict(t=10, l=10, r=20, b=10),
-                "showlegend": False,
-                "xaxis": dict(showgrid=False, visible=False),
-                "yaxis": dict(autorange="reversed", tickfont=dict(size=11, color=t["font_color"])),
-                "transition": dict(duration=600, easing="cubic-in-out"),
-            }
-            fig_donut.update_layout(**donut_layout)
-            st.plotly_chart(fig_donut, use_container_width=True)
-        else:
-            st.markdown("""
-            <div class="nl-empty-state nl-empty-state--success">
-                <span class="material-symbols-outlined nl-empty-state-icon" aria-hidden="true">check_circle</span>
-                <p class="nl-empty-state-text">Sin fallos de extracción</p>
-            </div>
-            """, unsafe_allow_html=True)
-        st.markdown("</div>", unsafe_allow_html=True)
+def _render_kpi_strip(
+    cobertura_pct: float,
+    n_critical: int,
+    fallidos: int,
+) -> None:
+    """2-card KPI strip: Cobertura del pipeline + Alertas críticas.
+
+    Focus accent (gold top border) sits on `Alertas críticas` por defecto;
+    cuando `n_critical == 0`, el foco se traslada a `Cobertura` para no
+    enfatizar visualmente una no-alerta.
+    """
+    alertas_focus = n_critical > 0
+    cobertura_focus_cls = "" if alertas_focus else " nl-stat-card--focus"
+    alertas_focus_cls = " nl-stat-card--focus" if alertas_focus else ""
+
+    cobertura_meta = (
+        f"{fallidos} sin extracción" if fallidos > 0 else "Sin fallos de extracción"
+    )
+    if n_critical > 0:
+        alertas_meta = "datasets bajo umbral · ver detalle abajo"
+    else:
+        alertas_meta = "Catálogo dentro de umbrales"
+
+    st.markdown(f"""
+<div class="nl-stat-card-grid nl-reveal">
+    <div class="nl-stat-card{cobertura_focus_cls}">
+        <div class="nl-stat-card-header">
+            <span class="nl-stat-card-label">Cobertura del Pipeline</span>
+            <span class="material-symbols-outlined nl-stat-card-icon" aria-hidden="true">monitoring</span>
+        </div>
+        <div class="nl-stat-card-value">{cobertura_pct:.1f}%</div>
+        <div class="nl-stat-card-meta">{cobertura_meta}</div>
+    </div>
+    <div class="nl-stat-card{alertas_focus_cls}">
+        <div class="nl-stat-card-header">
+            <span class="nl-stat-card-label">Alertas Críticas</span>
+            <span class="material-symbols-outlined nl-stat-card-icon" aria-hidden="true">warning</span>
+        </div>
+        <div class="nl-stat-card-value">{n_critical}</div>
+        <div class="nl-stat-card-meta">{alertas_meta}</div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
 
 
 def _render_dimension_heatmap(
-    df: pd.DataFrame, plotly_layout: dict, theme: str,
+    grouped: pd.DataFrame, plotly_layout: dict, theme: str,
 ) -> None:
     """Heatmap de dimensiones ISO por categoria del catalogo."""
-    if df.empty:
-        return
-
-    grouped = agg_dim_means_by(df, "categoria", rename=True).sort_index()
     if grouped.empty:
         return
+
+    grouped = grouped.sort_index()
 
     t = PLOTLY_THEMES.get(theme, PLOTLY_THEMES["dark"])
 
@@ -161,7 +151,7 @@ def _render_dimension_heatmap(
     <h2 class="section-title">Dimensiones por Categoría</h2>
     <p>El mapa de calor muestra el nivel de cumplimiento por dimensión ISO en cada categoría del catálogo. Colores más brillantes indican mayor madurez.</p>
     </div>
-    <div class="editorial-figure">
+    <div class="nl-chart-card">
     """, unsafe_allow_html=True)
 
     n_cats = len(grouped)
@@ -208,7 +198,7 @@ def _render_dimension_heatmap(
 # ── Render principal ─────────────────────────────────────────────
 
 
-def render_calidad_pro(df: pd.DataFrame, tokens: dict) -> None:
+def render_calidad_pro(data: SectionData, df: pd.DataFrame, tokens: dict) -> None:
     """Renderiza la seccion Calidad Pro usando Pipeline A como fuente canonica."""
     theme = tokens.get("theme", "dark")
     plotly_layout = get_plotly_layout(theme)
@@ -221,27 +211,22 @@ def render_calidad_pro(df: pd.DataFrame, tokens: dict) -> None:
     # Header eliminado — se delega al wrapper render_dashboards (evita doble título).
 
     # --- 1. KPIs RESUMEN ---
-    stats = {
-        "total": len(df),
-        "score": float(df["score_global"].mean()) if not df.empty else 0.0
-    }
-
-    _total = stats["total"] or 1
-    _n_excellent = int((df["score_global"] >= 85).sum()) if "score_global" in df.columns else 0
-    _n_good = int(((df["score_global"] >= 60) & (df["score_global"] < 85)).sum()) if "score_global" in df.columns else 0
-    _n_critical = int((df["score_global"] < 60).sum()) if "score_global" in df.columns else 0
+    _total      = data.n_datasets or 1
+    _n_excellent = data.n_excellent
+    _n_good      = data.n_good
+    _n_critical  = data.n_critical
     _pct_excellent = _n_excellent / _total * 100
-    _pct_good = _n_good / _total * 100
-    _pct_critical = _n_critical / _total * 100
-    _score_color = "teal" if stats["score"] >= 75 else "rose"
+    _pct_good      = _n_good      / _total * 100
+    _pct_critical  = _n_critical  / _total * 100
+    _score_color = "teal" if data.mean_score >= 75 else "rose"
 
     st.markdown(f"""
 <div class="nl-distband nl-reveal">
   <div class="nl-distband-header">
-    <span class="nl-distband-score nl-distband-score--{_score_color}">{stats['score']:.1f}</span>
+    <span class="nl-distband-score nl-distband-score--{_score_color}">{data.mean_score:.1f}</span>
     <div class="nl-distband-meta">
       <span class="nl-distband-label">Salud promedio del catálogo</span>
-      <span class="nl-distband-sub">{stats['total']} datasets auditados</span>
+      <span class="nl-distband-sub">{data.n_datasets} datasets auditados</span>
     </div>
   </div>
   <div class="nl-distband-track" role="group" aria-label="Distribución por niveles de calidad">
@@ -288,17 +273,22 @@ def render_calidad_pro(df: pd.DataFrame, tokens: dict) -> None:
 
     st.write("")
 
-    # --- 1. COBERTURA DEL PIPELINE ---
+    # --- 1. KPI STRIP + DETALLE DE FALLOS ---
     coverage = load_coverage_report()
     if coverage is not None:
-        _render_pipeline_coverage(coverage, plotly_layout, theme)
+        _render_kpi_strip(
+            cobertura_pct=coverage.get("cobertura_pct", 0.0),
+            n_critical=data.n_critical,
+            fallidos=coverage.get("fallidos", 0),
+        )
+        _render_failure_causes(coverage, plotly_layout, theme)
         st.markdown(
             "<div class='divider'></div>",
             unsafe_allow_html=True,
         )
 
     # --- 1c. HEATMAP DIMENSIONES POR CATEGORIA ---
-    _render_dimension_heatmap(df, plotly_layout, theme)
+    _render_dimension_heatmap(data.dim_means_by_cat, plotly_layout, theme)
     st.markdown(
         "<div class='divider'></div>",
         unsafe_allow_html=True,
@@ -310,7 +300,7 @@ def render_calidad_pro(df: pd.DataFrame, tokens: dict) -> None:
 <h2 class="section-title">Treemap de Datasets</h2>
 <p>Cada bloque es un dataset. El <strong class="accent-teal">color verde</strong> indica calidad excelente; <strong class="accent-gold">dorado</strong>, aceptable; <strong class="accent-rose">rojo</strong>, crítico. El tamaño refleja cuántos datasets hay por categoría.</p>
 </div>
-<div class="editorial-figure">
+<div class="nl-chart-card">
 """, unsafe_allow_html=True)
 
     if "clasificacion" not in df_enriched.columns and "score_global" in df_enriched.columns:

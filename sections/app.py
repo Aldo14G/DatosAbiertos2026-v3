@@ -19,6 +19,8 @@ from typing import Any
 import pandas as pd
 import streamlit as st
 
+from section_data import SectionData
+
 _log = logging.getLogger(__name__)
 
 
@@ -49,7 +51,7 @@ def _render_boundary(
         )
 
 
-def render(df: pd.DataFrame, tokens: dict) -> None:
+def render(data: SectionData, df: pd.DataFrame, tokens: dict) -> None:
     """Renderiza la página completa en orden vertical con iconografía de apoyo."""
     from sections.conclusiones import render_conclusiones
     from sections.dashboards import render_dashboards
@@ -59,31 +61,31 @@ def render(df: pd.DataFrame, tokens: dict) -> None:
 
     # 1 · Inicio
     st.markdown('<a id="inicio" class="nl-anchor"></a>', unsafe_allow_html=True)
-    _render_boundary("inicio", "Inicio", render_inicio, df, tokens)
+    _render_boundary("inicio", "Inicio", render_inicio, data, tokens)
 
-    # 2 · Dashboards
+    # 2 · Metodología (cómo medimos)
     st.markdown(
         '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
         unsafe_allow_html=True,
     )
-    st.markdown('<div style="text-align:center; margin-bottom:2rem;"><span class="material-symbols-outlined" style="font-size:48px; color:var(--gold); opacity:0.4;">analytics</span></div>', unsafe_allow_html=True)
-    _render_boundary("dashboards", "Dashboards", render_dashboards, df, tokens)
-
-    # 3 · Conclusiones
-    st.markdown(
-        '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown('<div style="text-align:center; margin-bottom:2rem;"><span class="material-symbols-outlined" style="font-size:48px; color:var(--gold); opacity:0.4;">auto_awesome</span></div>', unsafe_allow_html=True)
-    _render_boundary("conclusiones", "Conclusiones", render_conclusiones, df, tokens)
-
-    # 4 · Metodología
-    st.markdown(
-        '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown('<div style="text-align:center; margin-bottom:2rem;"><span class="material-symbols-outlined" style="font-size:48px; color:var(--gold); opacity:0.4;">history_edu</span></div>', unsafe_allow_html=True)
+    st.markdown('<div class="nl-section-icon-wrap"><span class="material-symbols-outlined nl-section-icon-xl">history_edu</span></div>', unsafe_allow_html=True)
     _render_boundary("desarrollo", "Metodología", render_desarrollo, df, tokens)
+
+    # 3 · Dashboards (resultados)
+    st.markdown(
+        '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown('<div class="nl-section-icon-wrap"><span class="material-symbols-outlined nl-section-icon-xl">analytics</span></div>', unsafe_allow_html=True)
+    _render_boundary("dashboards", "Dashboards", render_dashboards, data, df, tokens)
+
+    # 4 · Conclusiones (síntesis)
+    st.markdown(
+        '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
+        unsafe_allow_html=True,
+    )
+    st.markdown('<div class="nl-section-icon-wrap"><span class="material-symbols-outlined nl-section-icon-xl">auto_awesome</span></div>', unsafe_allow_html=True)
+    _render_boundary("conclusiones", "Conclusiones", render_conclusiones, df, tokens)
 
     # 5 · Footer
     _render_boundary("footer", "Footer", render_footer, tokens)
