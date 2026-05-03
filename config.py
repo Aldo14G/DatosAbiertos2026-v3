@@ -23,7 +23,33 @@ QUALITY_WEIGHTS: dict[str, float] = {
 }
 """Pesos ponderados — 7 dimensiones (5 ISO 25012 + 2 catálogo). Suma = 1.0.
 Completitud y Exactitud priman (Wang & Strong 1996).
-Documentation y Openness portados del estudio NL 2024."""
+Documentation y Openness portados del estudio NL 2024.
+Al cambiar estos valores ejecutar: python scripts/sync_weights.py"""
+
+# ── Defaults de dimensión por contexto ────────────────────────
+DIM_ALERT_DEFAULTS: dict[str, float] = {
+    "comp_completitud_global_pct" : 0.0,
+    "acc_score_accuracy_pct"      : 0.0,
+    "cons_score_consistency_pct"  : 0.0,
+    "uniq_score_uniqueness_pct"   : 0.0,
+    "time_score_timeliness_pct"   : 50.0,
+    "doc_score_documentation_pct" : 0.0,
+    "open_score_openness_pct"     : 0.0,
+}
+"""Defaults conservadores para tarjetas de alerta: muestra la barra en rojo si
+el dato está ausente, salvo Puntualidad (50) porque ausencia ≠ retraso probado."""
+
+DIM_REC_DEFAULTS: dict[str, float] = {
+    "comp_completitud_global_pct" : 100.0,
+    "acc_score_accuracy_pct"      : 100.0,
+    "cons_score_consistency_pct"  : 100.0,
+    "uniq_score_uniqueness_pct"   : 100.0,
+    "time_score_timeliness_pct"   :  50.0,
+    "doc_score_documentation_pct" : 100.0,
+    "open_score_openness_pct"     : 100.0,
+}
+"""Defaults permisivos para lógica de recomendaciones: si el campo está ausente
+no se genera recomendación (evita falsos positivos sobre datos faltantes)."""
 
 # ── Seguridad ──────────────────────────────────────────────────
 MAX_DOWNLOAD_MB: int = 50
@@ -38,7 +64,7 @@ DOMINIOS_PERMITIDOS: frozenset[str] = frozenset({
 # ── Aplicación ─────────────────────────────────────────────────
 TITULO_APP: str = "Gobernanza de Datos — Nuevo León 2026"
 VERSION: str = "V2.1 · NL 2026 SYS"
-PUERTO: int = 8503
+PUERTO: int = 8501
 COLOR_PRINCIPAL: str = "#0F172A"
 
 # ── Caché ──────────────────────────────────────────────────────
@@ -62,8 +88,8 @@ CLASIFICACION_THRESHOLDS: list[tuple[float, str]] = [
     (90.0, "Excelente"),
     (80.0, "Bueno"),
     (70.0, "Aceptable"),
-    (60.0, "Deficiente"),
+    (50.0, "Deficiente"),
 ]
-CLASIFICACION_DEFAULT: str = "Critico"
+CLASIFICACION_DEFAULT: str = "Crítico"
 """Umbrales para derivar etiquetas de clasificacion desde score_global.
-Replica los rangos de evaluator.py para coherencia con el pipeline avanzado."""
+Fuente de verdad para evaluator.py y el dashboard. Orden descendente obligatorio."""
