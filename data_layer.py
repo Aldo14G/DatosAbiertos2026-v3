@@ -19,7 +19,6 @@ import json
 import os
 import time
 import unicodedata
-from datetime import UTC, datetime
 from urllib.parse import urlparse
 
 import numpy as np
@@ -54,6 +53,7 @@ _MULTIFORMAT_PARSERS: frozenset[str] = frozenset(
 # ── PESOS ISO 25012 ───────────────────────────────────────────
 # Fuente única: config.py. No redefinir aquí.
 from config import CLASIFICACION_DEFAULT, CLASIFICACION_THRESHOLDS, QUALITY_WEIGHTS  # noqa: E402
+from quality_scorer import QualityScorer  # noqa: E402
 
 # Etiquetas de presentación para cada columna de dimensión
 DIM_LABEL_MAP: dict[str, str] = {
@@ -67,21 +67,7 @@ DIM_LABEL_MAP: dict[str, str] = {
     "score_global": "Score Global",
 }
 
-# Días esperados entre publicaciones para cada frecuencia declarada
-_UPDATE_FREQ_DAYS: dict[str, int] = {
-    "diaria": 1,
-    "daily": 1,
-    "semanal": 7,
-    "weekly": 7,
-    "quincenal": 15,
-    "mensual": 30,
-    "monthly": 30,
-    "trimestral": 90,
-    "quarterly": 90,
-    "semestral": 180,
-    "anual": 365,
-    "yearly": 365,
-}
+_scorer = QualityScorer()
 
 # Columnas mínimas para que el dashboard funcione
 _REQUIRED_COLS = {
@@ -402,403 +388,24 @@ def normalize_categories(df: pd.DataFrame) -> pd.DataFrame:
     return df
 
 
-# ── 3. MÉTRICAS DE CALIDAD (7 DIMENSIONES) ────────────────────
-
-
-def compute_completeness(df: pd.DataFrame) -> dict:
-    total = df.size
-    if not total:
-        return {
-            k: 0.0
-            for k in [
-                "comp_completitud_global_pct",
-                "comp_completitud_media_col",
-                "comp_completitud_min_col",
-                "comp_filas_incompletas_pct",
-            ]
-        }
-    nulos = df.isnull().sum().sum()
-    col_pct = 1 - df.isnull().mean()
-    return {
-        "comp_completitud_global_pct": round((total - nulos) / total * 100, 2),
-        "comp_completitud_media_col": round(col_pct.mean() * 100, 2),
-        "comp_completitud_min_col": round(col_pct.min() * 100, 2),
-        "comp_filas_incompletas_pct": round(df.isnull().any(axis=1).mean() * 100, 2),
-    }
-
-
-def compute_accuracy(df: pd.DataFrame) -> dict:
-    """
-    [FIX-1] Penalización proporcional al % de columnas afectadas.
-    Refactorizado a procesamiento vectorizado Pandas.
-    Detección de tipos mixtos mejorada (evita falsos positivos en columnas casi vacías).
-    """
-    n_cols = len(df.columns)
-    if n_cols == 0:
-        return {
-            "acc_score_accuracy_pct": 0,
-            "acc_columnas_tipo_mixto": 0,
-            "acc_columnas_espacios": 0,
-            "acc_columnas_constantes": 0,
-        }
-
-    # Vectorizado a nivel Dataframe
-    const = int((df.nunique() == 1).sum())
-
-    mixed = spaces = 0
-    obj_cols = df.select_dtypes(include=["object", "string"]).columns
-
-    if len(obj_cols) > 0:
-        df_obj = df[obj_cols]
-
-        # Detección vectorizada de espacios (trimmed vs original)
-        # Una columna tiene espacios si al quitarle espacios el contenido cambia
-        has_spaces = df_obj.apply(lambda x: x.astype(str).str.strip().ne(x.astype(str)).any())
-        spaces = int(has_spaces.sum())
-
-        # Tipos mixtos mejorado: solo si hay suficientes datos no nulos
-        def is_mixed(s):
-            s_val = s.dropna()
-            if len(s_val) < 3:
-                return False  # Evitar ruido en muestras pequeñas
-            # Intentar convertir a numérico. Si hay mezcla significante de num y no-num: mixed.
-            converted = pd.to_numeric(s_val, errors="coerce")
-            is_num = converted.notna()
-            pct_num = is_num.mean()
-            # Si entre 5% y 95% es numérico, es tipo mixto
-            return 0.05 < pct_num < 0.95
-
-        mixed = int(df_obj.apply(is_mixed).sum())
-
-    score = max(
-        0,
-        round(
-            100 - (mixed / n_cols) * 40 - (spaces / n_cols) * 15 - (const / n_cols) * 20,
-            2,
-        ),
-    )
-    return {
-        "acc_score_accuracy_pct": score,
-        "acc_columnas_tipo_mixto": mixed,
-        "acc_columnas_espacios": spaces,
-        "acc_columnas_constantes": const,
-    }
-
-
-def compute_consistency(df: pd.DataFrame) -> dict:
-    """
-    [FIX-2] Umbral IQR elevado de n >= 4 a n >= 30.
-    Refactorizado a procesamiento vectorial Pandas completo.
-    """
-    total_out = total_num = incons_txt = 0
-
-    # 1. Outliers en numéricos (Vectorizado matricial)
-    cols_num = df.select_dtypes(include=[np.number]).columns
-    if len(cols_num) > 0:
-        df_num = df[cols_num]
-        counts = df_num.count()
-        valid_cols = counts[counts >= 30].index
-
-        if len(valid_cols) > 0:
-            df_valid = df_num[valid_cols]
-            Q1 = df_valid.quantile(0.25)
-            Q3 = df_valid.quantile(0.75)
-            IQR = Q3 - Q1
-
-            valid_iqr = IQR[IQR > 0].index
-            if len(valid_iqr) > 0:
-                df_calc = df_valid[valid_iqr]
-                bounds_lower = Q1[valid_iqr] - 1.5 * IQR[valid_iqr]
-                bounds_upper = Q3[valid_iqr] + 1.5 * IQR[valid_iqr]
-
-                # Operación booleana matricial global
-                outliers_mask = (df_calc < bounds_lower) | (df_calc > bounds_upper)
-                total_out = int(outliers_mask.sum().sum())
-                total_num = int(df_calc.count().sum())
-
-    # 2. Inconsistencias en texto (Vectorizado)
-    cols_txt = df.select_dtypes(include=["object", "string"]).columns
-    if len(cols_txt) > 0:
-        df_txt = df[cols_txt].astype(str)
-        raw_nunique = df_txt.nunique()
-        clean_nunique = df_txt.apply(lambda x: x.str.strip().str.lower()).nunique()
-
-        diff = raw_nunique - clean_nunique
-        incons_txt = int(diff[diff > 0].sum())
-
-    pct_out = round(total_out / total_num * 100, 2) if total_num else 0
-    score = max(0, round(100 - pct_out * 2 - min(incons_txt * 0.5, 20), 2))
-    return {
-        "cons_score_consistency_pct": score,
-        "cons_pct_outliers": pct_out,
-        "cons_inconsistencias_texto": incons_txt,
-        "cons_columnas_numericas": len(cols_num),
-    }
-
-
-def compute_uniqueness(df: pd.DataFrame) -> dict:
-    n = len(df)
-    if not n:
-        return {
-            "uniq_score_uniqueness_pct": 0,
-            "uniq_pct_duplicados": 0,
-            "uniq_duplicados_exactos": 0,
-            "uniq_cardinalidad_media": 0,
-        }
-    dups = df.duplicated().sum()
-    pct_dup = round(dups / n * 100, 2)
-    card_med = round((df.nunique() / n * 100).mean(), 2)
-    return {
-        "uniq_score_uniqueness_pct": max(0, round(100 - pct_dup * 2, 2)),
-        "uniq_pct_duplicados": pct_dup,
-        "uniq_duplicados_exactos": int(dups),
-        "uniq_cardinalidad_media": card_med,
-    }
-
-
-def compute_timeliness(meta: dict) -> dict:
-    """
-    [NEW-6] 5ª dimensión — puntualidad de actualización.
-    Compara días desde la última modificación vs frecuencia declarada en CKAN.
-
-    Score:
-        - Sin fecha de modificación            → 50.0  (neutral, sin penalizar)
-        - latencia <= frecuencia declarada      → 100.0
-        - latencia >= 2× frecuencia declarada   → 0.0
-        - Interpolación lineal entre ambos extremos
-        - Sin frecuencia declarada              → penalización leve por año sin actualizar
-    """
-    modificado = meta.get("modificado", "") or ""
-    freq_key = (meta.get("frecuencia_update") or "").lower().strip()
-    freq_dias = _UPDATE_FREQ_DAYS.get(freq_key, 0)
-
-    no_date_result = {
-        "time_score_timeliness_pct": np.nan,
-        "time_dias_desde_modificado": None,
-        "time_frecuencia_declarada": freq_key or "desconocida",
-    }
-
-    if not modificado:
-        return no_date_result
-
-    try:
-        dt_mod = datetime.fromisoformat(modificado.replace("Z", "+00:00")).replace(tzinfo=UTC)
-        dias = (datetime.now(UTC) - dt_mod).days
-    except (ValueError, TypeError):
-        return no_date_result
-
-    if freq_dias == 0:
-        score = max(0.0, round(100 - (dias / 365) * 20, 2))
-    elif dias <= freq_dias:
-        score = 100.0
-    elif dias >= freq_dias * 2:
-        score = 0.0
-    else:
-        ratio = (dias - freq_dias) / freq_dias
-        score = round(max(0.0, 100 - ratio * 100), 2)
-
-    return {
-        "time_score_timeliness_pct": score,
-        "time_dias_desde_modificado": dias,
-        "time_frecuencia_declarada": freq_key or "desconocida",
-    }
-
-
-def compute_documentation(meta: dict) -> dict:
-    """
-    [NEW-8] 6ª dimensión — Documentación del dataset.
-    Evalúa a nivel catálogo/metadatos CKAN (no contenido del CSV).
-
-    Componentes (0-100):
-        - Descripción del dataset (30 pts)
-        - Descripción de campos/recursos (30 pts)
-        - Licencia explícita (20 pts)
-        - Notas metodológicas (20 pts)
-    """
-    score = 0.0
-    details: dict = {}
-
-    # 1. Descripción del dataset (30 pts)
-    desc = str(meta.get("descripcion", "") or "").strip()
-    desc_len = len(desc)
-    if desc_len >= 200:
-        desc_pts = 30.0
-    elif desc_len >= 50:
-        desc_pts = 20.0
-    elif desc_len > 0:
-        desc_pts = 10.0
-    else:
-        desc_pts = 0.0
-    score += desc_pts
-    details["doc_descripcion_len"] = desc_len
-    details["doc_descripcion_pts"] = desc_pts
-
-    # 2. Descripción de recursos (30 pts)
-    resource_descs = meta.get("resource_descs", [])
-    if resource_descs:
-        described = sum(1 for d in resource_descs if (d or "").strip())
-        ratio = described / len(resource_descs)
-        res_pts = round(ratio * 30, 2)
-    else:
-        res_pts = 0.0
-    score += res_pts
-    details["doc_resources_described"] = res_pts
-
-    # 3. Licencia explícita (20 pts)
-    licencia = str(meta.get("licencia", "") or "").strip()
-    licencia_id = str(meta.get("licencia_id", "") or "").strip()
-    lic_pts = 20.0 if (licencia or licencia_id) else 0.0
-    score += lic_pts
-    details["doc_licencia"] = licencia or licencia_id or "sin especificar"
-    details["doc_licencia_pts"] = lic_pts
-
-    # 4. Notas metodológicas (20 pts)
-    texto_buscar = desc.lower()
-    keywords_found: list[str] = []
-    for kw in [
-        "metodolog",
-        "fuente",
-        "diccionario",
-        "glosario",
-        "nota",
-        "definici",
-        "metadat",
-        "variable",
-        "indicador",
-    ]:
-        if kw in texto_buscar:
-            keywords_found.append(kw)
-    meth_pts = min(20.0, len(keywords_found) * 5.0)
-    score += meth_pts
-    details["doc_keywords_found"] = keywords_found
-    details["doc_metodologia_pts"] = meth_pts
-
-    return {
-        "doc_score_documentation_pct": round(score, 2),
-        **details,
-    }
-
-
-def compute_openness(meta: dict) -> dict:
-    """
-    [NEW-9] 7ª dimensión — Apertura del dataset.
-    Evalúa nivel de apertura según principios de Open Data.
-
-    Componentes (0-100):
-        - Formato abierto (40 pts): CSV/JSON/GeoJSON/XML = 40, XLS/XLSX = 20, PDF = 5
-        - Licencia abierta (35 pts): creative commons / open / libre = 35
-        - Acceso sin registro (25 pts): URL directa HTTP(S) = 25
-    """
-    score = 0.0
-    details: dict = {}
-
-    # 1. Formato abierto (40 pts)
-    formatos = meta.get("resource_formats", [])
-    formato_actual = str(meta.get("formato", "")).upper()
-    all_formats = set(formatos) | {formato_actual}
-
-    OPEN_FORMATS = {"CSV", "JSON", "GEOJSON", "XML", "RDF", "SPARQL", "TSV"}
-    SEMI_OPEN = {"XLS", "XLSX", "ODS"}
-    CLOSED = {"PDF", "DOC", "DOCX", "PPT", "PPTX", "ZIP"}
-
-    if all_formats & OPEN_FORMATS:
-        fmt_pts = 40.0
-    elif all_formats & SEMI_OPEN:
-        fmt_pts = 20.0
-    elif all_formats & CLOSED:
-        fmt_pts = 5.0
-    else:
-        fmt_pts = 0.0
-    score += fmt_pts
-    details["open_formatos"] = list(all_formats - {""})
-    details["open_formato_pts"] = fmt_pts
-
-    # 2. Licencia abierta (35 pts)
-    licencia = str(meta.get("licencia", "") or "").lower()
-    licencia_id = str(meta.get("licencia_id", "") or "").lower()
-    lic_text = f"{licencia} {licencia_id}"
-
-    OPEN_LIC_KEYWORDS = [
-        "creative commons",
-        "cc-by",
-        "cc0",
-        "open",
-        "libre",
-        "abierta",
-        "datos abiertos",
-        "public domain",
-        "dominio público",
-    ]
-    if any(kw in lic_text for kw in OPEN_LIC_KEYWORDS):
-        lic_pts = 35.0
-    elif licencia or licencia_id:
-        lic_pts = 15.0  # Tiene licencia pero no explícitamente abierta
-    else:
-        lic_pts = 0.0
-    score += lic_pts
-    details["open_licencia"] = licencia or licencia_id or "sin especificar"
-    details["open_licencia_pts"] = lic_pts
-
-    # 3. Acceso sin registro (25 pts)
-    url = str(meta.get("url", "") or "")
-    access_pts = 25.0 if url.startswith(("http://", "https://")) else 0.0
-    score += access_pts
-    details["open_acceso_directo"] = bool(url)
-    details["open_acceso_pts"] = access_pts
-
-    return {
-        "open_score_openness_pct": round(score, 2),
-        **details,
-    }
+# ── 3. MÉTRICAS DE CALIDAD (delegado a QualityScorer) ─────────
 
 
 def compute_quality_scores(meta: dict, df: pd.DataFrame) -> dict:
-    """
-    [FIX-4] Score global con pesos configurables — 7 dimensiones.
-    5 ISO 25012 (contenido) + 2 catálogo (documentation, openness).
-    """
+    result = _scorer.score(meta, df)
     row = {
-        "dataset": meta.get("dataset", ""),
-        "slug": meta.get("slug", ""),
-        "recurso_id": meta.get("recurso_id", ""),
-        "categoria": meta.get("categoria", ""),
-        "organizacion": meta.get("organizacion", ""),
-        "filas": len(df),
-        "columnas": len(df.columns),
-        "modificado": meta.get("modificado", ""),
+        "dataset"          : meta.get("dataset", ""),
+        "slug"             : meta.get("slug", ""),
+        "recurso_id"       : meta.get("recurso_id", ""),
+        "categoria"        : meta.get("categoria", ""),
+        "organizacion"     : meta.get("organizacion", ""),
+        "filas"            : len(df),
+        "columnas"         : len(df.columns),
+        "modificado"       : meta.get("modificado", ""),
         "frecuencia_update": meta.get("frecuencia_update", ""),
     }
-
-    # Dimensiones de contenido (operan sobre DataFrame)
-    for fn in [compute_completeness, compute_accuracy, compute_consistency, compute_uniqueness]:
-        row.update(fn(df))
-
-    # Dimensiones de catálogo (operan sobre metadatos CKAN)
-    row.update(compute_timeliness(meta))
-    row.update(compute_documentation(meta))
-    row.update(compute_openness(meta))
-
-    # Score ponderado — 7 dimensiones
-    dim_score_map = {
-        "completeness": row.get("comp_completitud_global_pct", 0) or 0,
-        "accuracy": row.get("acc_score_accuracy_pct", 0) or 0,
-        "consistency": row.get("cons_score_consistency_pct", 0) or 0,
-        "uniqueness": row.get("uniq_score_uniqueness_pct", 0) or 0,
-        "documentation": row.get("doc_score_documentation_pct", 0) or 0,
-        "openness": row.get("open_score_openness_pct", 0) or 0,
-    }
-    timeliness_score = row.get("time_score_timeliness_pct")
-    weights = dict(QUALITY_WEIGHTS)
-
-    if timeliness_score is None or (
-        isinstance(timeliness_score, float) and np.isnan(timeliness_score)
-    ):
-        weights.pop("timeliness", None)
-    else:
-        dim_score_map["timeliness"] = timeliness_score
-
-    total_w = sum(weights.values())
-    row["score_global"] = round(sum(dim_score_map[k] * weights[k] for k in weights) / total_w, 2)
+    row.update(result["breakdown"])
+    row["score_global"] = result["global_score"]
     return row
 
 
