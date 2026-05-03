@@ -23,9 +23,9 @@ El ecosistema se compone de dos frentes tecnológicos, manteniendo una estricta 
    - Desarrollada con componentes de interfaz premium (*Glassmorphism*, paleta *Midnight/Teal/Gold*), componentes de Shadcn UI y animaciones con Framer Motion.
    - *Ubicación:* Carpeta `landing/`.
 
-3. **Documentación & Agentes de IA (`docs/`, `.agent/`, `.gemini/`)**
-   - El proyecto cuenta con un sistema multi-agente de Inteligencia Artificial que asegura la coherencia del diseño y la calidad del código.
-   - La documentación técnica detallada se encuentra en la carpeta `docs/`.
+3. **Documentación técnica (`docs/`)**
+   - Especificaciones de diseño, decisiones de producto, auditoría de calidad y guías de contribución.
+   - Para despliegue y postura de seguridad, ver [DEPLOYMENT.md](DEPLOYMENT.md) y [SECURITY.md](SECURITY.md).
 
 ---
 
@@ -98,12 +98,30 @@ npm run dev
 
 ---
 
-## ☁️ Guía de Despliegue en la Nube (Firebase Studio)
+## ☁️ Despliegue en producción
 
-El proyecto está diseñado para ejecutarse y probarse primero en entorno local (**LocalHost**). 
-Una vez que el proyecto esté validado y estable en local, se utilizará **Firebase Studio** para el alojamiento y despliegue del frontend, ya que ofrece un flujo mucho más ágil y sencillo que configurar contenedores en Google Cloud. 
+Arquitectura híbrida:
 
-La configuración exacta y el paso a paso para el despliegue en Firebase se detallarán posteriormente en el ciclo de desarrollo una vez aprobadas las pruebas locales.
+- **Landing pública (Next.js)** → Firebase App Hosting
+- **Dashboard analítico (Streamlit)** → Cloud Run, expuesto vía rewrite de
+  Firebase Hosting para servirse desde el mismo dominio
+
+El procedimiento completo (incluyendo creación del proyecto GCP, Secret
+Manager, despliegue desde fuente, dominio personalizado, CI/CD con
+Workload Identity Federation y rollback) está en
+**[DEPLOYMENT.md](DEPLOYMENT.md)**.
+
+> ⚠️ **Antes de exponer el servicio al público**, completa el checklist
+> de seguridad de **[SECURITY.md](SECURITY.md)** (manejo de secretos,
+> rate limiting, alertas de costo, rotación de credenciales).
+
+Variables de entorno: copia [`.env.example`](.env.example) a `.env` y
+ajusta valores. En producción, los secretos viven en Google Secret
+Manager — nunca en archivos.
+
+Imagen Docker: el [`Dockerfile`](Dockerfile) está optimizado para Cloud
+Run (usuario no-root, healthcheck, XSRF habilitado, telemetría
+deshabilitada).
 
 ---
 
@@ -111,7 +129,7 @@ La configuración exacta y el paso a paso para el despliegue en Firebase se deta
 
 El repositorio ha sido optimizado y limpiado para dejar únicamente los módulos críticos. Si deseas contribuir:
 
-1. Lee detenidamente el archivo [CONTRIBUTING.md](CONTRIBUTING.md) y [AGENTS.md](AGENTS.md). Encontrarás las guías de estilo rigurosas y el uso estricto de la paleta *Midnight/Teal/Gold*.
+1. Lee detenidamente el archivo [CONTRIBUTING.md](CONTRIBUTING.md) y [CLAUDE.md](CLAUDE.md). Encontrarás las guías de estilo rigurosas y el uso estricto de la paleta *Midnight/Teal/Gold*.
 2. Asegúrate de que cualquier nuevo componente web siga la filosofía *Glassmorphism* y respete las variables CSS.
 3. Para la capa de datos, se asume el uso de **Pandas 3.0+ con Copy-on-Write** (minimiza mutaciones en el lugar).
 4. Crea tu propia rama funcional, valida que tus cambios no rompen el build (`npm run build` en landing y `pytest` en la raíz) y levanta un Pull Request.

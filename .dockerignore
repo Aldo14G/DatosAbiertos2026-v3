@@ -1,0 +1,65 @@
+# ─── Inherit core ignores from .gitignore ────────────────
+# (Docker doesn't use .gitignore by default; we mirror the
+#  must-not-ship subset here.)
+
+# Python
+.venv/
+venv/
+env/
+__pycache__/
+*.pyc
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.ipynb_checkpoints/
+
+# Secrets (CRITICAL — never bake into image)
+.env
+.env.*
+!.env.example
+*-credentials*.json
+*service-account*.json
+*.pem
+*.key
+secrets/
+
+# Git / IDE / OS
+.git/
+.github/
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Local agent caches (huge, irrelevant)
+.antigravity/
+.claude/
+.gemini/
+.agent/
+skills-lock.json
+snapshots/
+data/parquet/
+
+# Frontend (deployed separately)
+landing/
+node_modules/
+*.tsbuildinfo
+
+# Docs (not needed at runtime)
+docs/
+*.md
+!README.md
+
+# Test artifacts
+.coverage
+htmlcov/
+coverage.xml
+
+# Editor temp
+*.tmp.*
+*.bak
+*.orig
+
+# Logs
+*.log
+logs/
