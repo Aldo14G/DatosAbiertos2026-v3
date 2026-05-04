@@ -1,0 +1,369 @@
+% ============================================================
+% PROTOCOLO DE INVESTIGACIÓN CUANTITATIVA
+% Evaluación de Calidad de Datos Abiertos — Nuevo León 2024–2026
+% Formato: LaTeX / APA 7
+% ============================================================
+\documentclass[12pt,letterpaper]{article}
+
+% ── Paquetes ──────────────────────────────────────────────────
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{mathptmx}            % Times New Roman
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{setspace}\doublespacing
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[style=apa,backend=biber,language=spanish]{biblatex}
+\usepackage{csquotes}
+
+% ── Configuración APA ────────────────────────────────────────
+\titleformat{\section}{\normalfont\bfseries\large}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\itshape}{\thesubsubsection.}{0.5em}{}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue
+}
+
+\addbibresource{referencias.bib}
+
+\begin{document}
+
+% ============================================================
+% PORTADA
+% ============================================================
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\Large\bfseries Universidad Autónoma de Nuevo León}\\[0.3cm]
+{\large Facultad de Filosofía y Letras}\\[0.3cm]
+{\large Gestión de la Información y Recursos Digitales}\\[2cm]
+
+{\LARGE\bfseries Evaluación Cuantitativa de la Calidad de Datos Abiertos del Portal del Gobierno del Estado de Nuevo León: Un Enfoque Multidimensional con Inteligencia Artificial Generativa (2024--2026)}\\[2cm]
+
+{\large\bfseries Metodología Cuantitativa}\\[1.5cm]
+
+{\large Elaborado por:}\\[0.3cm]
+{\large Aldo Giovanni Martínez Pineda}\\[1.5cm]
+
+{\large Monterrey, Nuevo León, México}\\[0.3cm]
+{\large Abril de 2026}
+
+\vfill
+\end{titlepage}
+
+% ============================================================
+% ÍNDICE
+% ============================================================
+\tableofcontents
+\newpage
+
+% ============================================================
+% 1. PROBLEMA DE INVESTIGACIÓN
+% ============================================================
+\section{Problema de investigación}
+
+El paradigma del gobierno abierto, consolidado a través de iniciativas internacionales como la Alianza para el Gobierno Abierto (OGP) y normativas nacionales como la Ley General de Transparencia y Acceso a la Información Pública (LGTAIP, 2015), ha posicionado a los datos abiertos gubernamentales como un pilar fundamental de la rendición de cuentas, la participación ciudadana y la innovación pública. En México, los tres niveles de gobierno están obligados a publicar información en formatos abiertos y accesibles que permitan su reutilización por parte de la ciudadanía, la academia y el sector privado.
+
+El Gobierno del Estado de Nuevo León opera el portal \texttt{catalogodatos.nl.gob.mx}, basado en la plataforma CKAN (\textit{Comprehensive Knowledge Archive Network}), a través del cual diversas dependencias gubernamentales publican conjuntos de datos (datasets) en múltiples formatos. Sin embargo, la mera publicación de datos no garantiza su calidad ni su utilidad. Estudios previos han demostrado que los portales de datos abiertos frecuentemente adolecen de problemas de completitud, exactitud, consistencia y documentación que limitan severamente su valor para la toma de decisiones basada en evidencia \parencite{vetro2016,neumaier2016}.
+
+En el contexto específico de Nuevo León, el proyecto ``Cómo Vamos en Datos'' (Alanis, 2024) realizó una primera evaluación de 17 datasets del catálogo estatal utilizando cuatro dimensiones de calidad. Sin embargo, dicho estudio presentó limitaciones significativas: cobertura parcial del catálogo, ausencia de evaluación de metadatos del portal, y dependencia de APIs comerciales de inteligencia artificial (Perplexity, GPT-\nobreak4) para la evaluación de estándares internacionales.
+
+El presente proyecto de investigación surge de la necesidad de realizar una evaluación sistemática, exhaustiva y cuantificable de la calidad de los datos abiertos del portal de Nuevo León, ampliando la cobertura al catálogo completo, incorporando estándares internacionales reconocidos (ISO/IEC 25012:2008, ISO 8000, DAMA-DMBOK), y aprovechando las capacidades de la inteligencia artificial generativa para automatizar evaluaciones que tradicionalmente requerían juicio experto.
+
+% ============================================================
+% 2. PREGUNTAS DE INVESTIGACIÓN
+% ============================================================
+\section{Preguntas de investigación}
+
+\begin{itemize}
+  \item \textbf{Pregunta general:} ¿Cuál es el nivel de calidad de los datos abiertos publicados en el portal del Gobierno del Estado de Nuevo León, medido mediante un framework multidimensional alineado a estándares internacionales ISO/IEC 25012?
+
+  \item \textbf{PE1:} ¿Cuál es el grado de completitud, exactitud, consistencia, unicidad, puntualidad, documentación y apertura de los datasets del catálogo estatal?
+
+  \item \textbf{PE2:} ¿Existe una diferencia estadísticamente significativa en los puntajes de calidad entre las dependencias gubernamentales publicadoras?
+
+  \item \textbf{PE3:} ¿Cuál es la distribución de los datasets según los niveles de salud de datos (Gold, Silver, Bronze) definidos por el framework de evaluación?
+
+  \item \textbf{PE4:} ¿Qué dimensiones de calidad presentan las mayores deficiencias sistémicas en el catálogo y cuáles son sus implicaciones para la gobernanza de datos?
+\end{itemize}
+
+% ============================================================
+% 3. HIPÓTESIS DE INVESTIGACIÓN
+% ============================================================
+\section{Hipótesis de investigación}
+
+\begin{itemize}
+  \item \textbf{H\textsubscript{1}:} El score global promedio de calidad de datos del portal de Nuevo León se ubica por debajo del umbral ``Excelente'' ($< 90$ puntos sobre 100) según la escala del framework ISO 25012 implementado.
+
+  \item \textbf{H\textsubscript{2}:} Existe una diferencia estadísticamente significativa en los puntajes de calidad de datos entre las dependencias gubernamentales del Estado de Nuevo León (ANOVA de un factor, $p < 0.05$).
+
+  \item \textbf{H\textsubscript{3}:} La dimensión de \textit{completitud} presenta el mayor impacto en el score global de calidad, dado su peso ponderado superior (30\%) dentro del framework de evaluación.
+
+  \item \textbf{H\textsubscript{4}:} Más del 60\% de los datasets evaluados se clasifican en el nivel Gold ($\geq 90$ puntos), indicando un nivel aceptable de madurez en la gestión de datos abiertos del estado.
+\end{itemize}
+
+% ============================================================
+% 4. OBJETIVOS DE INVESTIGACIÓN
+% ============================================================
+\section{Objetivos de investigación}
+
+\subsection{Objetivo general}
+
+Evaluar cuantitativamente la calidad de los datos abiertos publicados en el portal del Gobierno del Estado de Nuevo León mediante un framework multidimensional automatizado, alineado a los estándares internacionales ISO/IEC 25012:2008, ISO 8000 y DAMA-DMBOK, con el fin de generar un diagnóstico integral que contribuya a la mejora de la gobernanza de datos en la administración pública estatal.
+
+\subsection{Objetivos específicos}
+
+\begin{enumerate}
+  \item Diseñar e implementar un instrumento de medición automatizado (pipeline computacional) que evalúe siete dimensiones de calidad de datos: completitud, exactitud, consistencia, unicidad, puntualidad, documentación y apertura.
+
+  \item Aplicar el instrumento al catálogo completo del portal \texttt{catalogodatos.nl.gob.mx}, evaluando la totalidad de los datasets y recursos disponibles en formatos estructurados (CSV, JSON, XLSX, GeoJSON, XML).
+
+  \item Analizar las diferencias en la calidad de datos entre dependencias gubernamentales mediante pruebas estadísticas paramétricas y no paramétricas.
+
+  \item Clasificar los datasets según niveles de salud de datos (Gold, Silver, Bronze) e identificar las dimensiones con mayores deficiencias sistémicas.
+
+  \item Comparar los resultados obtenidos con la evaluación previa realizada en 2024 para establecer tendencias longitudinales en la calidad de datos del portal.
+\end{enumerate}
+
+% ============================================================
+% 5. POBLACIÓN Y MUESTRA
+% ============================================================
+\section{Población y muestra}
+
+\subsection{Población}
+
+La población de estudio está constituida por la totalidad de los conjuntos de datos (datasets) y sus recursos asociados publicados en el portal de datos abiertos del Gobierno del Estado de Nuevo León (\texttt{catalogodatos.nl.gob.mx}) al momento de la recolección de datos.
+
+\subsection{Muestra}
+
+El presente estudio emplea un \textbf{muestreo censal}, lo que implica que se evalúa el 100\% de los recursos disponibles en el catálogo. No se aplica técnica de muestreo probabilístico dado que el universo completo es accesible y procesable computacionalmente.
+
+\begin{table}[h]
+\centering
+\caption{Composición de la muestra censal}
+\label{tab:muestra}
+\begin{tabular}{lll}
+\toprule
+\textbf{Elemento} & \textbf{Estudio 2024} & \textbf{Estudio 2026} \\
+\midrule
+Datasets únicos evaluados & 17 & $\approx$80 \\
+Recursos totales evaluados & 17 & 288 \\
+Formatos incluidos & CSV & CSV, JSON, XLSX \\
+Dimensiones de calidad & 4 & 7 \\
+Tipo de muestreo & Censal & Censal \\
+Unidad de análisis & Dataset & Recurso individual \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Criterios de inclusión y exclusión}
+
+\textbf{Inclusión:} Todo recurso publicado en el portal con formato estructurado parseable (CSV, JSON, XLSX, XLS, GeoJSON, XML) y URL de descarga activa bajo los dominios autorizados (\texttt{catalogodatos.nl.gob.mx}, \texttt{datos.nl.gob.mx}).
+
+\textbf{Exclusión:} Recursos en formato PDF (no tabulares), recursos con URLs rotas o inaccesibles al momento de la evaluación, y recursos cuya descarga exceda el límite de seguridad de 50 MB establecido en la configuración del pipeline.
+
+% ============================================================
+% 6. VARIABLES DE LA INVESTIGACIÓN
+% ============================================================
+\section{Variables de la investigación}
+
+\subsection{Operacionalización de variables}
+
+\begin{center}
+\captionof{table}{Tabla de operacionalización de variables}
+\label{tab:variables}
+\begin{tabular}{p{3cm}p{1.8cm}p{6.5cm}p{2cm}}
+\toprule
+\textbf{Variable} & \textbf{Tipo} & \textbf{Operacionalización} & \textbf{Escala} \\
+\midrule
+
+Completitud & VD & Proporción de celdas no nulas: $C = \frac{total - nulos}{total} \times 100$ & Razón [0, 100] \\[6pt]
+
+Exactitud & VD & Penalización proporcional: $A = 100 - \frac{mixtos}{cols} \times 40 - \frac{espacios}{cols} \times 15 - \frac{constantes}{cols} \times 20$ & Razón [0, 100] \\[6pt]
+
+Consistencia & VD & Outliers IQR ($n \geq 30$) + inconsistencias texto (case/trim) & Razón [0, 100] \\[6pt]
+
+Unicidad & VD & $U = 100 - (\%\ duplicados \times 2)$ & Razón [0, 100] \\[6pt]
+
+Puntualidad & VD & Latencia de modificación vs frecuencia declarada; interpolación lineal entre $f$ y $2f$ & Razón [0, 100] \\[6pt]
+
+Documentación & VD & Descripción (30 pts) + recursos descritos (30 pts) + licencia (20 pts) + metodología (20 pts) & Razón [0, 100] \\[6pt]
+
+Apertura & VD & Formato abierto (40 pts) + licencia abierta (35 pts) + acceso directo (25 pts) & Razón [0, 100] \\[6pt]
+
+Score global & VD & $S = \frac{\sum d_i \times w_i}{\sum w_i}$ con pesos ISO 25012 & Razón [0, 100] \\[6pt]
+
+Dependencia & VI & Entidad gubernamental publicadora del dataset & Nominal \\[6pt]
+
+Categoría & VI & Clasificación temática del dataset en el portal CKAN & Nominal \\[6pt]
+
+Formato & VI & Tipo de archivo del recurso (CSV, JSON, XLSX, etc.) & Nominal \\
+
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{Nota.} VD = Variable Dependiente; VI = Variable Independiente. Los pesos $w_i$ del score global son: completitud (0.30), exactitud (0.25), consistencia (0.15), unicidad (0.08), puntualidad (0.05), documentación (0.10), apertura (0.07).
+
+% ============================================================
+% 7. DISEÑO DEL INSTRUMENTO DE MEDICIÓN
+% ============================================================
+\section{Diseño del instrumento de medición}
+
+El instrumento de medición del presente estudio es un \textbf{pipeline computacional automatizado} desarrollado en Python 3.13+, que opera como un sistema ETL (\textit{Extract, Transform, Load}) para la auditoría de calidad de datos. A diferencia de instrumentos tradicionales como cuestionarios o escalas, este instrumento ejecuta evaluaciones algorítmicas reproducibles sobre los datos en bruto, eliminando la subjetividad del evaluador humano.
+
+\subsection{Arquitectura del instrumento}
+
+El pipeline se estructura en tres módulos principales:
+
+\begin{enumerate}
+  \item \textbf{Módulo de Descubrimiento (Extractor):} Se conecta al API REST del portal CKAN para descubrir y catalogar todos los datasets y recursos disponibles. Implementa mecanismos de \textit{retry} con \textit{backoff} exponencial y un \textit{fallback} a \texttt{package\_list} para garantizar el descubrimiento completo del catálogo.
+
+  \item \textbf{Módulo de Evaluación (Scoring Engine):} Descarga cada recurso, lo parsea según su formato declarado (con detección automática de encoding y separador), y calcula las siete dimensiones de calidad mediante funciones vectorizadas de Pandas y NumPy. Las dimensiones de contenido (completitud, exactitud, consistencia, unicidad) operan sobre el DataFrame descargado, mientras que las dimensiones de catálogo (puntualidad, documentación, apertura) operan sobre los metadatos CKAN.
+
+  \item \textbf{Módulo de Persistencia:} Almacena los resultados en tres formatos complementarios: JSON con metadatos de ejecución, CSV tabular para análisis estadístico, y Parquet particionado por fecha de ejecución para análisis longitudinal.
+\end{enumerate}
+
+\subsection{Validez del instrumento}
+
+La \textbf{validez de contenido} se sustenta en la alineación de las siete dimensiones con los estándares ISO/IEC 25012:2008 y DAMA-DMBOK, que representan el consenso internacional sobre las características de calidad de datos. La \textbf{validez de criterio} se verifica mediante la replicación exacta de las cuatro dimensiones originales del estudio de Alanis (2024), permitiendo comparar resultados sobre los mismos datasets. La \textbf{confiabilidad} del instrumento es inherente a su naturaleza algorítmica: dada la misma entrada (mismo CSV en el mismo estado), el instrumento produce exactamente los mismos resultados en cada ejecución.
+
+\subsection{Componente de inteligencia artificial generativa}
+
+El pipeline incorpora un módulo de enriquecimiento basado en Vertex AI (Google Gemini 2.5 Flash) que genera descripciones ciudadanas de los datasets y sugiere etiquetas temáticas. Este componente complementa las evaluaciones algorítmicas deterministas con capacidades de procesamiento de lenguaje natural, representando una innovación metodológica respecto al estudio previo.
+
+% ============================================================
+% 8. MARCO TEÓRICO
+% ============================================================
+\section{Marco teórico}
+
+\subsection{Fundamentos de la investigación cuantitativa en ciencias sociales}
+
+La investigación cuantitativa constituye un paradigma epistemológico que busca explicar fenómenos sociales a través de la recolección y análisis de datos numéricos, estableciendo relaciones causales o correlacionales entre variables medibles \parencite{hernandez2014}. Este enfoque se fundamenta en el positivismo lógico y adopta un proceso deductivo que parte de teorías generales para formular hipótesis específicas que serán contrastadas empíricamente.
+
+Según \textcite{saenz2014}, los métodos cuantitativos aplicados a las ciencias sociales requieren una rigurosa operacionalización de variables que traduzca conceptos teóricos abstractos en indicadores medibles y observables. Esta exigencia es particularmente relevante cuando el objeto de estudio involucra constructos como la ``calidad de datos'', que poseen múltiples dimensiones y no admiten una medición directa univariable.
+
+El marco teórico, como componente estructural del proceso de investigación cuantitativa, cumple la función de sustentar teóricamente el estudio, proporcionando un sistema coordinado y coherente de conceptos y proposiciones que permiten abordar el problema de investigación \parencite{rojas2013}. \textcite{hernandez2014} definen el marco teórico como el proceso de inmersión en el conocimiento existente disponible, vinculado al planteamiento del problema, que resulta en la integración de teorías, enfoques teóricos, estudios y antecedentes que se consideren válidos para el encuadre del estudio.
+
+\textcite{polania2020} enfatizan que en la investigación cuantitativa aplicada, el diseño del instrumento de medición debe derivarse directamente del marco teórico, estableciendo una coherencia lógica entre las dimensiones conceptuales identificadas en la literatura y los indicadores operacionales implementados en el instrumento. Esta coherencia es un requisito sine qua non para la validez de contenido del estudio.
+
+De manera complementaria, \textcite{vizcaino2023} señalan que la metodología de investigación científica contemporánea exige que los instrumentos cuantitativos sean no solo válidos y confiables, sino también replicables y transparentes. En el contexto de esta investigación, la naturaleza algorítmica del instrumento (código fuente abierto en GitHub) garantiza la transparencia y replicabilidad que los estándares metodológicos actuales demandan.
+
+\subsection{Gobierno abierto y datos abiertos: marco conceptual y normativo}
+
+El concepto de gobierno abierto se articula sobre tres pilares fundamentales: transparencia, participación ciudadana y colaboración. La publicación de datos gubernamentales en formatos abiertos y reutilizables constituye el mecanismo operativo principal para materializar el pilar de la transparencia. \textcite{bernerslee2006} propuso el esquema de cinco estrellas (\textit{5-Star Open Data}) como un marco de referencia para evaluar el grado de apertura de los datos publicados, donde cada nivel incrementa la interoperabilidad y el valor potencial de los datos:
+
+\begin{itemize}
+  \item[$\star$] Datos disponibles en la web con licencia abierta (cualquier formato).
+  \item[$\star\star$] Datos en formato estructurado legible por máquinas.
+  \item[$\star\star\star$] Datos en formato no propietario (CSV en lugar de Excel).
+  \item[$\star\star\star\star$] Datos identificados mediante URIs según estándares W3C.
+  \item[$\star\star\star\star\star$] Datos enlazados (\textit{Linked Data}) a otros conjuntos de datos.
+\end{itemize}
+
+En el contexto normativo mexicano, la Ley General de Transparencia y Acceso a la Información Pública (LGTAIP, 2015) establece en su Título Cuarto las obligaciones de los sujetos obligados respecto a la publicación de información pública en formatos abiertos. El artículo 67 señala que los datos deberán estar disponibles en formatos que permitan su redistribución, reutilización y aprovechamiento, sentando las bases legales para los portales de datos abiertos estatales.
+
+La plataforma CKAN (\textit{Comprehensive Knowledge Archive Network}), utilizada por el portal de Nuevo León, es el sistema de gestión de datos abiertos más extendido a nivel mundial, empleado por gobiernos de más de 50 países. Su arquitectura basada en API REST facilita tanto la publicación como la consulta programática de catálogos de datos, lo que permite la implementación de evaluaciones automatizadas como la que propone este estudio.
+
+\subsection{Calidad de datos: teoría, dimensiones y frameworks internacionales}
+
+\subsubsection{El concepto fundacional de calidad de datos}
+
+El estudio seminal de \textcite{wang1996}, publicado en el \textit{Journal of Management Information Systems}, transformó la comprensión académica de la calidad de datos al proponer el concepto de \textit{fitness for use} (aptitud para el uso) como definición operativa. Los autores argumentaron que la calidad de datos no puede reducirse a la mera exactitud técnica, sino que debe evaluarse desde la perspectiva del consumidor de datos y su contexto de uso.
+
+Mediante un estudio empírico con consumidores de datos, Wang y Strong identificaron 15 dimensiones de calidad organizadas en cuatro categorías jerárquicas: (a) calidad intrínseca (exactitud, objetividad, credibilidad, reputación), (b) calidad contextual (relevancia, valor agregado, oportunidad, completitud, cantidad apropiada), (c) calidad representacional (interpretabilidad, facilidad de comprensión, representación concisa, representación consistente), y (d) calidad de accesibilidad (accesibilidad, seguridad de acceso). Este framework ha sido citado más de 8,000 veces y constituye la base teórica sobre la que se construyen los estándares contemporáneos de calidad de datos.
+
+\subsubsection{ISO/IEC 25012:2008 --- Modelo de calidad de datos}
+
+El estándar internacional ISO/IEC 25012:2008, parte de la familia SQuaRE (\textit{Software product Quality Requirements and Evaluation}), define un modelo de calidad de datos compuesto por 15 características organizadas en dos categorías: calidad inherente de datos (propiedades intrínsecas de los datos independientes del sistema) y calidad de datos dependiente del sistema (propiedades que dependen del entorno tecnológico).
+
+Las características inherentes incluyen: exactitud, completitud, consistencia, credibilidad y actualidad (\textit{currentness}). Las características dependientes del sistema incluyen: disponibilidad, portabilidad, recuperabilidad, accesibilidad, conformidad, confidencialidad, eficiencia, precisión, trazabilidad y comprensibilidad.
+
+En el presente estudio, las siete dimensiones implementadas se alinean con el modelo ISO 25012 de la siguiente manera: la completitud y la exactitud corresponden directamente a las características inherentes homónimas; la consistencia mapea a la característica de consistencia inherente; la unicidad, aunque no explícita en ISO 25012, se deriva de la precisión; la puntualidad corresponde a la actualidad (\textit{currentness}); la documentación se vincula con la comprensibilidad; y la apertura integra las características de accesibilidad y conformidad.
+
+\subsubsection{DAMA-DMBOK: el cuerpo de conocimiento profesional}
+
+El \textit{Data Management Body of Knowledge} (DAMA-DMBOK), publicado por \textcite{dama2017}, constituye el marco de referencia profesional más completo para la gestión de datos. En su capítulo dedicado a la calidad de datos, el DMBOK define seis dimensiones fundamentales que han sido ampliamente adoptadas por la industria: completitud, exactitud (\textit{accuracy}), consistencia, unicidad (\textit{uniqueness}), oportunidad (\textit{timeliness}) y validez (\textit{validity}).
+
+El DMBOK enfatiza que la calidad de datos debe gestionarse como un proceso continuo, no como una evaluación puntual, y recomienda la implementación de métricas cuantificables para cada dimensión. Los pesos asignados a las dimensiones en el presente estudio (completitud 30\%, exactitud 25\%, consistencia 15\%) reflejan la jerarquía implícita del DMBOK, donde la completitud y la exactitud se consideran las dimensiones de mayor impacto operativo.
+
+\subsubsection{Frameworks de evaluación de datos abiertos gubernamentales}
+
+Dos frameworks especializados en la evaluación de portales de datos abiertos informan directamente la metodología de este estudio:
+
+\textbf{Open Data Portal Watch (ODPW).} \textcite{neumaier2016}, en su artículo publicado en el \textit{ACM Journal of Data and Information Quality}, propusieron un sistema automatizado para el monitoreo continuo de la calidad de metadatos en portales CKAN. El ODPW evalúa dimensiones como la completitud de registros del catálogo, la recuperabilidad de recursos, y la conformidad de formatos declarados con los contenidos reales. El presente estudio adopta el principio de evaluación automatizada del ODPW y lo extiende al contenido tabular de los recursos, no solo a sus metadatos.
+
+\textbf{Open Data Quality Measurement Framework.} \textcite{vetro2016} desarrollaron un framework de medición de calidad de datos abiertos gubernamentales basado en cinco dimensiones operacionalizadas (completitud, exactitud, oportunidad, consistencia y conformidad), publicado en \textit{Government Information Quarterly}. Los autores aplicaron su framework al portal de datos abiertos del gobierno italiano, demostrando que la evaluación cuantitativa automatizada es viable y produce resultados accionables para los administradores de portales. La escala de clasificación utilizada en este estudio (Gold/Silver/Bronze) adapta los umbrales propuestos por Vetrò et al. al contexto mexicano.
+
+\subsection{Metodología de evaluación automatizada de calidad}
+
+\subsubsection{Pipeline ETL y arquitectura Medallion}
+
+La evaluación automatizada de calidad de datos requiere una infraestructura computacional que permita la extracción, transformación y carga (ETL) de grandes volúmenes de datos de manera reproducible. El presente estudio implementa una variante de la arquitectura Medallion (Bronze, Silver, Gold), originalmente propuesta por Databricks para el procesamiento de datos en la nube.
+
+En esta arquitectura, la capa \textbf{Bronze} corresponde a la extracción cruda de metadatos y recursos desde el API CKAN; la capa \textbf{Silver} aplica las siete dimensiones de evaluación de calidad a cada recurso descargado; y la capa \textbf{Gold} genera los análisis estadísticos agregados, las pruebas de hipótesis y las visualizaciones para la toma de decisiones.
+
+\subsubsection{Análisis estadístico}
+
+El análisis de datos emplea técnicas estadísticas tanto descriptivas como inferenciales. Las estadísticas descriptivas incluyen medidas de tendencia central (media, mediana) y dispersión (desviación estándar, rango intercuartílico) para cada dimensión de calidad. Las pruebas inferenciales incluyen: ANOVA de un factor para comparar medias entre dependencias gubernamentales, prueba t de Student para comparaciones pareadas entre períodos (2024 vs. 2026), y modelos de regresión lineal múltiple (OLS) para identificar los predictores del score global.
+
+\textcite{rojas2013} señala que la selección de técnicas estadísticas debe ser coherente con el nivel de medición de las variables y el diseño de investigación. Dado que las variables dependientes del presente estudio se miden en escala de razón (0--100) y las variables independientes son nominales (dependencia, categoría), las pruebas paramétricas seleccionadas son apropiadas bajo el supuesto de distribución normal de los residuos.
+
+\subsection{Inteligencia artificial generativa aplicada a la evaluación de calidad}
+
+La incorporación de modelos de lenguaje de gran escala (\textit{Large Language Models}, LLMs) en procesos de evaluación de calidad de datos representa una frontera emergente en la investigación metodológica. El presente estudio utiliza Google Gemini 2.5 Flash, a través de la API de Vertex AI, para dos tareas específicas:
+
+\begin{enumerate}
+  \item \textbf{Enriquecimiento de metadatos:} Generación automática de descripciones ciudadanas que traduzcan los títulos técnicos de los datasets a lenguaje accesible para el público general.
+
+  \item \textbf{Sugerencia de etiquetas temáticas:} Clasificación automática de datasets en categorías semánticas que complementen la taxonomía manual del portal CKAN.
+\end{enumerate}
+
+Es importante señalar que el componente de IA generativa no reemplaza las evaluaciones algorítmicas deterministas para las siete dimensiones de calidad. La IA opera exclusivamente en el enriquecimiento de metadatos, manteniendo la objetividad y reproducibilidad del scoring cuantitativo. Esta separación entre evaluación determinista y enriquecimiento probabilístico refleja las mejores prácticas recomendadas por la literatura reciente sobre el uso de LLMs en auditoría de datos, que advierte contra la sustitución completa del juicio algorítmico por inferencias probabilísticas de modelos generativos.
+
+El estudio previo de Alanis (2024) dependía de APIs comerciales (Perplexity con Llama 3.1 y GPT-4) para evaluar estándares internacionales de dominio, lo que introducía variabilidad en los resultados y costos operativos significativos. El presente estudio mitiga estas limitaciones al restringir el uso de IA a tareas complementarias de enriquecimiento, reservando la evaluación cuantitativa a algoritmos deterministas que garantizan la reproducibilidad de los resultados.
+
+% ============================================================
+% 9. CRONOGRAMA DE ACTIVIDADES
+% ============================================================
+\section{Cronograma de actividades}
+
+\begin{table}[h]
+\centering
+\caption{Cronograma del proyecto de investigación}
+\label{tab:cronograma}
+\begin{tabular}{clcc}
+\toprule
+\textbf{Fase} & \textbf{Actividad} & \textbf{Inicio} & \textbf{Fin} \\
+\midrule
+1 & Revisión de literatura y marco teórico & Semana 1 & Semana 3 \\
+2 & Diseño y validación del instrumento & Semana 2 & Semana 4 \\
+3 & Configuración del pipeline ETL & Semana 3 & Semana 5 \\
+4 & Recolección de datos (extracción CKAN) & Semana 5 & Semana 6 \\
+5 & Evaluación de calidad (scoring) & Semana 6 & Semana 7 \\
+6 & Análisis estadístico e inferencial & Semana 7 & Semana 9 \\
+7 & Redacción de resultados y discusión & Semana 9 & Semana 11 \\
+8 & Integración del documento final & Semana 11 & Semana 12 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+% ============================================================
+% 10. BIBLIOGRAFÍA CONSULTADA (APA 7)
+% ============================================================
+\printbibliography[title={Bibliografía consultada}]
+
+\end{document}

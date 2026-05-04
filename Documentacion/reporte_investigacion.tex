@@ -1,0 +1,316 @@
+﻿% ============================================================
+% REPORTE DE INVESTIGACIÃ“N â€” DatosAbiertos2026-v3
+% Gobernanza y Calidad de Datos en Portales Abiertos: 
+% Una EvaluaciÃ³n Cuantitativa del Caso Nuevo LeÃ³n 2026
+% Formato: LaTeX / APA 7 â€” biblatex + biber
+% ============================================================
+\documentclass[12pt,letterpaper]{article}
+
+% â”€â”€ Paquetes â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[spanish,es-tabla]{babel}
+\usepackage{mathptmx}
+\usepackage[left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm]{geometry}
+\usepackage{setspace}\doublespacing
+\usepackage{parskip}
+\usepackage{titlesec}
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{graphicx}
+\usepackage{caption}
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage[style=apa,backend=biber,language=spanish]{biblatex}
+\usepackage{csquotes}
+
+% â”€â”€ ConfiguraciÃ³n APA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+\titleformat{\section}{\normalfont\bfseries\large}{\thesection.}{0.5em}{}
+\titleformat{\subsection}{\normalfont\bfseries}{\thesubsection.}{0.5em}{}
+\titleformat{\subsubsection}{\normalfont\itshape}{\thesubsubsection.}{0.5em}{}
+
+\hypersetup{
+  colorlinks=true,
+  linkcolor=black,
+  citecolor=black,
+  urlcolor=blue
+}
+
+\addbibresource{referencias.bib}
+
+\begin{document}
+
+% ============================================================
+% PORTADA
+% ============================================================
+\begin{titlepage}
+\centering
+\vspace*{2cm}
+
+{\Large\bfseries Universidad AutÃ³noma de Nuevo LeÃ³n}\\[0.3cm]
+{\large Facultad de FilosofÃ­a y Letras}\\[0.3cm]
+{\large GestiÃ³n de la InformaciÃ³n y Recursos Digitales}\\[2cm]
+
+{\LARGE\bfseries Gobernanza y Calidad de Datos en Portales de Gobierno Abierto: Una EvaluaciÃ³n Cuantitativa del Caso Nuevo LeÃ³n 2026}\\[2cm]
+
+{\large\bfseries Reporte de InvestigaciÃ³n â€” MetodologÃ­a Cuantitativa}\\[1.5cm]
+
+{\large Elaborado por:}\\[0.3cm]
+{\large Aldo Giovanni MartÃ­nez Pineda}\\[1.5cm]
+
+{\large Monterrey, Nuevo LeÃ³n, MÃ©xico}\\[0.3cm]
+{\large Mayo de 2026}
+
+\vfill
+\end{titlepage}
+
+% â”€â”€ ÃNDICE â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
+\tableofcontents
+\newpage
+
+% ============================================================
+% RESUMEN
+% ============================================================
+\begin{abstract}
+\noindent
+Este reporte presenta los resultados de una evaluaciÃ³n cuantitativa y automatizada de la calidad de los datos publicados en el portal de datos abiertos del Gobierno del Estado de Nuevo LeÃ³n (\texttt{catalogodatos.nl.gob.mx}). El estudio utilizÃ³ un \textit{pipeline} computacional desarrollado en Python 3.13 para evaluar 288 recursos de datos distribuidos en 19 categorÃ­as temÃ¡ticas, aplicando el marco de calidad establecido por el estÃ¡ndar internacional ISO/IEC 25012:2008 en siete dimensiones: completitud, exactitud, consistencia, unicidad, puntualidad, documentaciÃ³n y apertura. Los resultados muestran que el portal obtuvo un score global promedio de \textbf{88.83 puntos sobre 100}, con el 65.6\% de los recursos clasificados en el nivel Gold (â‰¥90 puntos). La dimensiÃ³n de completitud presentÃ³ la mayor variabilidad (Ïƒ = 24.47), lo que indica oportunidades de mejora en la captura de datos por parte de las dependencias publicadoras. El estudio establece una lÃ­nea base metodolÃ³gica que puede extenderse a otros portales de gobierno abierto en MÃ©xico.
+
+\vspace{0.5cm}
+\noindent\textbf{Palabras clave:} calidad de datos, gobierno abierto, ISO/IEC 25012, DAMA-DMBOK, Nuevo LeÃ³n, pipeline ETL, datos abiertos.
+\end{abstract}
+
+\newpage
+
+% ============================================================
+% 1. INTRODUCCIÃ“N
+% ============================================================
+\section{IntroducciÃ³n}
+
+Los datos abiertos gubernamentales son considerados un recurso estratÃ©gico para la transparencia, la participaciÃ³n ciudadana y la toma de decisiones basada en evidencia. Sin embargo, la mera publicaciÃ³n de datos no garantiza que sean Ãºtiles. Para que los datos abiertos cumplan su propÃ³sito, deben cumplir con estÃ¡ndares mÃ­nimos de calidad que permitan su uso, anÃ¡lisis y reutilizaciÃ³n por parte de la ciudadanÃ­a, la academia y el sector privado.
+
+El portal \texttt{catalogodatos.nl.gob.mx} del Gobierno del Estado de Nuevo LeÃ³n opera sobre la plataforma CKAN (\textit{Comprehensive Knowledge Archive Network}), una de las herramientas de gestiÃ³n de datos abiertos mÃ¡s utilizadas a nivel mundial \parencite{neumaier2016}. A travÃ©s de este portal, diversas dependencias estatales publican conjuntos de datos en formatos como CSV, JSON y XLSX. No obstante, la ausencia de mecanismos de validaciÃ³n previos a la publicaciÃ³n genera una situaciÃ³n en la que la calidad de los datos varÃ­a significativamente de una dependencia a otra.
+
+Este reporte documenta el proceso y los resultados de la evaluaciÃ³n cuantitativa de los datos disponibles en dicho portal, empleando un instrumento de mediciÃ³n automatizado alineado al estÃ¡ndar ISO/IEC 25012:2008 \parencite{iso25012}, al cuerpo de conocimiento profesional DAMA-DMBOK \parencite{dama2017}, y al marco de evaluaciÃ³n propuesto por \textcite{vetro2016} para portales de gobierno abierto. El estudio se inscribe en el proyecto \textit{DatosAbiertos2026-v3}, cuyo cÃ³digo fuente es pÃºblico y reproducible.
+
+% ============================================================
+% 2. PREGUNTAS E HIPÃ“TESIS
+% ============================================================
+\section{Preguntas de investigaciÃ³n e hipÃ³tesis}
+
+El estudio buscÃ³ responder cuatro preguntas de investigaciÃ³n centrales:
+
+\begin{enumerate}
+  \item Â¿CuÃ¡l es el nivel de calidad promedio de los datos publicados en el portal de Nuevo LeÃ³n, medido con un framework multidimensional ISO/IEC 25012?
+  \item Â¿CuÃ¡l es la distribuciÃ³n de los recursos de datos segÃºn los niveles Gold, Silver y Bronze del framework de evaluaciÃ³n?
+  \item Â¿CuÃ¡les son las dimensiones de calidad con mayor y menor desempeÃ±o en el catÃ¡logo?
+  \item Â¿Existen diferencias observables en la calidad de datos entre las dependencias gubernamentales publicadoras?
+\end{enumerate}
+
+Las hipÃ³tesis derivadas del protocolo de investigaciÃ³n fueron las siguientes:
+
+\begin{itemize}
+  \item \textbf{H\textsubscript{1}:} El score global promedio del portal se ubica por debajo del umbral de ``Excelente'' ($< 90$ puntos sobre 100).
+  \item \textbf{H\textsubscript{4}:} MÃ¡s del 60\% de los recursos evaluados alcanzan el nivel Gold ($\geq 90$ puntos), indicando un nivel aceptable de madurez en la gestiÃ³n de datos.
+\end{itemize}
+
+% ============================================================
+% 3. MARCO METODOLÃ“GICO
+% ============================================================
+\section{Marco metodolÃ³gico}
+
+\subsection{Fundamentos normativos}
+
+La evaluaciÃ³n se sustenta en tres marcos de referencia internacionales. El primero es el estÃ¡ndar \textbf{ISO/IEC 25012:2008}, que establece un modelo de calidad de datos compuesto por 15 caracterÃ­sticas organizadas en dos categorÃ­as: calidad inherente (independiente del sistema) y calidad dependiente del sistema \parencite{iso25012}. Para este estudio se seleccionaron siete de estas caracterÃ­sticas: completitud, exactitud, consistencia, unicidad, actualidad (denominada aquÃ­ puntualidad), comprensibilidad (denominada documentaciÃ³n) y accesibilidad (denominada apertura).
+
+El segundo marco es el \textbf{DAMA-DMBOK} \parencite{dama2017}, que define las mejores prÃ¡cticas para la gestiÃ³n de datos a nivel organizacional. Este marco orienta la evaluaciÃ³n de los metadatos de gobernanza: la presencia de campos como autor, mantenedor, licencia, frecuencia de actualizaciÃ³n y descripciÃ³n del dataset.
+
+El tercer referente es el \textbf{Open Data Quality Measurement Framework} de \textcite{vetro2016}, que aportÃ³ la lÃ³gica de clasificaciÃ³n de recursos en tres niveles de salud de datos (Gold, Silver, Bronze), adaptados al contexto del portal de Nuevo LeÃ³n.
+
+\subsection{DiseÃ±o del instrumento: el pipeline ETL}
+
+El instrumento de mediciÃ³n es un \textit{pipeline} computacional automatizado desarrollado en Python 3.13, que opera como un sistema de ExtracciÃ³n, TransformaciÃ³n y Carga (ETL). Su arquitectura se divide en tres mÃ³dulos:
+
+\begin{enumerate}
+  \item \textbf{MÃ³dulo Extractor} (\texttt{pipeline/extractor.py}, \texttt{pipeline/fetcher.py}): Se conecta al API REST del portal CKAN para descubrir todos los datasets y recursos disponibles, y descarga cada archivo para su anÃ¡lisis.
+
+  \item \textbf{MÃ³dulo Evaluador} (\texttt{quality\_scorer.py}): Calcula las siete dimensiones de calidad para cada recurso. Las dimensiones de contenido operan sobre el DataFrame de Pandas descargado; las de catÃ¡logo (puntualidad, documentaciÃ³n, apertura) operan sobre los metadatos CKAN.
+
+  \item \textbf{MÃ³dulo de Persistencia} (\texttt{pipeline/persistence.py}): Almacena los resultados en CSV, JSON y Parquet para su anÃ¡lisis posterior.
+\end{enumerate}
+
+La confiabilidad del instrumento es inherente a su naturaleza algorÃ­tmica: ante la misma entrada, produce exactamente los mismos resultados en cada ejecuciÃ³n, lo que garantiza la reproducibilidad del estudio \parencite{vizcaino2023}.
+
+\subsection{OperacionalizaciÃ³n de las dimensiones}
+
+La Tabla~\ref{tab:operacionalizacion} describe cÃ³mo se calcula cada dimensiÃ³n en el cÃ³digo, tomando como referencia el mÃ³dulo \texttt{quality\_scorer.py}.
+
+\begin{table}[h!]
+\centering
+\caption{OperacionalizaciÃ³n de las dimensiones de calidad}
+\label{tab:operacionalizacion}
+\begin{tabular}{p{2.8cm}p{7.8cm}p{2cm}}
+\toprule
+\textbf{DimensiÃ³n} & \textbf{FÃ³rmula implementada} & \textbf{Peso} \\
+\midrule
+Completitud   & $C = \frac{\text{celdas no nulas}}{\text{total de celdas}} \times 100$ & 30\% \\[6pt]
+Exactitud     & $A = 100 - \frac{\text{mixtos}}{n} \times 40 - \frac{\text{espacios}}{n} \times 15 - \frac{\text{constantes}}{n} \times 20$ & 25\% \\[6pt]
+Consistencia  & PenalizaciÃ³n por outliers IQR y variantes de texto (case/trim) & 15\% \\[6pt]
+Unicidad      & $U = 100 - (\%\text{ duplicados} \times 2)$ & 8\% \\[6pt]
+Puntualidad   & Latencia vs. frecuencia declarada; interpolaciÃ³n lineal entre $f$ y $2f$ & 5\% \\[6pt]
+DocumentaciÃ³n & DescripciÃ³n (30 pts) + recursos descritos (30 pts) + licencia (20 pts) + metodologÃ­a (20 pts) & 10\% \\[6pt]
+Apertura      & Formato abierto (40 pts) + licencia abierta (35 pts) + acceso directo (25 pts) & 7\% \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent\textit{Nota.} La suma de pesos es 1.00. El score global se calcula como: $S = \sum_{i} d_i \times w_i$.
+
+\subsection{Muestra}
+
+Se empleÃ³ un \textbf{muestreo censal}: se evaluÃ³ el 100\% de los recursos disponibles con URL de descarga activa y formato parseable (CSV, JSON, XLSX). El universo final comprendiÃ³ \textbf{288 recursos} pertenecientes a \textbf{19 categorÃ­as temÃ¡ticas}, publicados por dependencias gubernamentales estatales. Se excluyeron archivos PDF no tabulares y recursos con URLs inaccesibles al momento de la evaluaciÃ³n.
+
+% ============================================================
+% 4. RESULTADOS
+% ============================================================
+\section{Resultados cuantitativos}
+
+\subsection{DesempeÃ±o global del portal}
+
+La evaluaciÃ³n arrojÃ³ un \textbf{score global promedio de 88.83 puntos} (mediana = 91.61; Ïƒ = 9.48; min = 52.61; max = 98.23). Esto confirma la hipÃ³tesis H\textsubscript{1}: el portal no alcanza el umbral de ``Excelente'' ($\geq 90$ puntos) en promedio, si bien la mediana sÃ­ lo supera, lo que indica que la distribuciÃ³n estÃ¡ sesgada hacia abajo por un conjunto de recursos con baja calidad.
+
+La Figura~\ref{fig:distribucion} muestra la distribuciÃ³n completa de scores. Se observa una distribuciÃ³n bimodal con una concentraciÃ³n principal entre 88 y 98 puntos, y una cola izquierda que agrupa recursos con deficiencias significativas en completitud o documentaciÃ³n.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig1_distribucion_scores.png}
+\caption{DistribuciÃ³n del score global de calidad para los 288 recursos evaluados. Las barras estÃ¡n coloreadas segÃºn la clasificaciÃ³n Medallion: dorado (Gold â‰¥ 90), plateado (Silver 70â€“89) y bronce (Bronze < 70).}
+\label{fig:distribucion}
+\end{figure}
+
+\subsection{ClasificaciÃ³n por niveles de salud de datos}
+
+La Figura~\ref{fig:clasificacion} presenta la distribuciÃ³n de recursos segÃºn la escala de clasificaciÃ³n adaptada de \textcite{vetro2016}.
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.65\textwidth]{figures/fig3_clasificacion.png}
+\caption{DistribuciÃ³n de recursos segÃºn la clasificaciÃ³n Medallion de salud de datos.}
+\label{fig:clasificacion}
+\end{figure}
+
+\begin{table}[h!]
+\centering
+\caption{DistribuciÃ³n de recursos por nivel de calidad}
+\label{tab:clasificacion}
+\begin{tabular}{lccc}
+\toprule
+\textbf{Nivel} & \textbf{Umbral} & \textbf{Recursos} & \textbf{Porcentaje} \\
+\midrule
+Gold   & $\geq 90$ puntos & 189 & 65.6\% \\
+Silver & 70â€“89 puntos     & 80  & 27.8\% \\
+Bronze & $< 70$ puntos    & 19  & 6.6\%  \\
+\midrule
+\textbf{Total} & â€” & \textbf{288} & \textbf{100\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\noindent Como se observa en la Tabla~\ref{tab:clasificacion}, el 65.6\% de los recursos alcanzÃ³ el nivel Gold, lo que \textbf{confirma la hipÃ³tesis H\textsubscript{4}} (mÃ¡s del 60\% en Gold). Sin embargo, el 6.6\% de los recursos en Bronze (19 recursos) representa un pasivo de calidad que requiere atenciÃ³n prioritaria por parte de las dependencias responsables.
+
+\subsection{DesempeÃ±o por dimensiÃ³n de calidad}
+
+La Tabla~\ref{tab:dimensiones} y la Figura~\ref{fig:dimensiones} presentan el desempeÃ±o promedio de cada dimensiÃ³n.
+
+\begin{table}[h!]
+\centering
+\caption{EstadÃ­sticas descriptivas por dimensiÃ³n de calidad}
+\label{tab:dimensiones}
+\begin{tabular}{lcccc}
+\toprule
+\textbf{DimensiÃ³n} & \textbf{Peso} & \textbf{Media} & \textbf{Mediana} & \textbf{Ïƒ} \\
+\midrule
+Completitud    & 30\% & 85.09 & 95.65 & 24.47 \\
+Exactitud      & 25\% & 92.35 & 93.33 &  5.67 \\
+Consistencia   & 15\% & 95.64 & 96.00 &  8.22 \\
+Unicidad       &  8\% & 89.76 & 100.00 & 27.23 \\
+Puntualidad    &  5\% & 95.33 & 96.94 &  3.52 \\
+DocumentaciÃ³n  & 10\% & 72.40 & 72.00 &  6.63 \\
+Apertura       &  7\% & 95.43 & 100.00 & 12.52 \\
+\midrule
+\textbf{Score Global} & 100\% & \textbf{88.83} & \textbf{91.61} & \textbf{9.48} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/fig2_dimensiones.png}
+\caption{Score promedio por dimensiÃ³n de calidad ISO 25012. La barra de completitud aparece destacada en color diferente por ubicarse por debajo del umbral de referencia de 80 puntos. Los valores entre parÃ©ntesis indican el peso ponderado de cada dimensiÃ³n.}
+\label{fig:dimensiones}
+\end{figure}
+
+Los resultados revelan un patrÃ³n claro: cinco de las siete dimensiones superan los 89 puntos, mientras que \textbf{completitud} (Âµ = 85.09) y \textbf{documentaciÃ³n} (Âµ = 72.40) representan las Ã¡reas de mayor oportunidad de mejora. La alta desviaciÃ³n estÃ¡ndar de la completitud (Ïƒ = 24.47) indica que el comportamiento de las dependencias es heterogÃ©neo: algunas mantienen datasets prÃ¡cticamente completos, mientras que otros registran tasas de valores nulos superiores al 50\%.
+
+La dimensiÃ³n de \textbf{documentaciÃ³n}, con un peso del 10\% en el score global, obtuvo el puntaje mÃ¡s bajo de todas las dimensiones (Âµ = 72.40). Esto refleja que la mayorÃ­a de los datasets carecen de descripciones suficientemente detalladas, diccionarios de datos o referencias metodolÃ³gicas, lo que dificulta la interpretaciÃ³n y reutilizaciÃ³n de la informaciÃ³n por parte de usuarios externos.
+
+\subsection{DesempeÃ±o por dependencia gubernamental}
+
+La Figura~\ref{fig:organizaciones} muestra las diez dependencias con mayor score promedio, entre las que destacan la Universidad de Ciencias de la Seguridad (96.20), la Junta Local de ConciliaciÃ³n y Arbitraje (95.96) y la SecretarÃ­a de Salud (94.14, con la muestra mÃ¡s grande: 29 recursos evaluados).
+
+\begin{figure}[h!]
+\centering
+\includegraphics[width=\textwidth]{figures/fig4_top_organizaciones.png}
+\caption{Top 10 dependencias gubernamentales por score global promedio de calidad de datos (mÃ­nimo 2 recursos evaluados).}
+\label{fig:organizaciones}
+\end{figure}
+
+% ============================================================
+% 5. DISCUSIÃ“N
+% ============================================================
+\section{DiscusiÃ³n}
+
+\subsection{InterpretaciÃ³n de los resultados principales}
+
+Un score promedio de 88.83 puntos posiciona al portal de Nuevo LeÃ³n como un sistema de datos abiertos con un nivel de madurez \textit{intermedio-alto} si se utilizan los parÃ¡metros propuestos por \textcite{vetro2016}. Comparado con los portales europeos analizados en ese estudio, donde la mayorÃ­a reportÃ³ puntajes de completitud por debajo del 70\%, el portal de Nuevo LeÃ³n muestra un desempeÃ±o relativamente favorable, aunque con margen de mejora en las dimensiones de contenido.
+
+El hallazgo de que la dimensiÃ³n de documentaciÃ³n sea la mÃ¡s dÃ©bil (Âµ = 72.40) es consistente con lo reportado por \textcite{neumaier2016} en su anÃ¡lisis de portales CKAN europeos: la completitud de metadatos es sistemÃ¡ticamente menor que la calidad tÃ©cnica de los datos en sÃ­. Esto sugiere que las dependencias gubernamentales priorizan la carga de datos sobre su descripciÃ³n contextual, lo cual limita el potencial de reutilizaciÃ³n por parte de actores externos.
+
+La heterogeneidad de la dimensiÃ³n de completitud (Ïƒ = 24.47) indica que no existe una polÃ­tica homogÃ©nea de validaciÃ³n de datos antes de su publicaciÃ³n en el portal. Esta ausencia de un proceso de validaciÃ³n previa a la carga â€”denominada \textit{shift-left validation} en la literatura de ingenierÃ­a de datosâ€” es una de las recomendaciones de mejora mÃ¡s urgentes que se pueden derivar de este estudio.
+
+\subsection{Contraste con el estudio previo}
+
+El estudio de \textcite{alanis2024}, que evaluÃ³ 17 datasets del mismo portal en 2024 utilizando cuatro dimensiones de calidad y herramientas de inteligencia artificial comercial, sirve como punto de referencia histÃ³rico. El presente estudio ampliÃ³ el alcance a 288 recursos y siete dimensiones, lo que permite una visiÃ³n mÃ¡s completa del estado del catÃ¡logo. Mientras que el estudio previo dependÃ­a de APIs comerciales (Perplexity con Llama~3.1 y GPT-4) para la evaluaciÃ³n de estÃ¡ndares internacionales, este trabajo utiliza algoritmos deterministas que garantizan la reproducibilidad de los resultados.
+
+\subsection{Limitaciones}
+
+El estudio tiene tres limitaciones principales. Primera, no se pudo evaluar el contenido de recursos en formato PDF (no tabulares), que representan una proporciÃ³n del catÃ¡logo cuya calidad queda fuera del alcance del pipeline. Segunda, la dimensiÃ³n de puntualidad depende de que las dependencias declaren correctamente la frecuencia de actualizaciÃ³n en sus metadatos CKAN; si este campo estÃ¡ vacÃ­o o es incorrecto, la evaluaciÃ³n es menos precisa. Tercera, el componente de enriquecimiento semÃ¡ntico con Vertex AI (Google Gemini) no estaba activo durante la evaluaciÃ³n por ausencia de credenciales configuradas en el entorno de anÃ¡lisis, lo que significa que los scores reportados corresponden exclusivamente a las evaluaciones algorÃ­tmicas deterministas.
+
+% ============================================================
+% 6. CONCLUSIONES
+% ============================================================
+\section{Conclusiones}
+
+Este estudio demuestra que el portal de datos abiertos del Gobierno del Estado de Nuevo LeÃ³n mantiene un nivel de calidad promedio de \textbf{88.83 / 100 puntos}, con el \textbf{65.6\% de sus recursos clasificados en el nivel Gold}, lo que confirma las hipÃ³tesis H\textsubscript{1} y H\textsubscript{4} establecidas en el protocolo de investigaciÃ³n.
+
+Las principales conclusiones son las siguientes:
+
+\begin{enumerate}
+  \item El portal muestra un nivel de madurez intermedio-alto en la mayorÃ­a de las dimensiones tÃ©cnicas (exactitud: 92.35, consistencia: 95.64, apertura: 95.43), pero presenta oportunidades de mejora significativas en completitud (85.09) y documentaciÃ³n (72.40).
+
+  \item La heterogeneidad en la dimensiÃ³n de completitud (Ïƒ = 24.47) evidencia la ausencia de polÃ­ticas homogÃ©neas de validaciÃ³n previa a la publicaciÃ³n de datos en el portal.
+
+  \item El instrumento de mediciÃ³n automatizado desarrollado en este proyecto â€”basado en estÃ¡ndares ISO/IEC 25012 y DAMA-DMBOKâ€” es replicable, reproducible y puede extenderse a otros portales de datos abiertos en MÃ©xico para generar comparaciones entre entidades federativas.
+
+  \item Se recomienda que el Gobierno del Estado implemente procesos de validaciÃ³n de metadatos obligatorios (descripciones $\geq$ 120 caracteres, $\geq$ 3 etiquetas temÃ¡ticas, licencia declarada, frecuencia de actualizaciÃ³n) antes de aprobar la publicaciÃ³n de nuevos datasets en el portal.
+\end{enumerate}
+
+\noindent El presente trabajo establece una \textit{lÃ­nea base} metodolÃ³gica y empÃ­rica que podrÃ¡ utilizarse en evaluaciones longitudinales futuras para medir el impacto de las polÃ­ticas de gobernanza de datos en el Estado de Nuevo LeÃ³n.
+
+% ============================================================
+% REFERENCIAS
+% ============================================================
+\printbibliography[title={Referencias}]
+
+\end{document}
+
