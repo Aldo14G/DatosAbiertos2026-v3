@@ -1,0 +1,141 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-05-04T00:00:00Z",
+  "title": "Design System: Gobernanza de Datos — Nuevo León 2026",
+  "extensions": {
+    "colorMeta": {
+      "midnight":    { "role": "neutral-bg",  "displayName": "Tinta de Archivo",     "canonical": "#0f1c2e", "tonalRamp": ["#060d17","#0a1523","#0f1c2e","#162436","#1a2d45","#243450","#2e3f5c","#4a5e78"] },
+      "navy":        { "role": "surface",      "displayName": "Capa Elevada",         "canonical": "#1a2d45", "tonalRamp": ["#0a1523","#0f1c2e","#162436","#1a2d45","#243450","#2e3f5c","#3d526e","#566a85"] },
+      "cream":       { "role": "neutral-text", "displayName": "Crema Editorial",      "canonical": "#faf6ee", "tonalRamp": ["#5a5248","#7a7068","#9a8e85","#baada4","#d4c9be","#e8dfd6","#f2ece4","#faf6ee"] },
+      "teal":        { "role": "primary",      "displayName": "Verde Datos",          "canonical": "#3aa895", "tonalRamp": ["#0d2e29","#163f38","#1e5548","#266b59","#2e826b","#3aa895","#4bcbb4","#7adece"] },
+      "teal-light":  { "role": "primary-high", "displayName": "Verde Datos Claro",    "canonical": "#4bcbb4", "tonalRamp": ["#163f38","#1e5548","#266b59","#2e826b","#3aa895","#4bcbb4","#7adece","#a8ece4"] },
+      "gold":        { "role": "secondary",    "displayName": "Oro de Calidad",       "canonical": "#d4a24c", "tonalRamp": ["#2e2410","#453618","#5e4a22","#7a5f2e","#98773d","#b8924e","#d4a24c","#eec87d"] },
+      "gold-light":  { "role": "secondary-high","displayName": "Distinción NL",       "canonical": "#eec87d", "tonalRamp": ["#453618","#5e4a22","#7a5f2e","#98773d","#b8924e","#d4a24c","#eec87d","#f7e0b0"] },
+      "rose":        { "role": "tertiary",     "displayName": "Señal Crítica",        "canonical": "#c66b7d", "tonalRamp": ["#2e1218","#451c26","#5e2535","#7a3046","#983d56","#b84f68","#c66b7d","#e08fa3"] },
+      "muted":       { "role": "neutral-muted","displayName": "Niebla de Datos",      "canonical": "#9ba9b4", "tonalRamp": ["#2a3540","#3d4e5c","#516170","#677a88","#7e929f","#9ba9b4","#b8c4cd","#d6dde3"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display",  "purpose": "Hero titulares y valores numéricos protagonistas. Solo Chronicle Display 700." },
+      "headline": { "displayName": "Headline","purpose": "Títulos de sección H1. Chronicle Display 700." },
+      "title":    { "displayName": "Title",   "purpose": "Sub-secciones H2/H3. Chronicle Display 700." },
+      "body":     { "displayName": "Body",    "purpose": "Texto narrativo. IBM Plex Sans 400. Máx 65ch." },
+      "label":    { "displayName": "Label",   "purpose": "Eyebrows, badges, encabezados de tabla. DM Mono 500 uppercase." }
+    },
+    "shadows": [
+      { "name": "shadow-sm", "value": "0 2px 4px rgba(0,0,0,0.2)",   "purpose": "Cards en reposo con separación sutil del fondo." },
+      { "name": "shadow-md", "value": "0 4px 12px rgba(0,0,0,0.3)",  "purpose": "Hover en cards estándar. Señala elevación por interacción." },
+      { "name": "shadow-lg", "value": "0 12px 24px rgba(0,0,0,0.4)", "purpose": "Hover en alert cards. Criticidad levantada." },
+      { "name": "shadow-xl", "value": "0 24px 48px rgba(0,0,0,0.5)", "purpose": "Overlays flotantes y map central card." },
+      { "name": "teal-glow", "value": "0 8px 28px rgba(42,122,111,0.28), 0 2px 8px rgba(0,0,0,0.12)", "purpose": "Exclusivo del botón primario en reposo." },
+      { "name": "teal-glow-hover", "value": "0 14px 36px rgba(42,122,111,0.38), 0 4px 12px rgba(0,0,0,0.16)", "purpose": "Botón primario en hover." }
+    ],
+    "motion": [
+      { "name": "ease-out",      "value": "cubic-bezier(0.2, 0.0, 0, 1)",      "purpose": "Transiciones de estado estándar." },
+      { "name": "ease-in-out",   "value": "cubic-bezier(0.4, 0, 0.2, 1)",      "purpose": "Animaciones bidireccionales (abrir/cerrar)." },
+      { "name": "ease-out-expo", "value": "cubic-bezier(0.16, 1, 0.3, 1)",     "purpose": "Entrances expresivos, hover de hero." },
+      { "name": "dur-fast",      "value": "100ms",                              "purpose": "Micro-interacciones: hover de iconos, focus rings." },
+      { "name": "dur-base",      "value": "200ms",                              "purpose": "Estado estándar: hover en cards, botones." },
+      { "name": "dur-slow",      "value": "400ms",                              "purpose": "Transitions de tema, bar fills, entrances de sección." }
+    ],
+    "breakpoints": [
+      { "name": "mobile",  "value": "640px",  "note": "Layout de una columna, fuentes compactas, topbar colapsa." },
+      { "name": "tablet",  "value": "1024px", "note": "Compresión moderada de tipografía y spacing." },
+      { "name": "desktop", "value": "1200px", "note": "Max-width del contenedor principal." }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "btn-primary",
+      "description": "Acción principal de la sección. Siempre teal, siempre pill, siempre con teal-glow.",
+      "html": "<button class=\"ds-btn-primary\"><span>Explorar Datasets</span></button>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 9999px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px; background: #3aa895; color: #ffffff; border: none; cursor: pointer; box-shadow: 0 8px 28px rgba(42,122,111,0.28), 0 2px 8px rgba(0,0,0,0.12); transition: transform 200ms cubic-bezier(0.4,0,0.2,1), filter 200ms, box-shadow 200ms; text-decoration: none; } .ds-btn-primary:hover { transform: translateY(-2px); filter: brightness(1.08); box-shadow: 0 14px 36px rgba(42,122,111,0.38), 0 4px 12px rgba(0,0,0,0.16); } .ds-btn-primary:focus-visible { outline: 2px solid rgba(75,203,180,0.4); outline-offset: 3px; }"
+    },
+    {
+      "name": "Ghost Button",
+      "kind": "button",
+      "refersTo": "btn-ghost",
+      "description": "Acción secundaria. Transparente en reposo, borde gold en hover.",
+      "html": "<button class=\"ds-btn-ghost\"><span>Ver Metodología</span></button>",
+      "css": ".ds-btn-ghost { display: inline-flex; align-items: center; gap: 10px; padding: 14px 28px; border-radius: 9999px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px; background: transparent; color: #faf6ee; border: 1.5px solid rgba(255,255,255,0.05); cursor: pointer; transition: transform 200ms cubic-bezier(0.4,0,0.2,1), border-color 200ms, color 200ms, background 200ms; text-decoration: none; } .ds-btn-ghost:hover { border-color: #d4a24c; color: #eec87d; background: rgba(212,162,76,0.08); transform: translateY(-1px); } .ds-btn-ghost:focus-visible { outline: 2px solid rgba(42,122,111,0.45); outline-offset: 3px; }"
+    },
+    {
+      "name": "Stat Card",
+      "kind": "card",
+      "refersTo": "stat-card",
+      "description": "Unidad de datos cuantitativos. Label mono + valor Chronicle + meta sans.",
+      "html": "<div class=\"ds-stat-card\"><div class=\"ds-stat-label\">Datasets Evaluados</div><div class=\"ds-stat-value\">247</div><p class=\"ds-stat-meta\">Fuente: catalogodatos.nl.gob.mx</p></div>",
+      "css": ".ds-stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.05); border-radius: 12px; padding: 2rem; box-shadow: 0 2px 4px rgba(0,0,0,0.2); transition: box-shadow 200ms cubic-bezier(0.2,0,0,1), border-color 200ms, transform 200ms; display: flex; flex-direction: column; gap: 0.75rem; } .ds-stat-card:hover { box-shadow: 0 4px 12px rgba(0,0,0,0.3); border-color: rgba(155,169,180,0.15); transform: translateY(-2px); } .ds-stat-label { font-family: 'DM Mono', monospace; font-size: 0.6875rem; text-transform: uppercase; letter-spacing: 0.1em; color: #9ba9b4; margin: 0; } .ds-stat-value { font-family: 'Chronicle Display', serif; font-size: 2rem; font-weight: 700; color: #faf6ee; line-height: 1; margin: 0; } .ds-stat-meta { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.8125rem; color: #9ba9b4; margin: 0; }"
+    },
+    {
+      "name": "Stat Card — Focus Variant",
+      "kind": "card",
+      "refersTo": "stat-card-focus",
+      "description": "Indicador principal de sección. Top-stripe gold como única distinción visual.",
+      "html": "<div class=\"ds-stat-card ds-stat-card--focus\"><div class=\"ds-stat-label\">Score Promedio</div><div class=\"ds-stat-value\">74.3%</div><p class=\"ds-stat-meta\">Promedio ponderado ISO 25012</p></div>",
+      "css": ".ds-stat-card--focus { border-top: 3px solid #d4a24c; padding-top: calc(2rem - 2px); }"
+    },
+    {
+      "name": "Alert Card",
+      "kind": "card",
+      "refersTo": "alert-card",
+      "description": "Dataset con score ISO Poor. Diagnóstico tonal, sin stripe lateral.",
+      "html": "<div class=\"ds-alert-card\"><div class=\"ds-alert-score\">48%</div><div class=\"ds-alert-title\">Catálogo de Predios Municipales</div><p class=\"ds-alert-body\">Completitud 32% — Datos faltantes en columnas clave</p></div>",
+      "css": ".ds-alert-card { background: rgba(198,107,125,0.10); border: 1px solid rgba(184,92,110,0.2); border-radius: 12px; padding: 1.5rem; transition: transform 220ms cubic-bezier(0.4,0,0.2,1), box-shadow 220ms, border-color 220ms; } .ds-alert-card:hover { transform: translateY(-3px); border-color: rgba(184,92,110,0.4); box-shadow: 0 12px 24px rgba(0,0,0,0.4); } .ds-alert-score { font-family: 'Chronicle Display', serif; font-size: 2.5rem; font-weight: 700; color: #c66b7d; line-height: 1; margin-bottom: 0.5rem; } .ds-alert-title { font-family: 'IBM Plex Sans', sans-serif; font-size: 1rem; font-weight: 600; color: #faf6ee; margin-bottom: 0.25rem; } .ds-alert-body { font-family: 'IBM Plex Sans', sans-serif; font-size: 0.875rem; color: #9ba9b4; margin: 0; }"
+    },
+    {
+      "name": "Badge",
+      "kind": "chip",
+      "refersTo": "badge",
+      "description": "Clasificación de estado o categoría ISO. Siempre DM Mono, siempre pill.",
+      "html": "<span class=\"ds-badge\">ISO 25012</span>",
+      "css": ".ds-badge { display: inline-block; padding: 4px 12px; background: rgba(58,168,149,0.12); border: 1px solid #3aa895; border-radius: 9999px; font-family: 'DM Mono', monospace; font-size: 0.65rem; text-transform: uppercase; color: #4bcbb4; letter-spacing: 0.05em; }"
+    },
+    {
+      "name": "Navigation",
+      "kind": "nav",
+      "refersTo": "nav",
+      "description": "Top bar fijo 64px con blur backdrop. Link activo en teal-light con fondo dim.",
+      "html": "<nav class=\"ds-nav\"><div class=\"ds-nav-brand\"><span class=\"ds-nav-eyebrow\">NL 2026</span><span class=\"ds-nav-title\">Gobernanza Pro</span></div><div class=\"ds-nav-links\"><a class=\"ds-nav-link ds-nav-link--active\" href=\"#inicio\">Inicio</a><a class=\"ds-nav-link\" href=\"#dashboards\">Dashboards</a><a class=\"ds-nav-link\" href=\"#conclusiones\">Conclusiones</a></div></nav>",
+      "css": ".ds-nav { position: fixed; top: 0; left: 0; right: 0; height: 64px; background: rgba(15,28,46,0.92); backdrop-filter: blur(20px) saturate(200%); border-bottom: 1px solid rgba(255,255,255,0.05); padding: 0 20px; display: flex; align-items: center; justify-content: space-between; z-index: 999; } .ds-nav-brand { display: flex; flex-direction: column; gap: 0; } .ds-nav-eyebrow { font-family: 'DM Mono', monospace; font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.18em; color: #d4a24c; } .ds-nav-title { font-family: 'Chronicle Display', serif; font-size: 18px; font-weight: 700; color: #faf6ee; line-height: 1.1; } .ds-nav-links { display: flex; gap: 4px; } .ds-nav-link { font-family: 'DM Sans', sans-serif; font-size: 13px; font-weight: 500; color: #9ba9b4; text-decoration: none; padding: 8px 16px; border-radius: 9999px; transition: all 240ms cubic-bezier(0.4,0,0.2,1); } .ds-nav-link:hover { color: #faf6ee; background: rgba(255,255,255,0.02); } .ds-nav-link--active { color: #4bcbb4; font-weight: 600; background: rgba(42,122,111,0.12); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "La Sala de Control",
+    "overview": "Este sistema visual existe para hacer inteligibles los datos públicos de Nuevo León: transformar métricas ISO en juicio ciudadano. No es un dashboard corporativo ni un portal de gobierno genérico. Es el lugar donde un periodista de datos, un CIO municipal o un investigador de políticas llega a entender la salud del ecosistema de datos abiertos del estado, sin que el diseño se interponga entre ellos y los hallazgos.\n\nLa densidad está al servicio de la claridad. La oscuridad del tema no es estética, es funcional: reduce el ruido visual para que los datos en teal, gold y rose dominen la lectura. Chronicle Display ancla los números con autoridad editorial; IBM Plex Sans entrega el cuerpo con precisión técnica sin frialdad; DM Mono marca los labels y contadores con la cadencia de un instrumento de medición. Juntos forman un sistema tipográfico que habla con la voz de un expediente oficial, no de un producto SaaS.\n\nEl sistema es bilingüe por diseño. Ninguna jerarquía visual favorece el español sobre el inglés ni viceversa: mismos pesos, mismos tamaños, mismo espacio.",
+    "keyCharacteristics": [
+      "Tema oscuro por defecto; tema claro como alternativa real, no como modo accesorio",
+      "Tipografía de tres familias con roles estrictamente definidos: display serif, body sans, datos mono",
+      "Paleta comprometida: teal como confianza institucional, gold como excelencia, rose como diagnóstico",
+      "Elevación híbrida: capas tonales en reposo, sombras suaves solo en estado interactivo",
+      "Máximo 1200px de ancho; respira, no llena la pantalla",
+      "Bilingual parity: no hay contenido oculto en ningún idioma"
+    ],
+    "rules": [
+      { "name": "La Regla de la Rareza",   "body": "Rose aparece solo cuando hay algo que diagnosticar. Mantenerlo por debajo del 10% de superficie visible.",      "section": "colors" },
+      { "name": "La Regla del Tintado",    "body": "Ningún neutro es puro. Midnight tiene tinte azul, cream tiene tinte cálido. Nunca #000000 ni #ffffff.",           "section": "colors" },
+      { "name": "La Regla del Instrumento","body": "DM Mono es para datos, no para decoración. Si un texto mide, clasifica o etiqueta, va en mono.",                  "section": "typography" },
+      { "name": "La Regla del Peso",       "body": "Chronicle Display solo en 700. Si no amerita bold, usa IBM Plex Sans.",                                           "section": "typography" },
+      { "name": "La Regla del Reposo Plano","body": "Ningún elemento tiene sombra visible en reposo salvo overlays flotantes. La sombra es recompensa de interacción.","section": "elevation" }
+    ],
+    "dos": [
+      "Do usar CSS custom properties (var(--teal), var(--gold)) para todos los colores. Nunca hex hardcodeado fuera de global_css.py.",
+      "Do reservar Chronicle Display exclusivamente en weight 700.",
+      "Do mantener body text dentro de 65ch máximo.",
+      "Do seguir jerarquía de elevación tonal antes de agregar sombras.",
+      "Do agregar aria-hidden=true a todos los iconos decorativos.",
+      "Do aplicar html.escape() a strings de usuario antes de unsafe_allow_html=True."
+    ],
+    "donts": [
+      "Don't usar st.metric(), st.success(), ni primitivos nativos Streamlit para UI nueva.",
+      "Don't usar clichés SaaS: hero metrics con gradientes, accent stripes en tarjetas, grillas infinitas de cards idénticas.",
+      "Don't usar border-left mayor a 1px como stripe de color decorativo.",
+      "Don't hardcodear hex fuera de global_css.py.",
+      "Don't crear urgencia falsa ni lenguaje de alarma.",
+      "Don't usar emojis en UI ni en código fuente.",
+      "Don't referenciar Playfair Display ni DM Sans como fuentes display — son artefactos de una versión anterior.",
+      "Don't agregar sombras a elementos en reposo estático."
+    ]
+  }
+}

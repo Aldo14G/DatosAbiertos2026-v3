@@ -41,9 +41,10 @@ Transparent audit and ranking of open datasets in Nuevo León's public data port
 ## Design Tokens
 ```
 Typography:
-  - Serif: Playfair Display (headlines, authority)
-  - Sans: DM Sans (body, UI clarity)
-  - Mono: DM Mono (data, technical emphasis)
+  - Serif: Chronicle Display (headlines, H1–H3, hero stats — weight 700 only)
+  - Body Sans: IBM Plex Sans (body text, descriptions)
+  - UI Sans: DM Sans (navigation links)
+  - Mono: DM Mono (data labels, eyebrows, badges, counters)
 
 Spacing: 4px grid (4, 8, 12, 16, 24, 32, 48, 64...)
 Radius: 0.75rem (12px) — moderate, not rounded
