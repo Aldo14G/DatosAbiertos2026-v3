@@ -1,12 +1,9 @@
-"""Orquestador de la página única scrollable.
+"""Orquestador de la página única scrollable — 6 secciones narrativas.
 
-Invoca las 5 secciones verticales en orden. Cada render_* produce un
-<section id="..."> que la topbar referencia vía anchors (#inicio,
-#desarrollo, #dashboards, #conclusiones, #footer).
-
-Cada sección se envuelve en un error boundary: un fallo en una no
-rompe la página — se muestra una tarjeta de error en su lugar y el
-scroll narrativo continúa.
+Orden: Portada → Hallazgos → Organizaciones → Alertas → Metodología → Conclusiones → Footer.
+Cada sección tiene un único propósito y máximo 3 bloques visuales.
+Cada render_* produce un <section id="..."> que la topbar referencia vía anchors.
+Error boundary activo: un fallo en una sección no rompe el resto de la página.
 """
 
 from __future__ import annotations
@@ -51,41 +48,49 @@ def _render_boundary(
         )
 
 
+def _sep() -> None:
+    st.markdown(
+        '<div class="nl-band-sep" role="separator" aria-hidden="true">'
+        '<span class="nl-band-sep-dot"></span>'
+        '<span class="nl-band-sep-dot"></span>'
+        '<span class="nl-band-sep-dot"></span>'
+        '</div>',
+        unsafe_allow_html=True,
+    )
+
+
 def render(data: SectionData, df: pd.DataFrame, tokens: dict) -> None:
-    """Renderiza la página completa en orden vertical con iconografía de apoyo."""
+    """Renderiza la página completa en orden narrativo vertical."""
+    from sections.alertas import render_alertas_section
     from sections.conclusiones import render_conclusiones
-    from sections.dashboards import render_dashboards
-    from sections.desarrollo import render_desarrollo
     from sections.footer import render_footer
-    from sections.inicio import render_inicio
+    from sections.hallazgos import render_hallazgos
+    from sections.metodologia import render_metodologia
+    from sections.organizaciones import render_organizaciones
+    from sections.portada import render_portada
 
-    # 1 · Inicio
-    st.markdown('<a id="inicio" class="nl-anchor"></a>', unsafe_allow_html=True)
-    _render_boundary("inicio", "Inicio", render_inicio, data, tokens)
+    # 1 · Portada
+    _render_boundary("portada", "Portada", render_portada, data, tokens)
 
-    # 2 · Metodología (cómo medimos)
-    st.markdown(
-        '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown('<div class="nl-section-icon-wrap"><span class="material-symbols-outlined nl-section-icon-xl">history_edu</span></div>', unsafe_allow_html=True)
-    _render_boundary("desarrollo", "Metodología", render_desarrollo, df, tokens)
+    # 2 · Hallazgos
+    _sep()
+    _render_boundary("hallazgos", "Hallazgos", render_hallazgos, data, df, tokens)
 
-    # 3 · Dashboards (resultados)
-    st.markdown(
-        '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown('<div class="nl-section-icon-wrap"><span class="material-symbols-outlined nl-section-icon-xl">analytics</span></div>', unsafe_allow_html=True)
-    _render_boundary("dashboards", "Dashboards", render_dashboards, data, df, tokens)
+    # 3 · Alertas
+    _sep()
+    _render_boundary("alertas", "Alertas", render_alertas_section, data, df, tokens)
 
-    # 4 · Conclusiones (síntesis)
-    st.markdown(
-        '<div class="nl-section-break" role="separator" aria-hidden="true"></div>',
-        unsafe_allow_html=True,
-    )
-    st.markdown('<div class="nl-section-icon-wrap"><span class="material-symbols-outlined nl-section-icon-xl">auto_awesome</span></div>', unsafe_allow_html=True)
+    # 4 · Organizaciones
+    _sep()
+    _render_boundary("organizaciones", "Organizaciones", render_organizaciones, data, tokens)
+
+    # 5 · Conclusiones
+    _sep()
     _render_boundary("conclusiones", "Conclusiones", render_conclusiones, df, tokens)
 
-    # 5 · Footer
+    # 6 · Metodología
+    _sep()
+    _render_boundary("metodologia", "Metodología", render_metodologia, data, tokens)
+
+    # Footer
     _render_boundary("footer", "Footer", render_footer, tokens)

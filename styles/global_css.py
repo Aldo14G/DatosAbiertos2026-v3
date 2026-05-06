@@ -37,7 +37,7 @@ _RAW_LIGHT: dict[str, str] = {
     "navy"             : "#f3f4f6",
     "cream"            : "#0d1117",
     "teal"             : "#2a7a6f",
-    "teal_dim"         : "rgba(42,122,111,0.10)",
+    "teal_dim"         : "rgba(42,122,111,0.15)",
     "gold"             : "#c8973a",
     "rose"             : "#b85c6e",
     "font_family"      : "'IBM Plex Sans', sans-serif",
@@ -101,6 +101,35 @@ def get_plotly_layout(theme: str = "dark") -> dict:
     )
 
 
+def get_bar_layout(theme: str = "dark") -> dict:
+    """Layout Plotly para bar charts: sin grid en X, punteado en Y.
+
+    Para barras horizontales, la función llamante sobreescribe xaxis/yaxis
+    en el dict devuelto antes de pasar a fig.update_layout(**layout).
+    """
+    t = PLOTLY_THEMES.get(theme, PLOTLY_THEMES["dark"])
+    base = get_plotly_layout(theme)
+    base.update({
+        "bargap": 0.28,
+        "uniformtext_minsize": 10,
+        "uniformtext_mode": "hide",
+        "xaxis": {
+            "showgrid": False,
+            "showline": False,
+            "zeroline": False,
+            "color": t["font_color"],
+        },
+        "yaxis": {
+            "showgrid": True,
+            "gridcolor": t["grid_color"],
+            "griddash": "dot",
+            "zeroline": False,
+            "color": t["font_color"],
+        },
+    })
+    return base
+
+
 # ══════════════════════════════════════════════════════════════
 # TOKEN DEFINITIONS
 # ══════════════════════════════════════════════════════════════
@@ -138,6 +167,9 @@ _TOKENS_DARK = """
     --teal-dim:    rgba(58,168,149,0.12);
     --gold-dim:    rgba(212,162,76,0.12);
     --rose-dim:    rgba(198,107,125,0.12);
+    --teal-border: rgba(58,168,149,0.28);
+    --gold-border: rgba(212,162,76,0.28);
+    --rose-border: rgba(198,107,125,0.28);
     --focus-ring:  rgba(75,203,180,0.4);
     --overlay:     rgba(255,255,255,0.02);
     /* Motion tokens */
@@ -156,40 +188,43 @@ _TOKENS_DARK = """
     --radius-full: 9999px;"""
 
 _TOKENS_LIGHT = """
-    --midnight:    #f9f8f5;
-    --navy:        #f3f4f6;
-    --card-bg:     rgba(15,28,46,0.04);
-    --cream:       #0d1117;
-    --paper:       #1e293b;
-    --muted:       #5a6a7e;
-    --ink:         #f9f8f5;
+    --midnight:    #f7f3ee;
+    --navy:        #f0ece5;
+    --card-bg:     rgba(24,24,15,0.03);
+    --cream:       #18180f;
+    --paper:       #2a2820;
+    --muted:       #5c5a52;
+    --ink:         #f7f3ee;
     --teal:        #2a7a6f;
-    --teal-light:  #1e6359;
-    --gold:        #c8973a;
-    --gold-light:  #a67a2e;
+    --teal-light:  #3a9080;
+    --gold:        #b8872a;
+    --gold-light:  #c69a3a;
     --rose:        #b85c6e;
-    --rose-light:  #9a4558;
-    --border:      rgba(200,151,58,0.25);
-    --card-border: rgba(15,28,46,0.08);
-    --shadow-sm:   0 1px 2px 0 rgba(0,0,0,0.05);
-    --shadow-md:   0 4px 6px -1px rgba(0,0,0,0.08), 0 2px 4px -1px rgba(0,0,0,0.04);
-    --shadow-lg:   0 10px 15px -3px rgba(0,0,0,0.08);
-    --shadow-xl:   0 20px 25px -5px rgba(0,0,0,0.1);
-    --nav-bg:      rgba(249,248,245,0.85);
-    --sidebar-bg:  #f9f8f5;
-    --surface:          #ffffff;
-    --surface-alt:      #f3f4f6;
-    --surface-high:     #ffffff;
-    --surface-elevated: #f8f9fa;
-    --surface-lowest:   #e5e7eb;
-    --ghost-border: rgba(15,28,46,0.06);
-    --gold-gradient: linear-gradient(135deg, #c8973a, #e4b96a);
+    --rose-light:  #c46677;
+    --border:      rgba(24,24,15,0.14);
+    --card-border: rgba(24,24,15,0.08);
+    --shadow-sm:   0 1px 3px rgba(0,0,0,0.06);
+    --shadow-md:   0 4px 12px rgba(0,0,0,0.08), 0 2px 4px rgba(0,0,0,0.04);
+    --shadow-lg:   0 10px 20px rgba(0,0,0,0.08);
+    --shadow-xl:   0 20px 40px rgba(0,0,0,0.10);
+    --nav-bg:      rgba(247,243,238,0.94);
+    --sidebar-bg:  #f7f3ee;
+    --surface:          #fffcf8;
+    --surface-alt:      #f0ece5;
+    --surface-high:     #fffcf8;
+    --surface-elevated: #fff8f2;
+    --surface-lowest:   #e8e3da;
+    --ghost-border: rgba(24,24,15,0.06);
+    --gold-gradient: linear-gradient(135deg, #b8872a, #d4a24c);
     --teal-gradient: linear-gradient(135deg, #2a7a6f, #3aa895);
-    --teal-dim:    rgba(42,122,111,0.10);
-    --gold-dim:    rgba(200,151,58,0.12);
-    --rose-dim:    rgba(184,92,110,0.10);
+    --teal-dim:    rgba(42,122,111,0.15);
+    --gold-dim:    rgba(184,135,42,0.15);
+    --rose-dim:    rgba(184,92,110,0.15);
+    --teal-border: rgba(42,122,111,0.22);
+    --gold-border: rgba(184,135,42,0.22);
+    --rose-border: rgba(184,92,110,0.22);
     --focus-ring:  rgba(42,122,111,0.45);
-    --overlay:     rgba(15,28,46,0.06);
+    --overlay:     rgba(24,24,15,0.04);
     /* Motion tokens */
     --ease-out:    cubic-bezier(0.0, 0.0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0.0, 0.2, 1);
@@ -227,7 +262,7 @@ _CSS_RESET = """
 }}
 h1, h2, h3 {{
     font-family: 'Chronicle Display', serif !important;
-    letter-spacing: -0.02em !important;
+    letter-spacing: -0.03em !important;
     line-height: var(--lh-heading) !important;
     font-weight: var(--fw-bold) !important;
     margin-bottom: var(--margin-after-header) !important;
@@ -275,15 +310,15 @@ _CSS_TYPO_SCALE = """
 /* Mobile ≤640px  : compact                                  */
 :root {
     /* Type sizes */
-    --fs-body: 16px;
+    --fs-body: 17px;
     --fs-small: 13px;
-    --fs-h3: 1.375rem;       /* 22px */
-    --fs-h2: 1.75rem;        /* 28px */
-    --fs-h1: 2.25rem;        /* 36px */
-    --fs-hero: 3.5rem;       /* 56px */
+    --fs-h3: 1.375rem;       /* 23px */
+    --fs-h2: 1.875rem;       /* 32px */
+    --fs-h1: 2.5rem;         /* 40px */
+    --fs-hero: 4rem;         /* 64px */
     /* Line heights */
-    --lh-body: 1.6;
-    --lh-heading: 1.3;
+    --lh-body: 1.7;
+    --lh-heading: 1.2;
     --lh-card: 1.5;
     /* Weights */
     --fw-normal: 400;
@@ -291,47 +326,47 @@ _CSS_TYPO_SCALE = """
     --fw-semibold: 600;
     --fw-bold: 700;
     /* Vertical rhythm */
-    --gap-section: 3.5rem;
-    --gap-subsection: 2rem;
-    --gap-section-break: 3rem;
+    --gap-section: 5rem;
+    --gap-subsection: 2.5rem;
+    --gap-section-break: 4rem;
     --pad-card: 2rem;
     --pad-card-tight: 1.5rem;
-    --margin-after-header: 1.5rem;
+    --margin-after-header: 2rem;
 }
 
 @media (max-width: 1024px) {
     :root {
-        --fs-body: 15px;
+        --fs-body: 16px;
         --fs-small: 12px;
         --fs-h3: 1.25rem;
-        --fs-h2: 1.5625rem;
-        --fs-h1: 2rem;
-        --fs-hero: 2.75rem;
-        --lh-body: 1.55;
-        --gap-section: 2.5rem;
-        --gap-subsection: 1.5rem;
-        --gap-section-break: 2rem;
+        --fs-h2: 1.625rem;
+        --fs-h1: 2.125rem;
+        --fs-hero: 3rem;
+        --lh-body: 1.65;
+        --gap-section: 3.5rem;
+        --gap-subsection: 2rem;
+        --gap-section-break: 2.5rem;
         --pad-card: 1.5rem;
         --pad-card-tight: 1.25rem;
-        --margin-after-header: 1.25rem;
+        --margin-after-header: 1.5rem;
     }
 }
 
 @media (max-width: 640px) {
     :root {
-        --fs-body: 14px;
+        --fs-body: 15px;
         --fs-small: 11px;
         --fs-h3: 1.125rem;
         --fs-h2: 1.375rem;
-        --fs-h1: 1.75rem;
-        --fs-hero: 2.25rem;
-        --lh-body: 1.5;
-        --gap-section: 1.5rem;
-        --gap-subsection: 1.25rem;
-        --gap-section-break: 1.5rem;
+        --fs-h1: 1.875rem;
+        --fs-hero: 2.5rem;
+        --lh-body: 1.6;
+        --gap-section: 2rem;
+        --gap-subsection: 1.5rem;
+        --gap-section-break: 2rem;
         --pad-card: 1.25rem;
         --pad-card-tight: 1rem;
-        --margin-after-header: 1rem;
+        --margin-after-header: 1.25rem;
     }
 }
 """
@@ -397,7 +432,7 @@ _CSS_TOPBAR = """
     scrollbar-width: thin;
 }
 .stitch-topbar-nav a {
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif !important;
     font-size: 13px; font-weight: 500;
     color: var(--muted);
     text-decoration: none; padding: 8px 16px;
@@ -412,7 +447,7 @@ _CSS_TOPBAR = """
 }
 .stitch-topbar-nav a.active {
     color: var(--teal-light); font-weight: 600;
-    background: rgba(42,122,111,0.12);
+    background: var(--teal-dim);
 }
 .stitch-topbar-nav a .material-symbols-outlined {
     font-size: 16px; transition: transform 0.2s;
@@ -436,7 +471,7 @@ _CSS_TOPBAR = """
     height: 36px;
     padding: 0 12px;
     border-radius: 10px;
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'DM Sans', sans-serif !important;
     font-size: 12px;
     font-weight: 700;
     white-space: nowrap;
@@ -524,7 +559,7 @@ button.stitch-topbar-btn {
 }
 .stitch-mobile-nav a.active {
     color: var(--teal-light);
-    background: rgba(42,122,111,0.12);
+    background: var(--teal-dim);
     font-weight: 600;
 }
 .stitch-mobile-actions {
@@ -595,13 +630,13 @@ _CSS_LAYOUT = """
 
 
 .editorial-container {
-    max-width: 720px;
-    margin: 0 auto 3rem;
+    max-width: 680px;
+    margin: 0 auto 4rem;
     text-align: center;
 }
 
 .nl-center-measure {
-    max-width: 640px;
+    max-width: 620px;
     margin: 0 auto;
 }
 
@@ -610,8 +645,8 @@ _CSS_LAYOUT = """
     font-size: var(--fs-body);
     line-height: var(--lh-body);
     color: var(--muted);
-    margin: 0 auto var(--margin-after-header);
-    max-width: 65ch;
+    margin: 0 auto calc(var(--margin-after-header) * 1.25);
+    max-width: 62ch;
     text-align: center;
 }
 
@@ -707,11 +742,11 @@ _CSS_TYPOGRAPHY = """
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
     text-transform: uppercase;
-    letter-spacing: 0.15em;
+    letter-spacing: 0.2em;
     color: var(--gold) !important;
     display: block;
     text-align: center;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }}
 .section-title {{
     font-family: 'Chronicle Display', serif;
@@ -719,20 +754,22 @@ _CSS_TYPOGRAPHY = """
     font-weight: var(--fw-bold);
     color: var(--cream) !important;
     line-height: var(--lh-heading);
-    letter-spacing: -0.01em;
+    letter-spacing: -0.03em;
     text-wrap: balance;
     text-align: center;
+    margin-bottom: 1.25rem;
 }}
 .section-subtitle {{
-    font-family: 'DM Sans', sans-serif;
+    font-family: 'IBM Plex Sans', sans-serif;
     font-size: var(--fs-body);
     font-weight: var(--fw-normal);
     line-height: var(--lh-body);
     color: var(--muted) !important;
     text-align: center;
-    max-width: 680px;
+    max-width: 62ch;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: var(--gap-subsection);
 }}
 
 /* ══ HERO TYPOGRAPHY ══════════════════════════════════════ */
@@ -740,20 +777,20 @@ _CSS_TYPOGRAPHY = """
     font-family: 'Chronicle Display', serif;
     font-size: var(--fs-hero) !important;
     font-weight: var(--fw-bold);
-    letter-spacing: -0.03em;
-    line-height: 1.1;
+    letter-spacing: -0.04em;
+    line-height: 1.05;
     color: var(--cream);
-    margin: 0 auto 20px !important;
-    max-width: 900px;
+    margin: 0 auto 28px !important;
+    max-width: 960px;
     text-align: center;
 }}
 .hero-subtitle {{
-    font-family: 'DM Sans', sans-serif;
-    font-size: var(--fs-body);
+    font-family: 'IBM Plex Sans', sans-serif;
+    font-size: calc(var(--fs-body) * 1.06);
     line-height: var(--lh-body);
     color: var(--muted);
-    margin: 0 auto 28px;
-    max-width: 700px;
+    margin: 0 auto 40px;
+    max-width: 660px;
     text-align: center;
 }}
 """
@@ -773,9 +810,9 @@ _CSS_CARDS = """
 }}
 
 /* Accent variants */
-.stitch-card-accent      {{ background: var(--teal-dim); border-color: rgba(58,168,149,0.25); }}
-.stitch-card-accent-gold {{ background: var(--gold-dim); border-color: rgba(200,151,58,0.25); }}
-.stitch-card-accent-rose {{ background: var(--rose-dim); border-color: rgba(184,92,110,0.25); }}
+.stitch-card-accent      {{ background: var(--teal-dim); border-color: var(--teal-border); }}
+.stitch-card-accent-gold {{ background: var(--gold-dim); border-color: var(--gold-border); }}
+.stitch-card-accent-rose {{ background: var(--rose-dim); border-color: var(--rose-border); }}
 
 /* ══ BENTO & HERO CARDS ═══════════════════════════════════ */
 .bento-card {{
@@ -1175,17 +1212,17 @@ _CSS_EDITORIAL = """
 /* ══ EDITORIAL LAYOUT ═════════════════════════════════════ */
 .editorial-header {{
     text-align: center;
-    max-width: 850px;
-    margin: 0 auto 3rem;
-    padding: 0;
+    max-width: 900px;
+    margin: 0 auto 4.5rem;
+    padding: 4rem 0 0;
 }}
 .editorial-title {{
     font-family: 'Chronicle Display', serif;
-    font-size: clamp(2.6rem, 5.5vw, 4rem);
+    font-size: clamp(3rem, 6vw, 5rem);
     font-weight: 700;
     color: var(--cream);
-    letter-spacing: -0.025em;
-    line-height: 1.12;
+    letter-spacing: -0.04em;
+    line-height: 1.08;
     text-align: center;
     text-wrap: balance;
     margin-bottom: 1.25rem !important;
@@ -1249,14 +1286,14 @@ _CSS_EDITORIAL = """
 
 /* ── Hero stat block (Score global prominente en Inicio) ─── */
 .nl-hero-stat-block {{
-    max-width: 640px;
-    margin: 0 auto 2.5rem;
-    padding: 0;
+    max-width: 700px;
+    margin: 0 auto 4rem;
+    padding: 3rem 0 1rem;
     text-align: center;
 }}
 .nl-hero-stat-prose {{
     font-family: 'Chronicle Display', serif;
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.75rem, 3.5vw, 2.5rem);
     font-weight: 400;
     line-height: 1.35;
     letter-spacing: -0.01em;
@@ -1590,8 +1627,8 @@ _CSS_SECTIONS = """
 .nl-load-more p {{ color: var(--muted); margin-bottom: 16px; }}
 .nl-load-more p + p {{ font-size: 13px; margin-bottom: 0; }}
 
-/* Alerts section intro paragraph */
-.nl-section-intro {{ color: var(--muted); max-width: 640px; margin: 8px 0 24px; }}
+/* Inline lead paragraph (short intro below a section header) */
+.nl-section-lead {{ color: var(--muted); max-width: 640px; margin: 8px 0 24px; }}
 
 /* Inline accent text spans — replaces style="color:var(--...)" */
 .accent-teal {{ color: var(--teal-light); font-weight: 600; }}
@@ -2820,9 +2857,9 @@ font-weight: 700;
     flex-direction: column;
     gap: 10px;
 }}
-.nl-flip--teal {{ border-color: rgba(58,168,149,0.3); }}
-.nl-flip--gold {{ border-color: rgba(200,151,58,0.3); }}
-.nl-flip--rose {{ border-color: rgba(184,92,110,0.3); }}
+.nl-flip--teal {{ border-color: var(--teal-border); }}
+.nl-flip--gold {{ border-color: var(--gold-border); }}
+.nl-flip--rose {{ border-color: var(--rose-border); }}
 .nl-flip--teal > .nl-flip-front {{ background: var(--teal-dim); }}
 .nl-flip--gold > .nl-flip-front {{ background: var(--gold-dim); }}
 .nl-flip--rose > .nl-flip-front {{ background: var(--rose-dim); }}
@@ -3889,6 +3926,153 @@ _CSS_APP_STORE = """
 .text-clamp-3 { display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
 """
 
+_CSS_ANTHROPIC_PATTERNS = """
+/* ══ ANTHROPIC-STYLE STRUCTURAL PATTERNS ══════════════════
+   Stat strip, context statement, section intro, band separator.
+   Inspired by anthropic.com information architecture:
+   one purpose per section, controlled density, narrative flow.
+   ══════════════════════════════════════════════════════════ */
+
+/* Universal section intro — eyebrow + H2 + subtitle */
+.nl-section-intro {{
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto;
+    padding: var(--gap-section-break) 0 var(--gap-subsection);
+}}
+.nl-section-intro .section-title {{ margin-bottom: 1rem; }}
+.nl-section-intro .section-subtitle {{
+    color: var(--muted);
+    font-size: var(--fs-body);
+    line-height: var(--lh-body);
+    max-width: 58ch;
+    margin: 0 auto;
+}}
+
+/* 4-number horizontal stat strip */
+.nl-stat-strip {{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    border: 1px solid var(--card-border);
+    border-radius: var(--radius-md);
+    overflow: hidden;
+    max-width: 920px;
+    margin: 0 auto var(--gap-section);
+}}
+.nl-stat-strip-item {{
+    background: var(--surface);
+    padding: 2.5rem 1.5rem;
+    text-align: center;
+    border-right: 1px solid var(--card-border);
+    transition: background var(--dur-base) var(--ease-out);
+}}
+.nl-stat-strip-item:hover {{ background: var(--surface-elevated); }}
+.nl-stat-strip-item:last-child {{ border-right: none; }}
+.nl-stat-strip-number {{
+    font-family: 'Chronicle Display', serif;
+    font-size: 2.25rem;
+    font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+    margin-bottom: 0.625rem;
+    letter-spacing: -0.03em;
+    display: block;
+}}
+.nl-stat-strip-number--teal {{ color: var(--teal); }}
+.nl-stat-strip-number--gold {{ color: var(--gold); }}
+.nl-stat-strip-number--rose {{ color: var(--rose-light); }}
+.nl-stat-strip-label {{
+    font-family: 'DM Mono', monospace;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    color: var(--muted);
+    display: block;
+}}
+@media (max-width: 640px) {{
+    .nl-stat-strip {{ grid-template-columns: repeat(2, 1fr); }}
+    .nl-stat-strip-item:nth-child(2) {{ border-right: none; }}
+    .nl-stat-strip-item:nth-child(1),
+    .nl-stat-strip-item:nth-child(2) {{ border-bottom: 1px solid var(--card-border); }}
+}}
+
+/* Context statement — large centered serif quote */
+.nl-context-statement {{
+    text-align: center;
+    max-width: 780px;
+    margin: 0 auto;
+    padding: var(--gap-section) 0;
+    border-top: 1px solid var(--card-border);
+    border-bottom: 1px solid var(--card-border);
+}}
+.nl-context-statement p {{
+    font-family: 'Chronicle Display', serif;
+    font-size: clamp(1.375rem, 2.5vw, 2rem);
+    font-weight: 400;
+    color: var(--cream);
+    line-height: 1.45;
+    letter-spacing: -0.02em;
+    max-width: none;
+    text-align: center;
+    margin: 0;
+}}
+
+/* Section band — alternate background between sections */
+.nl-band-alt {{
+    background: var(--surface-alt);
+    border-radius: var(--radius-lg);
+    padding: 3rem 2rem;
+    margin: 2rem 0;
+}}
+
+/* Hero CTA button row */
+.nl-hero-ctas {{
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-top: 2.5rem;
+}}
+
+/* Pipeline timestamp under portada stat strip */
+.nl-portada-timestamp {{
+    text-align: center;
+    font-family: 'DM Mono', monospace;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: var(--muted);
+    margin: 0 auto 1rem;
+    opacity: 0.6;
+}}
+
+/* Clean horizontal band separator (replaces decorative icon) */
+.nl-band-sep {{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin: var(--gap-section) 0;
+    max-width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.3;
+}}
+.nl-band-sep::before,
+.nl-band-sep::after {{
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--card-border);
+}}
+.nl-band-sep-dot {{
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--muted);
+    flex-shrink: 0;
+}}
+"""
+
 _CSS_UTILITIES = """
 /* ══ UTILITIES ════════════════════════════════════════════ */
 .d-flex { display: flex; }
@@ -4062,6 +4246,7 @@ def inject_design_system(theme: str = "dark") -> str:
         _CSS_SKELETON,
         _CSS_BENTO_GRID,
         _CSS_INICIO,
+        _CSS_ANTHROPIC_PATTERNS,
         _CSS_PIPELINE,
         _CSS_SINGLEPAGE,
         _CSS_A11Y,

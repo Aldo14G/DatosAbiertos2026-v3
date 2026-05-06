@@ -6,6 +6,7 @@ se integra como overlay suplementario via merge_advanced_overlay.
 Usa tokens semanticos del design system NL 2026 (Midnight/Teal/Gold/Rose).
 """
 
+import base64
 import html as _html
 
 import pandas as pd
@@ -22,72 +23,6 @@ from section_data import SectionData
 from styles.global_css import PLOTLY_THEMES, get_plotly_layout
 
 # ── Helpers internos ─────────────────────────────────────────────
-
-
-def _render_failure_causes(
-    coverage: dict, plotly_layout: dict, theme: str,
-) -> None:
-    """Distribución de causas de fallo del pipeline.
-
-    Render exclusivo del donut/bar horizontal con causas de extracción
-    fallida. La cobertura agregada se promueve a la KPI strip superior;
-    aquí solo persiste el detalle por causa.
-    """
-    fallidos = coverage.get("fallidos", 0)
-    t = PLOTLY_THEMES.get(theme, PLOTLY_THEMES["dark"])
-
-    st.markdown("""
-    <div class="nl-chart-card nl-reveal">
-        <div class="nl-chart-card-header nl-panel-head">
-            <span class="material-symbols-outlined icon-rose-sm" aria-hidden="true">error_outline</span>
-            <span class="eyebrow">Distribución de Fallos</span>
-        </div>
-    """, unsafe_allow_html=True)
-
-    if fallidos > 0:
-        failed_details = coverage.get("failed_details", [])
-        cause_counts: dict[str, int] = {}
-        for item in failed_details:
-            reason = item.get("reason", "")
-            if reason.startswith("Download failed"):
-                key = "Mismatch formato"
-            elif reason == "No URL":
-                key = "Sin URL"
-            else:
-                key = "Otro"
-            cause_counts[key] = cause_counts.get(key, 0) + 1
-
-        fig_donut = go.Figure(go.Bar(
-            x=list(cause_counts.values()),
-            y=list(cause_counts.keys()),
-            orientation="h",
-            marker_color=t["poor"],
-            text=list(cause_counts.values()),
-            textposition="auto",
-            textfont=dict(size=12, color=t["font_color"]),
-        ))
-        donut_layout = {
-            **plotly_layout,
-            "height": 180,
-            "margin": dict(t=10, l=10, r=20, b=10),
-            "showlegend": False,
-            "xaxis": dict(showgrid=False, visible=False),
-            "yaxis": dict(
-                autorange="reversed",
-                tickfont=dict(size=11, color=t["font_color"]),
-            ),
-            "transition": dict(duration=600, easing="cubic-in-out"),
-        }
-        fig_donut.update_layout(**donut_layout)
-        st.plotly_chart(fig_donut, use_container_width=True)
-    else:
-        st.markdown("""
-        <div class="nl-empty-state nl-empty-state--success">
-            <span class="material-symbols-outlined nl-empty-state-icon" aria-hidden="true">check_circle</span>
-            <p class="nl-empty-state-text">Sin fallos de extracción</p>
-        </div>
-        """, unsafe_allow_html=True)
-    st.markdown("</div>", unsafe_allow_html=True)
 
 
 def _render_kpi_strip(
@@ -262,16 +197,12 @@ def render_calidad_pro(data: SectionData, df: pd.DataFrame, tokens: dict) -> Non
 
     st.write("")
 
-    # Expander para metodologia
-    with st.expander("Metodologia Tecnica y Calculo", icon=":material/menu_book:"):
-        st.markdown("""
-<div class="nl-insight-card nl-insight-neutral">
-<p>Los puntajes se calculan mediante un sistema de penalización ponderada sobre cada recurso del catálogo CKAN. Se normalizan en escala 0-100 con 7 dimensiones ISO 25012: Completitud (30%), Exactitud (25%), Consistencia (15%), Documentación (10%), Unicidad (8%), Apertura (7%) y Puntualidad (5%).</p>
-<p class="nl-weight-desc">Actualizar datos: <code class="nl-code-inline">python pipeline/refresh_engine.py --force</code></p>
-</div>
-""", unsafe_allow_html=True)
-
-    st.write("")
+    st.markdown(
+        '<p class="nl-metodologia-link">'
+        '<a href="#metodologia">¿Cómo se calcula este score?</a>'
+        '</p>',
+        unsafe_allow_html=True,
+    )
 
     # --- 1. KPI STRIP + DETALLE DE FALLOS ---
     coverage = load_coverage_report()
@@ -281,7 +212,6 @@ def render_calidad_pro(data: SectionData, df: pd.DataFrame, tokens: dict) -> Non
             n_critical=data.n_critical,
             fallidos=coverage.get("fallidos", 0),
         )
-        _render_failure_causes(coverage, plotly_layout, theme)
         st.markdown(
             "<div class='divider'></div>",
             unsafe_allow_html=True,
@@ -396,6 +326,16 @@ Hay <strong>{n_excelentes}</strong> datasets de calidad excelente y <strong clas
 
     # --- 3. REPORTE COMPLETO ---
     if not df_enriched.empty:
+        _csv_b64 = base64.b64encode(df.to_csv(index=False).encode("utf-8")).decode("ascii")
+        st.markdown(
+            f'<a class="stitch-btn-ghost nl-download-btn"'
+            f' href="data:text/csv;base64,{_csv_b64}"'
+            f' download="calidad_nl_2026.csv">'
+            f'<span class="material-symbols-outlined" aria-hidden="true">download</span>'
+            f'Descargar CSV completo</a>',
+            unsafe_allow_html=True,
+        )
+
         with st.expander(
             "Ver Auditoria Maestra (Dataset por Dataset)",
             icon=":material/table_chart:",

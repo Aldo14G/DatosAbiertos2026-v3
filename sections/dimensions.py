@@ -14,7 +14,7 @@ DIM_COLS: list[tuple[str, str]] = [
     if col != "score_global"
 ]
 
-# Citizen-facing labels + descriptions for health bars in sections/inicio.py
+# Citizen-facing labels + descriptions for health bars (metodologia, conclusiones)
 # Each value is (display_label, plain-language description)
 CITIZEN_LABELS: dict[str, tuple[str, str]] = {
     "Completitud"   : ("Datos Completos",    "¿Los registros están completos?"),

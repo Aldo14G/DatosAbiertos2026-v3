@@ -12,8 +12,7 @@ import html as _html
 import pandas as pd
 import streamlit as st
 
-from config import UMBRAL_EXCELENTE, UMBRAL_GOBERNANZA
-from data_layer import load_coverage_report
+from config import UMBRAL_GOBERNANZA
 from sections.dimensions import DIM_COLS as _DIM_COLS
 
 # ══════════════════════════════════════════════════════════════
@@ -82,38 +81,32 @@ def _flip_card(
 
 def render_conclusiones(df: pd.DataFrame, _tokens: dict) -> None:
     """Sección Conclusiones — hallazgos e insights derivados del estado actual."""
-    coverage = load_coverage_report()
-
     total        = len(df)
     score_mean   = float(df["score_global"].mean()) if "score_global" in df.columns else 0.0
-    excelentes   = int((df["score_global"] >= UMBRAL_EXCELENTE).sum()) if "score_global" in df.columns else 0
     gobernables  = int((df["score_global"] >= UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
     criticos     = int((df["score_global"] < UMBRAL_GOBERNANZA).sum()) if "score_global" in df.columns else 0
-    cobertura_pct = float(coverage.get("cobertura_pct", 0)) if coverage is not None else 0.0
-
     strong_label, strong_val, weak_label, weak_val = _strongest_weakest_dim(df)
     top_org_name, top_org_score, top_org_n = _top_organization(df)
 
-    sin_cat_n = 0
-    if "categoria" in df.columns:
-        sin_cat_n = int(df["categoria"].isin(["Sin categoría", "", "Sin Categoría"]).sum())
-    sin_cat_pct = (sin_cat_n / total * 100) if total else 0
-
-    pct_excelentes  = (excelentes / total * 100) if total else 0
     pct_gobernables = (gobernables / total * 100) if total else 0
     pct_criticos    = (criticos / total * 100) if total else 0
 
-    # ── Encabezado ────────────────────────────────────────────
     st.markdown("""
-<section id="conclusiones" class="nl-section nl-reveal" aria-labelledby="conclusiones-title">
-<span class="eyebrow">03 · Conclusiones</span>
-<h2 id="conclusiones-title" class="section-title nl-section-title">Hallazgos clave y recomendaciones</h2>
-<p class="section-subtitle nl-section-subtitle">El estado actual del catálogo en un vistazo. Se actualiza solo con cada corrida del pipeline.</p>
+<section id="conclusiones" aria-labelledby="conclusiones-title">
+  <div class="nl-section-intro nl-reveal">
+    <span class="eyebrow">¿Qué debo hacer?</span>
+    <h2 id="conclusiones-title" class="section-title">Hallazgos y siguientes pasos</h2>
+    <p class="section-subtitle">
+      El estado actual del catálogo y las acciones concretas de mayor impacto.
+      Se recalcula con cada corrida del pipeline.
+    </p>
+  </div>
 </section>
 """, unsafe_allow_html=True)
 
     # ── 1. HALLAZGOS (3 flip cards) ───────────────────────────
     st.markdown('<div class="eyebrow mt-5 mb-3">Hallazgos clave</div>', unsafe_allow_html=True)
+
 
     dim_card = (
         f'<details class="nl-flip-card nl-flip--neutral nl-reveal nl-reveal-d2">'
@@ -165,55 +158,7 @@ def render_conclusiones(df: pd.DataFrame, _tokens: dict) -> None:
         unsafe_allow_html=True,
     )
 
-    # ── 2. INSIGHTS ADICIONALES (4 flip cards) ────────────────
-    st.markdown('<div class="eyebrow mt-6 mb-3">Más sobre el catálogo</div>', unsafe_allow_html=True)
-
-    insight_cards: list[str] = []
-
-    if top_org_name != "N/A":
-        insight_cards.append(_flip_card(
-            "teal", "star", "Referente de calidad",
-            f"{top_org_score:.1f}%",
-            f"Referente: {top_org_name[:45]}",
-            f"<strong>{top_org_n}</strong> datasets con un promedio de <strong>{top_org_score:.1f}%</strong>. "
-            f"Algo están haciendo bien: documentarlo y compartirlo con otras dependencias vale la pena.",
-            "nl-reveal-d1",
-        ))
-
-    if sin_cat_n > 0:
-        insight_cards.append(_flip_card(
-            "gold", "category", "Gobernanza de metadatos",
-            str(sin_cat_n),
-            "Sin categoría temática",
-            f"<strong>{sin_cat_n}</strong> datasets ({sin_cat_pct:.0f}%) no tienen categoría asignada en CKAN. "
-            f"Sin eso, son difíciles de encontrar y comparar con otros temas.",
-            "nl-reveal-d2",
-        ))
-
-    insight_cards.append(_flip_card(
-        "neutral", "trending_up", "Cobertura del pipeline",
-        f"{cobertura_pct:.1f}%",
-        "Cobertura de la última ejecución",
-        f"El pipeline cubrió <strong>{cobertura_pct:.1f}%</strong> del catálogo en esta ejecución. "
-        f"Los errores y registros omitidos están detallados en la sección anterior.",
-        "nl-reveal-d3",
-    ))
-
-    insight_cards.append(_flip_card(
-        "teal", "workspace_premium", "Datasets de excelencia",
-        str(excelentes),
-        "Superan el umbral de excelencia",
-        f"<strong>{excelentes}</strong> datasets ({pct_excelentes:.0f}%) superan el {UMBRAL_EXCELENTE:.0f}%. "
-        f"Buenos candidatos para mostrar qué tan alto puede llegar la calidad.",
-        "nl-reveal-d4",
-    ))
-
-    st.markdown(
-        f'<div class="nl-flip-grid nl-reveal">{"".join(insight_cards)}</div>',
-        unsafe_allow_html=True,
-    )
-
-    # ── 3. RECOMENDACIONES (roadmap numerado) ─────────────────
+    # ── 2. RECOMENDACIONES (roadmap numerado) ─────────────────
     st.markdown('<div class="eyebrow mt-6 mb-3">Recomendaciones</div>', unsafe_allow_html=True)
 
     recomendaciones: list[tuple[str, str]] = [

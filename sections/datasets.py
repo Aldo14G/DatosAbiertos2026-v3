@@ -660,7 +660,7 @@ def render_alertas(_data: SectionData, df: pd.DataFrame, _tokens: dict) -> None:
     toml_cfg = _load_toml_thresholds()
     umbral   = toml_cfg.get("gobernanza", UMBRAL_GOBERNANZA)
     st.markdown(f"""
-    <p class="nl-section-intro">
+    <p class="nl-section-lead">
         Datasets con score de calidad por debajo del umbral de gobernanza ({umbral:.0f}%).
         Basado en ISO/IEC 25012:2008.
     </p>

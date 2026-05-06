@@ -2,16 +2,14 @@
 # Orquestador principal del dashboard NL 2026 — Single-Page Scrollable.
 # Ejecutar con: streamlit run dashboard_v3.py
 #
-# Arquitectura v3.4 — Narrativa vertical con 5 secciones (orden investigación ciudadana):
-# Inicio → Metodología → Dashboards → Conclusiones → Footer.
+# Arquitectura v3.6 — Narrativa vertical con 6 secciones:
+# Portada → Hallazgos → Alertas → Organizaciones → Conclusiones → Metodología → Footer.
 
-import base64
-import datetime
 
 import pandas as pd
 import streamlit as st
 
-from config import CACHE_TTL_SECONDS, VERSION
+from config import CACHE_TTL_SECONDS
 
 st.set_page_config(
     page_title="NL 2026 — Gobernanza de Datos",
@@ -65,57 +63,15 @@ _data = build_section_data(df)
 _n_alertas  = _data.n_critical
 _score_prom = _data.mean_score
 
-_csv_bytes = df.to_csv(index=False).encode("utf-8")
-_csv_b64 = base64.b64encode(_csv_bytes).decode("ascii")
-_download_href = f"data:text/csv;base64,{_csv_b64}"
-
-
 # ── Secciones de la topbar (single-page, anchor-based) ───────
-_SECTIONS: list[tuple[str, str, str]] = [
-    ("Inicio",       "inicio",       "home"),
-    ("Metodología",  "desarrollo",   "account_tree"),
-    ("Dashboards",   "dashboards",   "insights"),
-    ("Conclusiones", "conclusiones", "lightbulb"),
-    ("Footer",       "footer",       "bookmark"),
+_SECTIONS: list[tuple[str, str]] = [
+    ("Portada",        "portada"),
+    ("Hallazgos",      "hallazgos"),
+    ("Alertas",        "alertas"),
+    ("Organizaciones", "organizaciones"),
+    ("Conclusiones",   "conclusiones"),
+    ("Metodología",    "metodologia"),
 ]
-
-
-# ── STATUS BAR (sidebar colapsado) ────────────────────────────
-_alert_cls   = "is-critical" if _n_alertas > 0 else "is-ok"
-_alert_icon  = "warning" if _n_alertas > 0 else "check_circle"
-_today_iso   = datetime.date.today().isoformat()
-
-with st.sidebar:
-    st.markdown(f"""
-    <div class="nl-sb-brand">
-        <div class="nl-sb-title">
-            <span class="material-symbols-outlined" aria-hidden="true">shield</span>
-            Gobernanza Pro
-        </div>
-        <div class="nl-sb-version">Sistema de Calidad v{VERSION}</div>
-    </div>
-    <hr class="nl-sb-divider" />
-    <div class="nl-sb-status">
-        <div class="nl-sb-row">
-            <span class="material-symbols-outlined" aria-hidden="true">calendar_today</span>
-            <span>Actualizado: <strong>{_today_iso}</strong></span>
-        </div>
-        <div class="nl-sb-row">
-            <span class="material-symbols-outlined" aria-hidden="true">database</span>
-            <span>Universo: <strong>{len(df)} datasets</strong></span>
-        </div>
-        <div class="nl-sb-row">
-            <span class="material-symbols-outlined" aria-hidden="true">bar_chart</span>
-            <span>Promedio: <strong>{_score_prom:.1f}%</strong></span>
-        </div>
-        <div class="nl-sb-alerts {_alert_cls}">
-            <span class="material-symbols-outlined" aria-hidden="true">{_alert_icon}</span>
-            {_n_alertas} alertas críticas
-        </div>
-    </div>
-    <div class="nl-sb-gap"></div>
-    """, unsafe_allow_html=True)
-
 
 
 # ── TOPBAR (navegación por anchors + IntersectionObserver) ───
@@ -124,9 +80,8 @@ _theme_icon  = "light_mode" if st.session_state.theme == "dark" else "dark_mode"
 _theme_label = "Claro" if st.session_state.theme == "dark" else "Oscuro"
 
 _nav_links = "".join(
-    f'<a href="#{slug}" data-section="{slug}">'
-    f'<span class="material-symbols-outlined" aria-hidden="true">{icon}</span>{name}</a>'
-    for name, slug, icon in _SECTIONS
+    f'<a href="#{slug}" data-section="{slug}">{name}</a>'
+    for name, slug in _SECTIONS
 )
 
 st.markdown(f"""
@@ -148,11 +103,6 @@ st.markdown(f"""
                title="Cambiar a modo {_theme_label}"
                aria-label="Cambiar a modo {_theme_label}">
                 <span class="material-symbols-outlined" aria-hidden="true">{_theme_icon}</span>
-            </a>
-            <a class="stitch-topbar-btn stitch-topbar-btn-secondary stitch-topbar-btn-landing"
-               href="http://localhost:3000">
-                <span class="material-symbols-outlined" aria-hidden="true">home</span>
-                Inicio
             </a>
             <a class="stitch-topbar-btn stitch-topbar-btn-secondary"
                href="https://catalogodatos.nl.gob.mx" target="_blank" rel="noopener noreferrer">
@@ -197,8 +147,7 @@ st.markdown(f"""
         }});
     }}, {{ rootMargin: '-40% 0px -55% 0px', threshold: 0 }});
 
-    ['inicio', 'desarrollo', 'dashboards', 'conclusiones', 'footer'].forEach((id) => {{
-        // anchor ids in render order
+    ['portada', 'hallazgos', 'alertas', 'organizaciones', 'conclusiones', 'metodologia'].forEach((id) => {{
         const el = document.getElementById(id);
         if (el) observer.observe(el);
     }});

@@ -74,7 +74,17 @@ def render_organizaciones(data: SectionData, tokens: dict) -> None:
     if stats.empty:
         return
 
-    st.markdown('<div class="editorial-header fade-up"><div class="eyebrow">Instituciones Públicas</div><h2 class="editorial-title">Ranking Organizacional</h2></div>', unsafe_allow_html=True)
+    st.markdown("""
+<section id="organizaciones" aria-labelledby="organizaciones-title">
+  <div class="nl-section-intro nl-reveal">
+    <span class="eyebrow">Instituciones públicas</span>
+    <h2 id="organizaciones-title" class="section-title">¿Quién publica mejor?</h2>
+    <p class="section-subtitle">
+      Ranking de dependencias gubernamentales por calidad promedio de sus datasets.
+    </p>
+  </div>
+</section>
+""", unsafe_allow_html=True)
 
     _render_org_kpis(stats)
     st.write("")
@@ -82,6 +92,8 @@ def render_organizaciones(data: SectionData, tokens: dict) -> None:
 
     tab_rank, tab_table = st.tabs(["Ranking Visual", "Tabla Detallada"])
     with tab_rank:
+        from sections.charts_calidad import chart_top_bottom_orgs
+
         chart_height = max(500, len(stats) * 26 + 80)
         fig = go.Figure(go.Bar(
             y=[_shorten_name(n, 35) for n in stats["organizacion"]],
@@ -96,6 +108,20 @@ def render_organizaciones(data: SectionData, tokens: dict) -> None:
             transition=dict(duration=600, easing="cubic-in-out"),
         )
         st.plotly_chart(fig, use_container_width=True)
+
+        st.markdown("""
+<div class="nl-section-intro nl-reveal">
+  <span class="eyebrow">Extremos del catálogo</span>
+  <h3 class="section-title">Líderes y organizaciones en riesgo</h3>
+  <p class="section-subtitle">
+    Las cinco dependencias con mayor y menor calidad promedio de sus datasets.
+  </p>
+</div>
+""", unsafe_allow_html=True)
+        st.plotly_chart(
+            chart_top_bottom_orgs(stats, theme),
+            use_container_width=True,
+        )
 
     with tab_table:
         st.dataframe(stats, use_container_width=True, hide_index=True)
