@@ -267,10 +267,14 @@ def render_calidad_pro(data: SectionData, df: pd.DataFrame, tokens: dict) -> Non
             values="score_global",
             color="clasificacion",
             color_discrete_map={
-                "Excelente":    t["excellent"],
-                "Aceptable":    t["good"],
-                "Crítico":      t["poor"],
+                "Excelente":      t["excellent"],
+                "Aceptable":      t["good"],
+                "Crítico":        t["poor"],
                 "Sin Clasificar": t["annotation_font"],
+                # Nodos raíz y padre — Plotly asigna verde lima por defecto;
+                # forzamos el color de superficie del tema activo.
+                "(root)":         t["paper_bgcolor"],
+                "":               t["paper_bgcolor"],
             },
             custom_data=["score_global", "organizacion"],
         )
@@ -283,7 +287,11 @@ def render_calidad_pro(data: SectionData, df: pd.DataFrame, tokens: dict) -> Non
                 "Score: %{customdata[0]:.1f}%"
                 "<extra></extra>"
             ),
-            marker=dict(line=dict(width=0.5, color=t["paper_bgcolor"])),
+            marker=dict(
+                line=dict(width=1.5, color=t["paper_bgcolor"]),
+                pad=dict(t=18, l=4, r=4, b=4),
+            ),
+            root_color=t["paper_bgcolor"],
         )
         fig_tree.update_layout(
             **{

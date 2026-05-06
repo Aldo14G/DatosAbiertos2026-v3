@@ -91,7 +91,14 @@ def chart_distribucion_clasi(df: pd.DataFrame, theme: str = "dark") -> go.Figure
     t = PLOTLY_THEMES.get(theme, PLOTLY_THEMES["dark"])
 
     if "clasificacion" not in df.columns:
-        return go.Figure()
+        # Devolver figura vacía pero ya con el layout de tema correcto
+        fig = go.Figure()
+        fig.update_layout(
+            paper_bgcolor=t["paper_bgcolor"],
+            plot_bgcolor=t["plot_bgcolor"],
+            font=dict(family=t["font_family"], color=t["font_color"]),
+        )
+        return fig
 
     counts = df["clasificacion"].value_counts()
     labels = [lbl for lbl in _TIER_ORDER if lbl in counts.index]
