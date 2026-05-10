@@ -1,24 +1,67 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Menu, X } from "lucide-react";
 import { useLang } from "./LangProvider";
 
-const DASHBOARD_URL = "https://catalogodatos.nl.gob.mx";
+const DASHBOARD_URL =
+  process.env.NEXT_PUBLIC_DASHBOARD_URL ?? "http://localhost:8501";
+
+const NAV_LINKS = [
+  { href: "hallazgos", labelEs: "Hallazgos", labelEn: "Findings" },
+  { href: "dimensions", labelEs: "Dimensiones", labelEn: "Dimensions" },
+  { href: "methodology", labelEs: "Metodología", labelEn: "Methodology" },
+  { href: "rankings", labelEs: "Dependencias", labelEn: "Agencies" },
+  { href: "credits", labelEs: "Créditos", labelEn: "Credits" },
+] as const;
 
 export function Navbar() {
   const { lang, toggle, t } = useLang();
   const [open, setOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("");
+  const [scrolled, setScrolled] = useState(false);
+  const rafRef = useRef<number | null>(null);
 
-  const navLinks = [
-    { href: "#dimensions", label: t("Dimensiones", "Dimensions") },
-    { href: "#rankings", label: t("Dependencias", "Agencies") },
-    { href: "#methodology", label: t("Metodología", "Methodology") },
-    { href: "#credits", label: t("Créditos", "Credits") },
-  ];
+  useEffect(() => {
+    const ids = NAV_LINKS.map((l) => l.href);
+
+    function update() {
+      const scrollY = window.scrollY;
+      setScrolled(scrollY > 12);
+
+      const offset = 80;
+      let current = "";
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (el && el.getBoundingClientRect().top <= offset) {
+          current = id;
+        }
+      }
+      setActiveSection(current);
+    }
+
+    function onScroll() {
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+      rafRef.current = requestAnimationFrame(update);
+    }
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    update();
+    return () => {
+      window.removeEventListener("scroll", onScroll);
+      if (rafRef.current !== null) cancelAnimationFrame(rafRef.current);
+    };
+  }, []);
 
   return (
-    <header data-nav className="fixed top-0 left-0 right-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+    <header
+      data-nav
+      className={`fixed top-0 left-0 right-0 z-50 border-b transition-all duration-300 ${
+        scrolled
+          ? "border-border bg-background/95 backdrop-blur-sm shadow-sm"
+          : "border-transparent bg-background/80 backdrop-blur-sm"
+      }`}
+    >
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
         {/* Logo */}
         <a
@@ -37,21 +80,37 @@ export function Navbar() {
         </a>
 
         {/* Desktop nav */}
-        <nav className="hidden items-center gap-6 md:flex" aria-label={t("Navegación principal", "Main navigation")}>
-          {navLinks.map((link) => (
-            <a
-              key={link.href}
-              href={link.href}
-              className="text-sm font-medium text-muted-foreground transition-colors hover:text-foreground focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 rounded"
-            >
-              {link.label}
-            </a>
-          ))}
+        <nav
+          className="hidden items-center gap-1 md:flex"
+          aria-label={t("Navegación principal", "Main navigation")}
+        >
+          {NAV_LINKS.map((link) => {
+            const isActive = activeSection === link.href;
+            return (
+              <a
+                key={link.href}
+                href={`#${link.href}`}
+                className={`relative rounded px-3 py-1.5 text-sm font-medium transition-colors focus-visible:outline focus-visible:outline-2 focus-visible:outline-ring focus-visible:outline-offset-2 ${
+                  isActive
+                    ? "text-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                aria-current={isActive ? "location" : undefined}
+              >
+                {t(link.labelEs, link.labelEn)}
+                {isActive && (
+                  <span
+                    className="absolute inset-x-2 -bottom-[13px] h-[2px] rounded-full bg-teal"
+                    aria-hidden="true"
+                  />
+                )}
+              </a>
+            );
+          })}
         </nav>
 
         {/* Actions */}
         <div className="flex items-center gap-2">
-          {/* Language toggle */}
           <button
             onClick={toggle}
             aria-label={t("Cambiar a inglés", "Switch to Spanish")}
@@ -60,7 +119,6 @@ export function Navbar() {
             {lang === "es" ? "EN" : "ES"}
           </button>
 
-          {/* CTA — desktop only */}
           <a
             href={DASHBOARD_URL}
             target="_blank"
@@ -70,7 +128,6 @@ export function Navbar() {
             {t("Ver dashboard", "Open dashboard")}
           </a>
 
-          {/* Mobile hamburger */}
           <button
             onClick={() => setOpen((o) => !o)}
             aria-label={open ? t("Cerrar menú", "Close menu") : t("Abrir menú", "Open menu")}
@@ -89,17 +146,28 @@ export function Navbar() {
           aria-label={t("Menú móvil", "Mobile menu")}
         >
           <ul className="flex flex-col gap-1">
-            {navLinks.map((link) => (
-              <li key={link.href}>
-                <a
-                  href={link.href}
-                  onClick={() => setOpen(false)}
-                  className="block rounded px-2 py-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-                >
-                  {link.label}
-                </a>
-              </li>
-            ))}
+            {NAV_LINKS.map((link) => {
+              const isActive = activeSection === link.href;
+              return (
+                <li key={link.href}>
+                  <a
+                    href={`#${link.href}`}
+                    onClick={() => setOpen(false)}
+                    aria-current={isActive ? "location" : undefined}
+                    className={`flex items-center gap-2 rounded px-3 py-2 text-sm font-medium transition-colors ${
+                      isActive
+                        ? "bg-muted text-foreground"
+                        : "text-muted-foreground hover:bg-muted hover:text-foreground"
+                    }`}
+                  >
+                    {isActive && (
+                      <span className="size-1.5 rounded-full bg-teal shrink-0" aria-hidden="true" />
+                    )}
+                    {t(link.labelEs, link.labelEn)}
+                  </a>
+                </li>
+              );
+            })}
             <li className="mt-2 pt-2 border-t border-border">
               <a
                 href={DASHBOARD_URL}

@@ -58,29 +58,29 @@ export function DimensionsSection() {
     >
       {/* Decorative background elements */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        <div className="absolute -top-[10%] -right-[10%] w-[500px] h-[500px] rounded-full bg-teal/5 blur-[120px]" />
-        <div className="absolute -bottom-[10%] -left-[10%] w-[400px] h-[400px] rounded-full bg-gold/5 blur-[100px]" />
+        <div className="absolute -top-[10%] -right-[10%] w-[500px] h-[500px] rounded-full bg-teal/[0.12] dark:bg-teal/[0.08] blur-[120px]" />
+        <div className="absolute -bottom-[10%] -left-[10%] w-[400px] h-[400px] rounded-full bg-gold/[0.12] dark:bg-gold/[0.08] blur-[100px]" />
       </div>
 
       <div className="@container mx-auto max-w-7xl relative z-10">
         {/* Header */}
         <motion.div className="mb-16" {...fadeUp(0)}>
           <span className="text-[10px] font-mono tracking-[0.2em] text-gold uppercase opacity-80 mb-4 block">
-            {t("Marco normativo", "Normative framework")} · ISO/IEC 25012:2008
+            {t("Cómo medimos · ISO/IEC 25012:2008", "How we measure · ISO/IEC 25012:2008")}
           </span>
           <h2
             id="dimensions-heading"
             className="font-serif text-4xl md:text-5xl font-bold text-foreground mb-6"
           >
             {t(
-              "Cinco dimensiones para medir la calidad",
-              "Five dimensions to measure quality"
+              "Siete dimensiones para medir la calidad",
+              "Seven dimensions to measure quality"
             )}
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl">
             {t(
-              "Cada dataset del portal es evaluado en cinco dimensiones derivadas de la norma internacional. Los pesos reflejan la criticidad operativa de cada atributo para datos abiertos gubernamentales.",
-              "Each portal dataset is evaluated across five dimensions derived from the international standard. Weights reflect the operational criticality of each attribute for government open data."
+              "Cada dataset del portal es evaluado en siete dimensiones derivadas de la norma internacional. Los pesos reflejan la criticidad operativa de cada atributo para datos abiertos gubernamentales.",
+              "Each portal dataset is evaluated across seven dimensions derived from the international standard. Weights reflect the operational criticality of each attribute for government open data."
             )}
           </p>
         </motion.div>
@@ -187,10 +187,12 @@ export function DimensionsSection() {
 function getWeightColor(id: string) {
   const map: Record<string, string> = {
     completeness: "bg-teal",
-    timeliness: "bg-gold",
-    accessibility: "bg-rose-500",
-    documentation: "bg-amber-600",
-    openness: "bg-indigo-400",
+    accuracy: "bg-gold",
+    consistency: "bg-sky-400",
+    documentation: "bg-amber-500",
+    uniqueness: "bg-indigo-400",
+    openness: "bg-rose-500",
+    timeliness: "bg-slate-400",
   };
   return map[id] ?? "bg-muted-foreground";
 }

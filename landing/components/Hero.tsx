@@ -1,22 +1,32 @@
 "use client";
 
-import { useRef } from "react";
 import { useLang } from "./LangProvider";
-import { useInView } from "@/lib/use-in-view";
 import { PORTAL_STATS } from "@/lib/data";
 import { PremiumFeatureTabs } from "@/components/blocks/premium-feature-tabs";
 import { Database, Award, ShieldCheck } from "lucide-react";
 
-const DASHBOARD_URL = "http://localhost:8501/#dashboards";
+const DASHBOARD_URL = "http://localhost:8501";
 
-const goldPct = Math.round(
-  (PORTAL_STATS.goldDatasets / PORTAL_STATS.totalDatasets) * 100
-);
+interface StatPill {
+  value: string;
+  labelEs: string;
+  labelEn: string;
+  highlight?: boolean;
+}
 
 export function Hero() {
   const { t } = useLang();
-  const statsRef = useRef<HTMLDivElement>(null);
-  const statsVisible = useInView(statsRef, 0.2);
+
+  const goldPct = Math.round(
+    (PORTAL_STATS.goldDatasets / PORTAL_STATS.totalDatasets) * 100
+  );
+
+  const statPills: StatPill[] = [
+    { value: String(PORTAL_STATS.totalDatasets), labelEs: "Datasets", labelEn: "Datasets" },
+    { value: `${goldPct}%`, labelEs: "Calificación Oro", labelEn: "Gold rating", highlight: true },
+    { value: String(PORTAL_STATS.totalOrgs), labelEs: "Organizaciones", labelEn: "Organizations" },
+    { value: PORTAL_STATS.avgScore.toFixed(1), labelEs: "Puntuación media", labelEn: "Avg. score" },
+  ];
 
   const heroTabs = [
     {
@@ -87,52 +97,27 @@ export function Hero() {
         )}
         tabs={heroTabs}
       >
-        {/* Stat bar injected into the Feature Tabs header */}
-        <div
-          ref={statsRef}
-          data-visible={statsVisible}
-          className="grid grid-cols-2 gap-4 sm:grid-cols-4 max-w-5xl mx-auto"
-        >
-          <StatCard value={PORTAL_STATS.totalDatasets.toString()} label={t("Datasets", "Datasets")} mono index={0} />
-          <StatCard value={`${goldPct}%`} label={t("Calidad Oro", "Gold Quality")} mono highlight index={1} />
-          <StatCard value={PORTAL_STATS.totalOrgs.toString()} label={t("Organizaciones", "Organizations")} mono index={2} />
-          <StatCard value={PORTAL_STATS.avgScore.toFixed(1)} label={t("Score Promedio", "Average Score")} mono index={3} />
+        {/* KPI stat pills */}
+        <div className="flex flex-wrap items-center justify-center gap-3 max-w-3xl mx-auto">
+          {statPills.map((pill, idx) => (
+            <div
+              key={idx}
+              className="flex flex-col items-center rounded-2xl border border-border/40 bg-card px-6 py-4 min-w-[110px]"
+            >
+              <span
+                className={`font-mono text-2xl font-bold tabular-nums ${
+                  pill.highlight ? "text-gold" : "text-foreground"
+                }`}
+              >
+                {pill.value}
+              </span>
+              <span className="font-mono text-[9px] uppercase tracking-[0.16em] text-muted-foreground mt-1">
+                {t(pill.labelEs, pill.labelEn)}
+              </span>
+            </div>
+          ))}
         </div>
       </PremiumFeatureTabs>
-    </div>
-  );
-}
-
-function StatCard({
-  value,
-  label,
-  mono,
-  highlight,
-  index = 0,
-}: {
-  value: string;
-  label: string;
-  mono?: boolean;
-  highlight?: boolean;
-  index?: number;
-}) {
-  return (
-    <div
-      className={`card-entrance flex flex-col gap-1 px-4 py-5 sm:px-6 sm:py-6 rounded-2xl border bg-black/5 dark:bg-white/5 backdrop-blur-md shadow-sm transition-transform hover:-translate-y-1 ${
-        highlight ? "border-amber-500/30 ring-1 ring-amber-500/20 bg-amber-500/5" : "border-border/50"
-      }`}
-      style={{ "--i": index } as React.CSSProperties}
-    >
-      <span
-        className={`text-3xl sm:text-4xl font-bold leading-none ${
-          mono ? "font-mono" : ""
-        } ${highlight ? "text-amber-500" : "text-foreground"}`}
-      >
-        {value}
-      </span>
-      <span className="text-[10px] sm:text-xs font-medium text-muted-foreground uppercase tracking-wider mt-2">
-        {label}
-      </span>
     </div>
   );
 }

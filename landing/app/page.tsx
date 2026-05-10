@@ -1,11 +1,14 @@
 import { LangProvider } from "@/components/LangProvider";
 import { Navbar } from "@/components/Navbar";
 import { Hero } from "@/components/Hero";
-import { SaludInstitucionalSection } from "@/components/SaludInstitucionalSection";
+import { HallazgosSection } from "@/components/HallazgosSection";
 import { DimensionsSection } from "@/components/DimensionsSection";
-import { RankingsSection } from "@/components/RankingsSection";
 import { MethodologySection } from "@/components/MethodologySection";
+import { RankingsSection } from "@/components/RankingsSection";
+import { GallerySection } from "@/components/GallerySection";
+import { CTASection } from "@/components/CTASection";
 import { CreditsSection } from "@/components/CreditsSection";
+import { ScrollToTopFAB } from "@/components/ScrollToTopFAB";
 
 export default function Home() {
   return (
@@ -18,13 +21,22 @@ export default function Home() {
       </a>
       <Navbar />
       <main id="main-content">
+        {/* 1. Propuesta */}
         <Hero />
-        <SaludInstitucionalSection />
+        {/* 2. Muestra la herramienta — el producto primero */}
+        <GallerySection />
+        <CTASection />
+        {/* 3. ¿Qué encontramos? — establece credibilidad */}
+        <HallazgosSection />
+        {/* 4. ¿Cómo medimos? — explica las dimensiones ISO */}
         <DimensionsSection />
-        <RankingsSection />
+        {/* 5. ¿Cómo calificamos? — Bronze / Silver / Gold */}
         <MethodologySection />
+        {/* 6. ¿Quién salió cómo? — datos completos por dependencia */}
+        <RankingsSection />
       </main>
       <CreditsSection />
+      <ScrollToTopFAB />
     </LangProvider>
   );
 }

@@ -73,7 +73,7 @@ export function MethodologySection() {
         {/* Header */}
         <motion.div className="mb-16" {...fadeUp(0)}>
           <span className="text-[10px] font-mono tracking-[0.2em] text-gold uppercase opacity-80 mb-4 block">
-            {t("Sistema de calificación", "Grading system")} · Pipeline v3.0
+            {t("Cómo calificamos · Pipeline v3.0", "How we grade · Pipeline v3.0")}
           </span>
           <h2
             id="methodology-heading"
