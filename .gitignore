@@ -22,6 +22,8 @@ __pycache__/
 *.key
 secrets/
 firebase-adminsdk-*.json
+.firebaserc
+firebase.json
 
 # ─── IDE / OS ────────────────────────────────────────────
 .vscode/

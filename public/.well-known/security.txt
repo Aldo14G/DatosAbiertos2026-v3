@@ -1,0 +1,6 @@
+Contact: mailto:seguridad-datos@nl.gob.mx
+Expires: 2027-05-09T12:00:00.000Z
+Acknowledgments: https://catalogodatos.nl.gob.mx/security/hall-of-fame
+Preferred-Languages: es, en
+Policy: https://catalogodatos.nl.gob.mx/security-policy
+Canonical: https://datos-abiertos-nl-2026.web.app/.well-known/security.txt

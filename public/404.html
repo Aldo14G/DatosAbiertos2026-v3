@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>404 — Página no encontrada | DatosAbiertos NL 2026</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=DM+Sans:wght@400;500&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  <style>
+    :root {
+      --bg: #0f1c2e;
+      --fg: #faf6ee;
+      --fg-muted: #8a9bb0;
+      --teal: #3aa895;
+      --gold: #d4a24c;
+      --rose: #c66b7d;
+      --font-serif: 'Playfair Display', serif;
+      --font-sans: 'DM Sans', sans-serif;
+    }
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-sans);
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      text-align: center;
+      padding: 20px;
+      overflow: hidden;
+    }
+    .glow {
+      position: absolute;
+      width: 40vw;
+      height: 40vw;
+      background: radial-gradient(circle, rgba(58, 168, 149, 0.15) 0%, transparent 70%);
+      filter: blur(60px);
+      z-index: -1;
+    }
+    .content {
+      max-width: 500px;
+      animation: fadeIn 0.8s ease-out;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      font-family: var(--font-serif);
+      font-size: 8rem;
+      margin: 0;
+      color: var(--gold);
+      line-height: 1;
+      letter-spacing: -2px;
+    }
+    h2 {
+      font-size: 1.5rem;
+      margin: 10px 0 20px;
+      font-weight: 500;
+    }
+    p {
+      color: var(--fg-muted);
+      margin-bottom: 40px;
+      line-height: 1.6;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--teal);
+      color: white;
+      text-decoration: none;
+      padding: 14px 28px;
+      border-radius: 12px;
+      font-weight: 500;
+      transition: all 0.3s ease;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .btn:hover {
+      background: #2d8a7a;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    }
+  </style>
+</head>
+<body>
+  <div class="glow"></div>
+  <div class="content">
+    <i data-lucide="alert-circle" width="64" height="64" style="color: var(--rose); margin-bottom: 20px;"></i>
+    <h1>404</h1>
+    <h2>Parece que te has perdido</h2>
+    <p>La página que buscas no existe o ha sido movida como parte de nuestra reciente actualización de infraestructura 2026.</p>
+    <a href="index.html" class="btn">
+      <i data-lucide="arrow-left" width="18" height="18"></i>
+      Volver al inicio
+    </a>
+  </div>
+  <script>
+    lucide.createIcons();
+  </script>
+</body>
+</html>

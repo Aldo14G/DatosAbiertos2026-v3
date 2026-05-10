@@ -1,0 +1,1693 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-1YFTNW2YMH"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-1YFTNW2YMH');
+  </script>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DatosAbiertos NL 2026 — Transparencia en datos abiertos de Nuevo León</title>
+  <meta name="description" content="Auditoría automatizada de calidad de datos abiertos del portal catalogodatos.nl.gob.mx bajo norma ISO/IEC 25012:2008." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+
+  <style>
+    /* ── Design Tokens ──────────────────────────────────────────── */
+    :root {
+      --bg:           #f9f8f5;
+      --bg-alt:       #f0ede6;
+      --surface:      rgba(255, 255, 255, 0.76);
+      --surface-2:    rgba(255, 255, 255, 0.94);
+      --fg:           #0d1117;
+      --fg-muted:     #6b6660;
+      --teal:         #2a7a6f;
+      --teal-lt:      #3aa895;
+      --teal-dim:     rgba(42, 122, 111, 0.12);
+      --gold:         #c8973a;
+      --gold-lt:      #e4b96a;
+      --gold-dim:     rgba(200, 151, 58, 0.12);
+      --rose:         #b85c6e;
+      --rose-lt:      #d4738a;
+      --rose-dim:     rgba(184, 92, 110, 0.12);
+      --midnight:     #0f1c2e;
+      --navy:         #1a2d45;
+      --cream:        #faf6ee;
+      --border:       rgba(200, 151, 58, 0.24);
+      --border-2:     rgba(200, 151, 58, 0.10);
+      --glass-blur:   14px;
+      --radius-sm:    8px;
+      --radius-md:    14px;
+      --radius-lg:    22px;
+      --radius-xl:    32px;
+      --shadow-sm:    0 1px 4px rgba(13, 17, 23, 0.06);
+      --shadow-md:    0 4px 20px rgba(13, 17, 23, 0.10);
+      --shadow-lg:    0 12px 40px rgba(13, 17, 23, 0.16);
+      --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+      --dur-fast:     150ms;
+      --dur-base:     280ms;
+      --dur-slow:     450ms;
+      --font-serif:   'Playfair Display', Georgia, serif;
+      --font-sans:    'DM Sans', system-ui, sans-serif;
+      --font-mono:    'DM Mono', monospace;
+      --hero-end:     #0d2a2a;
+      --nav-h:        64px;
+    }
+
+    [data-theme="dark"] {
+      --bg:           #0f1c2e;
+      --bg-alt:       #1a2d45;
+      --surface:      rgba(15, 28, 46, 0.82);
+      --surface-2:    rgba(26, 45, 69, 0.94);
+      --fg:           #faf6ee;
+      --fg-muted:     #8a9bb0;
+      --teal:         #3aa895;
+      --teal-lt:      #5ecdb8;
+      --teal-dim:     rgba(58, 168, 149, 0.14);
+      --gold:         #d4a24c;
+      --gold-lt:      #e4b96a;
+      --gold-dim:     rgba(212, 162, 76, 0.14);
+      --rose:         #c66b7d;
+      --rose-lt:      #e088a0;
+      --rose-dim:     rgba(198, 107, 125, 0.14);
+      --midnight:     #0a1220;
+      --navy:         #0f1c2e;
+      --border:       rgba(212, 162, 76, 0.18);
+      --border-2:     rgba(212, 162, 76, 0.08);
+      --shadow-sm:    0 1px 4px rgba(0, 0, 0, 0.38);
+      --shadow-md:    0 4px 20px rgba(0, 0, 0, 0.48);
+      --shadow-lg:    0 12px 40px rgba(0, 0, 0, 0.58);
+    }
+
+    /* ── Reset ──────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+    }
+
+    body {
+      font-family: var(--font-sans);
+      background-color: var(--bg);
+      color: var(--fg);
+      line-height: 1.6;
+      overflow-x: hidden;
+      transition: background-color var(--dur-base) var(--ease-out),
+                  color var(--dur-base) var(--ease-out);
+    }
+
+    img { display: block; max-width: 100%; height: auto; }
+    a { color: inherit; text-decoration: none; }
+    button { border: none; background: none; cursor: pointer; font-family: inherit; }
+    ul { list-style: none; }
+
+    /* ── Typography ─────────────────────────────────────────────── */
+    h1, h2, h3, h4 { font-family: var(--font-serif); line-height: 1.2; }
+    h1 { font-size: clamp(2rem, 6vw, 4rem); font-weight: 700; }
+    h2 { font-size: clamp(1.5rem, 4vw, 2.5rem); font-weight: 700; }
+    h3 { font-size: clamp(1.05rem, 2.5vw, 1.35rem); font-weight: 600; }
+    p  { font-size: clamp(0.94rem, 2vw, 1.04rem); color: var(--fg-muted); }
+
+    /* ── Utilities ──────────────────────────────────────────────── */
+    .container { width: 100%; max-width: 1140px; margin: 0 auto; padding: 0 20px; }
+    .section    { padding: 88px 0; }
+    .section--sm{ padding: 52px 0; }
+
+    .glass {
+      background: var(--surface);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      border: 1px solid var(--border);
+    }
+
+    .tag {
+      display: inline-flex; align-items: center; gap: 6px;
+      font-family: var(--font-mono);
+      font-size: 0.69rem; font-weight: 500; letter-spacing: 0.13em;
+      text-transform: uppercase; padding: 4px 12px;
+      border-radius: 100px;
+      background: var(--teal-dim);
+      color: var(--teal);
+      border: 1px solid var(--border);
+    }
+    .tag--gold { background: var(--gold-dim); color: var(--gold); }
+    .tag--rose { background: var(--rose-dim); color: var(--rose); }
+
+    :focus-visible {
+      outline: 2px solid var(--teal);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ── Buttons ────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+      padding: 13px 26px; border-radius: var(--radius-md);
+      font-family: var(--font-sans); font-size: 0.94rem; font-weight: 600;
+      cursor: pointer;
+      transition: transform var(--dur-fast) var(--ease-out),
+                  box-shadow var(--dur-fast) var(--ease-out),
+                  background var(--dur-fast);
+      min-height: 48px; border: none;
+    }
+    .btn:active { transform: scale(0.96); }
+
+    .btn--primary {
+      background: var(--teal);
+      color: var(--cream);
+      box-shadow: 0 4px 16px var(--teal-dim);
+    }
+    .btn--primary:hover {
+      background: var(--teal-lt);
+      box-shadow: 0 6px 24px var(--teal-dim);
+      transform: translateY(-1px);
+    }
+
+    .btn--outline {
+      background: transparent;
+      color: var(--fg);
+      border: 1.5px solid var(--border);
+    }
+    .btn--outline:hover {
+      background: var(--surface-2);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+
+    /* Hero dark-bg outline variant */
+    .btn--hero-outline {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid rgba(250, 246, 238, 0.32);
+    }
+    .btn--hero-outline:hover {
+      background: rgba(250, 246, 238, 0.08);
+      border-color: var(--cream);
+    }
+
+    /* CTA section buttons */
+    .btn--cream {
+      background: var(--cream);
+      color: var(--midnight);
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.22);
+    }
+    .btn--cream:hover {
+      background: var(--bg);
+      box-shadow: 0 6px 24px rgba(0, 0, 0, 0.32);
+      transform: translateY(-1px);
+    }
+
+    .btn--outline-light {
+      background: transparent;
+      color: var(--cream);
+      border: 1.5px solid rgba(250, 246, 238, 0.36);
+    }
+    .btn--outline-light:hover {
+      background: rgba(250, 246, 238, 0.10);
+      border-color: var(--cream);
+    }
+
+    .btn--sm { padding: 9px 18px; font-size: 0.875rem; min-height: 40px; }
+    .btn--icon { padding: 12px; border-radius: 50%; width: 48px; height: 48px; }
+
+    /* ── Navbar ─────────────────────────────────────────────────── */
+    .navbar {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      height: var(--nav-h);
+      transition: background var(--dur-base) var(--ease-out),
+                  box-shadow var(--dur-base) var(--ease-out);
+    }
+    .navbar.scrolled {
+      background: var(--surface-2);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      box-shadow: var(--shadow-sm);
+      border-bottom: 1px solid var(--border-2);
+    }
+    .navbar__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 100%; padding: 0 20px;
+      max-width: 1140px; margin: 0 auto;
+    }
+    .navbar__logo {
+      display: flex; flex-direction: column; gap: 1px; line-height: 1;
+    }
+    .navbar__logo-sub {
+      font-family: var(--font-mono);
+      font-size: 0.62rem; letter-spacing: 0.16em;
+      text-transform: uppercase; color: var(--fg-muted);
+    }
+    .navbar__logo-name {
+      font-family: var(--font-serif);
+      font-size: 1rem; font-weight: 700; color: var(--fg);
+    }
+    .navbar__links { display: flex; align-items: center; gap: 4px; }
+    .navbar__link {
+      padding: 8px 14px; border-radius: var(--radius-sm);
+      font-size: 0.875rem; font-weight: 500; color: var(--fg-muted);
+      transition: color var(--dur-fast), background var(--dur-fast);
+      min-height: 44px; display: flex; align-items: center;
+    }
+    .navbar__link:hover { color: var(--fg); background: var(--surface); }
+    .navbar__actions { display: flex; align-items: center; gap: 8px; }
+    .navbar__hamburger { display: none; }
+
+    @media (max-width: 768px) {
+      .navbar__links { display: none; }
+      .navbar__hamburger { display: flex; }
+      .navbar__links.open {
+        display: flex; flex-direction: column; align-items: stretch;
+        position: absolute; top: var(--nav-h); left: 0; right: 0;
+        background: var(--surface-2);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-bottom: 1px solid var(--border);
+        padding: 12px; gap: 4px;
+      }
+    }
+
+    /* ── Theme Toggle ───────────────────────────────────────────── */
+    .theme-toggle {
+      width: 44px; height: 44px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      background: var(--surface); border: 1px solid var(--border);
+      color: var(--fg-muted);
+      transition: background var(--dur-fast), color var(--dur-fast);
+    }
+    .theme-toggle:hover { background: var(--bg-alt); color: var(--fg); }
+
+    /* ── Hero ───────────────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      min-height: 100dvh;
+      display: flex; align-items: center;
+      overflow: hidden;
+    }
+    .hero__bg {
+      position: absolute; inset: 0; z-index: 0;
+      background: linear-gradient(135deg,
+        var(--midnight) 0%,
+        var(--navy) 55%,
+        var(--hero-end) 100%);
+    }
+    .hero__grid {
+      position: absolute; inset: 0; z-index: 1;
+      background-image:
+        linear-gradient(rgba(58, 168, 149, 0.055) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(58, 168, 149, 0.055) 1px, transparent 1px);
+      background-size: 64px 64px;
+    }
+    .hero__glow-a {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(
+        ellipse 65% 45% at 68% 38%,
+        rgba(58, 168, 149, 0.20) 0%,
+        transparent 68%);
+    }
+    .hero__glow-b {
+      position: absolute; inset: 0; z-index: 1;
+      background: radial-gradient(
+        ellipse 42% 32% at 18% 72%,
+        rgba(212, 162, 76, 0.13) 0%,
+        transparent 65%);
+    }
+    .hero__content {
+      position: relative; z-index: 2;
+      width: 100%;
+      padding-top: calc(var(--nav-h) + 52px);
+      padding-bottom: 72px;
+      padding-left: 20px; padding-right: 20px;
+      max-width: 1140px; margin: 0 auto;
+    }
+    .hero__badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: rgba(58, 168, 149, 0.14);
+      backdrop-filter: blur(8px);
+      border: 1px solid rgba(58, 168, 149, 0.28);
+      color: var(--teal-lt); padding: 6px 14px;
+      border-radius: 100px;
+      font-family: var(--font-mono);
+      font-size: 0.70rem; font-weight: 500;
+      letter-spacing: 0.11em; text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+    .hero__title {
+      font-family: var(--font-serif);
+      font-size: clamp(2.4rem, 7vw, 4.6rem);
+      color: var(--cream);
+      margin-bottom: 18px;
+      max-width: 760px;
+      line-height: 1.14;
+    }
+    .hero__title em { font-style: italic; color: var(--teal-lt); }
+    .hero__subtitle {
+      font-size: clamp(1rem, 2.5vw, 1.15rem);
+      color: rgba(250, 246, 238, 0.70);
+      max-width: 500px;
+      margin-bottom: 36px;
+      line-height: 1.72;
+    }
+    .hero__ctas { display: flex; gap: 12px; flex-wrap: wrap; }
+    .hero__stats {
+      display: flex; gap: 12px; margin-top: 64px; flex-wrap: wrap;
+    }
+    .hero__stat {
+      background: rgba(255, 255, 255, 0.07);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: var(--radius-md);
+      padding: 14px 20px;
+      display: flex; flex-direction: column;
+      min-width: 112px;
+    }
+    .hero__stat-value {
+      font-family: var(--font-mono);
+      font-size: 1.6rem; color: var(--cream);
+      line-height: 1; font-weight: 700;
+    }
+    .hero__stat-value--gold { color: var(--gold-lt); }
+    .hero__stat-label {
+      font-size: 0.68rem; color: rgba(250, 246, 238, 0.52);
+      text-transform: uppercase; letter-spacing: 0.09em;
+      margin-top: 5px; font-family: var(--font-mono);
+    }
+    .hero__scroll {
+      position: absolute; bottom: 28px; left: 50%;
+      transform: translateX(-50%); z-index: 2;
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      animation: bounce 2.2s ease-in-out infinite;
+    }
+    .hero__scroll span {
+      font-family: var(--font-mono);
+      font-size: 0.63rem; color: rgba(250, 246, 238, 0.38);
+      text-transform: uppercase; letter-spacing: 0.13em;
+    }
+    @keyframes bounce {
+      0%, 100% { transform: translateX(-50%) translateY(0); }
+      50%       { transform: translateX(-50%) translateY(7px); }
+    }
+
+    /* ── Section Header ─────────────────────────────────────────── */
+    .section-header { text-align: center; margin-bottom: 56px; }
+    .section-header .tag { margin-bottom: 16px; }
+    .section-header h2 { margin-bottom: 12px; }
+    .section-header p { max-width: 540px; margin: 0 auto; }
+
+    /* ── Stats Bar ──────────────────────────────────────────────── */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+    }
+    .stat-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius-md);
+      padding: 28px 24px; text-align: center;
+      transition: transform var(--dur-fast) var(--ease-out),
+                  box-shadow var(--dur-fast) var(--ease-out);
+    }
+    .stat-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .stat-card__icon {
+      width: 44px; height: 44px;
+      background: var(--teal-dim);
+      border-radius: 50%; margin: 0 auto 14px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal);
+    }
+    .stat-card__icon--gold { background: var(--gold-dim); color: var(--gold); }
+    .stat-card__icon--rose { background: var(--rose-dim); color: var(--rose); }
+    .stat-card__value {
+      font-family: var(--font-mono);
+      font-size: 2rem; font-weight: 700;
+      color: var(--fg); line-height: 1;
+    }
+    .stat-card__label {
+      font-size: 0.75rem; color: var(--fg-muted);
+      margin-top: 6px; text-transform: uppercase;
+      letter-spacing: 0.07em; font-family: var(--font-mono);
+    }
+
+    /* ── Divider ────────────────────────────────────────────────── */
+    .divider {
+      height: 1px; background: var(--border-2);
+      margin: 0 auto; max-width: 560px;
+    }
+
+    /* ── Dimensions ─────────────────────────────────────────────── */
+    .dim-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 20px;
+    }
+    .dim-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius-md);
+      padding: 24px;
+      transition: transform var(--dur-fast) var(--ease-out),
+                  box-shadow var(--dur-fast) var(--ease-out),
+                  border-color var(--dur-fast);
+    }
+    .dim-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--border);
+    }
+    .dim-card__header {
+      display: flex; align-items: flex-start;
+      justify-content: space-between; margin-bottom: 14px;
+    }
+    .dim-card__icon-wrap {
+      width: 44px; height: 44px; border-radius: var(--radius-sm);
+      background: var(--teal-dim);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); flex-shrink: 0;
+    }
+    .dim-card__weight {
+      font-family: var(--font-mono);
+      font-size: 1.45rem; font-weight: 700;
+      color: var(--gold); line-height: 1;
+    }
+    .dim-card__weight span {
+      font-size: 0.72rem; color: var(--fg-muted); font-weight: 400;
+    }
+    .dim-card h3 { margin-bottom: 8px; font-size: 1.08rem; }
+    .dim-card p  { font-size: 0.875rem; line-height: 1.62; }
+    .dim-bar {
+      margin-top: 16px; height: 4px;
+      background: var(--bg-alt);
+      border-radius: 100px; overflow: hidden;
+    }
+    .dim-bar__fill {
+      height: 100%; border-radius: 100px;
+      background: var(--teal);
+      transition: width 0.8s var(--ease-out);
+    }
+
+    /* Weight summary row */
+    .weight-summary {
+      margin-top: 32px; padding: 20px 24px;
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius-md);
+      display: flex; align-items: center;
+      flex-wrap: wrap; gap: 16px;
+    }
+    .weight-summary__label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem; text-transform: uppercase;
+      letter-spacing: 0.12em; color: var(--fg-muted);
+      white-space: nowrap;
+    }
+    .weight-summary__bar {
+      flex: 1; min-width: 240px; height: 8px;
+      background: var(--bg-alt); border-radius: 100px;
+      overflow: hidden; display: flex;
+    }
+    .wseg { height: 100%; }
+    .wseg--teal  { background: var(--teal); }
+    .wseg--gold  { background: var(--gold); }
+    .wseg--rose  { background: var(--rose); }
+    .wseg--navy  { background: var(--navy); }
+    .wseg--muted { background: var(--fg-muted); }
+    .weight-legend {
+      display: flex; flex-wrap: wrap; gap: 10px;
+      font-size: 0.72rem;
+      font-family: var(--font-mono); color: var(--fg-muted);
+    }
+    .wleg-item { display: flex; align-items: center; gap: 5px; }
+    .wleg-dot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+    }
+
+    /* ── Gallery / Dashboard Screenshots ────────────────────────── */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-template-rows: 210px 210px;
+      gap: 14px;
+    }
+    .gallery-grid .gallery-item:first-child { grid-row: span 2; }
+    .gallery-item {
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      position: relative;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 10px;
+      transition: transform var(--dur-base) var(--ease-out),
+                  box-shadow var(--dur-base) var(--ease-out);
+      cursor: default;
+    }
+    .gallery-item:hover {
+      transform: scale(1.025);
+      box-shadow: var(--shadow-md);
+    }
+    .gallery-item__icon { color: var(--teal); opacity: 0.55; }
+    .gallery-item__label {
+      font-family: var(--font-mono);
+      font-size: 0.68rem; letter-spacing: 0.11em;
+      text-transform: uppercase; color: var(--fg-muted);
+    }
+    .gallery-item img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%; object-fit: cover;
+      transition: transform var(--dur-slow) var(--ease-out);
+    }
+    .gallery-item:hover img { transform: scale(1.05); }
+
+    @media (max-width: 640px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 160px 160px 160px;
+      }
+      .gallery-grid .gallery-item:first-child { grid-row: span 1; }
+    }
+
+    /* ── Methodology ────────────────────────────────────────────── */
+    .methodology-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px; align-items: start;
+    }
+    @media (max-width: 768px) {
+      .methodology-grid { grid-template-columns: 1fr; }
+    }
+
+    .method-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius-lg);
+      padding: 32px;
+    }
+    .method-card h3 { margin-bottom: 20px; font-size: 1.15rem; }
+
+    .method-link {
+      display: flex; align-items: center; gap: 14px;
+      padding: 14px 16px; border-radius: var(--radius-sm);
+      background: var(--teal-dim);
+      border: 1px solid var(--border-2);
+      font-size: 0.9rem; font-weight: 500; color: var(--fg);
+      transition: background var(--dur-fast), border-color var(--dur-fast),
+                  color var(--dur-fast);
+      min-height: 56px; margin-bottom: 10px;
+    }
+    .method-link:hover {
+      background: var(--bg-alt);
+      border-color: var(--teal);
+      color: var(--teal);
+    }
+    .method-link__icon { color: var(--teal); flex-shrink: 0; }
+    .method-link__ext { margin-left: auto; opacity: 0.55; flex-shrink: 0; }
+    .method-link--gold { background: var(--gold-dim); }
+    .method-link--gold:hover { border-color: var(--gold); color: var(--gold); }
+    .method-link--gold .method-link__icon { color: var(--gold); }
+
+    .score-table { width: 100%; border-collapse: collapse; margin-top: 16px; }
+    .score-table th, .score-table td {
+      text-align: left; padding: 10px 14px;
+      font-size: 0.85rem; border-bottom: 1px solid var(--border-2);
+    }
+    .score-table th {
+      font-family: var(--font-mono); font-size: 0.70rem;
+      letter-spacing: 0.09em; text-transform: uppercase; color: var(--fg-muted);
+    }
+    .score-table td { color: var(--fg); }
+    .grade-gold   { color: var(--gold); font-weight: 700; }
+    .grade-silver { color: var(--fg-muted); font-weight: 600; }
+    .grade-bronze { color: var(--rose); font-weight: 600; }
+    .method-note  { margin-top: 16px; font-size: 0.82rem; }
+
+    /* ── Hallazgos ──────────────────────────────────────────────── */
+    .hallazgos-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .hallazgo-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-2);
+      border-radius: var(--radius-md);
+      padding: 28px;
+      transition: transform var(--dur-fast), box-shadow var(--dur-fast);
+    }
+    .hallazgo-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
+    .hallazgo-card__icon {
+      width: 44px; height: 44px;
+      background: var(--teal-dim);
+      border-radius: var(--radius-sm);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--teal); margin-bottom: 16px;
+    }
+    .hallazgo-card__icon--gold { background: var(--gold-dim); color: var(--gold); }
+    .hallazgo-card__icon--rose { background: var(--rose-dim); color: var(--rose); }
+    .hallazgo-card__stat {
+      font-family: var(--font-mono);
+      font-size: 2.1rem; font-weight: 700; color: var(--fg);
+      margin-bottom: 4px; line-height: 1;
+    }
+    .hallazgo-card__stat--teal { color: var(--teal); }
+    .hallazgo-card__stat--gold { color: var(--gold); }
+    .hallazgo-card__stat--rose { color: var(--rose); }
+    .hallazgo-card h3 { font-size: 1rem; margin-bottom: 8px; }
+    .hallazgo-card p  { font-size: 0.875rem; }
+
+    /* ── CTA Section ────────────────────────────────────────────── */
+    .cta-section {
+      border-radius: var(--radius-xl);
+      padding: 72px 48px; text-align: center;
+      position: relative; overflow: hidden;
+      background: linear-gradient(135deg, var(--midnight) 0%, var(--navy) 100%);
+    }
+    .cta-section__glow-a {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(
+        ellipse 60% 80% at 28% 50%,
+        rgba(58, 168, 149, 0.20) 0%,
+        transparent 65%);
+    }
+    .cta-section__glow-b {
+      position: absolute; inset: 0; pointer-events: none;
+      background: radial-gradient(
+        ellipse 40% 60% at 76% 60%,
+        rgba(212, 162, 76, 0.12) 0%,
+        transparent 62%);
+    }
+    .cta-section__content { position: relative; z-index: 1; }
+    .cta-section h2 { color: var(--cream); }
+    .cta-section p  {
+      color: rgba(250, 246, 238, 0.68);
+      max-width: 460px; margin: 14px auto 36px;
+    }
+    .cta-btns {
+      display: flex; gap: 14px;
+      justify-content: center; flex-wrap: wrap;
+    }
+
+    /* ── Scroll-to-top FAB ──────────────────────────────────────── */
+    .fab-top {
+      position: fixed; bottom: 24px; right: 24px; z-index: 90;
+      width: 52px; height: 52px; border-radius: 50%;
+      background: var(--teal);
+      box-shadow: 0 4px 20px var(--teal-dim);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--cream);
+      transition: transform var(--dur-fast) var(--ease-out),
+                  box-shadow var(--dur-fast) var(--ease-out),
+                  opacity var(--dur-fast);
+      opacity: 0; pointer-events: none;
+    }
+    .fab-top.visible { opacity: 1; pointer-events: auto; }
+    .fab-top:hover { transform: scale(1.09); box-shadow: 0 6px 28px var(--teal-dim); }
+    .fab-top:active { transform: scale(0.96); }
+
+    /* ── Footer ─────────────────────────────────────────────────── */
+    .footer { border-top: 1px solid var(--border-2); padding: 44px 0 28px; }
+    .footer__inner {
+      display: flex; align-items: center; justify-content: space-between;
+      flex-wrap: wrap; gap: 20px;
+    }
+    .footer__brand { font-family: var(--font-serif); font-size: 1rem; }
+    .footer__links { display: flex; gap: 20px; flex-wrap: wrap; }
+    .footer__link {
+      font-size: 0.85rem; color: var(--fg-muted);
+      transition: color var(--dur-fast);
+    }
+    .footer__link:hover { color: var(--fg); }
+    .footer__copy {
+      font-size: 0.72rem; color: var(--fg-muted);
+      text-align: center; margin-top: 28px;
+      font-family: var(--font-mono);
+    }
+
+    /* ── Scroll Reveal ──────────────────────────────────────────── */
+    .reveal {
+      opacity: 0; transform: translateY(22px);
+      transition: opacity var(--dur-slow) var(--ease-out),
+                  transform var(--dur-slow) var(--ease-out);
+    }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .reveal-d1 { transition-delay: 80ms; }
+    .reveal-d2 { transition-delay: 160ms; }
+    .reveal-d3 { transition-delay: 240ms; }
+
+    /* ── Skip link ──────────────────────────────────────────────── */
+    .skip-link {
+      position: absolute; top: -40px; left: 10px;
+      background: var(--teal); color: var(--cream);
+      padding: 8px 16px; border-radius: var(--radius-sm); z-index: 999;
+      font-size: 0.9rem; transition: top 0.2s;
+    }
+    .skip-link:focus { top: 10px; }
+
+    /* ── Rankings ───────────────────────────────────────────────── */
+    .rank-filters {
+      display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+    }
+    .rank-filter {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 18px; border-radius: 100px;
+      font-size: 0.85rem; font-weight: 600;
+      border: 1.5px solid var(--border-2); color: var(--fg-muted);
+      background: transparent; cursor: pointer;
+      transition: all var(--dur-fast) var(--ease-out); min-height: 40px;
+    }
+    .rank-filter:hover { border-color: var(--border); color: var(--fg); }
+    .rank-filter.active { background: var(--fg); color: var(--bg); border-color: var(--fg); }
+    .rank-filter-count {
+      font-family: var(--font-mono); font-size: 0.72rem; opacity: 0.62;
+    }
+    .rank-meta {
+      font-family: var(--font-mono); font-size: 0.72rem;
+      color: var(--fg-muted); margin-bottom: 14px; text-align: right;
+    }
+
+    /* desktop table */
+    .rank-table-wrap {
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border-2); overflow: hidden;
+    }
+    .rank-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .rank-table thead tr { background: var(--bg-alt); border-bottom: 1px solid var(--border-2); }
+    .rank-table th {
+      padding: 10px 16px; font-family: var(--font-mono); font-size: 0.67rem;
+      font-weight: 500; letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg-muted); text-align: left; white-space: nowrap;
+    }
+    .rank-table th.sortable { cursor: pointer; user-select: none; }
+    .rank-table th.sortable:hover { color: var(--fg); }
+    .rank-table th.sort-active { color: var(--fg); }
+    .rank-table th .si { margin-left: 4px; opacity: 0.45; font-size: 0.75rem; }
+    .rank-table th.sort-active .si { opacity: 1; }
+    .rank-table tbody tr { border-bottom: 1px solid var(--border-2); transition: background var(--dur-fast); }
+    .rank-table tbody tr:last-child { border-bottom: none; }
+    .rank-table tbody tr:hover { background: var(--bg-alt); }
+    .rank-table td { padding: 10px 16px; color: var(--fg); }
+    .rn  { font-family: var(--font-mono); font-size: 0.72rem; color: var(--fg-muted); width: 38px; }
+    .rname { max-width: 360px; font-weight: 500; line-height: 1.38; }
+    .rscore { font-family: var(--font-mono); font-weight: 700; text-align: right; white-space: nowrap; }
+    .rds { font-family: var(--font-mono); font-size: 0.8rem; color: var(--fg-muted); text-align: right; }
+    .rgrade { text-align: center; }
+
+    .gb {
+      display: inline-flex; align-items: center; gap: 4px;
+      padding: 3px 10px; border-radius: 100px;
+      font-family: var(--font-mono); font-size: 0.68rem; font-weight: 600;
+    }
+    .gb-oro    { background: var(--gold-dim); color: var(--gold); }
+    .gb-plata  { background: rgba(155,169,180,0.12); color: var(--fg-muted); }
+    .gb-bronce { background: var(--rose-dim); color: var(--rose); }
+
+    /* mobile cards */
+    .rank-cards { display: flex; flex-direction: column; gap: 8px; }
+    .rcard {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px 16px;
+      background: var(--surface-2); border: 1px solid var(--border-2);
+      border-radius: var(--radius-sm);
+    }
+    .rcard-num { font-family: var(--font-mono); font-size: 0.7rem; color: var(--fg-muted); width: 22px; flex-shrink: 0; }
+    .rcard-info { flex: 1; min-width: 0; }
+    .rcard-name { font-size: 0.875rem; font-weight: 500; color: var(--fg); line-height: 1.4; }
+    .rcard-meta { font-family: var(--font-mono); font-size: 0.7rem; color: var(--fg-muted); margin-top: 3px; }
+    .rcard-right { display: flex; flex-direction: column; align-items: flex-end; gap: 5px; flex-shrink: 0; }
+    .rcard-score { font-family: var(--font-mono); font-size: 1rem; font-weight: 700; }
+
+    @media (min-width: 640px) { .rank-cards { display: none; } }
+    @media (max-width: 639px) { .rank-table-wrap { display: none; } }
+
+    /* ── Small-screen adjustments ───────────────────────────────── */
+    @media (max-width: 480px) {
+      .cta-section { padding: 48px 24px; }
+      .method-card { padding: 24px; }
+      .hero__stats { gap: 8px; }
+      .hero__stat { padding: 12px 16px; min-width: 96px; }
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip-link" href="#main">Ir al contenido principal</a>
+
+  <!-- ── NAVBAR ──────────────────────────────────────────────── -->
+  <nav class="navbar" id="navbar" aria-label="Navegación principal">
+    <div class="navbar__inner">
+
+      <a href="#hero" class="navbar__logo"
+         aria-label="DatosAbiertos NL 2026 — inicio">
+        <span class="navbar__logo-sub" aria-hidden="true">LABNL · ISO/IEC 25012</span>
+        <span class="navbar__logo-name">DatosAbiertos NL 2026</span>
+      </a>
+
+      <ul class="navbar__links" id="nav-links" role="list">
+        <li><a href="#dimensiones" class="navbar__link">Dimensiones</a></li>
+        <li><a href="dashboard.html"    class="navbar__link">Dashboard</a></li>
+        <li><a href="#metodologia" class="navbar__link">Metodología</a></li>
+        <li><a href="#hallazgos"   class="navbar__link">Hallazgos</a></li>
+        <li><a href="#rankings"    class="navbar__link">Dependencias</a></li>
+      </ul>
+
+      <div class="navbar__actions">
+        <button class="theme-toggle" id="theme-toggle"
+                aria-label="Cambiar tema claro/oscuro">
+          <i data-lucide="sun"  width="18" height="18" id="icon-sun"  aria-hidden="true"></i>
+          <i data-lucide="moon" width="18" height="18" id="icon-moon" aria-hidden="true" style="display:none"></i>
+        </button>
+
+        <a href="dashboard.html" class="btn btn--primary btn--sm">
+          <i data-lucide="bar-chart-2" width="15" height="15" aria-hidden="true"></i>
+          Ver dashboard
+        </a>
+
+        <button class="btn btn--icon btn--outline navbar__hamburger"
+                id="hamburger" aria-label="Abrir menú" aria-expanded="false">
+          <i data-lucide="menu" width="20" height="20" id="icon-menu"  aria-hidden="true"></i>
+          <i data-lucide="x"    width="20" height="20" id="icon-close" aria-hidden="true" style="display:none"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ── MAIN ────────────────────────────────────────────────── -->
+  <main id="main">
+
+    <!-- HERO ─────────────────────────────────────────────────────── -->
+    <section class="hero" id="hero" aria-labelledby="hero-heading">
+      <div class="hero__bg"    aria-hidden="true"></div>
+      <div class="hero__grid"  aria-hidden="true"></div>
+      <div class="hero__glow-a" aria-hidden="true"></div>
+      <div class="hero__glow-b" aria-hidden="true"></div>
+
+      <div class="hero__content">
+        <div class="hero__badge">
+          <i data-lucide="shield-check" width="13" height="13" aria-hidden="true"></i>
+          ISO/IEC 25012 · Evaluación 2026-04-23
+        </div>
+
+        <h1 class="hero__title" id="hero-heading">
+          Transparencia en <em>datos abiertos</em><br>de Nuevo León
+        </h1>
+
+        <p class="hero__subtitle">
+          Auditoría automatizada de calidad sobre
+          catalogodatos.nl.gob.mx. Siete dimensiones normativas,
+          290 datasets evaluados, resultados completamente trazables.
+        </p>
+
+        <div class="hero__ctas">
+          <a href="dashboard.html" class="btn btn--primary">
+            <i data-lucide="bar-chart-2" width="18" height="18" aria-hidden="true"></i>
+            Explorar dashboard
+          </a>
+          <a href="https://github.com/Aldo14G/DatosAbiertos2026-v3"
+             target="_blank" rel="noopener noreferrer"
+             class="btn btn--hero-outline">
+            <i data-lucide="github" width="18" height="18" aria-hidden="true"></i>
+            Ver código
+          </a>
+        </div>
+
+        <div class="hero__stats" aria-label="Estadísticas del portal">
+          <div class="hero__stat">
+            <span class="hero__stat-value">290</span>
+            <span class="hero__stat-label">Datasets</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value hero__stat-value--gold">88.8</span>
+            <span class="hero__stat-label">Score promedio</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">65</span>
+            <span class="hero__stat-label">Organizaciones</span>
+          </div>
+          <div class="hero__stat">
+            <span class="hero__stat-value">65%</span>
+            <span class="hero__stat-label">Calidad Oro</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>Scroll</span>
+        <i data-lucide="chevron-down" width="16" height="16"></i>
+      </div>
+    </section>
+
+    <!-- STATS BAR ───────────────────────────────────────────────── -->
+    <section class="section--sm" aria-label="Indicadores clave del portal">
+      <div class="container">
+        <div class="stats-grid reveal">
+
+          <div class="stat-card reveal-d1">
+            <div class="stat-card__icon" aria-hidden="true">
+              <i data-lucide="database" width="20" height="20"></i>
+            </div>
+            <div class="stat-card__value">290</div>
+            <div class="stat-card__label">Datasets analizados</div>
+          </div>
+
+          <div class="stat-card reveal-d2">
+            <div class="stat-card__icon stat-card__icon--gold" aria-hidden="true">
+              <i data-lucide="award" width="20" height="20"></i>
+            </div>
+            <div class="stat-card__value">88.8</div>
+            <div class="stat-card__label">Score promedio / 100</div>
+          </div>
+
+          <div class="stat-card reveal-d3">
+            <div class="stat-card__icon" aria-hidden="true">
+              <i data-lucide="building-2" width="20" height="20"></i>
+            </div>
+            <div class="stat-card__value">65</div>
+            <div class="stat-card__label">Organizaciones</div>
+          </div>
+
+          <div class="stat-card reveal-d3">
+            <div class="stat-card__icon stat-card__icon--rose" aria-hidden="true">
+              <i data-lucide="calendar-clock" width="20" height="20"></i>
+            </div>
+            <div class="stat-card__value">Abr 23</div>
+            <div class="stat-card__label">Última evaluación 2026</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- DIMENSIONES ISO 25012 ────────────────────────────────────── -->
+    <section class="section" id="dimensiones" aria-labelledby="dim-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="tag">ISO/IEC 25012:2008</div>
+          <h2 id="dim-heading">Siete dimensiones de calidad</h2>
+          <p>
+            Cada dataset del portal se mide en siete atributos normativos.
+            El score global es la media ponderada con los pesos definidos
+            por criticidad operativa para datos gubernamentales.
+          </p>
+        </div>
+
+        <div class="dim-grid reveal">
+
+          <!-- 1 · Completitud 30% -->
+          <article class="dim-card reveal-d1">
+            <div class="dim-card__header">
+              <div class="dim-card__icon-wrap" aria-hidden="true">
+                <i data-lucide="check-square" width="20" height="20"></i>
+              </div>
+              <div class="dim-card__weight">30<span>%</span></div>
+            </div>
+            <h3>Completitud</h3>
+            <p>Proporción de celdas con valor respecto al total esperado. Penaliza filas y columnas vacías de forma ponderada.</p>
+            <div class="dim-bar"
+                 role="progressbar"
+                 aria-valuenow="30" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Peso de completitud: 30%">
+              <div class="dim-bar__fill" style="width:30%"></div>
+            </div>
+          </article>
+
+          <!-- 2 · Exactitud 25% -->
+          <article class="dim-card reveal-d2">
+            <div class="dim-card__header">
+              <div class="dim-card__icon-wrap" aria-hidden="true">
+                <i data-lucide="crosshair" width="20" height="20"></i>
+              </div>
+              <div class="dim-card__weight">25<span>%</span></div>
+            </div>
+            <h3>Exactitud</h3>
+            <p>Valores del tipo correcto y dentro de rangos válidos. Detecta errores de formato, incoherencias numéricas y outliers.</p>
+            <div class="dim-bar"
+                 role="progressbar"
+                 aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Peso de exactitud: 25%">
+              <div class="dim-bar__fill" style="width:25%"></div>
+            </div>
+          </article>
+
+          <!-- 3 · Consistencia 15% -->
+          <article class="dim-card reveal-d3">
+            <div class="dim-card__header">
+              <div class="dim-card__icon-wrap" aria-hidden="true">
+                <i data-lucide="layers" width="20" height="20"></i>
+              </div>
+              <div class="dim-card__weight">15<span>%</span></div>
+            </div>
+            <h3>Consistencia</h3>
+            <p>Coherencia interna entre columnas relacionadas. Identifica contradicciones lógicas y relaciones inválidas entre campos.</p>
+            <div class="dim-bar"
+                 role="progressbar"
+                 aria-valuenow="15" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Peso de consistencia: 15%">
+              <div class="dim-bar__fill" style="width:15%"></div>
+            </div>
+          </article>
+
+          <!-- 4 · Documentación 10% -->
+          <article class="dim-card">
+            <div class="dim-card__header">
+              <div class="dim-card__icon-wrap" aria-hidden="true">
+                <i data-lucide="file-text" width="20" height="20"></i>
+              </div>
+              <div class="dim-card__weight">10<span>%</span></div>
+            </div>
+            <h3>Documentación</h3>
+            <p>Metadatos presentes y descriptivos: título, descripción, licencia, organización publicadora y fecha de actualización.</p>
+            <div class="dim-bar"
+                 role="progressbar"
+                 aria-valuenow="10" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Peso de documentación: 10%">
+              <div class="dim-bar__fill" style="width:10%"></div>
+            </div>
+          </article>
+
+          <!-- 5 · Unicidad 8% -->
+          <article class="dim-card">
+            <div class="dim-card__header">
+              <div class="dim-card__icon-wrap" aria-hidden="true">
+                <i data-lucide="fingerprint" width="20" height="20"></i>
+              </div>
+              <div class="dim-card__weight">8<span>%</span></div>
+            </div>
+            <h3>Unicidad</h3>
+            <p>Ausencia de registros duplicados. Mide la proporción de filas únicas e identifica redundancias en el conjunto.</p>
+            <div class="dim-bar"
+                 role="progressbar"
+                 aria-valuenow="8" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Peso de unicidad: 8%">
+              <div class="dim-bar__fill" style="width:8%"></div>
+            </div>
+          </article>
+
+          <!-- 6 · Apertura 7% -->
+          <article class="dim-card">
+            <div class="dim-card__header">
+              <div class="dim-card__icon-wrap" aria-hidden="true">
+                <i data-lucide="unlock" width="20" height="20"></i>
+              </div>
+              <div class="dim-card__weight">7<span>%</span></div>
+            </div>
+            <h3>Apertura</h3>
+            <p>Licencia abierta compatible con reutilización, formatos legibles por máquina y acceso a través de API pública CKAN.</p>
+            <div class="dim-bar"
+                 role="progressbar"
+                 aria-valuenow="7" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Peso de apertura: 7%">
+              <div class="dim-bar__fill" style="width:7%"></div>
+            </div>
+          </article>
+
+          <!-- 7 · Actualidad 5% -->
+          <article class="dim-card">
+            <div class="dim-card__header">
+              <div class="dim-card__icon-wrap" aria-hidden="true">
+                <i data-lucide="clock" width="20" height="20"></i>
+              </div>
+              <div class="dim-card__weight">5<span>%</span></div>
+            </div>
+            <h3>Actualidad</h3>
+            <p>Días transcurridos desde la última actualización del recurso. Penaliza datasets con más de 90 días sin publicar.</p>
+            <div class="dim-bar"
+                 role="progressbar"
+                 aria-valuenow="5" aria-valuemin="0" aria-valuemax="100"
+                 aria-label="Peso de actualidad: 5%">
+              <div class="dim-bar__fill" style="width:5%"></div>
+            </div>
+          </article>
+
+        </div>
+
+        <!-- Weight summary bar -->
+        <div class="weight-summary reveal">
+          <span class="weight-summary__label">Distribución</span>
+          <div class="weight-summary__bar"
+               aria-label="Completitud 30%, Exactitud 25%, Consistencia 15%, Documentación 10%, Unicidad+Apertura+Actualidad 20%">
+            <div class="wseg wseg--teal" style="width:30%" title="Completitud 30%"></div>
+            <div class="wseg wseg--gold" style="width:25%" title="Exactitud 25%"></div>
+            <div class="wseg wseg--rose" style="width:15%" title="Consistencia 15%"></div>
+            <div class="wseg wseg--navy" style="width:10%" title="Documentación 10%"></div>
+            <div class="wseg wseg--muted" style="width:20%" title="Unicidad 8% + Apertura 7% + Actualidad 5%"></div>
+          </div>
+          <div class="weight-legend" aria-hidden="true">
+            <span class="wleg-item"><span class="wleg-dot wseg--teal"></span>Completitud 30%</span>
+            <span class="wleg-item"><span class="wleg-dot wseg--gold"></span>Exactitud 25%</span>
+            <span class="wleg-item"><span class="wleg-dot wseg--rose"></span>Consistencia 15%</span>
+            <span class="wleg-item"><span class="wleg-dot wseg--navy"></span>Documentación 10%</span>
+            <span class="wleg-item"><span class="wleg-dot wseg--muted"></span>Resto 20%</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+
+
+    <!-- METODOLOGÍA & FUENTES ───────────────────────────────────── -->
+    <section class="section" id="metodologia" aria-labelledby="method-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="tag">Fuente de datos</div>
+          <h2 id="method-heading">Metodología &amp; Fuentes</h2>
+          <p>
+            Todo el proceso es abierto y reproducible. El código fuente
+            del pipeline y los validadores están disponibles para la comunidad.
+          </p>
+        </div>
+
+        <div class="methodology-grid">
+
+          <!-- Links -->
+          <div class="method-card reveal">
+            <h3>Recursos públicos</h3>
+
+            <a href="https://catalogodatos.nl.gob.mx/api/3"
+               target="_blank" rel="noopener noreferrer"
+               class="method-link">
+              <i class="method-link__icon" data-lucide="database"
+                 width="20" height="20" aria-hidden="true"></i>
+              <span>
+                <strong>CKAN API v3</strong><br>
+                <small>catalogodatos.nl.gob.mx/api/3</small>
+              </span>
+              <i class="method-link__ext" data-lucide="external-link"
+                 width="16" height="16" aria-hidden="true"></i>
+            </a>
+
+            <a href="https://github.com/Aldo14G/DatosAbiertos2026-v3"
+               target="_blank" rel="noopener noreferrer"
+               class="method-link method-link--gold">
+              <i class="method-link__icon" data-lucide="github"
+                 width="20" height="20" aria-hidden="true"></i>
+              <span>
+                <strong>Repositorio GitHub</strong><br>
+                <small>Aldo14G/DatosAbiertos2026-v3</small>
+              </span>
+              <i class="method-link__ext" data-lucide="external-link"
+                 width="16" height="16" aria-hidden="true"></i>
+            </a>
+
+            <a href="https://catalogodatos.nl.gob.mx"
+               target="_blank" rel="noopener noreferrer"
+               class="method-link">
+              <i class="method-link__icon" data-lucide="globe"
+                 width="20" height="20" aria-hidden="true"></i>
+              <span>
+                <strong>Portal de Datos NL</strong><br>
+                <small>catalogodatos.nl.gob.mx</small>
+              </span>
+              <i class="method-link__ext" data-lucide="external-link"
+                 width="16" height="16" aria-hidden="true"></i>
+            </a>
+          </div>
+
+          <!-- Score table -->
+          <div class="method-card reveal reveal-d2">
+            <h3>Escala de calificación</h3>
+            <table class="score-table" aria-label="Escala de calificación de calidad de datos">
+              <thead>
+                <tr>
+                  <th scope="col">Nivel</th>
+                  <th scope="col">Score</th>
+                  <th scope="col">Resultado</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td class="grade-gold">Oro</td>
+                  <td>≥ 85</td>
+                  <td>189 datasets — 65%</td>
+                </tr>
+                <tr>
+                  <td class="grade-silver">Plata</td>
+                  <td>70 – 84</td>
+                  <td>80 datasets — 28%</td>
+                </tr>
+                <tr>
+                  <td class="grade-bronze">Bronce</td>
+                  <td>&lt; 70</td>
+                  <td>21 datasets — 7%</td>
+                </tr>
+              </tbody>
+            </table>
+            <p class="method-note">
+              Score global = media ponderada de 7 dimensiones ISO/IEC 25012:2008.
+              Pipeline v3.0 · run_id 20260423_163006 · snapshot 2026-04-23.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- HALLAZGOS DESTACADOS ────────────────────────────────────── -->
+    <section class="section" id="hallazgos" aria-labelledby="hallazgos-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="tag tag--rose">Análisis</div>
+          <h2 id="hallazgos-heading">Hallazgos destacados</h2>
+          <p>
+            Patrones clave encontrados en la evaluación automatizada del portal
+            de datos abiertos del Gobierno de Nuevo León.
+          </p>
+        </div>
+
+        <div class="hallazgos-grid reveal">
+
+          <div class="hallazgo-card reveal-d1">
+            <div class="hallazgo-card__icon hallazgo-card__icon--gold"
+                 aria-hidden="true">
+              <i data-lucide="award" width="22" height="22"></i>
+            </div>
+            <div class="hallazgo-card__stat hallazgo-card__stat--gold">65%</div>
+            <h3>Mayoría en nivel Oro</h3>
+            <p>189 de 290 datasets superan el umbral de calidad Oro con score ≥ 85. El portal de NL lidera entre estados con portales de datos activos.</p>
+          </div>
+
+          <div class="hallazgo-card reveal-d2">
+            <div class="hallazgo-card__icon" aria-hidden="true">
+              <i data-lucide="trending-up" width="22" height="22"></i>
+            </div>
+            <div class="hallazgo-card__stat hallazgo-card__stat--teal">96.2</div>
+            <h3>Score máximo del portal</h3>
+            <p>Universidad de Ciencias de la Seguridad alcanzó 96.2 / 100. Completitud y exactitud perfectas en ambos datasets publicados.</p>
+          </div>
+
+          <div class="hallazgo-card reveal-d3">
+            <div class="hallazgo-card__icon hallazgo-card__icon--rose"
+                 aria-hidden="true">
+              <i data-lucide="clock" width="22" height="22"></i>
+            </div>
+            <div class="hallazgo-card__stat hallazgo-card__stat--rose">7%</div>
+            <h3>Área crítica: Actualidad</h3>
+            <p>21 datasets quedaron en Bronce. La dimensión de Actualidad —fecha de publicación— fue la de menor rendimiento promedio del portal.</p>
+          </div>
+
+          <div class="hallazgo-card">
+            <div class="hallazgo-card__icon" aria-hidden="true">
+              <i data-lucide="building-2" width="22" height="22"></i>
+            </div>
+            <div class="hallazgo-card__stat hallazgo-card__stat--teal">33</div>
+            <h3>Organizaciones Oro</h3>
+            <p>33 de 65 dependencias lograron nivel Oro en promedio. La Secretaría de Salud lideró con 29 datasets y un score global de 94.1.</p>
+          </div>
+
+          <div class="hallazgo-card reveal-d1">
+            <div class="hallazgo-card__icon hallazgo-card__icon--gold"
+                 aria-hidden="true">
+              <i data-lucide="database" width="22" height="22"></i>
+            </div>
+            <div class="hallazgo-card__stat hallazgo-card__stat--gold">88.8</div>
+            <h3>Score promedio del portal</h3>
+            <p>Media ponderada global de 88.83 / 100. Supera el umbral Oro, clasificando al portal de NL en nivel de excelencia institucional.</p>
+          </div>
+
+          <div class="hallazgo-card reveal-d2">
+            <div class="hallazgo-card__icon" aria-hidden="true">
+              <i data-lucide="fingerprint" width="22" height="22"></i>
+            </div>
+            <div class="hallazgo-card__stat hallazgo-card__stat--teal">100%</div>
+            <h3>Cobertura total del portal</h3>
+            <p>Evaluación completa de los 290 datasets activos al 2026-04-23. Cada dataset fue medido en las 7 dimensiones ISO/IEC 25012:2008.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider"></div></div>
+
+    <!-- RANKING DE DEPENDENCIAS ────────────────────────────────── -->
+    <section class="section" id="rankings" aria-labelledby="rankings-heading">
+      <div class="container">
+
+        <div class="section-header reveal">
+          <div class="tag">Dependencias · 2026-04-23</div>
+          <h2 id="rankings-heading">Ranking de organizaciones</h2>
+          <p>
+            65 dependencias evaluadas por score de calidad promedio.
+            Filtra por nivel y ordena por cualquier columna.
+          </p>
+        </div>
+
+        <div class="rank-filters reveal" id="rank-filters" role="group" aria-label="Filtrar por nivel de calidad">
+          <button class="rank-filter active" data-grade="all">
+            Todas <span class="rank-filter-count" id="fc-all">65</span>
+          </button>
+          <button class="rank-filter" data-grade="Gold">
+            Oro <span class="rank-filter-count" id="fc-gold">33</span>
+          </button>
+          <button class="rank-filter" data-grade="Silver">
+            Plata <span class="rank-filter-count" id="fc-silver">31</span>
+          </button>
+          <button class="rank-filter" data-grade="Bronze">
+            Bronce <span class="rank-filter-count" id="fc-bronze">1</span>
+          </button>
+        </div>
+
+        <p class="rank-meta" id="rank-meta" aria-live="polite">Mostrando 65 de 65 dependencias</p>
+
+        <!-- Desktop table -->
+        <div class="rank-table-wrap reveal" id="rank-table-wrap">
+          <table class="rank-table" id="rank-table" aria-label="Ranking de dependencias por score de calidad">
+            <thead>
+              <tr>
+                <th class="rn" scope="col">#</th>
+                <th class="rname sortable" data-col="name" aria-sort="none" scope="col">
+                  Dependencia <span class="si" aria-hidden="true">⇅</span>
+                </th>
+                <th class="rscore sortable sort-active" data-col="score" aria-sort="descending" scope="col">
+                  Score <span class="si" aria-hidden="true">▼</span>
+                </th>
+                <th class="rds sortable" data-col="datasets" aria-sort="none" scope="col">
+                  Datasets <span class="si" aria-hidden="true">⇅</span>
+                </th>
+                <th class="rgrade" scope="col">Nivel</th>
+              </tr>
+            </thead>
+            <tbody id="rank-tbody"></tbody>
+          </table>
+        </div>
+
+        <!-- Mobile cards -->
+        <div class="rank-cards" id="rank-cards" aria-label="Ranking de dependencias en tarjetas"></div>
+
+      </div>
+    </section>
+
+    <!-- CTA ─────────────────────────────────────────────────────── -->
+    <section class="section" aria-label="Llamada a la acción">
+      <div class="container">
+        <div class="cta-section reveal">
+          <div class="cta-section__glow-a" aria-hidden="true"></div>
+          <div class="cta-section__glow-b" aria-hidden="true"></div>
+          <div class="cta-section__content">
+            <h2>Explora los datos abiertos de Nuevo León</h2>
+            <p>
+              El dashboard interactivo permite filtrar, comparar y exportar
+              los resultados de la auditoría. Todo el código es público
+              y cada métrica es reproducible.
+            </p>
+            <div class="cta-btns">
+              <a href="dashboard.html" class="btn btn--cream">
+                <i data-lucide="bar-chart-2" width="18" height="18" aria-hidden="true"></i>
+                Explorar dashboard
+              </a>
+              <a href="https://github.com/Aldo14G/DatosAbiertos2026-v3"
+                 target="_blank" rel="noopener noreferrer"
+                 class="btn btn--outline-light">
+                <i data-lucide="github" width="18" height="18" aria-hidden="true"></i>
+                Ver código en GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- SCROLL-TO-TOP FAB ─────────────────────────────────────────── -->
+  <button class="fab-top" id="fab-top" aria-label="Volver al inicio">
+    <i data-lucide="arrow-up" width="20" height="20" aria-hidden="true"></i>
+  </button>
+
+  <!-- ── FOOTER ──────────────────────────────────────────────── -->
+  <footer class="footer" aria-label="Pie de página">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__brand">DatosAbiertos NL 2026</span>
+        <nav class="footer__links" aria-label="Vínculos del pie de página">
+          <a href="https://catalogodatos.nl.gob.mx"
+             target="_blank" rel="noopener noreferrer"
+             class="footer__link">Portal oficial</a>
+          <a href="https://github.com/Aldo14G/DatosAbiertos2026-v3"
+             target="_blank" rel="noopener noreferrer"
+             class="footer__link">GitHub</a>
+          <a href="dashboard.html" class="footer__link">Dashboard</a>
+          <a href="#metodologia" class="footer__link">Metodología</a>
+        </nav>
+      </div>
+      <p class="footer__copy">
+        Gobierno de Nuevo León · Laboratorio de Datos 2026 ·
+        ISO/IEC 25012:2008 · MIT License
+      </p>
+    </div>
+  </footer>
+
+  <!-- ── SCRIPTS ─────────────────────────────────────────────── -->
+  <script>
+    lucide.createIcons();
+
+    /* Theme */
+    const root   = document.documentElement;
+    const toggle = document.getElementById("theme-toggle");
+    const iconSun  = document.getElementById("icon-sun");
+    const iconMoon = document.getElementById("icon-moon");
+
+    function applyTheme(t) {
+      root.setAttribute("data-theme", t);
+      iconSun.style.display  = t === "dark" ? "none" : "";
+      iconMoon.style.display = t === "dark" ? "" : "none";
+      localStorage.setItem("theme", t);
+    }
+
+    const saved     = localStorage.getItem("theme");
+    const preferred = window.matchMedia("(prefers-color-scheme: dark)").matches
+                      ? "dark" : "light";
+    applyTheme(saved || preferred);
+
+    toggle.addEventListener("click", () => {
+      applyTheme(root.getAttribute("data-theme") === "dark" ? "light" : "dark");
+    });
+
+    /* Navbar scroll + FAB visibility */
+    const navbar = document.getElementById("navbar");
+    const fabTop = document.getElementById("fab-top");
+    window.addEventListener("scroll", () => {
+      navbar.classList.toggle("scrolled",  window.scrollY > 16);
+      fabTop.classList.toggle("visible",   window.scrollY > 400);
+    }, { passive: true });
+
+    /* Hamburger */
+    const hamburger = document.getElementById("hamburger");
+    const navLinks  = document.getElementById("nav-links");
+    const iconMenu  = document.getElementById("icon-menu");
+    const iconClose = document.getElementById("icon-close");
+
+    hamburger.addEventListener("click", () => {
+      const open = navLinks.classList.toggle("open");
+      hamburger.setAttribute("aria-expanded", open);
+      iconMenu.style.display  = open ? "none" : "";
+      iconClose.style.display = open ? ""     : "none";
+    });
+
+    navLinks.querySelectorAll("a").forEach(a => {
+      a.addEventListener("click", () => {
+        navLinks.classList.remove("open");
+        hamburger.setAttribute("aria-expanded", "false");
+        iconMenu.style.display  = "";
+        iconClose.style.display = "none";
+      });
+    });
+
+    /* FAB scroll to top */
+    fabTop.addEventListener("click", () => {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    });
+
+    /* Scroll reveal */
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          e.target.classList.add("visible");
+          observer.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    document.querySelectorAll(".reveal").forEach(el => observer.observe(el));
+
+    /* ── Rankings ─────────────────────────────────────────────── */
+    const ORGS = [
+      { name: "Universidad de Ciencias de la Seguridad", datasets: 2, score: 96.2, grade: "Gold" },
+      { name: "Junta Local de Conciliación y Arbitraje", datasets: 2, score: 96.0, grade: "Gold" },
+      { name: "Oficina de Comunicación del Ejecutivo del Estado", datasets: 2, score: 95.8, grade: "Gold" },
+      { name: "Instituto de Movilidad y Accesibilidad", datasets: 10, score: 94.4, grade: "Gold" },
+      { name: "Secretaría de Salud", datasets: 29, score: 94.1, grade: "Gold" },
+      { name: "Fideicomiso para el Desarrollo del Sur del Estado de Nuevo León", datasets: 6, score: 94.1, grade: "Gold" },
+      { name: "Secretaría de Desarrollo Regional y Agropecuario", datasets: 4, score: 94.1, grade: "Gold" },
+      { name: "Servicios de Agua y Drenaje de Monterrey, I.P.D.", datasets: 8, score: 94.0, grade: "Gold" },
+      { name: "Instituto de Investigación, Innovación y Estudios de Posgrado para la Educación del Estado de Nuevo León", datasets: 2, score: 93.9, grade: "Gold" },
+      { name: "Instituto Registral y Catastral del Estado de Nuevo León", datasets: 2, score: 93.6, grade: "Gold" },
+      { name: "Instituto de la Vivienda", datasets: 2, score: 93.6, grade: "Gold" },
+      { name: "Instituto Estatal de las Personas Adultas Mayores (IEPAM)", datasets: 2, score: 93.4, grade: "Gold" },
+      { name: "Fideicomiso BP3417 CENDIS", datasets: 2, score: 93.4, grade: "Gold" },
+      { name: "Instituto de Capacitación y Educación para el Trabajo (ICET)", datasets: 2, score: 93.2, grade: "Gold" },
+      { name: "Secretaría de las Mujeres", datasets: 2, score: 93.0, grade: "Gold" },
+      { name: "Secretaría Ejecutiva del Sistema Estatal Anticorrupción del Estado de Nuevo León (SESEANL)", datasets: 6, score: 92.9, grade: "Gold" },
+      { name: "Sistema Integral para el Manejo Ecológico y Procesamiento de Desechos (SIMEPRODE)", datasets: 2, score: 92.7, grade: "Gold" },
+      { name: "Colegio de Estudios Científicos y Tecnológicos del Estado de Nuevo León (CECyTENL)", datasets: 2, score: 92.5, grade: "Gold" },
+      { name: "Parque Fundidora, O.P.D", datasets: 2, score: 92.2, grade: "Gold" },
+      { name: "Fideicomiso FIDEURB (BP6823)", datasets: 2, score: 91.8, grade: "Gold" },
+      { name: "Secretaría de Economía", datasets: 2, score: 91.7, grade: "Gold" },
+      { name: "Secretaría de Igualdad e Inclusión", datasets: 14, score: 91.7, grade: "Gold" },
+      { name: "Universidad Tecnológica Gral. Mariano Escobedo", datasets: 2, score: 91.7, grade: "Gold" },
+      { name: "Consejo para la Cultura y las Artes de Nuevo León", datasets: 2, score: 91.7, grade: "Gold" },
+      { name: "Secretaría Técnica de Gobierno", datasets: 3, score: 91.6, grade: "Gold" },
+      { name: "Universidad Tecnológica Linares", datasets: 2, score: 91.4, grade: "Gold" },
+      { name: "Instituto Constructor de Infraestructura Física Educativa y Deportiva", datasets: 2, score: 91.3, grade: "Gold" },
+      { name: "Fideicomiso Fondo de Fomento Agropecuario del Estado de Nuevo León", datasets: 2, score: 90.9, grade: "Gold" },
+      { name: "Secretaría de Medio Ambiente", datasets: 4, score: 90.7, grade: "Gold" },
+      { name: "Sistema de Transporte Colectivo Metrorrey", datasets: 6, score: 90.5, grade: "Gold" },
+      { name: "Instituto del Agua del Estado de Nuevo León", datasets: 2, score: 90.3, grade: "Gold" },
+      { name: "Secretaría de Movilidad y Planeación Urbana", datasets: 2, score: 90.3, grade: "Gold" },
+      { name: "Colegio Militarizado \"General Mariano Escobedo\"", datasets: 2, score: 90.2, grade: "Gold" },
+      { name: "Fideicomiso Turismo Nuevo León", datasets: 2, score: 90.0, grade: "Silver" },
+      { name: "Servicios de salud de Nuevo León, O.P.D.", datasets: 2, score: 89.9, grade: "Silver" },
+      { name: "Sistema de Radio y Televisión de Nuevo León", datasets: 2, score: 89.5, grade: "Silver" },
+      { name: "Fideicomiso Fondo para la Vivienda de los Trabajadores de la Educación y el Estado (FOVILEON)", datasets: 4, score: 89.2, grade: "Silver" },
+      { name: "Fideicomiso de Proyectos Estratégicos (FIDEPROES)", datasets: 2, score: 89.1, grade: "Silver" },
+      { name: "Instituto Estatal de las Mujeres", datasets: 2, score: 89.0, grade: "Silver" },
+      { name: "Contraloría y Transparencia Gubernamental", datasets: 4, score: 88.9, grade: "Silver" },
+      { name: "Instituto Estatal de Cultura Física y Deporte (INDE)", datasets: 6, score: 88.8, grade: "Silver" },
+      { name: "Promotora de Desarrollo Rural de Nuevo León – PRODERLEON", datasets: 2, score: 88.4, grade: "Silver" },
+      { name: "Oficina de Representación del Estado en la Ciudad de Mexico", datasets: 2, score: 88.4, grade: "Silver" },
+      { name: "Sistema de Caminos de Nuevo León", datasets: 2, score: 88.0, grade: "Silver" },
+      { name: "Instituto de Innovación y Transferencia Tecnológica de Nuevo León", datasets: 2, score: 88.0, grade: "Silver" },
+      { name: "Secretaría de Turismo", datasets: 5, score: 88.0, grade: "Silver" },
+      { name: "Centro Estatal de Becas", datasets: 2, score: 87.8, grade: "Silver" },
+      { name: "Fideicomiso Fondo de Apoyo para la Creación y Consolidación del Empleo Productivo en el Estado de Nuevo León (FOCRECE)", datasets: 2, score: 87.0, grade: "Silver" },
+      { name: "Secretaría de Administración", datasets: 18, score: 86.9, grade: "Silver" },
+      { name: "Centro de Conciliación Laboral", datasets: 2, score: 86.8, grade: "Silver" },
+      { name: "Secretaría de Participación Ciudadana", datasets: 40, score: 86.8, grade: "Silver" },
+      { name: "Secretaría de Seguridad", datasets: 16, score: 86.5, grade: "Silver" },
+      { name: "Instituto de Defensoría Pública de Nuevo León", datasets: 2, score: 86.4, grade: "Silver" },
+      { name: "Fideicomiso de Inversión y Administración (FIDEMEJORA)", datasets: 2, score: 86.1, grade: "Silver" },
+      { name: "Corporación para el Desarrollo Turístico de Nuevo León", datasets: 2, score: 85.9, grade: "Silver" },
+      { name: "Fideicomiso para el Reordenamiento Comercial (FIRECOM)", datasets: 2, score: 84.3, grade: "Silver" },
+      { name: "Fideicomiso Para el Desarrollo de la Zona Citrícola", datasets: 2, score: 83.4, grade: "Silver" },
+      { name: "Fideicomiso No. 2284 \"Tren Suburbano Villa García-Aeropuerto de Monterrey, Primera fase, Etapa 1\"", datasets: 2, score: 76.0, grade: "Silver" },
+      { name: "Secretaría de Cultura", datasets: 5, score: 75.9, grade: "Silver" },
+      { name: "Fideicomiso No. 2209 \"Línea 3 del Sistema de Transporte Colectivo Metrorrey\"", datasets: 2, score: 75.7, grade: "Silver" },
+      { name: "Sistema Estatal de Información", datasets: 2, score: 75.3, grade: "Silver" },
+      { name: "Fideicomiso para la Conservación del Patrimonio Cultural de Nuevo León (FIDECULTURAL)", datasets: 2, score: 75.2, grade: "Silver" },
+      { name: "Secretaría de Educación del Estado de Nuevo León", datasets: 8, score: 74.7, grade: "Silver" },
+      { name: "Oficina Ejecutiva del Titular del Poder Ejecutivo del Estado de Nuevo León", datasets: 2, score: 71.4, grade: "Silver" },
+      { name: "Fondo Editorial de Nuevo León", datasets: 2, score: 64.2, grade: "Bronze" },
+    ];
+
+    let rankGrade = "all";
+    let rankSort  = { col: "score", dir: "desc" };
+
+    function gradeLabel(g) {
+      return g === "Gold" ? "Oro" : g === "Silver" ? "Plata" : "Bronce";
+    }
+    function gradeClass(g) {
+      return g === "Gold" ? "gb-oro" : g === "Silver" ? "gb-plata" : "gb-bronce";
+    }
+    function scoreColor(s) {
+      return s >= 90 ? "var(--gold)" : s >= 70 ? "var(--fg-muted)" : "var(--rose)";
+    }
+    function esc(str) {
+      return str.replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
+    }
+
+    function renderRankings() {
+      let data = rankGrade === "all" ? ORGS : ORGS.filter(o => o.grade === rankGrade);
+
+      data = [...data].sort((a, b) => {
+        const v = rankSort.col === "name"
+          ? a.name.trim().localeCompare(b.name.trim(), "es")
+          : a[rankSort.col] - b[rankSort.col];
+        return rankSort.dir === "asc" ? v : -v;
+      });
+
+      document.getElementById("rank-meta").textContent =
+        "Mostrando " + data.length + " de " + ORGS.length + " dependencias";
+
+      document.getElementById("rank-tbody").innerHTML = data.map((o, i) => {
+        const n = esc(o.name.trim());
+        return "<tr>" +
+          "<td class=\"rn\">" + (i + 1) + "</td>" +
+          "<td class=\"rname\">" + n + "</td>" +
+          "<td class=\"rscore\" style=\"color:" + scoreColor(o.score) + "\">" + o.score.toFixed(1) + "</td>" +
+          "<td class=\"rds\">" + o.datasets + "</td>" +
+          "<td class=\"rgrade\"><span class=\"gb " + gradeClass(o.grade) + "\">" + gradeLabel(o.grade) + "</span></td>" +
+          "</tr>";
+      }).join("");
+
+      document.getElementById("rank-cards").innerHTML = data.map((o, i) => {
+        const n = esc(o.name.trim());
+        const ds = o.datasets + " dataset" + (o.datasets !== 1 ? "s" : "");
+        return "<div class=\"rcard\">" +
+          "<span class=\"rcard-num\">" + (i + 1) + "</span>" +
+          "<div class=\"rcard-info\">" +
+            "<div class=\"rcard-name\">" + n + "</div>" +
+            "<div class=\"rcard-meta\">" + ds + "</div>" +
+          "</div>" +
+          "<div class=\"rcard-right\">" +
+            "<span class=\"rcard-score\" style=\"color:" + scoreColor(o.score) + "\">" + o.score.toFixed(1) + "</span>" +
+            "<span class=\"gb " + gradeClass(o.grade) + "\">" + gradeLabel(o.grade) + "</span>" +
+          "</div>" +
+          "</div>";
+      }).join("");
+
+      document.querySelectorAll("#rank-table th.sortable").forEach(th => {
+        const active = th.dataset.col === rankSort.col;
+        th.classList.toggle("sort-active", active);
+        const si = th.querySelector(".si");
+        if (si) si.textContent = active ? (rankSort.dir === "asc" ? "▲" : "▼") : "⇅";
+        th.setAttribute("aria-sort", active
+          ? (rankSort.dir === "asc" ? "ascending" : "descending")
+          : "none");
+      });
+    }
+
+    document.getElementById("rank-filters").addEventListener("click", e => {
+      const btn = e.target.closest(".rank-filter");
+      if (!btn) return;
+      rankGrade = btn.dataset.grade;
+      document.querySelectorAll(".rank-filter").forEach(b => b.classList.toggle("active", b === btn));
+      renderRankings();
+    });
+
+    document.querySelector("#rank-table thead").addEventListener("click", e => {
+      const th = e.target.closest("th.sortable");
+      if (!th) return;
+      const col = th.dataset.col;
+      if (rankSort.col === col) {
+        rankSort.dir = rankSort.dir === "asc" ? "desc" : "asc";
+      } else {
+        rankSort = { col, dir: col === "name" ? "asc" : "desc" };
+      }
+      renderRankings();
+    });
+
+    renderRankings();
+  </script>
+</body>
+</html>
