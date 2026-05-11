@@ -34,6 +34,11 @@ export const metadata: Metadata = {
     description:
       "290 datasets del gobierno de Nuevo León evaluados bajo estándares ISO/IEC 25012. Un proyecto de LABNL.",
   },
+  icons: {
+    icon: "/cerebro.png",
+    shortcut: "/cerebro.png",
+    apple: "/cerebro.png",
+  },
   robots: {
     index: true,
     follow: true,
