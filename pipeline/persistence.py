@@ -4,6 +4,7 @@ Fase 4:
 - Parquet particionado por run_date / formato / categoria
 - JSON  (.antigravity/team/shared/quality_results.json) — compatibilidad legacy
 - CSV   (resultados_calidad_datos_nl.csv) — compatibilidad dashboard
+- Snapshots con timestamp + SHA256 (sistema canónico unificado)
 
 Todas las rutas de salida se construyen a partir de constantes para evitar
 path-traversal. Los archivos Parquet usan pyarrow nativo (ya en requirements.txt).
@@ -16,7 +17,7 @@ import json
 import logging
 import os
 from datetime import datetime, timezone
-from typing import Any
+from typing import Any, Optional
 
 import pandas as pd
 import numpy as np
@@ -28,6 +29,7 @@ logger = logging.getLogger("persistence")
 PARQUET_BASE = os.path.join("data", "parquet")
 JSON_OUTPUT  = os.path.join(".antigravity", "team", "shared", "quality_results.json")
 CSV_OUTPUT   = "resultados_calidad_datos_nl.csv"
+SNAPSHOT_DIR = "snapshots"
 
 
 # ── Helpers ───────────────────────────────────────────────────
@@ -180,11 +182,24 @@ def save_coverage_report(report: dict, snap_dir: str) -> str:
 
 # ── Snapshot con hash ─────────────────────────────────────────
 
-def save_snapshot(data: dict, snap_dir: str, filename: str = "quality_results.json") -> tuple[str, str]:
-    """Guarda un snapshot + archivo sha256.txt.
+def save_snapshot(
+    data: dict,
+    snap_dir: str,
+    filename: str = "quality_results.json",
+) -> tuple[str, str]:
+    """Guarda un snapshot con nombre de archivo por timestamp + sha256.txt.
+
+    Formato canónico unificado:
+    - <snap_dir>/<filename>   — payload JSON completo
+    - <snap_dir>/sha256.txt   — SHA256 hex del archivo JSON
+
+    Args:
+        data:     Serializable dict a persistir.
+        snap_dir: Directorio destino (se crea si no existe).
+        filename: Nombre del archivo JSON (default: quality_results.json).
 
     Returns:
-        (path_snapshot, sha256_hex)
+        (path_absoluto_snapshot, sha256_hex)
     """
     _safe_makedirs(snap_dir)
     snap_path = os.path.join(snap_dir, filename)
@@ -192,8 +207,67 @@ def save_snapshot(data: dict, snap_dir: str, filename: str = "quality_results.js
         json.dump(data, f, ensure_ascii=False, indent=2, default=_json_default)
 
     sha = _file_sha256(snap_path)
-    with open(os.path.join(snap_dir, "sha256.txt"), "w") as f:
+    with open(os.path.join(snap_dir, "sha256.txt"), "w", encoding="utf-8") as f:
         f.write(sha)
 
     logger.info("[persistence] Snapshot: %s (SHA256: %s…)", snap_path, sha[:16])
-    return snap_path, sha
+    return os.path.abspath(snap_path), sha
+
+
+def load_latest_snapshot(
+    prefix: str = "quality",
+    base_dir: str = SNAPSHOT_DIR,
+) -> Optional[dict]:
+    """Carga el snapshot más reciente cuyo directorio de run empiece con prefix.
+
+    Busca subdirectorios de <base_dir> con el patrón run_<prefix>* ordenados
+    lexicográficamente (los timestamps ISO garantizan orden cronológico).
+    Si no existen subdirectorios run_*, busca archivos <prefix>_*.json
+    directamente en <base_dir> para compatibilidad con el formato legado de
+    fetcher.py.
+
+    Args:
+        prefix:   Prefijo del run (ej. "quality", "advanced").
+        base_dir: Directorio raíz de snapshots (default: SNAPSHOT_DIR).
+
+    Returns:
+        Dict parseado del JSON, o None si no existe ningún snapshot.
+    """
+    if not os.path.isdir(base_dir):
+        return None
+
+    # Estrategia 1: subdirectorios run_<ts>/ con quality_results.json
+    run_dirs = sorted(
+        d for d in os.listdir(base_dir)
+        if d.startswith("run_") and os.path.isdir(os.path.join(base_dir, d))
+    )
+    for run_dir in reversed(run_dirs):
+        snap_path = os.path.join(base_dir, run_dir, "quality_results.json")
+        sha_path  = os.path.join(base_dir, run_dir, "sha256.txt")
+        if not os.path.isfile(snap_path):
+            continue
+        # Verificar integridad si sha256.txt existe
+        if os.path.isfile(sha_path):
+            with open(sha_path, "r", encoding="utf-8") as f:
+                expected_sha = f.read().strip()
+            actual_sha = _file_sha256(snap_path)
+            if actual_sha != expected_sha:
+                logger.warning(
+                    "[persistence] SHA256 mismatch en %s — saltando snapshot",
+                    snap_path,
+                )
+                continue
+        with open(snap_path, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    # Estrategia 2 (legado): archivos <prefix>_<ts>.json en base_dir
+    legacy_files = sorted(
+        fn for fn in os.listdir(base_dir)
+        if fn.startswith(prefix) and fn.endswith(".json")
+    )
+    if legacy_files:
+        path = os.path.join(base_dir, legacy_files[-1])
+        with open(path, "r", encoding="utf-8") as f:
+            return json.load(f)
+
+    return None
