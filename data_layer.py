@@ -53,10 +53,12 @@ _MULTIFORMAT_PARSERS: frozenset[str] = frozenset(
 # ── PESOS ISO 25012 ───────────────────────────────────────────
 # Fuente única: config.py. No redefinir aquí.
 from config import CLASIFICACION_DEFAULT, CLASIFICACION_THRESHOLDS, QUALITY_WEIGHTS  # noqa: E402
-from quality_scorer import QualityScorer  # noqa: E402
+from quality_scorer import BREAKDOWN_SCORE_KEYS, QualityScorer  # noqa: E402
 from pipeline.fetcher import validate_url  # noqa: E402
 
-# Etiquetas de presentación para cada columna de dimensión
+# Etiquetas de presentación para cada columna de dimensión.
+# Las claves deben ser un subconjunto de BREAKDOWN_SCORE_KEYS  {"score_global"};
+# el assert a continuación detecta desincronización en tiempo de importación.
 DIM_LABEL_MAP: dict[str, str] = {
     "comp_completitud_global_pct": "Completitud",
     "acc_score_accuracy_pct": "Exactitud",
@@ -67,6 +69,13 @@ DIM_LABEL_MAP: dict[str, str] = {
     "open_score_openness_pct": "Apertura",
     "score_global": "Score Global",
 }
+
+_VALID_DIM_KEYS = BREAKDOWN_SCORE_KEYS | {"score_global"}
+_UNKNOWN_DIM_KEYS = set(DIM_LABEL_MAP) - _VALID_DIM_KEYS
+assert not _UNKNOWN_DIM_KEYS, (
+    f"DIM_LABEL_MAP contiene claves desconocidas para BreakdownDict: {_UNKNOWN_DIM_KEYS}. "
+    "Actualiza BREAKDOWN_SCORE_KEYS en quality_scorer.py o corrige DIM_LABEL_MAP."
+)
 
 _scorer = QualityScorer()
 

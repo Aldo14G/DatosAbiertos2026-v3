@@ -32,9 +32,89 @@ _UPDATE_FREQ_DAYS: dict[str, int] = {
 }
 
 
+class BreakdownDict(TypedDict, total=False):
+    """Typed schema for the flat breakdown returned by all compute_* functions.
+
+    Keys follow the naming convention: ``<dim_prefix>_<metric>_<unit>``.
+    Optional keys (``total=False``) because timeliness keys are absent when
+    no modification date is available.
+    """
+
+    # Completeness (compute_completeness)
+    comp_completitud_global_pct: float
+    comp_completitud_media_col: float
+    comp_completitud_min_col: float
+    comp_filas_incompletas_pct: float
+
+    # Accuracy (compute_accuracy)
+    acc_score_accuracy_pct: float
+    acc_columnas_tipo_mixto: int
+    acc_columnas_espacios: int
+    acc_columnas_constantes: int
+
+    # Consistency (compute_consistency)
+    cons_score_consistency_pct: float
+    cons_pct_outliers: float
+    cons_inconsistencias_texto: int
+    cons_columnas_numericas: int
+
+    # Uniqueness (compute_uniqueness)
+    uniq_score_uniqueness_pct: float
+    uniq_pct_duplicados: float
+    uniq_duplicados_exactos: int
+    uniq_cardinalidad_media: float
+
+    # Timeliness (compute_timeliness) — absent when no modification date
+    time_score_timeliness_pct: float
+    time_dias_desde_modificado: int | None
+    time_frecuencia_declarada: str
+
+    # Documentation (compute_documentation)
+    doc_score_documentation_pct: float
+    doc_descripcion_len: int
+    doc_descripcion_pts: float
+    doc_resources_described: float
+    doc_licencia: str
+    doc_licencia_pts: float
+    doc_keywords_found: list[str]
+    doc_metodologia_pts: float
+
+    # Openness (compute_openness)
+    open_score_openness_pct: float
+    open_formatos: list[str]
+    open_formato_pts: float
+    open_licencia: str
+    open_licencia_pts: float
+    open_acceso_directo: bool
+    open_acceso_pts: float
+
+
+# Primary score keys — the subset consumed by data_layer.DIM_LABEL_MAP and _REQUIRED_COLS.
+# Keeping this set here lets data_layer validate its map at import time without
+# hard-coding string literals in two places.
+BREAKDOWN_SCORE_KEYS: frozenset[str] = frozenset(
+    {
+        "comp_completitud_global_pct",
+        "acc_score_accuracy_pct",
+        "cons_score_consistency_pct",
+        "uniq_score_uniqueness_pct",
+        "time_score_timeliness_pct",
+        "doc_score_documentation_pct",
+        "open_score_openness_pct",
+    }
+)
+
+
 class ScoringResult(TypedDict):
+    """Return type of ``QualityScorer.score``.
+
+    ``dim_scores``  — per-dimension scores keyed by dimension name (e.g. ``"completeness"``).
+    ``breakdown``   — full flat metric dict keyed by ``BreakdownDict`` field names.
+    ``global_score``— weighted aggregate across active dimensions.
+    """
+
     dim_scores: dict[str, float]
-    breakdown: dict[str, Any]
+    breakdown: BreakdownDict
     global_score: float
 
 
