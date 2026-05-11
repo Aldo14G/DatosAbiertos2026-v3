@@ -18,6 +18,7 @@ export const metadata: Metadata = {
     "Monterrey",
     "gobierno digital",
   ],
+  metadataBase: new URL("https://datos-abiertos-nl-2026.web.app"),
   authors: [{ name: "LABNL — Laboratorio para la Ciudad de Nuevo León" }],
   openGraph: {
     type: "website",
