@@ -57,7 +57,7 @@ def test_dim_means_populated(sample_df):
 
 
 def test_org_stats_matches_agg_org_stats(sample_df):
-    from data_layer import agg_org_stats
+    from data_aggregation import agg_org_stats
     data = build_section_data(sample_df)
     expected = agg_org_stats(sample_df)
     assert list(data.org_stats.columns) == list(expected.columns)

@@ -1,6 +1,6 @@
 """
 pipeline/test_data_layer.py
-Pruebas unitarias para validar los algoritmos de dimensiones de calidad (ISO 25012:2008). 
+Pruebas unitarias para validar los algoritmos de dimensiones de calidad (ISO 25012:2008).
 Verificación de edge cases, data frames vacíos y vectorización.
 """
 
@@ -8,12 +8,8 @@ import pytest
 import pandas as pd
 import numpy as np
 
-# Se asume que sys.path ya incluye la raíz en un entorno real de pytest.
-from data_layer import (
-    load_coverage_report,
-    get_resource_vs_unique_count,
-)
 from pipeline.fetcher import validate_url
+from data_discovery import load_coverage_report, get_resource_vs_unique_count
 from quality_scorer import (
     compute_completeness,
     compute_accuracy,

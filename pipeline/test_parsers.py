@@ -1,6 +1,6 @@
 """pipeline/test_parsers.py — Tests unitarios por parser multiformato.
 
-Fase 6: Verifica que cada parser de data_layer devuelva un DataFrame válido
+Fase 6: Verifica que cada parser de data_parsers devuelva un DataFrame válido
 con las columnas y tipos esperados. No requiere red — usa datos en memoria.
 """
 
@@ -16,7 +16,7 @@ _ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), ".."))
 if _ROOT not in sys.path:
     sys.path.insert(0, _ROOT)
 
-from data_layer import (
+from data_parsers import (
     _parse_json,
     _parse_excel,
     _parse_geojson,
