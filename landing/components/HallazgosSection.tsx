@@ -10,6 +10,7 @@ import {
   Fingerprint,
 } from "lucide-react";
 import { useLang } from "./LangProvider";
+import { CountUp } from "@/lib/count-up";
 
 const ease = [0.16, 1, 0.3, 1] as const;
 
@@ -18,8 +19,9 @@ const FINDINGS = [
     id: "oro",
     icon: Award,
     iconClass: "bg-gold/10 text-gold",
-    statEs: "65%",
-    statEn: "65%",
+    statNum: 65,
+    statDecimals: 0,
+    statSuffix: "%",
     statClass: "text-amber-600 dark:text-gold",
     titleEs: "Mayoría en nivel Oro",
     titleEn: "Majority at Gold level",
@@ -32,8 +34,9 @@ const FINDINGS = [
     id: "max",
     icon: TrendingUp,
     iconClass: "bg-teal/10 text-teal",
-    statEs: "96.2",
-    statEn: "96.2",
+    statNum: 96.2,
+    statDecimals: 1,
+    statSuffix: "",
     statClass: "text-teal",
     titleEs: "Score máximo del portal",
     titleEn: "Portal maximum score",
@@ -46,8 +49,9 @@ const FINDINGS = [
     id: "actualidad",
     icon: Clock,
     iconClass: "bg-rose-500/10 text-rose-600 dark:text-rose-400",
-    statEs: "7%",
-    statEn: "7%",
+    statNum: 7,
+    statDecimals: 0,
+    statSuffix: "%",
     statClass: "text-rose-600 dark:text-rose-400",
     titleEs: "Área crítica: Actualidad",
     titleEn: "Critical area: Timeliness",
@@ -60,8 +64,9 @@ const FINDINGS = [
     id: "orgs-oro",
     icon: Building2,
     iconClass: "bg-teal/10 text-teal",
-    statEs: "33",
-    statEn: "33",
+    statNum: 33,
+    statDecimals: 0,
+    statSuffix: "",
     statClass: "text-teal",
     titleEs: "Organizaciones Oro",
     titleEn: "Gold Organizations",
@@ -74,8 +79,9 @@ const FINDINGS = [
     id: "promedio",
     icon: Database,
     iconClass: "bg-gold/10 text-gold",
-    statEs: "88.8",
-    statEn: "88.8",
+    statNum: 88.8,
+    statDecimals: 1,
+    statSuffix: "",
     statClass: "text-amber-600 dark:text-gold",
     titleEs: "Score promedio del portal",
     titleEn: "Portal average score",
@@ -88,8 +94,9 @@ const FINDINGS = [
     id: "cobertura",
     icon: Fingerprint,
     iconClass: "bg-teal/10 text-teal",
-    statEs: "100%",
-    statEn: "100%",
+    statNum: 100,
+    statDecimals: 0,
+    statSuffix: "%",
     statClass: "text-teal",
     titleEs: "Cobertura total del portal",
     titleEn: "Full portal coverage",
@@ -177,11 +184,13 @@ export function HallazgosSection() {
                   <Icon className="size-5" />
                 </div>
 
-                <p
-                  className={`mb-2 font-mono text-3xl font-bold leading-none ${item.statClass}`}
-                >
-                  {t(item.statEs, item.statEn)}
-                </p>
+                <CountUp
+                  end={item.statNum}
+                  decimals={item.statDecimals}
+                  suffix={item.statSuffix}
+                  duration={1.2 + idx * 0.05}
+                  className={`mb-2 font-mono text-3xl font-bold leading-none block ${item.statClass}`}
+                />
 
                 <h3 className="font-serif text-lg font-semibold text-foreground mb-2">
                   {t(item.titleEs, item.titleEn)}

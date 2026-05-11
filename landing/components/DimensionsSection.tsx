@@ -1,7 +1,7 @@
 "use client";
 
-import { CSSProperties } from "react";
-import { motion, useReducedMotion } from "framer-motion";
+import { CSSProperties, useRef } from "react";
+import { motion, useInView, useReducedMotion } from "framer-motion";
 import {
   CheckSquare,
   Clock,
@@ -29,6 +29,8 @@ const ease = [0.16, 1, 0.3, 1] as const;
 export function DimensionsSection() {
   const { t } = useLang();
   const reduced = useReducedMotion();
+  const barRef = useRef<HTMLDivElement>(null);
+  const barInView = useInView(barRef, { once: true, amount: 0.6 });
 
   const fadeUp = (delay = 0) =>
     reduced
@@ -154,12 +156,22 @@ export function DimensionsSection() {
                 "Weight sum. The global score is the weighted average of the five dimensions."
               )}
             </p>
-            <div className="mt-6 w-full h-2 rounded-full bg-midnight/10 overflow-hidden flex relative z-10">
-              {ISO_DIMENSIONS.map((dim) => (
-                <div
+            <div
+              ref={barRef}
+              className="mt-6 w-full h-2 rounded-full bg-midnight/10 overflow-hidden flex relative z-10"
+            >
+              {ISO_DIMENSIONS.map((dim, i) => (
+                <motion.div
                   key={dim.id}
                   style={{ width: `${dim.weight}%` }}
-                  className={`h-full ${getWeightColor(dim.id)} transition-all duration-1000 ease-out origin-left`}
+                  initial={{ scaleX: 0 }}
+                  animate={barInView && !reduced ? { scaleX: 1 } : reduced ? { scaleX: 1 } : { scaleX: 0 }}
+                  transition={{
+                    duration: 0.7,
+                    delay: i * 0.08,
+                    ease: [0.16, 1, 0.3, 1],
+                  }}
+                  className={`h-full ${getWeightColor(dim.id)} origin-left`}
                   title={`${t(dim.nameEs, dim.nameEn)}: ${dim.weight}%`}
                 />
               ))}
