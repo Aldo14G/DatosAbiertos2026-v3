@@ -748,44 +748,6 @@
       max-width: 560px;
     }
 
-    /* ── Methodology Grid ──────────────────────────────────────────– */
-    .meth-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 20px;
-      margin-top: 32px;
-    }
-
-    .meth-card {
-      background: var(--surface-2);
-      border: 1px solid var(--border-2);
-      border-radius: var(--radius-md);
-      padding: 24px;
-      transition: transform var(--dur-fast) var(--ease-out),
-        box-shadow var(--dur-fast) var(--ease-out);
-    }
-
-    .meth-card:hover {
-      transform: translateY(-2px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .meth-card__label {
-      font-family: var(--font-serif);
-      font-size: 1.125rem;
-      font-weight: 700;
-      color: var(--teal);
-      margin-bottom: 12px;
-      line-height: 1.3;
-    }
-
-    .meth-card__text {
-      font-size: 0.925rem;
-      color: var(--fg-muted);
-      line-height: 1.6;
-      margin: 0;
-    }
-
     /* ── Dimensions ─────────────────────────────────────────────── */
     .dim-grid {
       display: grid;
@@ -1873,52 +1835,6 @@
       <div class="divider"></div>
     </div>
 
-    <!-- FUNDAMENTO METODOLÓGICO ───────────────────────────────────── -->
-    <section class="section" id="metodologia-intro" aria-labelledby="meth-heading">
-      <div class="container">
-        <div class="section-header reveal">
-          <div class="tag">Fundamento Metodológico</div>
-          <h2 id="meth-heading">ISO/IEC 25012:2008 · Calidad de Datos</h2>
-          <p>
-            Esta auditoría aplica el estándar internacional ISO/IEC 25012:2008, que define 8 dimensiones
-            para evaluar la calidad de datos. La evaluación es <strong>reproducible, transparente y
-            verificable</strong>: el código fuente está disponible en GitHub para que cualquier investigador
-            pueda auditar, mejorar o adaptar la metodología.
-          </p>
-        </div>
-
-        <div class="meth-grid reveal">
-          <div class="meth-card reveal-d1">
-            <div class="meth-card__label">¿Por qué ISO/IEC 25012?</div>
-            <p class="meth-card__text">
-              Proporciona un marco estandarizado internacionalmente para evaluar datos públicos
-              sin sesgo. Es la norma de facto en gobernanza de datos abiertos.
-            </p>
-          </div>
-
-          <div class="meth-card reveal-d2">
-            <div class="meth-card__label">7 Dimensiones evaluadas</div>
-            <p class="meth-card__text">
-              Completitud, Precisión, Consistencia, Integridad, Actualidad, Documentación y Accesibilidad.
-              Cada dimensión tiene criterios cuantitativos medibles.
-            </p>
-          </div>
-
-          <div class="meth-card reveal-d3">
-            <div class="meth-card__label">Scoring Cuantitativo</div>
-            <p class="meth-card__text">
-              Cada dataset recibe una puntuación de 0–100 por dimensión. El promedio ponderado
-              determina si es Bronce (< 70), Plata (70–89) u Oro (≥ 90).
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <div class="container">
-      <div class="divider"></div>
-    </div>
-
     <!-- DIMENSIONES ISO 25012 ────────────────────────────────────── -->
     <section class="section" id="dimensiones" aria-labelledby="dim-heading">
       <div class="container">
@@ -2131,12 +2047,14 @@
       <div class="container">
 
         <div class="section-header reveal">
-          <div class="tag">Cómo lo hacemos</div>
-          <h2 id="method-heading">Metodología abierta</h2>
+          <div class="tag">Fundamento Metodológico</div>
+          <h2 id="method-heading">Metodología abierta y reproducible</h2>
           <p>
-            No hay secretos. Puedes ver exactamente cómo medimos cada dataset,
-            descargar el código que lo hace, y reproducirlo en tu computadora.
-            La evaluación sigue el estándar ISO/IEC 25012:2008 — aceptado internacionalmente.
+            Cada dataset se evalúa contra 7 dimensiones del estándar internacional
+            ISO/IEC 25012:2008: Completitud, Precisión, Consistencia, Integridad,
+            Actualidad, Documentación y Accesibilidad. El código es público, los
+            criterios son verificables y cualquier investigador puede replicar
+            o adaptar los resultados desde el repositorio.
           </p>
         </div>
 
