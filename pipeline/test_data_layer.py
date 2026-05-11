@@ -10,10 +10,10 @@ import numpy as np
 
 # Se asume que sys.path ya incluye la raíz en un entorno real de pytest.
 from data_layer import (
-    is_safe_url,
     load_coverage_report,
     get_resource_vs_unique_count,
 )
+from pipeline.fetcher import validate_url
 from quality_scorer import (
     compute_completeness,
     compute_accuracy,
@@ -21,14 +21,18 @@ from quality_scorer import (
     compute_uniqueness,
 )
 
-def test_is_safe_url():
-    """Valida la integridad de la protección SSRF."""
-    assert is_safe_url("https://catalogodatos.nl.gob.mx/api") is True
-    assert is_safe_url("http://datos.nl.gob.mx/resource") is True
+def test_validate_url():
+    """Valida la integridad de la protección SSRF centralizada en fetcher."""
+    assert validate_url("https://catalogodatos.nl.gob.mx/api") is True
+    assert validate_url("http://datos.nl.gob.mx/resource") is True
     # Dominios maliciosos (subdomain spoofing o sufijo ciego)
-    assert is_safe_url("https://malicious-catalogodatos.nl.gob.mx/api") is False
-    assert is_safe_url("https://datos.nl.gob.mx.malicious.com") is False
-    assert is_safe_url("ftp://datos.nl.gob.mx") is False
+    assert validate_url("https://malicious-catalogodatos.nl.gob.mx/api") is False
+    assert validate_url("https://datos.nl.gob.mx.malicious.com") is False
+    assert validate_url("ftp://datos.nl.gob.mx") is False
+    # Loopback y rangos privados
+    assert validate_url("http://localhost/data") is False
+    assert validate_url("http://127.0.0.1/data") is False
+    assert validate_url("http://192.168.1.1/data") is False
 
 def test_compute_completeness():
     """Valida el cálculo de completitud con nulos."""

@@ -22,8 +22,8 @@ from data_layer import (
     _parse_geojson,
     _parse_xml,
     download_resource,
-    is_safe_url,
 )
+from pipeline.fetcher import validate_url
 
 
 # ── Fixtures ───────────────────────────────────────────────────
@@ -163,7 +163,7 @@ def test_download_resource_unknown_format_rejected() -> None:
     assert result is None
 
 
-# ── SSRF guard (data_layer.is_safe_url) ───────────────────────
+# ── SSRF guard (pipeline.fetcher.validate_url) ────────────────
 
 @pytest.mark.parametrize("url,expected", [
     ("https://catalogodatos.nl.gob.mx/api/3/action/package_list", True),
@@ -173,5 +173,5 @@ def test_download_resource_unknown_format_rejected() -> None:
     ("http://localhost/data",                                      False),
     ("ftp://datos.nl.gob.mx/data",                                False),
 ])
-def test_is_safe_url(url: str, expected: bool) -> None:
-    assert is_safe_url(url) is expected
+def test_validate_url(url: str, expected: bool) -> None:
+    assert validate_url(url) is expected

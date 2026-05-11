@@ -54,6 +54,7 @@ _MULTIFORMAT_PARSERS: frozenset[str] = frozenset(
 # Fuente única: config.py. No redefinir aquí.
 from config import CLASIFICACION_DEFAULT, CLASIFICACION_THRESHOLDS, QUALITY_WEIGHTS  # noqa: E402
 from quality_scorer import QualityScorer  # noqa: E402
+from pipeline.fetcher import validate_url  # noqa: E402
 
 # Etiquetas de presentación para cada columna de dimensión
 DIM_LABEL_MAP: dict[str, str] = {
@@ -168,32 +169,14 @@ def _legacy_fetch_portal_catalog() -> list[dict]:
 # ── 2. DESCARGA Y NORMALIZACIÓN ────────────────────────────────
 
 
-def is_safe_url(url: str) -> bool:
-    """Verifica dominios permitidos para evitar SSRF."""
-    from config import DOMINIOS_PERMITIDOS
-
-    try:
-        parsed = urlparse(url)
-        if parsed.scheme not in ("http", "https"):
-            return False
-
-        # Validación estricta: coincidencia exacta o subdominio válido
-        netloc = parsed.netloc.lower()
-        # Eliminar el puerto si está presente
-        if ":" in netloc:
-            netloc = netloc.split(":")[0]
-
-        return any(netloc == d or netloc.endswith("." + d) for d in DOMINIOS_PERMITIDOS)
-    except Exception:
-        return False
-
-
 def download_csv(url: str) -> pd.DataFrame | None:
     """Download CSV resources with robust charset detection and separator inference.
     Returns a pandas DataFrame or None on failure.
     """
-    if not is_safe_url(url):
-        print(f"URL rechazada por política de seguridad SSRF: {url}")
+    import logging as _logging
+    _log = _logging.getLogger("data_layer")
+    if not validate_url(url):
+        _log.warning("URL rechazada por política de seguridad SSRF: %s", url)
         return None
 
     try:
@@ -256,7 +239,7 @@ def download_resource(url: str, formato: str) -> pd.DataFrame | None:
     if fmt in ("CSV", ".CSV"):
         return download_csv(url)
 
-    if not is_safe_url(url):
+    if not validate_url(url):
         return None
 
     try:

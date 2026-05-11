@@ -5,28 +5,24 @@ Features:
 - Retry logic with exponential backoff (Jittered)
 - Timeout handling (connect + read)
 - Rate-limit awareness (Retry-After header)
-- Snapshot system with timestamps
 """
 
 from __future__ import annotations
 
 import hashlib
-import json
-import os
 import time
 import random
-from datetime import datetime, timezone
 from typing import Optional
 from urllib.parse import urlparse
 
 import requests
 
-# ── Allowlist ──────────────────────────────────────────────────
-ALLOWED_DOMAINS: frozenset[str] = frozenset({
-    "catalogodatos.nl.gob.mx",
-    "datos.nl.gob.mx",
-    "nl.gob.mx",
-})
+import sys
+import os as _os
+_ROOT = _os.path.abspath(_os.path.join(_os.path.dirname(__file__), ".."))
+if _ROOT not in sys.path:
+    sys.path.insert(0, _ROOT)
+from config import DOMINIOS_PERMITIDOS
 
 # Defaults
 MAX_RETRIES: int = 3
@@ -34,7 +30,6 @@ BASE_DELAY: float = 1.0
 MAX_DELAY: float = 30.0
 CONNECT_TIMEOUT: int = 10
 READ_TIMEOUT: int = 60
-SNAPSHOT_DIR: str = "snapshots"
 USER_AGENT: str = "DatosAbiertosNL-Fetcher/3.0"
 
 
@@ -58,7 +53,12 @@ def _is_loopback_or_local(hostname: str) -> bool:
 
 
 def validate_url(url: str) -> bool:
-    """Validate URL against SSRF: scheme, domain allowlist, no loopback."""
+    """Validate URL against SSRF: scheme, domain allowlist, no loopback.
+
+    Domain check uses exact match or strict subdomain (``host == d`` or
+    ``host.endswith("." + d)``), preventing suffix-spoofing attacks such as
+    ``evil-datos.nl.gob.mx`` or ``datos.nl.gob.mx.attacker.com``.
+    """
     try:
         parsed = urlparse(url)
     except Exception:
@@ -67,11 +67,14 @@ def validate_url(url: str) -> bool:
     if parsed.scheme not in ("http", "https"):
         return False
 
-    hostname = parsed.hostname or ""
+    hostname = (parsed.hostname or "").lower()
     if _is_loopback_or_local(hostname):
         return False
 
-    return any(hostname.endswith(d) for d in ALLOWED_DOMAINS)
+    return any(
+        hostname == d or hostname.endswith("." + d)
+        for d in DOMINIOS_PERMITIDOS
+    )
 
 
 # ── Retry with Exponential Backoff + Jitter ────────────────────
@@ -147,54 +150,6 @@ def fetch_with_retry(
 
     print(f"[fetcher] Agotados {max_retries + 1} intentos para: {url}")
     return None
-
-
-# ── Snapshot System ────────────────────────────────────────────
-
-def save_snapshot(data: dict, prefix: str = "quality") -> str:
-    """Save a JSON snapshot with timestamped filename.
-
-    Args:
-        data: Serializable dict to persist.
-        prefix: Filename prefix (e.g. 'quality', 'advanced').
-
-    Returns:
-        Absolute path of the written file.
-    """
-    os.makedirs(SNAPSHOT_DIR, exist_ok=True)
-    ts = datetime.now(timezone.utc).strftime("%Y%m%dT%H%M%SZ")
-    filename = f"{prefix}_{ts}.json"
-    path = os.path.join(SNAPSHOT_DIR, filename)
-
-    with open(path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
-
-    print(f"[fetcher] Snapshot guardado: {path}")
-    return os.path.abspath(path)
-
-
-def load_latest_snapshot(prefix: str = "quality") -> Optional[dict]:
-    """Load the most recent snapshot matching the prefix.
-
-    Args:
-        prefix: Filename prefix used during save.
-
-    Returns:
-        Parsed JSON dict, or None if no snapshots exist.
-    """
-    if not os.path.isdir(SNAPSHOT_DIR):
-        return None
-
-    files = sorted(
-        f for f in os.listdir(SNAPSHOT_DIR)
-        if f.startswith(prefix) and f.endswith(".json")
-    )
-    if not files:
-        return None
-
-    path = os.path.join(SNAPSHOT_DIR, files[-1])
-    with open(path, "r", encoding="utf-8") as f:
-        return json.load(f)
 
 
 def content_hash(data: bytes) -> str:
